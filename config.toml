@@ -3,9 +3,8 @@ title = "Eddy's Homepages"
 theme = "hugo-coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
-
+enableRobotsTXT = true
 paginate = 10
-
 
 [markup.highlight]
 style = "github-dark"
