@@ -5,7 +5,7 @@ date: "2022-07-22"
 
 ## Kuka olen
 
-Verkkosivustoni osoite on: [https://fasted.dy.fi](https://fasted.dy.fi).
+Verkkosivustoni osoite on: [https://eddyshomepages.github.io/](https://eddyshomepages.github.io/).
 
 ## Kommentit
 
