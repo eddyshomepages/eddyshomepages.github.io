@@ -11,8 +11,11 @@ Tälle sivustolle minulla on tarkoituksena kirjoitella erilaisia [blogi](/posts/
 
 Sivusto on luotu käyttäen [WordPress.org](https://wordpress.org/) blogi -alustaa ja sen taustalla käyttöjärjestelmänä toimii [Armbian](https://www.armbian.com/), joka on [Debian](https://www.debian.org/) -pohjainen käyttöjärjestelmä. Samalla tämä sivusto ja nämä kirjoitukset toimivat itselleni muistilistana tehdyistä asennuksista, jos ja kun taas tarvitsee palata johonkin vanhaan asennukseen jälkeen päin.
 
+>**Edit. 14.10.2023**  
+>Sivusto on siirretty uudelle alustalle [Github](https://github.com) -sivustolle käyttäen [Hugo](https://gohugo.io/) -sivusto generaattoria, jolla voidaan luoda staattisia nettisivuja.
+
 Ehkäpä näistä on kuitenkin jollekin muulle yhtä paljon hyötyä, mitä itselleni on ollut siitä, kun olen ongelmiin etsinyt netistä ratkaisuja sekä lukenut erilaisia keskustelupalstoja yms. muiden kirjoituksia.
 
 Muistutuksena kuitenkin, että muista aina ottaa varmuuskopiot ennen kuin alat tekemään suurempia muutoksia järjestelmääsi. Nämä kirjoitukseni pohjautuvat omakohtaisiin kokemuksiin ja ovat sellaisia, joita olen itse yrityksen ja välillä myös erehdyksen kautta tehnyt ja jotka ovat minulla toimineet. Nämä asiat eivät välttämättä toimi sinun järjestelmässä tai tietokoneella eli minä en ota vastuuta siitä, mikäli sinulle sattuu oman järjestelmäsi tai tietokoneesi kanssa jotain vahinkoa sen vuoksi, että olet toiminut näiden minun kirjoituksien mukaisesti.
 
-Viestiä tai kysymyksiä voi laittaa minulle joko some-linkkien tai kommenttikentän kautta.
+Viestiä tai kysymyksiä voi laittaa minulle some-linkkien kautta. Kommentointi -järjestelmä on tulossa jossakin vaiheessa, kunhan ehtii tutustumaan siihen paremmin.
