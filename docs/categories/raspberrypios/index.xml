@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raspberrypios on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/raspberrypios/</link>
+    <description>Recent content in raspberrypios on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/raspberrypios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MotionEye kameravalvonta -ohjelmiston asennus</title>
+      <link>https://eddyshomepages.github.io/posts/motioneye-kameravalvonta-ohjelmiston-asennus/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/motioneye-kameravalvonta-ohjelmiston-asennus/</guid>
+      <description>Tässä kirjoituksessa ajattelin kirjoittaa MotionEye -kameravalvonta -ohjelmiston asennuksesta RaspberryPi 3 -tietokoneelle. MotionEye on myös siitä mukava, että se toimii Home Assistantin kanssa hyvin yhteen ja kameroista saa tehtyä esim. liiketunnistimet Home Assistantiin samalla, kun ne hoitavat kameran virkaa.
+Toki näitä vastaavia kameravalvonta -ohjelmistoja on muitakin, kuten esim. ZoneMinder, Shinobi ja Agent DVR (ent. iSpy), jotka toimivat myös hyvin Home Assistantin kanssa.
+MotionEye -sovelluksen on alun perin kehittänyt Calin Crisan, joka ei enää jatka ohjelmiston kehittämistä, vaan kehityksestä vastaa jatkossa uusi tiimi.</description>
+    </item>
+    
+    <item>
+      <title>RaspberryPi OS:n asentaminen kiosk -tilaan</title>
+      <link>https://eddyshomepages.github.io/posts/raspberrypi-osn-asentaminen-kiosk-tilaan/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/raspberrypi-osn-asentaminen-kiosk-tilaan/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten RaspberryPi OS:n saa asetettua kiosk -tilaan ja saako käyttöjärjestelmän asetettua sellaiseen tilaan, että näppäimistön ja hiiren avulla ei päästä käsiksi käyttöjärjestelmään.
+Mikäli järjestelmään halutaan saada yhteys, mutta näppäimistön ja hiiren käyttö on estetty, niin tällöin täytyy miettiä jokin muu yhteystapa ja jäljelle jää oikeastaan ottaa yhteys koneeseen joko etänä tai paikan päällä esim. siten, että laite luo ympärilleen hotspotin, jonka WI-FI -verkkoon sitten yhdistetään ja kirjaudutaan koneelle esim.</description>
+    </item>
+    
+    <item>
+      <title>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</guid>
+      <description>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla.
+Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.
+Mikäli Home Assistantin pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse Linux -tuntemusta, mutta jos haluaa tehdä asioita pääte -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin yaml -kielestä.</description>
+    </item>
+    
+    <item>
+      <title>RaspberryPiOS:n asentaminen ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/raspberrypiosn-asentaminen-ja-kayttoonotto/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/raspberrypiosn-asentaminen-ja-kayttoonotto/</guid>
+      <description>Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käydä läpi sen asentamista ja käyttöönottoa.
+Aikaisemmin RaspberryPiOS ja sen edeltäjän Raspbianin sai asennettua image -tiedostosta esim. Balena Etcher -sovelluksella, mutta nykyisin se on ainakin hankalampaa, koska asetuksien teko käyttöjärjestelmälle on muuttunut vanhaan verrattuna. Nykyisin asennus onkin helpoin tehdä käyttäen RaspberryPi Imager -sovellusta, josta on tehty omat versiot Linuxille, Windowsille ja macOS-käyttikselle.
+RaspberryPi Imagerin avulla pystyy asentamaan RaspberryPiOS -käyttöjärjestelmän myös ulkoiselle kiintolevylle, kuten SSD -levylle.</description>
+    </item>
+    
+    <item>
+      <title>Mycroft -virtuaaliavustimen asennus ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</guid>
+      <description>Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin kokeilla myös toista avoimen lähdekoodin järjestelmää nimeltään Mycroft.
+Mycroft vaikuttaa lupaavalta siinäkin mielessä, että sillä pystyy Home Assistantin lisäksi komentamaan mm. Emby-media -serveriä, jonka pystyttämisestä myös kirjoittelin aikaisemmin. Mycroftin avulla pystyy myös mm. kuuntelemaan Yle Areenan kautta tuoreimmat kotimaan uutiset ja lisäksi siihen on saatavilla paljon muitakin lisätaitoja eli ns.</description>
+    </item>
+    
+    <item>
+      <title>Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</title>
+      <link>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</guid>
+      <description>Edellisessä kirjoituksessa kävimme läpi Almond-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan Almond-/Genie -virtuaaliavustimen kanssa. Ääniohjausta varten meidän tarvitsee asentaa Genie-client -paketti, josta löytyy valmis .deb -paketti Debian pohjaisille käyttöjärjestelmille. Muille käyttöjärjetelmille Genie-client täytyy asentaa lähdekoodin kautta.
+Minulla on alustana RaspberryPi -tietokoneen 1. Model B -versio, joten Genie-client -paketti asennetaan RaspberryPi:lle tehdyn ohjeen mukaisesti. Genie-client on myös sen verran kevyt, että sen pystyy asentamaan Raspberry Pi 1 Model B -koneelle ja näin minulla on myös tarkoitus tehdä.</description>
+    </item>
+    
+    <item>
+      <title>Oman streemauspalvelun rakentaminen</title>
+      <link>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</link>
+      <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</guid>
+      <description>Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joita on tullut muutettua MP3 ja MP4 -musiikkimuotoon eli .m4a muotoon. Voisihan sitä kuunnella musiikkia myös maksullisista palveluista, mutta ajattelin nyt kertoa tämmöisestäkin vaihtoehdosta eli tässä kirjoituksessa käydään läpi Emby -mediaserverin asennus- ja käyttöön ottaminen, joka on mielestäni suoraviivainen ja helppo tehdä.
+Emby on tarkoitettu oman median hallitsemiseen omalla palvelimella ja toimii esimerkiksi mainiosti omassa sisäverkossa ja ulkoverkossa palvelun saa toimimaan Emby Premiere -tilin avulla.</description>
+    </item>
+    
+    <item>
+      <title>Home Assistantin asennus Docker-Composen avulla</title>
+      <link>https://eddyshomepages.github.io/posts/home-assistantin-asennus-docker-composen-avulla/</link>
+      <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/home-assistantin-asennus-docker-composen-avulla/</guid>
+      <description>Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja Home Assistant. Minulla itselläni on Home Assistant asennettuna Raspberry Pi 4 -tietokoneelle siten, että tietokoneessa on käyttöjärjestelmänä RaspberryPiOS ja Home Assistant on asennettu Docker-Composen avulla.
+Docker -asennuksessa on mm. se haittapuoli, että nämä lisäosat eivät ole käytössä samalla tavalla kuin Home Assistantin omassa käyttöjärjestelmässä. Samoin myös varmuuskopiointi ei toimi samalla tavalla, mutta näihinkin löytyy kyllä kuitenkin ratkaisut. Mielestäni etuna Docker-asennuksessa on kuitenkin se, että tietokoneen resursseja voi helpommin käyttää myös muuhunkin.</description>
+    </item>
+    
+    <item>
+      <title>WordPress.org, PHP ja MariaDB asennus Caddy web-serverille</title>
+      <link>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</guid>
+      <description>Edellisessä kirjoituksessa asensimme Caddy web-serveriä RaspberryPiOS -käyttöjärjestelmälle ja nyt olisi tarkoitus jatkaa asennusta asentamalla ja konffaamalla seuraavaksi WordPress.org sekä siihen liittyen asentaa myös PHP ja MariaDB -palvelin.
+PHP:n asennus Link to heading Aluksi asennetaan PHP ja me asennamme siitä version 8.1. Ensimmäiseksi päivitetään ohjelmistolähteet ja asennetaan tarvittaessa päivitykset komennolla
+sudo apt update &amp;amp;&amp;amp; sudo apt upgrade PHP:n voisi asentaa myös suoraan ohjelmistolähteistä, mutta tämä on vanhempi versio 7.4. Me käytämme kuitenkin DEB.</description>
+    </item>
+    
+    <item>
+      <title>Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään</title>
+      <link>https://eddyshomepages.github.io/posts/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</guid>
+      <description>Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11).
+Myös tämän sivuston pohjana käytetään Caddy web-serveriä ja syy miksi päädyin käyttämään Caddya, on sen keveys ja helppo konfigurointi. Minulla on myös jonkin verran kokemusta Apache2:sta, joka minulla oli käytössä, kun aikoinani asentelin OwnCloud/Nextcloud -palvelimia omaan käyttööni, mutta Apache2:een verrattuna Caddy on mielestäni huomattavasti helpompi konffata.
+Caddy web-server on myös siitä vekkuli, että se tarjoaa automaattisesti sertifikaatin joko Let&amp;rsquo;s Encrypt:in tai ZeroSSL:n kautta sekä asettaa https-yhteyden oletuksena päälle ja ohjaa liikenteen automaattisesti portista 80 porttiin 443 eli suojattuun https-yhteyteen.</description>
+    </item>
+    
+    <item>
+      <title>Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään</title>
+      <link>https://eddyshomepages.github.io/posts/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/</link>
+      <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/</guid>
+      <description>Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut HomeAssistantin, Matrix Synapse -palvelimen, Baikal -kalenteripalvelimen sekä Duplicati -varmuuskopiopalvelimen käyttöön, mutta palataan näihin erikseen toisessa kirjoituksessa ja käydään tässä vähän läpi Dockerin ja Docker-Composen asennusta RaspberryPiOS -käyttöjärjestelmään.
+Lähtökohtaisesti meillä on siis valmiiksi asennettuna RaspberryPiOS -käyttöjärjestelmä RaspberryPi -tietokoneelle, jonka asennusta en tässä käy läpi tarkemmin, koska asentamiseen löytyvät hyvät ohjeet RaspberryPi -sivustolta.
+Ennen Dockerin asennusta kuitenkin asennetaan viimeisimmät päivitykset käyttöjärjestelmään seuraavalla komennolla</description>
+    </item>
+    
+    <item>
+      <title>Uuden UPS:in käyttöönotto ja NUT:in asennuksen kertaus</title>
+      <link>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</guid>
+      <description>Tuli jokin aika sitten hankittua uusi GreenCell:in UPS vanhan tilalle, joka on tarkoitus viedä mökille suojaamaan Home Assistant (asennettu RaspberryPi -pikkutietokoneelle) sähkökatkojen varalta, joita siellä tuntuu vähän väliä olevan.
+Ensimmäiseksi uuden UPS:in on annettu latautua täyteen ennen käyttöön ottoa. Minulla on jo aikaisemmin asennettu palvelinkoneelle NUT-server (Network UPS Tools) hoitamaan kommunikointia UPS:in kanssa, mutta nyt täytyy päivittää sen asetukset vastaamaan uutta UPS:ia. Samalla voidaan kerrata NUT-serverin asennus ja konfigurointi alusta alkaen.</description>
+    </item>
+    
+  </channel>
+</rss>

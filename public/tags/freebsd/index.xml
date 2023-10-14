@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>freebsd on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/freebsd/</link>
+    <description>Recent content in freebsd on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Syncthing synkronointisovelluksen asennus- ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tietokoneelle ilman, että tarvitsee juurikaan tietää/tuntea oman kotiverkon asetuksista mitään. Riittää, että molemmille laitteille on asennettu Syncthing ja laitteet on yhdistetty toimimaan yhdessä.
+Syncthing on avoimen lähdekoodin sovellus ja sen toiminta perustuu Block Exchange Protocollan 1. versioon. Lisäksi Synctingin saa asetettua toimimaan, joko pelkästään omassa sisäverkossa tai vaihtoehtoisesti myös internetin yli. Syncthing myös salaa kaiken liikenteen käyttäen TLS:n versiota 1.</description>
+    </item>
+    
+  </channel>
+</rss>

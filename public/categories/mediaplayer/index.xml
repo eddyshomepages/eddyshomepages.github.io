@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mediaplayer on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/mediaplayer/</link>
+    <description>Recent content in mediaplayer on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/mediaplayer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</guid>
+      <description>Home Assistant on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voimakkuutta. Meillä kotona tuppasi käymään siten, että kiusalla äänen voimakkuutta nostettiin välillä lähes maksimiin, jonka vuoksi kyllästyin ja aloin miettimään ratkaisua tähän ongelmaan.
+Valmistajan sovelluskaupasta ei apuja löytynyt, joten päätin kokeilla, että miten Home Assistant tässa onnistuu. Ja onnistuuhan se, vieläpä oikein hyvin.
+Aluksi meidän täytyy lisätä älytelevio Home Assistantiin media playerinä, jonka Home Assistant yleensä tekee automaattisesti, mikäli TV on samassa verkossa.</description>
+    </item>
+    
+  </channel>
+</rss>

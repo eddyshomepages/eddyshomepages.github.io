@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/about/</link>
+    <description>Recent content in Abouts on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tietoja sivustosta ja kirjoittajasta</title>
+      <link>https://eddyshomepages.github.io/about/about/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/about/about/</guid>
+      <description>Sivuston ylläpitäjä on tällainen Linux -&amp;ldquo;nörtti&amp;rdquo;, joka tykkää puuhailla vapaa-aikoina Linuxin ja muiden siihen liittyvien juttujen kanssa kuten esim. Raspberry Pi -pikkutietokoneet. Lisäksi myös kaikki kotiautomaatioon liittyvät jutut ovat lähellä sydäntä.
+Minulla on taustalla rakennusinsinöörin koulutus ja melkein 25 vuoden työkokemus erilaisista tehtävistä rakennus- ja kiinteistöalalta. Nyt on kuitenkin tullut alan vaihto eteen ja helmikuun 2022 alussa aloitin opiskelemaan tieto- ja viestintätekniikan perustutkintoa suuntautuen hyvinvointiteknologiaan. Toisin sanoen nyt olisi tarkoitus suorittaa tutkinto ja saada pitkäaikaisesta harrastuksesta loppuelämän ammatti.</description>
+    </item>
+    
+    <item>
+      <title>Tietosuojaseloste</title>
+      <link>https://eddyshomepages.github.io/about/tietosuojaseloste/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/about/tietosuojaseloste/</guid>
+      <description>Kuka olen Link to heading Verkkosivustoni osoite on: https://fasted.dy.fi.
+Kommentit Link to heading Kun sivuston käyttäjät jättävät kommentteja sivustolle, keräämme kommenttilomakkeessa olevat tiedot, sekä käyttäjän IP-osoitteen ja selaimen versiotiedot roskaviestien tunnistamisen helpottamiseksi.
+Kun vierailijat jättävät kommentin tälle sivustolle keräämme tiedon, joka on näkyvissä kommentointikentissä, IP-osoitteen sekä selaimen versioon liittyvät tiedot. Sähköpostiosoitteesta luotu anonymisoitu hajautustieto (hash) voidaan lähettää Gravatar-palveluun, jotta tiedetään onko kommentoija palvelun käyttäjä. Gravatar-palvelun tietosuojaseloste löytyy osoitteesta https://automattic.com/privacy/.</description>
+    </item>
+    
+  </channel>
+</rss>

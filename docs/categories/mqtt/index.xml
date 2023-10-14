@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mqtt on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/mqtt/</link>
+    <description>Recent content in mqtt on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/mqtt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi</title>
+      <link>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaiseksi, että se voidaan liittää Zigbee -verkkoon. Innostuksen tähän sain, kun luin vastaavanlaisesta muutoksesta Home Assistantin keskustelupalstalta, johon linkki https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379. Pienenä varoituksen sanana myös, että tämän muutostyön yhteydessä tarvitaan juotoskolvia.
+Mitä tarvitaan? Link to heading Tarvikkeina tarvitaan jokin sadevesimittari, joka minulla on tällainen MTX Basic langanton sadevesimittari (HUOM! ei ole maksettu mainos) sekä Zigbee -verkkoon liitettävä ovi- ja ikkuna -anturi, kuten esimerkiksi Aqara, joka minulla on käytössä.</description>
+    </item>
+    
+    <item>
+      <title>ESPHomen asennus päätteen kautta Linux käyttöjärjestelmään</title>
+      <link>https://eddyshomepages.github.io/posts/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</guid>
+      <description>Minulla on Home Assistantin yhteydessä erilaisia antureita, joita olen tehnyt käyttäen ESP32, ESP8266 ja Wemos D1 -mikrokontrollereita. Näitä minulla on mm. lukemassa sähkömittarin pulssia, erilaisina sensoreina kuten lämpötila, ilmankosteus, ilmanpaine, valoisuus tai mittaamassa auringon UV-säteilyä. Yhteistä näissä on se, että olen käyttänyt niissä ESPHome -firmwarea.
+ESPHome on monipuolinen firmware ja se on myös tehty hyvin yhteensopivaksi Home Assistantin kanssa. ESPHomen asetukset tehdään yaml -tiedostoon samaan tapaa kuin voidaan tehdä myös Home Assistantissa.</description>
+    </item>
+    
+    <item>
+      <title>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</guid>
+      <description>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla.
+Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.
+Mikäli Home Assistantin pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse Linux -tuntemusta, mutta jos haluaa tehdä asioita pääte -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin yaml -kielestä.</description>
+    </item>
+    
+    <item>
+      <title>Zigbee2MQTT asentaminen Docker-Composen avulla</title>
+      <link>https://eddyshomepages.github.io/posts/zigbee2mqtt-asentaminen-docker-composen-avulla/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/zigbee2mqtt-asentaminen-docker-composen-avulla/</guid>
+      <description>Jatketaan vielä Docker-Composen parissa ja seuraavaksi asennetaan Zigbee2MQTT Docker-Composen avulla. Meillä on siis Home Assistant ja Mosquitto -broker asennettuna Docker-Composen kautta, jonka vuoksi mm. Home Assistantin lisäosat eivät ole käytettävissä. Tätä kautta onnistuisi myös asentaa Zigbee2MQTT, mutta me asennamme sen toisella tapaan. Minulla on myös käytössä Conbee II zigbee -mokkula, joka toimii hyvin Zigbee2MQTT:n kanssa. Vaihtoehtoisesti voitaisiin käyttää myös deConz -ohjelmistoa, mutta itse olen tykästynyt Zigbee2MQTT:hen. Mikäli olen asentanut Home Assistantin oman käyttöjärjestelmän, löytyy deConz -lisäosa suoraan ohjelmakirjastosta.</description>
+    </item>
+    
+    <item>
+      <title>RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen</title>
+      <link>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</link>
+      <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</guid>
+      <description>Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla.</description>
+    </item>
+    
+    <item>
+      <title>Mosquitto-brokerin asennus käyttäen Docker-Composea</title>
+      <link>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</guid>
+      <description>Seuraavaksi asennamme mosquitto-brokerin Docker-Composen avulla. Mosquitto-brokeria tarvitaan hoitamaan ns. &amp;ldquo;keskustelu&amp;rdquo; -yhteyttä, jotta voimme lisätä Home Assistanttiin zigbee-, z-wave- ja ruuviTag -laitteita käyttäen Zigbee2MQTT-, Zwavejs2Mqtt- ja RuuviTag Discovery -ohjelmistoja, jotka kommunikoivat käyttäen MQTT -protokollaa.
+Mosquitto-brokerin asennus Link to heading Mosquitto-brokerin asennus menee aika lailla samaan tapaan kuin aikaisemmat Docker-Composen avulla tehdyt asennukset eli aluksi luodaan mosquittoa varten hakemisto Docker-Composen asennushakemistoon eli ajetaan seuraavat komennot
+cd /home/pi/docker-data mkdir mosquitto cd mosquitto Seuraavaksi luodaan docker-compose.</description>
+    </item>
+    
+  </channel>
+</rss>

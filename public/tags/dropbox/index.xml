@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dropbox on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/dropbox/</link>
+    <description>Recent content in dropbox on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/dropbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</guid>
+      <description>Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa.</description>
+    </item>
+    
+  </channel>
+</rss>

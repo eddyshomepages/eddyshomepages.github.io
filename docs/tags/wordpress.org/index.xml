@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wordpress.org on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/wordpress.org/</link>
+    <description>Recent content in wordpress.org on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/wordpress.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WordPress.org, PHP ja MariaDB asennus Caddy web-serverille</title>
+      <link>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</guid>
+      <description>Edellisessä kirjoituksessa asensimme Caddy web-serveriä RaspberryPiOS -käyttöjärjestelmälle ja nyt olisi tarkoitus jatkaa asennusta asentamalla ja konffaamalla seuraavaksi WordPress.org sekä siihen liittyen asentaa myös PHP ja MariaDB -palvelin.
+PHP:n asennus Link to heading Aluksi asennetaan PHP ja me asennamme siitä version 8.1. Ensimmäiseksi päivitetään ohjelmistolähteet ja asennetaan tarvittaessa päivitykset komennolla
+sudo apt update &amp;amp;&amp;amp; sudo apt upgrade PHP:n voisi asentaa myös suoraan ohjelmistolähteistä, mutta tämä on vanhempi versio 7.4. Me käytämme kuitenkin DEB.</description>
+    </item>
+    
+    <item>
+      <title>Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään</title>
+      <link>https://eddyshomepages.github.io/posts/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</guid>
+      <description>Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11).
+Myös tämän sivuston pohjana käytetään Caddy web-serveriä ja syy miksi päädyin käyttämään Caddya, on sen keveys ja helppo konfigurointi. Minulla on myös jonkin verran kokemusta Apache2:sta, joka minulla oli käytössä, kun aikoinani asentelin OwnCloud/Nextcloud -palvelimia omaan käyttööni, mutta Apache2:een verrattuna Caddy on mielestäni huomattavasti helpompi konffata.
+Caddy web-server on myös siitä vekkuli, että se tarjoaa automaattisesti sertifikaatin joko Let&amp;rsquo;s Encrypt:in tai ZeroSSL:n kautta sekä asettaa https-yhteyden oletuksena päälle ja ohjaa liikenteen automaattisesti portista 80 porttiin 443 eli suojattuun https-yhteyteen.</description>
+    </item>
+    
+    <item>
+      <title>Mitä olen vuosien aikana puuhaillut</title>
+      <link>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</guid>
+      <description>Kertokoon tämä ensimmäinen kirjoitus hiukan siitä, että mitä kaikkea on tullutkaan puuhailtua vuosien varrella.
+Eli viimeiset reilut parikymmentä vuotta olen oikestaan enemmän toiminut Linuxin kanssa kuin Windowsin kanssa. Linuxin ensimmäiset asennukset taisivat olla RedHat:in versio 7 ja Slackware Linux:in versio 8. Tämän jälkeen, kun pääsin sisälle Linuxiin, on se ollut pääsääntöisesti käytössä ja Windowsin käyttö ollut enemmän työkäyttöä. Nykyisin opiskelun myötä on tullut syvennyttyä paremmin myös Windowsin maailmaan ja sekin on nykyisellään hyvin hallussa.</description>
+    </item>
+    
+    <item>
+      <title>Terve maailma!</title>
+      <link>https://eddyshomepages.github.io/posts/moikka-maailma/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/moikka-maailma/</guid>
+      <description>Tervetuloa kotisivuilleni!
+Nämä koti- ja blogi-sivut on luotu Raspberry Pi 2:n päällä pyörivän Caddy -webserverin ja WordPress.org blogi-alustan avulla. Caddy -webserver on kevyt ja sen avulla saa automaattisesti sertifikaatin nettisivustolle Let&amp;rsquo;s Encryptin kautta. Lisäksi Caddy -webserver pitää sertifikaatin automaattisesti myös ajan tasalla.
+Näille sivuille on tarkoituksena alkaa kirjoittaa erilaisia kotiautomaatioon, Linuxiin ja muihinkin asioihin liittyviä kirjoituksia.
+Lisäksi nämä sivut toimivat minulle oppimisympäristönä WordPressiin ja mahdollisesti myös tulevaisuudessa jonkinlaisena sivutoimisena työnä.</description>
+    </item>
+    
+  </channel>
+</rss>

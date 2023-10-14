@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>conbee ii on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/conbee-ii/</link>
+    <description>Recent content in conbee ii on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 05 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/conbee-ii/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zigbee2MQTT asentaminen Docker-Composen avulla</title>
+      <link>https://eddyshomepages.github.io/posts/zigbee2mqtt-asentaminen-docker-composen-avulla/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/zigbee2mqtt-asentaminen-docker-composen-avulla/</guid>
+      <description>Jatketaan vielä Docker-Composen parissa ja seuraavaksi asennetaan Zigbee2MQTT Docker-Composen avulla. Meillä on siis Home Assistant ja Mosquitto -broker asennettuna Docker-Composen kautta, jonka vuoksi mm. Home Assistantin lisäosat eivät ole käytettävissä. Tätä kautta onnistuisi myös asentaa Zigbee2MQTT, mutta me asennamme sen toisella tapaan. Minulla on myös käytössä Conbee II zigbee -mokkula, joka toimii hyvin Zigbee2MQTT:n kanssa. Vaihtoehtoisesti voitaisiin käyttää myös deConz -ohjelmistoa, mutta itse olen tykästynyt Zigbee2MQTT:hen. Mikäli olen asentanut Home Assistantin oman käyttöjärjestelmän, löytyy deConz -lisäosa suoraan ohjelmakirjastosta.</description>
+    </item>
+    
+  </channel>
+</rss>

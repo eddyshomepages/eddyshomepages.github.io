@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mqtt on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/mqtt/</link>
+    <description>Recent content in mqtt on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/mqtt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi</title>
+      <link>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaiseksi, että se voidaan liittää Zigbee -verkkoon. Innostuksen tähän sain, kun luin vastaavanlaisesta muutoksesta Home Assistantin keskustelupalstalta, johon linkki https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379. Pienenä varoituksen sanana myös, että tämän muutostyön yhteydessä tarvitaan juotoskolvia.
+Mitä tarvitaan? Link to heading Tarvikkeina tarvitaan jokin sadevesimittari, joka minulla on tällainen MTX Basic langanton sadevesimittari (HUOM! ei ole maksettu mainos) sekä Zigbee -verkkoon liitettävä ovi- ja ikkuna -anturi, kuten esimerkiksi Aqara, joka minulla on käytössä.</description>
+    </item>
+    
+    <item>
+      <title>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</guid>
+      <description>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla.
+Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.
+Mikäli Home Assistantin pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse Linux -tuntemusta, mutta jos haluaa tehdä asioita pääte -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin yaml -kielestä.</description>
+    </item>
+    
+    <item>
+      <title>RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen</title>
+      <link>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</link>
+      <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</guid>
+      <description>Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla.</description>
+    </item>
+    
+    <item>
+      <title>Mitä olen vuosien aikana puuhaillut</title>
+      <link>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</guid>
+      <description>Kertokoon tämä ensimmäinen kirjoitus hiukan siitä, että mitä kaikkea on tullutkaan puuhailtua vuosien varrella.
+Eli viimeiset reilut parikymmentä vuotta olen oikestaan enemmän toiminut Linuxin kanssa kuin Windowsin kanssa. Linuxin ensimmäiset asennukset taisivat olla RedHat:in versio 7 ja Slackware Linux:in versio 8. Tämän jälkeen, kun pääsin sisälle Linuxiin, on se ollut pääsääntöisesti käytössä ja Windowsin käyttö ollut enemmän työkäyttöä. Nykyisin opiskelun myötä on tullut syvennyttyä paremmin myös Windowsin maailmaan ja sekin on nykyisellään hyvin hallussa.</description>
+    </item>
+    
+  </channel>
+</rss>

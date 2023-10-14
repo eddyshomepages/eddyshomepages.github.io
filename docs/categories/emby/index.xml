@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>emby on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/emby/</link>
+    <description>Recent content in emby on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/emby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jellyfin -mediapalvelimen asennus</title>
+      <link>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</guid>
+      <description>Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen. Jellyfin on oma palvelimensa vaikka sen alkujuuret juontavatkin Emby -mediaserveriin eli toisin sanoen Jellyfin on forkki Emby -mediaserveristä. Jellyfin -mediaserverin kautta voi mm. katsoa videoita ja TV -tallennuksia, kuunnella musiikkia sekä katsella myös valokuvia eli sovellus on siinä mielessä monipuolinen.
+Jellyfinin asennus Link to heading Minä asennan Jellyfin -mediaserverin BananaPi -tietokoneella ja katsotaan miten se siinä toimii.</description>
+    </item>
+    
+    <item>
+      <title>Mycroft -virtuaaliavustimen asennus ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</guid>
+      <description>Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin kokeilla myös toista avoimen lähdekoodin järjestelmää nimeltään Mycroft.
+Mycroft vaikuttaa lupaavalta siinäkin mielessä, että sillä pystyy Home Assistantin lisäksi komentamaan mm. Emby-media -serveriä, jonka pystyttämisestä myös kirjoittelin aikaisemmin. Mycroftin avulla pystyy myös mm. kuuntelemaan Yle Areenan kautta tuoreimmat kotimaan uutiset ja lisäksi siihen on saatavilla paljon muitakin lisätaitoja eli ns.</description>
+    </item>
+    
+    <item>
+      <title>Oman streemauspalvelun rakentaminen</title>
+      <link>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</link>
+      <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</guid>
+      <description>Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joita on tullut muutettua MP3 ja MP4 -musiikkimuotoon eli .m4a muotoon. Voisihan sitä kuunnella musiikkia myös maksullisista palveluista, mutta ajattelin nyt kertoa tämmöisestäkin vaihtoehdosta eli tässä kirjoituksessa käydään läpi Emby -mediaserverin asennus- ja käyttöön ottaminen, joka on mielestäni suoraviivainen ja helppo tehdä.
+Emby on tarkoitettu oman median hallitsemiseen omalla palvelimella ja toimii esimerkiksi mainiosti omassa sisäverkossa ja ulkoverkossa palvelun saa toimimaan Emby Premiere -tilin avulla.</description>
+    </item>
+    
+  </channel>
+</rss>

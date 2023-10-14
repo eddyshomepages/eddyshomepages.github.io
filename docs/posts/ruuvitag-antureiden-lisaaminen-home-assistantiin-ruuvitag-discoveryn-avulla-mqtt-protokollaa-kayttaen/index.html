@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen · Eddy&#39;s Homepages
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Esa P">
+<meta name="description" content="Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla.">
+<meta name="keywords" content="blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen"/>
+<meta name="twitter:description" content="Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla."/>
+
+<meta property="og:title" content="RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen" />
+<meta property="og:description" content="Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-21T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.135e22c97ff685fe983fc60048e309ced8f00d8d38f536aa67dba8a13a03dfa4.css" integrity="sha256-E14iyX/2hf6YP8YASOMJztjwDY049TaqZ9uooToD36Q=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Eddy&#39;s Homepages
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">Abouts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags">Tags</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/">
+              RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-09-21T00:00:00Z">
+                21.9.2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/homeassistant/">homeassistant</a>
+      <span class="separator">•</span>
+    <a href="/categories/kotiautomaatio/">kotiautomaatio</a>
+      <span class="separator">•</span>
+    <a href="/categories/linux/">linux</a>
+      <span class="separator">•</span>
+    <a href="/categories/mqtt/">mqtt</a>
+      <span class="separator">•</span>
+    <a href="/categories/node.js/">node.js</a>
+      <span class="separator">•</span>
+    <a href="/categories/ruuvitag/">ruuvitag</a>
+      <span class="separator">•</span>
+    <a href="/categories/ruuvitag-discovery/">ruuvitag-discovery</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/bluetooth/">bluetooth</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/debian/">debian</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/homeassistant/">homeassistant</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/kotiautomaatio/">kotiautomaatio</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/mqtt/">mqtt</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/node.js/">node.js</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/raspberrypios/">raspberrypios</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/ruuvitag/">ruuvitag</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/ruuvitag-discovery/">ruuvitag-discovery</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>Lähtökohtaisesti meillä on <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> avulla asennettuna <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistant</a> sekä <a href="https://mosquitto.org/"  class="external-link" target="_blank" rel="noopener">Mosquitto</a> -broker. Seuraavaksi lisäämme <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistanttin</a> <a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTag</a> -antureita käyttäen <a href="https://mqtt.org/"  class="external-link" target="_blank" rel="noopener">MQTT</a> -protokollaa ja siinä käytämme apuna <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discovery</a> -ohjelmistoa.</p>
+<p><a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTag</a> on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. <a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTag</a> toimii <a href="https://en.wikipedia.org/wiki/Bluetooth"  class="external-link" target="_blank" rel="noopener">Bluetooth</a> -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantiin</a> tai muihin kotiautomaatiojärjestelmiin.</p>
+<p><a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTagit</a> voisi lisätä <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistanttiin</a> myös erilaisilla lisäosilla, mutta me teemme sen <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discoveryn</a> ja <a href="https://mqtt.org/"  class="external-link" target="_blank" rel="noopener">MQTT</a>:n avulla. Tämä siksi, että meillä <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistant</a> on asennettu <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> avulla, jolloin tämä lisäosat eivät toimi sellaisenaan. Jatkossa tarkoituksena on asentaa myös <a href="https://en.wikipedia.org/wiki/Zigbee"  class="external-link" target="_blank" rel="noopener">zigbee</a>- ja <a href="https://en.wikipedia.org/wiki/Z-Wave"  class="external-link" target="_blank" rel="noopener">z-wave</a> -antureita <a href="https://mqtt.org/"  class="external-link" target="_blank" rel="noopener">MQTT</a>:tä hyödyntäen, jolloin <a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTagit</a> menevät siinä samalla mukana.</p>
+<h3 id="nodejs-asennus">
+  Node.js asennus
+  <a class="heading-link" href="#nodejs-asennus">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Aluksi meidän täytyy kuitenkin asentaa <a href="https://nodejs.org/en/"  class="external-link" target="_blank" rel="noopener">node.js</a>, jotta saamme <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discoveryn</a> asennettua. <a href="https://www.raspberrypi.com/software/"  class="external-link" target="_blank" rel="noopener">RaspberryPiOS</a> on <a href="https://www.debian.org/"  class="external-link" target="_blank" rel="noopener">Debian</a> -pohjainen käyttöjärjestelmä eli saamme asennettua <a href="https://nodejs.org/en/"  class="external-link" target="_blank" rel="noopener">node.js</a>:n ohjelmistolähteistä, joihin löytyvät ohjeet <a href="https://github.com/nodesource/distributions/blob/master/README.md"  class="external-link" target="_blank" rel="noopener">linkin</a> takaa.</p>
+<p>Aluksi asennamme <a href="https://nodejs.org/en/"  class="external-link" target="_blank" rel="noopener">node.js</a>:n ohjelmistolähteet ja myös <a href="https://nodejs.org/en/"  class="external-link" target="_blank" rel="noopener">node.js</a>:n komennoilla</p>
+<pre tabindex="0"><code>#HUOM! asennus tehdään root-käyttäjänä
+sudo su
+curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+apt-get install -y nodejs
+exit
+</code></pre><h3 id="ruuvitag-discoveryn-asennus">
+  Ruuvitag Discoveryn asennus
+  <a class="heading-link" href="#ruuvitag-discoveryn-asennus">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Seuraavaksi haetaan <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discovery</a> -tiedostot komennolla</p>
+<pre tabindex="0"><code>git clone https://github.com/balda/ruuvitag-discovery
+</code></pre><p>Seuraavaksi suoritetaan asennus</p>
+<pre tabindex="0"><code>cd ruuvitag-discovery/
+npm install
+</code></pre><p>Asennukseen jälkeen voimme käynnistää <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag-Discoveryn</a> komennolla</p>
+<pre tabindex="0"><code>npm start
+</code></pre><p>Voi olla, että järjestelmä ei vielä suoraan löydä <a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTag</a> -antureita, jolloin pitää varmistaa, että järjestelmään on asennettu tarvittavat <code>bluetooth</code> -paketit sekä ajaa komento, jolloin <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discovery</a> ei tarvitse <code>root/sudo</code> -oikeuksia</p>
+<pre tabindex="0"><code>sudo apt-get install bluetooth bluez
+sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
+</code></pre><p>Mikäli asennus onnistui, niin meillä pitäisi näkyä päätteessä alla olevan kaltaiset rivit, josta alimpana nähdään, että <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discovery</a> on löytänyt kaksi erillistä <a href="https://ruuvi.com/fi/"  class="external-link" target="_blank" rel="noopener">RuuviTagia</a></p>
+<p><img src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva1.png" alt=""></p>
+<h3 id="palvelun-ruuvitag-discoveryservice-luominen">
+  Palvelun ruuvitag-discovery.service luominen
+  <a class="heading-link" href="#palvelun-ruuvitag-discoveryservice-luominen">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Ennen kuin jatketaan asetuksien tekemistä, niin tehdään kuitenkin <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discoverystä</a> palvelu, joka käynnistyy automaattisesti tietokoneen käynnistyessä. Aluksi luodaan tiedosto <code>ruuvitag-discovery.service</code> komennolla <code>sudo nano /etc/systemd/system/ruuvitag-discovery.service</code> ja lisätään tiedostoon alla olevat rivit</p>
+<pre tabindex="0"><code>[Unit]
+Description=RuuviTag Discovery
+
+[Service]
+Type=simple
+Restart=always
+User=pi
+WorkingDirectory=/home/pi/ruuvitag-discovery
+ExecStart=/usr/bin/npm start
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>Seuraavaksi käynnistetään palvelu ja tehdään siitä automaattisesti käynnistyvä komennoilla</p>
+<pre tabindex="0"><code>sudo systemctl start ruuvitag-discovery
+sudo systemctl enable ruuvitag-discovery
+</code></pre><h3 id="ruuvitag-discoveryn-asetus-web-selaimen-kautta">
+  Ruuvitag Discoveryn asetus web-selaimen kautta
+  <a class="heading-link" href="#ruuvitag-discoveryn-asetus-web-selaimen-kautta">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Tämän jälkeen avataan selaimella osoite <code>http://x.x.x.x:8099</code>, jota kautta pääsemme avaamaan web-pohjaisen konfigurointi -ikkunan. IP-osoite <code>x.x.x.x</code> on sen tietokoneen IP-osoite, jolle <a href="https://github.com/balda/ruuvitag-discovery"  class="external-link" target="_blank" rel="noopener">Ruuvitag Discovery</a> on asennettu.</p>
+<p>Etusivulla näkyvät löydetyt anturit ja kohdasta &ldquo;<code>Targets</code>&rdquo; päästään antamaan <a href="https://mqtt.org/"  class="external-link" target="_blank" rel="noopener">MQTT</a>:n asetukset. Lisätään asetukset painamalla napista &ldquo;<code>+Home Assistant (MQTT)</code>&rdquo; , jolloin avautuu alla olevan kaltainen ikkuna</p>
+<p><img src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva2.png" alt=""></p>
+<p>Aluksi annetaan tarvittavat tiedot eli</p>
+<ul>
+<li>
+<p>kohtaan <code>name</code> jokin nimi esim. <code>mosquitto</code></p>
+</li>
+<li>
+<p>kohtaan <code>host</code> mosquitto -brokerin IP-osoite</p>
+</li>
+<li>
+<p>kohtaan <code>port</code> mosquitto -brokerin portti</p>
+</li>
+<li>
+<p>kohtaan <code>topic</code> otsikoksi <code>homeassistant</code></p>
+</li>
+<li>
+<p>kohtaan <code>username</code> käyttäjätunnus</p>
+</li>
+<li>
+<p>kohtaan <code>password</code> salasana</p>
+</li>
+</ul>
+<p>Kohdasta &ldquo;Tags&rdquo; voidaan ottaa käyttöön halutut anturit sekä tiedot, joita lähetetään <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantille</a> eli esim. ainakin <code>humidity</code>, <code>temperature</code> ja <code>pressure</code>. Lisäksi valittavana on myös muitakin tietoja, joita voidaan lähetään <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantille</a>.</p>
+<p><img src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva3.png" alt=""></p>
+<p>Lopuksi otetaan vielä &ldquo;<code>Home Assistant (MQTT)</code>&rdquo; käyttöön valitsemalla &ldquo;<code>enable</code>&rdquo; ja tallennetaan asetukset, jonka jälkeen pitäisi alkaa tulla anturi-dataa <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantille</a>.</p>
+
+	<p><b>Jaa tämä:</b></p>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+ 
+
+
+
+
+  
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.1em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm3.6 11.5h-2.1v7h-3v-7h-2v-2h2V8.34c0-1.1.35-2.82 2.65-2.82h2.35v2.3h-1.4c-.25 0-.6.13-.6.66V9.5h2.34l-.24 2z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/&amp;title=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en&amp;summary=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en&amp;https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M9.5,16.5h-2v-7h2V16.5z M8.5,7.5 c-0.553,0-1-0.448-1-1c0-0.552,0.447-1,1-1s1,0.448,1,1C9.5,7.052,9.053,7.5,8.5,7.5z M18.5,16.5h-3V13c0-0.277-0.225-0.5-0.5-0.5 c-0.276,0-0.5,0.223-0.5,0.5v3.5h-3c0,0,0.031-6.478,0-7h3v0.835c0,0,0.457-0.753,1.707-0.753c1.55,0,2.293,1.12,2.293,3.296V16.5z" /></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/&amp;media=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/&amp;description=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm1.4 15.56c-1 0-1.94-.53-2.25-1.14l-.65 2.52c-.4 1.45-1.57 2.9-1.66 3-.06.1-.2.07-.22-.04-.02-.2-.32-2 .03-3.5l1.18-5s-.3-.6-.3-1.46c0-1.36.8-2.37 1.78-2.37.85 0 1.25.62 1.25 1.37 0 .85-.53 2.1-.8 3.27-.24.98.48 1.78 1.44 1.78 1.73 0 2.9-2.24 2.9-4.9 0-2-1.35-3.5-3.82-3.5-2.8 0-4.53 2.07-4.53 4.4 0 .5.1.9.25 1.23l-1.5.82c-.36-.64-.54-1.43-.54-2.28 0-2.6 2.2-5.74 6.57-5.74 3.5 0 5.82 2.54 5.82 5.27 0 3.6-2 6.3-4.96 6.3z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en&amp;url=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm5.26 9.38v.34c0 3.48-2.64 7.5-7.48 7.5-1.48 0-2.87-.44-4.03-1.2 1.37.17 2.77-.2 3.9-1.08-1.16-.02-2.13-.78-2.46-1.83.38.1.8.07 1.17-.03-1.2-.24-2.1-1.3-2.1-2.58v-.05c.35.2.75.32 1.18.33-.7-.47-1.17-1.28-1.17-2.2 0-.47.13-.92.36-1.3C7.94 8.85 9.88 9.9 12.06 10c-.04-.2-.06-.4-.06-.6 0-1.46 1.18-2.63 2.63-2.63.76 0 1.44.3 1.92.82.6-.12 1.95-.27 1.95-.27-.35.53-.72 1.66-1.24 2.04z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en&amp;url=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23.5c6.35 0 11.5-5.15 11.5-11.5S18.35.5 12 .5.5 5.65.5 12 5.65 23.5 12 23.5zM2.505 11.053c-.31.118-.505.738-.505.738s.203.62.513.737l3.636 1.355 1.417 4.557a.787.787 0 0 0 1.25.375l2.115-1.72a.29.29 0 0 1 .353-.01L15.1 19.85a.786.786 0 0 0 .746.095.786.786 0 0 0 .487-.573l2.793-13.426a.787.787 0 0 0-1.054-.893l-15.568 6z" fill-rule="evenodd"/></svg>      
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en%20https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24"><path d="m12 0c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 3.8c2.2 0 4.2 0.9 5.7 2.4 1.6 1.5 2.4 3.6 2.5 5.7 0 4.5-3.6 8.1-8.1 8.1-1.4 0-2.7-0.4-3.9-1l-4.4 1.1 1.2-4.2c-0.8-1.2-1.1-2.6-1.1-4 0-4.5 3.6-8.1 8.1-8.1zm0.1 1.5c-3.7 0-6.7 3-6.7 6.7 0 1.3 0.3 2.5 1 3.6l0.1 0.3-0.7 2.4 2.5-0.7 0.3 0.099c1 0.7 2.2 1 3.4 1 3.7 0 6.8-3 6.9-6.6 0-1.8-0.7-3.5-2-4.8s-3-2-4.8-2zm-3 2.9h0.4c0.2 0 0.4-0.099 0.5 0.3s0.5 1.5 0.6 1.7 0.1 0.2 0 0.3-0.1 0.2-0.2 0.3l-0.3 0.3c-0.1 0.1-0.2 0.2-0.1 0.4 0.2 0.2 0.6 0.9 1.2 1.4 0.7 0.7 1.4 0.9 1.6 1 0.2 0 0.3 0.001 0.4-0.099s0.5-0.6 0.6-0.8c0.2-0.2 0.3-0.2 0.5-0.1l1.4 0.7c0.2 0.1 0.3 0.2 0.5 0.3 0 0.1 0.1 0.5-0.099 1s-1 0.9-1.4 1c-0.3 0-0.8 0.001-1.3-0.099-0.3-0.1-0.7-0.2-1.2-0.4-2.1-0.9-3.4-3-3.5-3.1s-0.8-1.1-0.8-2.1c0-1 0.5-1.5 0.7-1.7s0.4-0.3 0.5-0.3z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=RuuviTag%20-antureiden%20lis%c3%a4%c3%a4minen%20Home%20Assistantiin%20Ruuvitag%20Discoveryn%20avulla%20MQTT-protokollaa%20k%c3%a4ytt%c3%a4en&amp;body=https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/" target="_self" rel="noopener" aria-label="" title="E-Mail">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm8 16c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v8z"/><path d="M17.9 8.18c-.2-.2-.5-.24-.72-.07L12 12.38 6.82 8.1c-.22-.16-.53-.13-.7.08s-.15.53.06.7l3.62 2.97-3.57 2.23c-.23.14-.3.45-.15.7.1.14.25.22.42.22.1 0 .18-.02.27-.08l3.85-2.4 1.06.87c.1.04.2.1.32.1s.23-.06.32-.1l1.06-.9 3.86 2.4c.08.06.17.1.26.1.17 0 .33-.1.42-.25.15-.24.08-.55-.15-.7l-3.57-2.22 3.62-2.96c.2-.2.24-.5.07-.72z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2022 -
+    
+    2023
+     Esa P 
+    ·
+    
+      Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

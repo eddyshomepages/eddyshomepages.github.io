@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>yleinen on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/yleinen/</link>
+    <description>Recent content in yleinen on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/yleinen/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Huoltokatko 28.6.2023</title>
+      <link>https://eddyshomepages.github.io/posts/huoltokatko/</link>
+      <pubDate>Wed, 28 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/huoltokatko/</guid>
+      <description>Nettisivuilla voi esiintyä 28.6.2023 katkoksia sivuston huoltoon ja yhteyksiin liittyen.</description>
+    </item>
+    
+    <item>
+      <title>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</guid>
+      <description>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla.
+Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.
+Mikäli Home Assistantin pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse Linux -tuntemusta, mutta jos haluaa tehdä asioita pääte -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin yaml -kielestä.</description>
+    </item>
+    
+    <item>
+      <title>Sivuston RSS -syöte saatavilla</title>
+      <link>https://eddyshomepages.github.io/posts/sivuston-rss-syote-saatavilla/</link>
+      <pubDate>Sun, 16 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/sivuston-rss-syote-saatavilla/</guid>
+      <description>Tähän väliin pieni ilmoitus niille, jotka haluavat fiilistellä RSS -syötteen kanssa. Eli sivuston yläpalkin some-kuvakkeiden yhteydestä löytyy linkki sivuston RSS -syötteeseen. RSS -syöte on jo yli 20 vuotta vanha, mutta mielestäni edelleenkin toimiva tapa pysyä perillä eri nettisivujen päivityksistä tai uutisista.
+Homma toimii siten, että aluksi kopioidaan linkki hiiren oikealla näppäimellä RSS -syötteen kuvakkeen kohdalta, kuva alla
+Linkin saa tämän jälkeen helposti lisättyä esimerkiksi Thunderbird -sähköpostiohjelmaan tilien hallinnan kautta, jolloin sähköpostitilien yhteyteen tulee oma kohta sivuston RSS -syötteestä.</description>
+    </item>
+    
+    <item>
+      <title>Mitä olen vuosien aikana puuhaillut</title>
+      <link>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mita-olen-vuosien-aikana-puuhaillut/</guid>
+      <description>Kertokoon tämä ensimmäinen kirjoitus hiukan siitä, että mitä kaikkea on tullutkaan puuhailtua vuosien varrella.
+Eli viimeiset reilut parikymmentä vuotta olen oikestaan enemmän toiminut Linuxin kanssa kuin Windowsin kanssa. Linuxin ensimmäiset asennukset taisivat olla RedHat:in versio 7 ja Slackware Linux:in versio 8. Tämän jälkeen, kun pääsin sisälle Linuxiin, on se ollut pääsääntöisesti käytössä ja Windowsin käyttö ollut enemmän työkäyttöä. Nykyisin opiskelun myötä on tullut syvennyttyä paremmin myös Windowsin maailmaan ja sekin on nykyisellään hyvin hallussa.</description>
+    </item>
+    
+    <item>
+      <title>Terve maailma!</title>
+      <link>https://eddyshomepages.github.io/posts/moikka-maailma/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/moikka-maailma/</guid>
+      <description>Tervetuloa kotisivuilleni!
+Nämä koti- ja blogi-sivut on luotu Raspberry Pi 2:n päällä pyörivän Caddy -webserverin ja WordPress.org blogi-alustan avulla. Caddy -webserver on kevyt ja sen avulla saa automaattisesti sertifikaatin nettisivustolle Let&amp;rsquo;s Encryptin kautta. Lisäksi Caddy -webserver pitää sertifikaatin automaattisesti myös ajan tasalla.
+Näille sivuille on tarkoituksena alkaa kirjoittaa erilaisia kotiautomaatioon, Linuxiin ja muihinkin asioihin liittyviä kirjoituksia.
+Lisäksi nämä sivut toimivat minulle oppimisympäristönä WordPressiin ja mahdollisesti myös tulevaisuudessa jonkinlaisena sivutoimisena työnä.</description>
+    </item>
+    
+  </channel>
+</rss>

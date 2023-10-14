@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jellyfin -mediapalvelimen asennus</title>
+      <link>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</guid>
+      <description>Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen. Jellyfin on oma palvelimensa vaikka sen alkujuuret juontavatkin Emby -mediaserveriin eli toisin sanoen Jellyfin on forkki Emby -mediaserveristä. Jellyfin -mediaserverin kautta voi mm. katsoa videoita ja TV -tallennuksia, kuunnella musiikkia sekä katsella myös valokuvia eli sovellus on siinä mielessä monipuolinen.
+Jellyfinin asennus Link to heading Minä asennan Jellyfin -mediaserverin BananaPi -tietokoneella ja katsotaan miten se siinä toimii.</description>
+    </item>
+    
+    <item>
+      <title>RaspberryPiOS:n asentaminen ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/raspberrypiosn-asentaminen-ja-kayttoonotto/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/raspberrypiosn-asentaminen-ja-kayttoonotto/</guid>
+      <description>Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käydä läpi sen asentamista ja käyttöönottoa.
+Aikaisemmin RaspberryPiOS ja sen edeltäjän Raspbianin sai asennettua image -tiedostosta esim. Balena Etcher -sovelluksella, mutta nykyisin se on ainakin hankalampaa, koska asetuksien teko käyttöjärjestelmälle on muuttunut vanhaan verrattuna. Nykyisin asennus onkin helpoin tehdä käyttäen RaspberryPi Imager -sovellusta, josta on tehty omat versiot Linuxille, Windowsille ja macOS-käyttikselle.
+RaspberryPi Imagerin avulla pystyy asentamaan RaspberryPiOS -käyttöjärjestelmän myös ulkoiselle kiintolevylle, kuten SSD -levylle.</description>
+    </item>
+    
+  </channel>
+</rss>

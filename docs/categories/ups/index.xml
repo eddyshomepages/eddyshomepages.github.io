@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ups on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/ups/</link>
+    <description>Recent content in ups on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/ups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Home Assistantin käyttö hälytysjärjestelmänä, osa 1</title>
+      <link>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ota vastuuta siitä, jos joku henkilö tulee ja pääsee murtautumaan sisälle sen perusteella, että on järjestelmää rakentanut näiden minun ohjeiden mukaisesti.
+Home Assistant ei tietenkään ole kaupallisten versioiden veroinen lähinnä ehkä siksi, että laiteyhteydet voivat tekniikasta riippuen pätkiä, jolloin ne putoavat pois järjestelmästä. Mutta esim. laadukkaat Zigbee- tai Zwave -laitteet pitävät kyllä hyvin yhteydet yllä.</description>
+    </item>
+    
+    <item>
+      <title>Uuden UPS:in käyttöönotto ja NUT:in asennuksen kertaus</title>
+      <link>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</guid>
+      <description>Tuli jokin aika sitten hankittua uusi GreenCell:in UPS vanhan tilalle, joka on tarkoitus viedä mökille suojaamaan Home Assistant (asennettu RaspberryPi -pikkutietokoneelle) sähkökatkojen varalta, joita siellä tuntuu vähän väliä olevan.
+Ensimmäiseksi uuden UPS:in on annettu latautua täyteen ennen käyttöön ottoa. Minulla on jo aikaisemmin asennettu palvelinkoneelle NUT-server (Network UPS Tools) hoitamaan kommunikointia UPS:in kanssa, mutta nyt täytyy päivittää sen asetukset vastaamaan uutta UPS:ia. Samalla voidaan kerrata NUT-serverin asennus ja konfigurointi alusta alkaen.</description>
+    </item>
+    
+  </channel>
+</rss>

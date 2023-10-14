@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>node-js on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/node-js/</link>
+    <description>Recent content in node-js on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/node-js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Almond-/Genie -virtuaaliavustimen lisääminen Home Assistantiin</title>
+      <link>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</link>
+      <pubDate>Sat, 26 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa virtuaaliavustimen käyttöön ottamisesta Home Assistantissa. Home Assistantin saa konffattua käyttämään Google Assistantin tai Alexan kautta suoritettavia äänikomentoja, mutta ajattelin kokeilla, miten avoin vaihtoehto Almond/Genie toimii. Käytän jatkossa virtuaaliavustimesta nimeä Genie vaikka Home Assistantissa puhutaankin yleisesti Almondista.
+Genie -virtuaaliavustin on Stanford Open Virtual Assistant Labin kehittämä avoin ja yksityisyyttä suojeleva virtuaaliassistentti. Genietä on mahdollista käyttää myös pilvipohjaisena, mutta minä ajattelin kokeilla standalone -versiota, jonka voi asentaa omalle palvelimelle.</description>
+    </item>
+    
+  </channel>
+</rss>

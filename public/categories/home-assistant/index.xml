@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>home-assistant on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/home-assistant/</link>
+    <description>Recent content in home-assistant on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 12 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/home-assistant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ESPHomen asennus päätteen kautta Linux käyttöjärjestelmään</title>
+      <link>https://eddyshomepages.github.io/posts/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</guid>
+      <description>Minulla on Home Assistantin yhteydessä erilaisia antureita, joita olen tehnyt käyttäen ESP32, ESP8266 ja Wemos D1 -mikrokontrollereita. Näitä minulla on mm. lukemassa sähkömittarin pulssia, erilaisina sensoreina kuten lämpötila, ilmankosteus, ilmanpaine, valoisuus tai mittaamassa auringon UV-säteilyä. Yhteistä näissä on se, että olen käyttänyt niissä ESPHome -firmwarea.
+ESPHome on monipuolinen firmware ja se on myös tehty hyvin yhteensopivaksi Home Assistantin kanssa. ESPHomen asetukset tehdään yaml -tiedostoon samaan tapaa kuin voidaan tehdä myös Home Assistantissa.</description>
+    </item>
+    
+    <item>
+      <title>Mycroft -virtuaaliavustimen asennus ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</guid>
+      <description>Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin kokeilla myös toista avoimen lähdekoodin järjestelmää nimeltään Mycroft.
+Mycroft vaikuttaa lupaavalta siinäkin mielessä, että sillä pystyy Home Assistantin lisäksi komentamaan mm. Emby-media -serveriä, jonka pystyttämisestä myös kirjoittelin aikaisemmin. Mycroftin avulla pystyy myös mm. kuuntelemaan Yle Areenan kautta tuoreimmat kotimaan uutiset ja lisäksi siihen on saatavilla paljon muitakin lisätaitoja eli ns.</description>
+    </item>
+    
+    <item>
+      <title>Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</title>
+      <link>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</guid>
+      <description>Edellisessä kirjoituksessa kävimme läpi Almond-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan Almond-/Genie -virtuaaliavustimen kanssa. Ääniohjausta varten meidän tarvitsee asentaa Genie-client -paketti, josta löytyy valmis .deb -paketti Debian pohjaisille käyttöjärjestelmille. Muille käyttöjärjetelmille Genie-client täytyy asentaa lähdekoodin kautta.
+Minulla on alustana RaspberryPi -tietokoneen 1. Model B -versio, joten Genie-client -paketti asennetaan RaspberryPi:lle tehdyn ohjeen mukaisesti. Genie-client on myös sen verran kevyt, että sen pystyy asentamaan Raspberry Pi 1 Model B -koneelle ja näin minulla on myös tarkoitus tehdä.</description>
+    </item>
+    
+    <item>
+      <title>Almond-/Genie -virtuaaliavustimen lisääminen Home Assistantiin</title>
+      <link>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</link>
+      <pubDate>Sat, 26 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa virtuaaliavustimen käyttöön ottamisesta Home Assistantissa. Home Assistantin saa konffattua käyttämään Google Assistantin tai Alexan kautta suoritettavia äänikomentoja, mutta ajattelin kokeilla, miten avoin vaihtoehto Almond/Genie toimii. Käytän jatkossa virtuaaliavustimesta nimeä Genie vaikka Home Assistantissa puhutaankin yleisesti Almondista.
+Genie -virtuaaliavustin on Stanford Open Virtual Assistant Labin kehittämä avoin ja yksityisyyttä suojeleva virtuaaliassistentti. Genietä on mahdollista käyttää myös pilvipohjaisena, mutta minä ajattelin kokeilla standalone -versiota, jonka voi asentaa omalle palvelimelle.</description>
+    </item>
+    
+    <item>
+      <title>Mosquitto-brokerin asennus käyttäen Docker-Composea</title>
+      <link>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</guid>
+      <description>Seuraavaksi asennamme mosquitto-brokerin Docker-Composen avulla. Mosquitto-brokeria tarvitaan hoitamaan ns. &amp;ldquo;keskustelu&amp;rdquo; -yhteyttä, jotta voimme lisätä Home Assistanttiin zigbee-, z-wave- ja ruuviTag -laitteita käyttäen Zigbee2MQTT-, Zwavejs2Mqtt- ja RuuviTag Discovery -ohjelmistoja, jotka kommunikoivat käyttäen MQTT -protokollaa.
+Mosquitto-brokerin asennus Link to heading Mosquitto-brokerin asennus menee aika lailla samaan tapaan kuin aikaisemmat Docker-Composen avulla tehdyt asennukset eli aluksi luodaan mosquittoa varten hakemisto Docker-Composen asennushakemistoon eli ajetaan seuraavat komennot
+cd /home/pi/docker-data mkdir mosquitto cd mosquitto Seuraavaksi luodaan docker-compose.</description>
+    </item>
+    
+    <item>
+      <title>Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</guid>
+      <description>Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa.</description>
+    </item>
+    
+  </channel>
+</rss>

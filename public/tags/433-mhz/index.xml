@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>433-mhz on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/433-mhz/</link>
+    <description>Recent content in 433-mhz on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/433-mhz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi</title>
+      <link>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaiseksi, että se voidaan liittää Zigbee -verkkoon. Innostuksen tähän sain, kun luin vastaavanlaisesta muutoksesta Home Assistantin keskustelupalstalta, johon linkki https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379. Pienenä varoituksen sanana myös, että tämän muutostyön yhteydessä tarvitaan juotoskolvia.
+Mitä tarvitaan? Link to heading Tarvikkeina tarvitaan jokin sadevesimittari, joka minulla on tällainen MTX Basic langanton sadevesimittari (HUOM! ei ole maksettu mainos) sekä Zigbee -verkkoon liitettävä ovi- ja ikkuna -anturi, kuten esimerkiksi Aqara, joka minulla on käytössä.</description>
+    </item>
+    
+  </channel>
+</rss>

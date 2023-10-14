@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>node.js on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/node.js/</link>
+    <description>Recent content in node.js on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 21 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen</title>
+      <link>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</link>
+      <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</guid>
+      <description>Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käytämme apuna Ruuvitag Discovery -ohjelmistoa.
+RuuviTag on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. RuuviTag toimii Bluetooth -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös Home Assistantiin tai muihin kotiautomaatiojärjestelmiin.
+RuuviTagit voisi lisätä Home Assistanttiin myös erilaisilla lisäosilla, mutta me teemme sen Ruuvitag Discoveryn ja MQTT:n avulla.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/</link>
+    <description>Recent content in Tags on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker</title>
+      <link>https://eddyshomepages.github.io/tags/docker/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker-compose</title>
+      <link>https://eddyshomepages.github.io/tags/docker-compose/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/docker-compose/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>duplicati</title>
+      <link>https://eddyshomepages.github.io/tags/duplicati/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/duplicati/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>homeassistant</title>
+      <link>https://eddyshomepages.github.io/tags/homeassistant/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/homeassistant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kotiautomaatio</title>
+      <link>https://eddyshomepages.github.io/tags/kotiautomaatio/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/kotiautomaatio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruuvitag</title>
+      <link>https://eddyshomepages.github.io/tags/ruuvitag/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ruuvitag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruuvitag-ble</title>
+      <link>https://eddyshomepages.github.io/tags/ruuvitag-ble/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ruuvitag-ble/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruuvitag-discovery</title>
+      <link>https://eddyshomepages.github.io/tags/ruuvitag-discovery/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ruuvitag-discovery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>433-mhz</title>
+      <link>https://eddyshomepages.github.io/tags/433-mhz/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/433-mhz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elektroniikka</title>
+      <link>https://eddyshomepages.github.io/tags/elektroniikka/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/elektroniikka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mqtt</title>
+      <link>https://eddyshomepages.github.io/tags/mqtt/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raingauge</title>
+      <link>https://eddyshomepages.github.io/tags/raingauge/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/raingauge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reed-rele</title>
+      <link>https://eddyshomepages.github.io/tags/reed-rele/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/reed-rele/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sademittari</title>
+      <link>https://eddyshomepages.github.io/tags/sademittari/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/sademittari/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tipping-bucket</title>
+      <link>https://eddyshomepages.github.io/tags/tipping-bucket/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/tipping-bucket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utility_meter</title>
+      <link>https://eddyshomepages.github.io/tags/utility_meter/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/utility_meter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zigbee</title>
+      <link>https://eddyshomepages.github.io/tags/zigbee/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/zigbee/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zigbee2mqtt</title>
+      <link>https://eddyshomepages.github.io/tags/zigbee2mqtt/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/zigbee2mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>halytysjarjestelma</title>
+      <link>https://eddyshomepages.github.io/tags/halytysjarjestelma/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/halytysjarjestelma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://eddyshomepages.github.io/tags/linux/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>motioneye</title>
+      <link>https://eddyshomepages.github.io/tags/motioneye/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/motioneye/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://eddyshomepages.github.io/tags/python/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypi</title>
+      <link>https://eddyshomepages.github.io/tags/raspberrypi/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypios</title>
+      <link>https://eddyshomepages.github.io/tags/raspberrypios/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/raspberrypios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rtsp</title>
+      <link>https://eddyshomepages.github.io/tags/rtsp/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/rtsp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://eddyshomepages.github.io/tags/android/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bananapi</title>
+      <link>https://eddyshomepages.github.io/tags/bananapi/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/bananapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debian</title>
+      <link>https://eddyshomepages.github.io/tags/debian/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>freebsd</title>
+      <link>https://eddyshomepages.github.io/tags/freebsd/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/freebsd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>macos</title>
+      <link>https://eddyshomepages.github.io/tags/macos/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openpsd</title>
+      <link>https://eddyshomepages.github.io/tags/openpsd/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/openpsd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sailfishos</title>
+      <link>https://eddyshomepages.github.io/tags/sailfishos/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/sailfishos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>solaris</title>
+      <link>https://eddyshomepages.github.io/tags/solaris/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/solaris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>syncthing</title>
+      <link>https://eddyshomepages.github.io/tags/syncthing/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/syncthing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://eddyshomepages.github.io/tags/windows/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>androidtv</title>
+      <link>https://eddyshomepages.github.io/tags/androidtv/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/androidtv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>archlinux</title>
+      <link>https://eddyshomepages.github.io/tags/archlinux/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/archlinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://eddyshomepages.github.io/tags/centos/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>emby</title>
+      <link>https://eddyshomepages.github.io/tags/emby/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/emby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fedora</title>
+      <link>https://eddyshomepages.github.io/tags/fedora/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/fedora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gentoo</title>
+      <link>https://eddyshomepages.github.io/tags/gentoo/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/gentoo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios</title>
+      <link>https://eddyshomepages.github.io/tags/ios/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kodi</title>
+      <link>https://eddyshomepages.github.io/tags/kodi/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/kodi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>roku</title>
+      <link>https://eddyshomepages.github.io/tags/roku/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/roku/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://eddyshomepages.github.io/tags/ubuntu/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webos</title>
+      <link>https://eddyshomepages.github.io/tags/webos/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/webos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alarmo</title>
+      <link>https://eddyshomepages.github.io/tags/alarmo/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/alarmo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>esp8266</title>
+      <link>https://eddyshomepages.github.io/tags/esp8266/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/esp8266/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>esphome</title>
+      <link>https://eddyshomepages.github.io/tags/esphome/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/esphome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>joy-it-rfid-rc522</title>
+      <link>https://eddyshomepages.github.io/tags/joy-it-rfid-rc522/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/joy-it-rfid-rc522/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rfid</title>
+      <link>https://eddyshomepages.github.io/tags/rfid/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/rfid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wemos-d1-mini</title>
+      <link>https://eddyshomepages.github.io/tags/wemos-d1-mini/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/wemos-d1-mini/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns</title>
+      <link>https://eddyshomepages.github.io/tags/dns/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dy.fi</title>
+      <link>https://eddyshomepages.github.io/tags/dy.fi/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/dy.fi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hotspot</title>
+      <link>https://eddyshomepages.github.io/tags/hotspot/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/hotspot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kiosk</title>
+      <link>https://eddyshomepages.github.io/tags/kiosk/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/kiosk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openvpn</title>
+      <link>https://eddyshomepages.github.io/tags/openvpn/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/openvpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://eddyshomepages.github.io/tags/ssh/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vpn</title>
+      <link>https://eddyshomepages.github.io/tags/vpn/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>energia</title>
+      <link>https://eddyshomepages.github.io/tags/energia/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/energia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>energiankulutus</title>
+      <link>https://eddyshomepages.github.io/tags/energiankulutus/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/energiankulutus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pulse_meter</title>
+      <link>https://eddyshomepages.github.io/tags/pulse_meter/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/pulse_meter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>total_daily_energy</title>
+      <link>https://eddyshomepages.github.io/tags/total_daily_energy/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/total_daily_energy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>esp32</title>
+      <link>https://eddyshomepages.github.io/tags/esp32/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/esp32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>espeasy</title>
+      <link>https://eddyshomepages.github.io/tags/espeasy/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/espeasy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openmqttgateway</title>
+      <link>https://eddyshomepages.github.io/tags/openmqttgateway/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/openmqttgateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tasmota</title>
+      <link>https://eddyshomepages.github.io/tags/tasmota/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/tasmota/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wemos-d1</title>
+      <link>https://eddyshomepages.github.io/tags/wemos-d1/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/wemos-d1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mariadb</title>
+      <link>https://eddyshomepages.github.io/tags/mariadb/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite</title>
+      <link>https://eddyshomepages.github.io/tags/sqlite/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/sqlite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zwave</title>
+      <link>https://eddyshomepages.github.io/tags/zwave/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/zwave/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://eddyshomepages.github.io/tags/github/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodemcu</title>
+      <link>https://eddyshomepages.github.io/tags/nodemcu/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/nodemcu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ups</title>
+      <link>https://eddyshomepages.github.io/tags/ups/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/ups/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apertis</title>
+      <link>https://eddyshomepages.github.io/tags/apertis/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/apertis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>balena-etcher</title>
+      <link>https://eddyshomepages.github.io/tags/balena-etcher/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/balena-etcher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>batocera</title>
+      <link>https://eddyshomepages.github.io/tags/batocera/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/batocera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chrony</title>
+      <link>https://eddyshomepages.github.io/tags/chrony/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/chrony/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gladysassistant</title>
+      <link>https://eddyshomepages.github.io/tags/gladysassistant/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/gladysassistant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>homebridge</title>
+      <link>https://eddyshomepages.github.io/tags/homebridge/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/homebridge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lakka</title>
+      <link>https://eddyshomepages.github.io/tags/lakka/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/lakka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>libreelec</title>
+      <link>https://eddyshomepages.github.io/tags/libreelec/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/libreelec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mainsailos</title>
+      <link>https://eddyshomepages.github.io/tags/mainsailos/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mainsailos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>manjaro</title>
+      <link>https://eddyshomepages.github.io/tags/manjaro/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/manjaro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>noobs</title>
+      <link>https://eddyshomepages.github.io/tags/noobs/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/noobs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nymea</title>
+      <link>https://eddyshomepages.github.io/tags/nymea/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/nymea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>octopi</title>
+      <link>https://eddyshomepages.github.io/tags/octopi/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/octopi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oktoklipperpi</title>
+      <link>https://eddyshomepages.github.io/tags/oktoklipperpi/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/oktoklipperpi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openhab</title>
+      <link>https://eddyshomepages.github.io/tags/openhab/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/openhab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>osmc</title>
+      <link>https://eddyshomepages.github.io/tags/osmc/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/osmc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrymatic</title>
+      <link>https://eddyshomepages.github.io/tags/raspberrymatic/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/raspberrymatic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypi-imager</title>
+      <link>https://eddyshomepages.github.io/tags/raspberrypi-imager/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/raspberrypi-imager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>recalbox</title>
+      <link>https://eddyshomepages.github.io/tags/recalbox/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/recalbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>retropie</title>
+      <link>https://eddyshomepages.github.io/tags/retropie/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/retropie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>risc-os-pi</title>
+      <link>https://eddyshomepages.github.io/tags/risc-os-pi/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/risc-os-pi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>simplypi</title>
+      <link>https://eddyshomepages.github.io/tags/simplypi/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/simplypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>volumio</title>
+      <link>https://eddyshomepages.github.io/tags/volumio/</link>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/volumio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alytelevisio</title>
+      <link>https://eddyshomepages.github.io/tags/alytelevisio/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/alytelevisio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mediaplayer</title>
+      <link>https://eddyshomepages.github.io/tags/mediaplayer/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mediaplayer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>autolammitys</title>
+      <link>https://eddyshomepages.github.io/tags/autolammitys/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/autolammitys/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>input_datetime</title>
+      <link>https://eddyshomepages.github.io/tags/input_datetime/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/input_datetime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>input_number</title>
+      <link>https://eddyshomepages.github.io/tags/input_number/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/input_number/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>input_select</title>
+      <link>https://eddyshomepages.github.io/tags/input_select/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/input_select/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>almond</title>
+      <link>https://eddyshomepages.github.io/tags/almond/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/almond/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>genie</title>
+      <link>https://eddyshomepages.github.io/tags/genie/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/genie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mycroft</title>
+      <link>https://eddyshomepages.github.io/tags/mycroft/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mycroft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>picroft</title>
+      <link>https://eddyshomepages.github.io/tags/picroft/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/picroft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtuaaliavustin</title>
+      <link>https://eddyshomepages.github.io/tags/virtuaaliavustin/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/virtuaaliavustin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binary_sensor</title>
+      <link>https://eddyshomepages.github.io/tags/binary_sensor/</link>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/binary_sensor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hacs</title>
+      <link>https://eddyshomepages.github.io/tags/hacs/</link>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/hacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nordpool</title>
+      <link>https://eddyshomepages.github.io/tags/nordpool/</link>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/nordpool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sensor</title>
+      <link>https://eddyshomepages.github.io/tags/sensor/</link>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/sensor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>genie-client</title>
+      <link>https://eddyshomepages.github.io/tags/genie-client/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/genie-client/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>genie-server</title>
+      <link>https://eddyshomepages.github.io/tags/genie-server/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/genie-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>amazon-alexa</title>
+      <link>https://eddyshomepages.github.io/tags/amazon-alexa/</link>
+      <pubDate>Sat, 26 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/amazon-alexa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google-assistant</title>
+      <link>https://eddyshomepages.github.io/tags/google-assistant/</link>
+      <pubDate>Sat, 26 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/google-assistant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>caddy</title>
+      <link>https://eddyshomepages.github.io/tags/caddy/</link>
+      <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/caddy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rss</title>
+      <link>https://eddyshomepages.github.io/tags/rss/</link>
+      <pubDate>Sun, 16 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/rss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conbee ii</title>
+      <link>https://eddyshomepages.github.io/tags/conbee-ii/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/conbee-ii/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deconz</title>
+      <link>https://eddyshomepages.github.io/tags/deconz/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/deconz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bluetooth</title>
+      <link>https://eddyshomepages.github.io/tags/bluetooth/</link>
+      <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/bluetooth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node.js</title>
+      <link>https://eddyshomepages.github.io/tags/node.js/</link>
+      <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/node.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mosquitto</title>
+      <link>https://eddyshomepages.github.io/tags/mosquitto/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mosquitto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mosquitto-broker</title>
+      <link>https://eddyshomepages.github.io/tags/mosquitto-broker/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/mosquitto-broker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zwavejs2mqtt</title>
+      <link>https://eddyshomepages.github.io/tags/zwavejs2mqtt/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/zwavejs2mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>baikal</title>
+      <link>https://eddyshomepages.github.io/tags/baikal/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/baikal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dropbox</title>
+      <link>https://eddyshomepages.github.io/tags/dropbox/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/dropbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>googledrive</title>
+      <link>https://eddyshomepages.github.io/tags/googledrive/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/googledrive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>onedrive</title>
+      <link>https://eddyshomepages.github.io/tags/onedrive/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/onedrive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webdav</title>
+      <link>https://eddyshomepages.github.io/tags/webdav/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/webdav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>caldav</title>
+      <link>https://eddyshomepages.github.io/tags/caldav/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/caldav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cardav</title>
+      <link>https://eddyshomepages.github.io/tags/cardav/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/cardav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://eddyshomepages.github.io/tags/php/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress.org</title>
+      <link>https://eddyshomepages.github.io/tags/wordpress.org/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/wordpress.org/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apache2</title>
+      <link>https://eddyshomepages.github.io/tags/apache2/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/apache2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bullseye</title>
+      <link>https://eddyshomepages.github.io/tags/bullseye/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/bullseye/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dna</title>
+      <link>https://eddyshomepages.github.io/tags/dna/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/dna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elisa</title>
+      <link>https://eddyshomepages.github.io/tags/elisa/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/elisa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>letsencrypt</title>
+      <link>https://eddyshomepages.github.io/tags/letsencrypt/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/letsencrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nextcloud</title>
+      <link>https://eddyshomepages.github.io/tags/nextcloud/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/nextcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>owncloud</title>
+      <link>https://eddyshomepages.github.io/tags/owncloud/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/owncloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zerossl</title>
+      <link>https://eddyshomepages.github.io/tags/zerossl/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/zerossl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matrix-synapse</title>
+      <link>https://eddyshomepages.github.io/tags/matrix-synapse/</link>
+      <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/matrix-synapse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>armbian</title>
+      <link>https://eddyshomepages.github.io/tags/armbian/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/armbian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nut</title>
+      <link>https://eddyshomepages.github.io/tags/nut/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/nut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>agendvr</title>
+      <link>https://eddyshomepages.github.io/tags/agendvr/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/agendvr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>domoticz</title>
+      <link>https://eddyshomepages.github.io/tags/domoticz/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/domoticz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jabber</title>
+      <link>https://eddyshomepages.github.io/tags/jabber/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/jabber/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux-mint-debian-edition</title>
+      <link>https://eddyshomepages.github.io/tags/linux-mint-debian-edition/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/linux-mint-debian-edition/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matrix</title>
+      <link>https://eddyshomepages.github.io/tags/matrix/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redhat</title>
+      <link>https://eddyshomepages.github.io/tags/redhat/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/redhat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rfxcom</title>
+      <link>https://eddyshomepages.github.io/tags/rfxcom/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/rfxcom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slackware</title>
+      <link>https://eddyshomepages.github.io/tags/slackware/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/slackware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tvheadend</title>
+      <link>https://eddyshomepages.github.io/tags/tvheadend/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/tvheadend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xmpp</title>
+      <link>https://eddyshomepages.github.io/tags/xmpp/</link>
+      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/xmpp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

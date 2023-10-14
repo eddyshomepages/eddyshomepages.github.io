@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rfid on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/rfid/</link>
+    <description>Recent content in rfid on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 31 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/rfid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Home Assistantin käyttö hälytysjärjestelmänä, osa 2</title>
+      <link>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-2/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-2/</guid>
+      <description>Seuraavaksi ajatteli jatkaa tarinaa Home Assistantin käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen Home Assistantiin siten, että RFID- tagilla tai -kortilla voi laittaa hälyt päälle ja ottaa ne pois päältä.
+Materiaalina tarvitaan RFID-lukija, RFID -tagi sekä jokin ESP8266 -mikrokontrolleri. Minulla on RFID -lukijana joy-it RFID-RC522 -lukija ja mikrokontrollerina Wemos D1 Mini lähinnä sen pienuuden vuoksi. Mikrokontrollerissa käytän firmiksenä ESPHome -firmwarea, koska se on hyvin yhteensopiva Home Assistantin kanssa.</description>
+    </item>
+    
+    <item>
+      <title>Home Assistantin käyttö hälytysjärjestelmänä, osa 1</title>
+      <link>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ota vastuuta siitä, jos joku henkilö tulee ja pääsee murtautumaan sisälle sen perusteella, että on järjestelmää rakentanut näiden minun ohjeiden mukaisesti.
+Home Assistant ei tietenkään ole kaupallisten versioiden veroinen lähinnä ehkä siksi, että laiteyhteydet voivat tekniikasta riippuen pätkiä, jolloin ne putoavat pois järjestelmästä. Mutta esim. laadukkaat Zigbee- tai Zwave -laitteet pitävät kyllä hyvin yhteydet yllä.</description>
+    </item>
+    
+  </channel>
+</rss>

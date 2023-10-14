@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debian on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/debian/</link>
+    <description>Recent content in debian on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Syncthing synkronointisovelluksen asennus- ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tietokoneelle ilman, että tarvitsee juurikaan tietää/tuntea oman kotiverkon asetuksista mitään. Riittää, että molemmille laitteille on asennettu Syncthing ja laitteet on yhdistetty toimimaan yhdessä.
+Syncthing on avoimen lähdekoodin sovellus ja sen toiminta perustuu Block Exchange Protocollan 1. versioon. Lisäksi Synctingin saa asetettua toimimaan, joko pelkästään omassa sisäverkossa tai vaihtoehtoisesti myös internetin yli. Syncthing myös salaa kaiken liikenteen käyttäen TLS:n versiota 1.</description>
+    </item>
+    
+    <item>
+      <title>Jellyfin -mediapalvelimen asennus</title>
+      <link>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</guid>
+      <description>Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen. Jellyfin on oma palvelimensa vaikka sen alkujuuret juontavatkin Emby -mediaserveriin eli toisin sanoen Jellyfin on forkki Emby -mediaserveristä. Jellyfin -mediaserverin kautta voi mm. katsoa videoita ja TV -tallennuksia, kuunnella musiikkia sekä katsella myös valokuvia eli sovellus on siinä mielessä monipuolinen.
+Jellyfinin asennus Link to heading Minä asennan Jellyfin -mediaserverin BananaPi -tietokoneella ja katsotaan miten se siinä toimii.</description>
+    </item>
+    
+    <item>
+      <title>Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</title>
+      <link>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</guid>
+      <description>Edellisessä kirjoituksessa kävimme läpi Almond-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan Almond-/Genie -virtuaaliavustimen kanssa. Ääniohjausta varten meidän tarvitsee asentaa Genie-client -paketti, josta löytyy valmis .deb -paketti Debian pohjaisille käyttöjärjestelmille. Muille käyttöjärjetelmille Genie-client täytyy asentaa lähdekoodin kautta.
+Minulla on alustana RaspberryPi -tietokoneen 1. Model B -versio, joten Genie-client -paketti asennetaan RaspberryPi:lle tehdyn ohjeen mukaisesti. Genie-client on myös sen verran kevyt, että sen pystyy asentamaan Raspberry Pi 1 Model B -koneelle ja näin minulla on myös tarkoitus tehdä.</description>
+    </item>
+    
+    <item>
+      <title>Oman streemauspalvelun rakentaminen</title>
+      <link>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</link>
+      <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/oman-streemauspalvelun-rakentaminen/</guid>
+      <description>Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joita on tullut muutettua MP3 ja MP4 -musiikkimuotoon eli .m4a muotoon. Voisihan sitä kuunnella musiikkia myös maksullisista palveluista, mutta ajattelin nyt kertoa tämmöisestäkin vaihtoehdosta eli tässä kirjoituksessa käydään läpi Emby -mediaserverin asennus- ja käyttöön ottaminen, joka on mielestäni suoraviivainen ja helppo tehdä.
+Emby on tarkoitettu oman median hallitsemiseen omalla palvelimella ja toimii esimerkiksi mainiosti omassa sisäverkossa ja ulkoverkossa palvelun saa toimimaan Emby Premiere -tilin avulla.</description>
+    </item>
+    
+    <item>
+      <title>Uuden UPS:in käyttöönotto ja NUT:in asennuksen kertaus</title>
+      <link>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</guid>
+      <description>Tuli jokin aika sitten hankittua uusi GreenCell:in UPS vanhan tilalle, joka on tarkoitus viedä mökille suojaamaan Home Assistant (asennettu RaspberryPi -pikkutietokoneelle) sähkökatkojen varalta, joita siellä tuntuu vähän väliä olevan.
+Ensimmäiseksi uuden UPS:in on annettu latautua täyteen ennen käyttöön ottoa. Minulla on jo aikaisemmin asennettu palvelinkoneelle NUT-server (Network UPS Tools) hoitamaan kommunikointia UPS:in kanssa, mutta nyt täytyy päivittää sen asetukset vastaamaan uutta UPS:ia. Samalla voidaan kerrata NUT-serverin asennus ja konfigurointi alusta alkaen.</description>
+    </item>
+    
+  </channel>
+</rss>

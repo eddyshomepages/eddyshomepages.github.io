@@ -1,0 +1,159 @@
+// stylelint-disable max-line-length, number-leading-zero, number-no-trailing-zeros
+// stylelint-disable scss/dollar-variable-colon-space-after, value-keyword-case
+
+// Variables
+
+// Font faces, stacks and sizes.
+
+// The font size set on the root html element.
+// Specify unitless, it will be recalculated as %.
+$base-font-size:      18;
+
+// Base and heading line height, unitless.
+$base-line-height:    1.5;
+$heading-line-height: 1.3;
+
+// The pt font-size to be used for printing.
+$print-font-size:     12pt;
+
+// The font sizes in our type hierarchy as tee shirt sizes.
+// Size m is base.
+// Use like this: var(--fs-m)
+$font-size-fixed: (
+  xxxxl:      3rem,
+  xxxl:       2.445rem,
+  xxl:        2rem,
+  xl:         1.556rem,
+  l:          1.223rem,
+  m:          1rem,
+  s:          0.889rem,
+  xs:         0.778rem,
+);
+
+// The responsive font sizes in our type hierarchy as tee shirt sizes.
+// Size m is base.
+// Use like this: var(--fs-m)
+$font-size-fluid: (
+  xxxxl:      clamp(1.80rem, calc(1.37rem + 2.17vw), 3.05rem),
+  xxxl:       clamp(1.60rem, calc(1.31rem + 1.46vw), 2.44rem),
+  xxl:        clamp(1.42rem, calc(1.24rem + 0.92vw), 1.95rem),
+  xl:         clamp(1.27rem, calc(1.16rem + 0.52vw), 1.56rem),
+  l:          clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem),
+  m:          1rem,
+  s:          0.889rem,
+  xs:         0.778rem,
+);
+
+// Set the font sizes to use, fixed or fluid.
+$font-size: $font-size-fixed;
+// $font-size: $font-size-fluid;
+
+// Font weights.
+// Use like this: var(--fw-normal)
+$font-weight: (
+  headings:   700,
+  bolder:     900,
+  bold:       700,
+  medium:     500,
+  normal:     400,
+  light:      300,
+  lighter:    200,
+);
+
+// The following font family declarations use widely available fonts.
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// System-ui font stack.
+$system-ui:       system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'Liberation Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+// Serif font stacks.
+$ui-serif:        ui-serif, Constantia, 'Noto Serif', Georgia, serif;
+$times:           'Times New Roman', 'Liberation Serif', 'Nimbus Roman No9 L', serif;
+$georgia:         Georgia, 'Noto Serif', ui-serif, serif;
+$garamond:        Garamond, Charter, Cambria, 'Noto Serif', ui-serif, serif;
+
+// Sans-serif font stacks.
+$ui-sans-serif:   ui-sans-serif, $system-ui;
+$helvetica:       'Helvetica Neue', Helvetica, 'Liberation Sans', 'Nimbus Sans L', Arial, sans-serif;
+$futura:          Futura, 'Century Gothic', Montserrat, Calibri, ui-sans-serif, sans-serif;
+
+// Monospace font stacks.
+$ui-monospace:    ui-monospace, Menlo, 'Cascadia Mono', 'Segoe UI Mono', 'Noto Sans Mono', 'Liberation Mono', Monaco, Consolas, monospace;
+
+// Font family.
+// Use like this: var(--ff-body)
+$font-family: (
+  body:       $ui-serif,
+  headings:   $ui-sans-serif,
+  alt:        $system-ui,
+  monospace:  $ui-monospace,
+);
+
+// Breakpoints
+// Use the `respond-to(s)` mixin to use named breakpoints.
+$breakpoints: (
+  'xxxl':     1222px,
+  'xxl':      1111px,
+  'xl':       999px,
+  'l':        888px,
+  'm':        777px,
+  's':        666px,
+  'xs':       555px,
+  'xxs':      444px,
+  'xxxs':     333px,
+);
+
+// Border radius.
+// Use like this: var(--radius-m)
+$border-radius: (
+  xl:         1rem,
+  l:          0.75rem,
+  m:          0.5rem,
+  s:          0.3rem,
+  xs:         0.125rem,
+);
+
+// Spacing
+// Generates mt-m (mt = margin-top), mb-m (mb = margin-bottom) and
+// mtb-m (mtb = margin-block) classes.
+$spacing: (
+  xxl:        3,
+  xl:         2,
+  l:          1.5,
+  m:          1,
+  s:          0.75,
+  xs:         0.5,
+  xxs:        0.3,
+  0:          0,
+);
+
+// The max content width. (Consider using one of the breakpoints.)
+$max-content-width:   1111px;
+
+// The max page width. Defaults to max-content-width.
+// Setting this to a larger value than max-content-width allows
+// content with class "stretch" to stretch out to the page edge.
+// $max-page-width:      1111px;
+
+// The max line width for readability.
+$max-line-width:      70ch;
+
+// The left/right gutter/padding.
+// Use like this: var(--gutters)
+$gutters:             calc(5px + 1.5625vw);
+$gutters-reverse:     calc(0px - (5px + 1.5625vw));
+
+// The amount lists, blockquotes and comments are indented.
+// Use like this: var(--indent-amount)
+$indent-amount:       2rem;
+
+// Control whether RTL styles are added.
+$include-rtl: false;
+
+// Show horizontal grid to help with debugging typography.
+$debug: false;
+$debug-color: $grey-extra-light;

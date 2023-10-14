@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mosquitto on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/mosquitto/</link>
+    <description>Recent content in mosquitto on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 13 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/mosquitto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mosquitto-brokerin asennus käyttäen Docker-Composea</title>
+      <link>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mosquitto-brokerin-asennus-kayttaen-docker-composea/</guid>
+      <description>Seuraavaksi asennamme mosquitto-brokerin Docker-Composen avulla. Mosquitto-brokeria tarvitaan hoitamaan ns. &amp;ldquo;keskustelu&amp;rdquo; -yhteyttä, jotta voimme lisätä Home Assistanttiin zigbee-, z-wave- ja ruuviTag -laitteita käyttäen Zigbee2MQTT-, Zwavejs2Mqtt- ja RuuviTag Discovery -ohjelmistoja, jotka kommunikoivat käyttäen MQTT -protokollaa.
+Mosquitto-brokerin asennus Link to heading Mosquitto-brokerin asennus menee aika lailla samaan tapaan kuin aikaisemmat Docker-Composen avulla tehdyt asennukset eli aluksi luodaan mosquittoa varten hakemisto Docker-Composen asennushakemistoon eli ajetaan seuraavat komennot
+cd /home/pi/docker-data mkdir mosquitto cd mosquitto Seuraavaksi luodaan docker-compose.</description>
+    </item>
+    
+  </channel>
+</rss>

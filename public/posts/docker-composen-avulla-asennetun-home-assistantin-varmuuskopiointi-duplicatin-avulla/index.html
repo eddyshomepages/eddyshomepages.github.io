@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla · Eddy&#39;s Homepages
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Esa P">
+<meta name="description" content="Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa.">
+<meta name="keywords" content="blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla"/>
+<meta name="twitter:description" content="Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa."/>
+
+<meta property="og:title" content="Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla" />
+<meta property="og:description" content="Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-05T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.135e22c97ff685fe983fc60048e309ced8f00d8d38f536aa67dba8a13a03dfa4.css" integrity="sha256-E14iyX/2hf6YP8YASOMJztjwDY049TaqZ9uooToD36Q=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Eddy&#39;s Homepages
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">Abouts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags">Tags</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/">
+              Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-09-05T00:00:00Z">
+                5.9.2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/docker-compose/">docker-compose</a>
+      <span class="separator">•</span>
+    <a href="/categories/duplicati/">duplicati</a>
+      <span class="separator">•</span>
+    <a href="/categories/home-assistant/">home-assistant</a>
+      <span class="separator">•</span>
+    <a href="/categories/linux/">linux</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/baikal/">baikal</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/docker-compose/">docker-compose</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/dropbox/">dropbox</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/duplicati/">duplicati</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/googledrive/">googledrive</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/homeassistant/">homeassistant</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/onedrive/">onedrive</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/webdav/">webdav</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>Tässä kirjoituksessa minulla on tarkoitus käydä läpi <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> avulla asennetun <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantin</a> varmuuskopiointia erillisen <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> -sovelluksen avulla. <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistantin</a> omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Compose</a> asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.</p>
+<p><a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> asennetaan samalle tietokoneelle kuin <a href="https://www.home-assistant.io/"  class="external-link" target="_blank" rel="noopener">Home Assistant</a> ja sen voi asentaa <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.</p>
+<h3 id="duplicatin-asennus-docker-composen-avulla">
+  Duplicatin asennus Docker-Composen avulla
+  <a class="heading-link" href="#duplicatin-asennus-docker-composen-avulla">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatin</a> asennus <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> avulla onnistuu samaan tapaan, kuin teimme aikaisemmin <a href="https://fasted.dy.fi/index.php/2022/08/home-assistantin-asennus-docker-composen-avulla/"  class="external-link" target="_blank" rel="noopener">Home Assistantin</a> ja <a href="https://fasted.dy.fi/index.php/2022/09/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/"  class="external-link" target="_blank" rel="noopener">Baïkalin</a> kanssa. Aluksi luodaan <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composen</a> asetustiedostoon <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatille</a> oma hakemisto, jonka jälkeen siirrytään luotuun hakemistoon eli</p>
+<pre tabindex="0"><code>cd docker-data
+mkdir duplicati
+cd duplicati
+</code></pre><p>Seuraavaksi avataan editorilla <code>docker-compose.yaml</code> -tiedosto eli annetaan komento <code>nano docker-compose.yaml</code> ja tallennetaan tiedostoon alla olevat tiedot</p>
+<pre tabindex="0"><code>version: &#34;2.1&#34;
+services:
+  duplicati:
+    image: ghcr.io/linuxserver/duplicati
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Helsinki
+    volumes:
+      - /home/pi/docker-data/duplicati/config:/config
+      - /home/pi/docker-data/duplicati/backups/:/backups
+      - /home/pi/docker-data/:/source:ro
+    restart: always
+    ports:
+      - &#34;8200:8200&#34;
+</code></pre><p>Tässä &ldquo;<code>volumes</code>&rdquo; -osiossa &ldquo;<code>/config</code>&rdquo; on hakemisto, johon tallentuvat konfigurointiin liittyvät tiedostot. Hakemisto &ldquo;<code>/backups</code>&rdquo; on hakemisto, johon tallentuvat paikallisesti tehdyt varmuuskopiot ja hakemisto &ldquo;<code>/source</code>&rdquo; on ns. lähdehakemisto, joka näkyy <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatin</a> lähdetiedosto -ikkunassa kohdassa nimeltään &ldquo;<code>Lähdetiedostot</code>&rdquo;. Tässä tapauksessa olen antanut lähdetiedostoksi sen hakemiston, johon on tallennettu kaikki <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Composella</a> asennetut sovellukset.</p>
+<p><img src="/images/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/kuva1.png" alt=""></p>
+<p>Tämän jälkeen suljetaan tiedosto ja tallennetaan muutokset. Seuraavaksi käynnistetään <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> komennolla <code>docker-compose up -d</code>.</p>
+<p>Kun <a href="https://docs.docker.com/compose/"  class="external-link" target="_blank" rel="noopener">Docker-Compose</a> on hakenut tarvittavat tiedot ja <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> on käynnistynyt, niin seuraavaksi voidaan käynnistää <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatin</a> web-käyttöliittymä eli menemme selaimella osoitteeseen <code>http://x.x.x.x:8200</code>, jossa <code>x.x.x.x</code> on taas sen tietokoneen sisäverkon IP-osoite, johon <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> on asennettu.</p>
+<h3 id="duplicatin-asennus-suoraan-käyttöjärjestelmään">
+  Duplicatin asennus suoraan käyttöjärjestelmään
+  <a class="heading-link" href="#duplicatin-asennus-suoraan-k%c3%a4ytt%c3%b6j%c3%a4rjestelm%c3%a4%c3%a4n">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Toisena vaihtoehtona on asentaa <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> suoraan käyttöjärjestelmään ja sekin onnistuu helposti. Aluksi haetaan asennuspaketti komennolla</p>
+<pre tabindex="0"><code>wget https://updates.duplicati.com/beta/duplicati_2.0.6.3-1_all.deb
+</code></pre><p>Seuraavaksi asennetaan haettu paketti komennolla</p>
+<pre tabindex="0"><code>sudo dpkg -i duplicati_2.0.6.3-1_all.deb
+</code></pre><p>Tämä antaa todennäköisesti virheilmoituksen puuttuvista paketeista</p>
+<pre tabindex="0"><code>.......
+E: Unmet dependencies. Try &#39;apt --fix-broken install&#39; with no packages (or specify a solution).
+</code></pre><p>Asia korjaantuu ajamalla komento <code>sudo apt --fix-broken install</code>, joka asentaa puuttuvat tiedostot.</p>
+<p>Tämän jälkeen ajetaan uudestaan komento <code>sudo dpkg -i duplicati_2.0.6.3-1_all.deb</code>, jonka jälkeen meillä on <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> asennettuna.</p>
+<p><a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> ei ole vielä käynnissä, joten se täytyy käynnistää ja asettaa käynnistymään automaattisesti. Ennen sitä tehdään kuitenkin muutos tiedostoon <code>/etc/default/duplicati</code> eli avataan tiedosto editorilla</p>
+<p><code>sudo nano /etc/default/duplicati</code></p>
+<p>Tähän tiedostoon täytyy tehdä seuraava muutos, jotta web-käyttöliittymä käynnistyy eli muutetaan alla oleva rivi</p>
+<pre tabindex="0"><code>DAEMON_OPTS=&#34;&#34;
+</code></pre><p>muotoon</p>
+<pre tabindex="0"><code>DAEMON_OPTS=&#34;--webservice-interface=any&#34;
+</code></pre><p>Tämän jälkeen laitetaan vielä <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> käynnistymään automaattisesti sekä käynnistetään palvelu</p>
+<pre tabindex="0"><code>sudo systemctl enable duplicati
+sudo systemctl start duplicati
+</code></pre><p>Nyt meillä on <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicati</a> asennettuna suoraan käyttöjärjestelmään ja seuraavaksi voidaan avata selaimella <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatin</a> web-käyttöliittymä eli avataan osoite <code>http://x.x.x.x:8200</code>.</p>
+<p>Tarkemmin <a href="https://www.duplicati.com/"  class="external-link" target="_blank" rel="noopener">Duplicatin</a> asetuksista voi lukea sivustolta <a href="https://duplicati.readthedocs.io/en/latest/"  class="external-link" target="_blank" rel="noopener">https://duplicati.readthedocs.io/en/latest/</a>, jossa on tarkemmin tietoa sovelluksen asetuksista.</p>
+<p>Kohdassa &ldquo;<code>Storage Providers</code>&rdquo; on tietoja eri tallennusmahdollisuuksista kuten varmuuskopiointi paikallisesti tai sitten pilveen esim. <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#webdav"  class="external-link" target="_blank" rel="noopener">WebDAV</a>, <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#dropbox"  class="external-link" target="_blank" rel="noopener">Dropbox</a>, <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#google-drive"  class="external-link" target="_blank" rel="noopener">Google Drive</a> tai <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#microsoft-onedrive-v2-microsoft-graph-api"  class="external-link" target="_blank" rel="noopener">Microsoft OneDrive</a>. Näitä mahdollisuuksia on monia ja niistä löytyy varmasti se hyvä vaihtoehto omaan käyttöön.</p>
+
+	<p><b>Jaa tämä:</b></p>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+ 
+
+
+
+
+  
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.1em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm3.6 11.5h-2.1v7h-3v-7h-2v-2h2V8.34c0-1.1.35-2.82 2.65-2.82h2.35v2.3h-1.4c-.25 0-.6.13-.6.66V9.5h2.34l-.24 2z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/&amp;title=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla&amp;summary=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla&amp;https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M9.5,16.5h-2v-7h2V16.5z M8.5,7.5 c-0.553,0-1-0.448-1-1c0-0.552,0.447-1,1-1s1,0.448,1,1C9.5,7.052,9.053,7.5,8.5,7.5z M18.5,16.5h-3V13c0-0.277-0.225-0.5-0.5-0.5 c-0.276,0-0.5,0.223-0.5,0.5v3.5h-3c0,0,0.031-6.478,0-7h3v0.835c0,0,0.457-0.753,1.707-0.753c1.55,0,2.293,1.12,2.293,3.296V16.5z" /></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/&amp;media=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/&amp;description=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm1.4 15.56c-1 0-1.94-.53-2.25-1.14l-.65 2.52c-.4 1.45-1.57 2.9-1.66 3-.06.1-.2.07-.22-.04-.02-.2-.32-2 .03-3.5l1.18-5s-.3-.6-.3-1.46c0-1.36.8-2.37 1.78-2.37.85 0 1.25.62 1.25 1.37 0 .85-.53 2.1-.8 3.27-.24.98.48 1.78 1.44 1.78 1.73 0 2.9-2.24 2.9-4.9 0-2-1.35-3.5-3.82-3.5-2.8 0-4.53 2.07-4.53 4.4 0 .5.1.9.25 1.23l-1.5.82c-.36-.64-.54-1.43-.54-2.28 0-2.6 2.2-5.74 6.57-5.74 3.5 0 5.82 2.54 5.82 5.27 0 3.6-2 6.3-4.96 6.3z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla&amp;url=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm5.26 9.38v.34c0 3.48-2.64 7.5-7.48 7.5-1.48 0-2.87-.44-4.03-1.2 1.37.17 2.77-.2 3.9-1.08-1.16-.02-2.13-.78-2.46-1.83.38.1.8.07 1.17-.03-1.2-.24-2.1-1.3-2.1-2.58v-.05c.35.2.75.32 1.18.33-.7-.47-1.17-1.28-1.17-2.2 0-.47.13-.92.36-1.3C7.94 8.85 9.88 9.9 12.06 10c-.04-.2-.06-.4-.06-.6 0-1.46 1.18-2.63 2.63-2.63.76 0 1.44.3 1.92.82.6-.12 1.95-.27 1.95-.27-.35.53-.72 1.66-1.24 2.04z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla&amp;url=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 23.5c6.35 0 11.5-5.15 11.5-11.5S18.35.5 12 .5.5 5.65.5 12 5.65 23.5 12 23.5zM2.505 11.053c-.31.118-.505.738-.505.738s.203.62.513.737l3.636 1.355 1.417 4.557a.787.787 0 0 0 1.25.375l2.115-1.72a.29.29 0 0 1 .353-.01L15.1 19.85a.786.786 0 0 0 .746.095.786.786 0 0 0 .487-.573l2.793-13.426a.787.787 0 0 0-1.054-.893l-15.568 6z" fill-rule="evenodd"/></svg>      
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla%20https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24"><path d="m12 0c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 3.8c2.2 0 4.2 0.9 5.7 2.4 1.6 1.5 2.4 3.6 2.5 5.7 0 4.5-3.6 8.1-8.1 8.1-1.4 0-2.7-0.4-3.9-1l-4.4 1.1 1.2-4.2c-0.8-1.2-1.1-2.6-1.1-4 0-4.5 3.6-8.1 8.1-8.1zm0.1 1.5c-3.7 0-6.7 3-6.7 6.7 0 1.3 0.3 2.5 1 3.6l0.1 0.3-0.7 2.4 2.5-0.7 0.3 0.099c1 0.7 2.2 1 3.4 1 3.7 0 6.8-3 6.9-6.6 0-1.8-0.7-3.5-2-4.8s-3-2-4.8-2zm-3 2.9h0.4c0.2 0 0.4-0.099 0.5 0.3s0.5 1.5 0.6 1.7 0.1 0.2 0 0.3-0.1 0.2-0.2 0.3l-0.3 0.3c-0.1 0.1-0.2 0.2-0.1 0.4 0.2 0.2 0.6 0.9 1.2 1.4 0.7 0.7 1.4 0.9 1.6 1 0.2 0 0.3 0.001 0.4-0.099s0.5-0.6 0.6-0.8c0.2-0.2 0.3-0.2 0.5-0.1l1.4 0.7c0.2 0.1 0.3 0.2 0.5 0.3 0 0.1 0.1 0.5-0.099 1s-1 0.9-1.4 1c-0.3 0-0.8 0.001-1.3-0.099-0.3-0.1-0.7-0.2-1.2-0.4-2.1-0.9-3.4-3-3.5-3.1s-0.8-1.1-0.8-2.1c0-1 0.5-1.5 0.7-1.7s0.4-0.3 0.5-0.3z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Docker-Composen%20avulla%20asennetun%20Home%20Assistantin%20varmuuskopiointi%20Duplicatin%20avulla&amp;body=https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/" target="_self" rel="noopener" aria-label="" title="E-Mail">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm8 16c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v8z"/><path d="M17.9 8.18c-.2-.2-.5-.24-.72-.07L12 12.38 6.82 8.1c-.22-.16-.53-.13-.7.08s-.15.53.06.7l3.62 2.97-3.57 2.23c-.23.14-.3.45-.15.7.1.14.25.22.42.22.1 0 .18-.02.27-.08l3.85-2.4 1.06.87c.1.04.2.1.32.1s.23-.06.32-.1l1.06-.9 3.86 2.4c.08.06.17.1.26.1.17 0 .33-.1.42-.25.15-.24.08-.55-.15-.7l-3.57-2.22 3.62-2.96c.2-.2.24-.5.07-.72z"/></svg>    
+    </div>
+  </div>
+</a>
+
+
+
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    <div><a href="https://www.blogit.fi/eddys-homepages--kaikenlaista-linuxista-ja-kotiautomaatiosta/seuraa" target="_blank"><img src="/images/blogit-200x80.png" alt="Seuraa blogia" /></a></div><p></p>    
+    ©
+    
+      2022 -
+    
+    2023
+     Esa P 
+    ·
+    
+      Licensed under <a rel="license" href="https://mit-license.org/">The MIT License (MIT)</a>
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

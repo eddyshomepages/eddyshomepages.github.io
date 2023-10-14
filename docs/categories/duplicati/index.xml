@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>duplicati on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/duplicati/</link>
+    <description>Recent content in duplicati on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/duplicati/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa</title>
+      <link>https://eddyshomepages.github.io/posts/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/</guid>
+      <description>Minulla oli aikaisemmin RuuviTag -anturit yhdistettynä Home Assistantiin RuuviTag Discovery nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin jutun. Viime aikoina tämä konfiguraatio on kuitenkin alkanut enemmän ja enemmän temppuilemaan. Tämä johtunee ilmeisesti siitä, että node.js -paketteihin on tullut päivityksiä, joiden kanssa Ruuvitag Discovery ei enää oikein toimi kunnolla.
+Tästä syystä aloin miettimään, että miten anturit olisi järkevä liittää Home Assistantiin, koska minulla ei ole esim. Ruuvi Gateway:tä käytössä. Home Assistantissa on kuitenkin nykyisin olemassa RuuviTag BLE -integraatio, jonka vuoksi aloin selvittämään, että miten anturit saisi lisättyä järjestelmään sen avulla.</description>
+    </item>
+    
+    <item>
+      <title>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</guid>
+      <description>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla.
+Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.
+Mikäli Home Assistantin pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse Linux -tuntemusta, mutta jos haluaa tehdä asioita pääte -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin yaml -kielestä.</description>
+    </item>
+    
+    <item>
+      <title>Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</title>
+      <link>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</guid>
+      <description>Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi Docker-Compose asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.
+Duplicati asennetaan samalle tietokoneelle kuin Home Assistant ja sen voi asentaa Docker-Composen avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.
+Duplicatin asennus Docker-Composen avulla Link to heading Duplicatin asennus Docker-Composen avulla onnistuu samaan tapaan, kuin teimme aikaisemmin Home Assistantin ja Baïkalin kanssa.</description>
+    </item>
+    
+  </channel>
+</rss>

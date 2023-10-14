@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hacs on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/hacs/</link>
+    <description>Recent content in hacs on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 12 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/hacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Energian hinnan seurantaa Home Assistantilla, osa 2</title>
+      <link>https://eddyshomepages.github.io/posts/energian-hinnan-seurantaa-home-assistantilla-osa-2/</link>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/energian-hinnan-seurantaa-home-assistantilla-osa-2/</guid>
+      <description>Kirjoitin taannoin energian hinnan seurannasta Home Assistantilla ja käytössä minulla oli HACS:in kautta ladattava Nordpool -integraatio. Tämä konfiguraatio antoi spottisähkön hinnan arvonlisäverollisena, mutta nyt joulukuun -22 alusta alkaen arvonlisävero on laskenut käyttösähkön osalta 10%. Tätä muutosta Nordpool -integraatio ei osaa automaattisesti laskea, jolloin myöskin Home Assistantin laskema kustannustieto on liian suuri. Ja mikäli haluat lukea myös vanhan kirjoituksen, niin linkki on tässä.
+Tämän vuoksi tein muutoksia aikaisempaan laskentaan siten, että Nordpool -integraatio antaa jatkossa spottihinnan arvonlisäverottomana ja arvonlisäveron laskenta tapahtuu Home Assistantin kautta.</description>
+    </item>
+    
+    <item>
+      <title>Energian hinnan seurantaa Home Assistantilla, osa 1</title>
+      <link>https://eddyshomepages.github.io/posts/energian-hinnan-seurantaa-home-assistantilla/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/energian-hinnan-seurantaa-home-assistantilla/</guid>
+      <description>Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy linkin takaa.
+Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli sähkön hinnasta. Minulla oli aikaisemmin kvartaaleittain vaihtuva sähkön hinta, mutta koska vanhan sähkösopimuksen hinta oli jo yli 50 cnt/kWh, tulin siihen tulokseen, että nyt olisi ehkä hyvä kuitenkin vaihtaa sopimus pörssisähköön, jolloin pystyn vaikuttamaan sähkön hintaan sentään jollakin tavalla. Nyt siis mennään pörssisähköllä ja käytössä on HACS:in kautta saatava Nordpool -integraatio, jonka kautta haetaan pörssisähkölle hinta.</description>
+    </item>
+    
+  </channel>
+</rss>

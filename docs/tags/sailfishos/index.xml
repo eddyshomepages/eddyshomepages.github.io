@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sailfishos on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/sailfishos/</link>
+    <description>Recent content in sailfishos on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/sailfishos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Syncthing synkronointisovelluksen asennus- ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Sun, 07 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tietokoneelle ilman, että tarvitsee juurikaan tietää/tuntea oman kotiverkon asetuksista mitään. Riittää, että molemmille laitteille on asennettu Syncthing ja laitteet on yhdistetty toimimaan yhdessä.
+Syncthing on avoimen lähdekoodin sovellus ja sen toiminta perustuu Block Exchange Protocollan 1. versioon. Lisäksi Synctingin saa asetettua toimimaan, joko pelkästään omassa sisäverkossa tai vaihtoehtoisesti myös internetin yli. Syncthing myös salaa kaiken liikenteen käyttäen TLS:n versiota 1.</description>
+    </item>
+    
+    <item>
+      <title>Jellyfin -mediapalvelimen asennus</title>
+      <link>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/jellyfin-mediapalvelimen-asennus/</guid>
+      <description>Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen. Jellyfin on oma palvelimensa vaikka sen alkujuuret juontavatkin Emby -mediaserveriin eli toisin sanoen Jellyfin on forkki Emby -mediaserveristä. Jellyfin -mediaserverin kautta voi mm. katsoa videoita ja TV -tallennuksia, kuunnella musiikkia sekä katsella myös valokuvia eli sovellus on siinä mielessä monipuolinen.
+Jellyfinin asennus Link to heading Minä asennan Jellyfin -mediaserverin BananaPi -tietokoneella ja katsotaan miten se siinä toimii.</description>
+    </item>
+    
+  </channel>
+</rss>

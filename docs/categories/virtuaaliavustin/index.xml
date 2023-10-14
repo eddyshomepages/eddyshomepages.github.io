@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtuaaliavustin on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/categories/virtuaaliavustin/</link>
+    <description>Recent content in virtuaaliavustin on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/virtuaaliavustin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mycroft -virtuaaliavustimen asennus ja käyttöönotto</title>
+      <link>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</guid>
+      <description>Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin kokeilla myös toista avoimen lähdekoodin järjestelmää nimeltään Mycroft.
+Mycroft vaikuttaa lupaavalta siinäkin mielessä, että sillä pystyy Home Assistantin lisäksi komentamaan mm. Emby-media -serveriä, jonka pystyttämisestä myös kirjoittelin aikaisemmin. Mycroftin avulla pystyy myös mm. kuuntelemaan Yle Areenan kautta tuoreimmat kotimaan uutiset ja lisäksi siihen on saatavilla paljon muitakin lisätaitoja eli ns.</description>
+    </item>
+    
+    <item>
+      <title>Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</title>
+      <link>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</guid>
+      <description>Edellisessä kirjoituksessa kävimme läpi Almond-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan Almond-/Genie -virtuaaliavustimen kanssa. Ääniohjausta varten meidän tarvitsee asentaa Genie-client -paketti, josta löytyy valmis .deb -paketti Debian pohjaisille käyttöjärjestelmille. Muille käyttöjärjetelmille Genie-client täytyy asentaa lähdekoodin kautta.
+Minulla on alustana RaspberryPi -tietokoneen 1. Model B -versio, joten Genie-client -paketti asennetaan RaspberryPi:lle tehdyn ohjeen mukaisesti. Genie-client on myös sen verran kevyt, että sen pystyy asentamaan Raspberry Pi 1 Model B -koneelle ja näin minulla on myös tarkoitus tehdä.</description>
+    </item>
+    
+    <item>
+      <title>Almond-/Genie -virtuaaliavustimen lisääminen Home Assistantiin</title>
+      <link>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</link>
+      <pubDate>Sat, 26 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</guid>
+      <description>Seuraavaksi ajattelin kirjoittaa virtuaaliavustimen käyttöön ottamisesta Home Assistantissa. Home Assistantin saa konffattua käyttämään Google Assistantin tai Alexan kautta suoritettavia äänikomentoja, mutta ajattelin kokeilla, miten avoin vaihtoehto Almond/Genie toimii. Käytän jatkossa virtuaaliavustimesta nimeä Genie vaikka Home Assistantissa puhutaankin yleisesti Almondista.
+Genie -virtuaaliavustin on Stanford Open Virtual Assistant Labin kehittämä avoin ja yksityisyyttä suojeleva virtuaaliassistentti. Genietä on mahdollista käyttää myös pilvipohjaisena, mutta minä ajattelin kokeilla standalone -versiota, jonka voi asentaa omalle palvelimelle.</description>
+    </item>
+    
+  </channel>
+</rss>
