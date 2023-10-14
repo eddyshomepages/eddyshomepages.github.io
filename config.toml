@@ -37,6 +37,12 @@ style = "github-dark"
     buttonMargin = "0.1em"
     networks = ["facebook", "twitter", "linkedin", "whatsapp", "email", "telegram", "pinterest"]
 
+  [params.utterances]
+    repo = "eddyshomepages/eddyshomepages-comments" # https://utteranc.es/#heading-repository
+    issueTerm = "pathname" # https://utteranc.es/#heading-mapping
+    label = "Comments" # https://utteranc.es/#heading-issue-label
+    theme = "github-light" # https://utteranc.es/#heading-theme
+
 [taxonomies]
   category = "categories"
   series = "series"
