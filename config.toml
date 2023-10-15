@@ -6,9 +6,9 @@ defaultcontentlanguage = "fi"
 enableRobotsTXT = true
 paginate = 10
 
-style = 'solarized-dark'
-pygmentsUseClasses = true 
-#    style = "github-dark"
+[markup.highlight]
+  noClasses = true
+  style = "solarized-dark"
 
 [outputFormats]
   [SearchIndex]
@@ -23,7 +23,7 @@ pygmentsUseClasses = true
 [params]
   author = "Esa P"
   license = '<a rel="license" href="https://mit-license.org/">The MIT License (MIT)</a>'
-  info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää blogi-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog posts. "
+  info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää [blogi](/posts/)-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog [posts](/posts/). "
   description = "Eddy's Homepages"
   keywords = "blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt"
   avatarurl = "images/omakuva.webp"
@@ -43,8 +43,8 @@ pygmentsUseClasses = true
   # customSCSS = ["scss/custom.scss"]
   # customJS = ["js/custom.js"]
 
-  [markup.goldmark.renderer]
-    unsafe = true
+#  [markup.goldmark.renderer]
+#    unsafe = true
 
   [params.shareButtons]
     size = "small"
