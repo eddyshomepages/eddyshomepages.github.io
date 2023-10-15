@@ -1,8 +1,8 @@
-user-agent: *
+User-agent: *
 
-disallow: /tags/
-disallow: /archives.html
-disallow: /series.html
-disallow: /404.html
+Disallow: /tags/
+Disallow: archives.html
+Disallow: series.html
+Disallow: 404.html
 
-sitemap: https://eddyshomepages.github.io/sitemap.xml
+Sitemap: https://eddyshomepages.github.io/sitemap.xml
