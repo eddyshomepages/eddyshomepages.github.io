@@ -9,10 +9,21 @@ paginate = 10
 [markup.highlight]
 style = "github-dark"
 
+[outputFormats]
+  [SearchIndex]
+    mediaType = "application/json"
+    baseName = "searchindex"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  home = ["HTML","JSON"]
+#  section = ["HTML","RSS", "JSON"]
+
 [params]
   author = "Esa P"
   license = '<a rel="license" href="https://mit-license.org/">The MIT License (MIT)</a>'
-  info = "I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog posts. Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää blogi-kirjoituksistani."
+  info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää blogi-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog posts. "
   description = "Eddy's Homepages"
   keywords = "blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt"
   avatarurl = "images/omakuva.webp"
@@ -95,18 +106,26 @@ style = "github-dark"
 
 # Menu links
 [[menu.main]]
-  name = "Info"
+  name = "Tervetuloa"
   weight = 1
   url  = "info"
 [[menu.main]]
-  name = "Posts"
+  name = "Blogit"
   weight = 2
   url  = "posts/"
 [[menu.main]]
-  name = "Abouts"
+  name = "Tietoja"
   weight = 3
   url = "about/"
 [[menu.main]]
-  name = "Tags"
+  name = "Tagit"
   weight = 4
   url = "tags"
+[[menu.main]]
+  name = "Kategoriat"
+  weight = 5
+  url = "categories"
+[[menu.main]]
+  name = "Haku"
+  weight = 6
+  url = "search"
