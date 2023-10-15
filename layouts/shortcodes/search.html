@@ -1,0 +1,58 @@
+<form id="custom-search" name="custom-search" method="post" action="" onsubmit="customSearchResults(); return false;">
+    <p>
+    <input id="custom-search-field" type="text" name="haku" value="" title="Search String" placeholder="Hakusana">
+    <!-- <input type="submit" value="Haku"> -->
+    </p>
+    <!-- <p><em>Haku:</em><br>
+        <input type="checkbox"name="section[]" value="site" checked="checked"> all<br>
+        <input type="checkbox" name="section[]" value="post"> Blog<br>
+        <input type="checkbox" name="section[]" value="other-section"> Other Section
+    </p> -->
+    <p>
+        <input type="radio" name="option" value="AND" checked="checked"> Hae muodossa {hakusana}  JA  {hakusana}<br>
+        <input type="radio" name="option" value="OR"> Hae muodossa {hakusana}  TAI  {hakusana}
+    </p>
+</form>
+
+<div id="custom-search-results"></div>
+
+<script>
+// CUSTOM AREA
+let params = {
+    json_src       : '/index.json', // for multiple sources: comma separated list of JSONarrays
+    minlength      : 3,
+    defaultsearch  : 'AND',
+    sort_date      : 'DESC',
+    autocomplete   : 1, // 0: form needs a submit button
+    section_search : 0, // 1: needs checkboxes with name="section[]"
+    badwords       : 'and,there,the,this,that,you,ja,tai,jos,tämä,tuo,sinä', //ignore this words
+    json_wait      : '<p><em>ladataan...</em></p>',
+    json_ready     : '<p><em>Anna hakusana</em></p>',
+    extern_icon    : ' (external link)', // marker for external links (optional)
+    err_badstring  : '<p>Hakusana liian lyhyt!</p>',
+    err_noresult   : '<p>Ei hakutuloksia, yritä uudelleen.</p>',
+    err_norequest  : '<p style="text-align: center; color:red;">Koko tekstin haku ei ole tällä hetkellä käytettävissä.</p>',
+    err_filefailed : '<p style="text-align: center;color: red;">Hakutiedostoa ei voitu noutaa.</p>',
+    res_one_item   : '<p><em>[CNT] HAKUTULOS</em></p>',
+    res_more_items : '<p><em>[CNT] HAKUTULOSTA</em></p>',
+    res_out_top    : '<ul>',
+    res_out_bottom : '</ul>',
+    res_item_tpl   : '<li><a href="[URL]">[TITLE]</a><br>[DATE]:[SUMMARY]<br><em>[SECTION][TAGS]</em></li>',
+    add_searchlink : '<p><a href="https://duckduckgo.com/?q=eddyshomepages.github.io [QUERY]" target="_blank"><i>Ei sopivia hakutuloksia? Käytä ulkoista DuckDuckGo -hakukonetta...</i></a></p>'
+};
+
+// Translation of section name (optional)
+let section_trans = {
+    "post" : "Blog",
+    // "other-section" : "Other Section"
+};
+
+let searchfield_weight = {
+//    "title"   : 1,
+    "tags"    : 5,
+//    "summary" : 2,
+//    "content" : 1
+};
+// CUSTOM AREA END
+</script>
+<script type="text/javascript" src="/js/search.js"></script>
