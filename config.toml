@@ -2,12 +2,13 @@ baseurl = "https://eddyshomepages.github.io/"
 title = "Eddy's Homepages"
 theme = "hugo-coder"
 languagecode = "en"
-defaultcontentlanguage = "en"
+defaultcontentlanguage = "fi"
 enableRobotsTXT = true
 paginate = 10
 
-[markup.highlight]
-style = "github-dark"
+style = 'solarized-dark'
+pygmentsUseClasses = true 
+#    style = "github-dark"
 
 [outputFormats]
   [SearchIndex]
@@ -18,7 +19,6 @@ style = "github-dark"
 
 [outputs]
   home = ["HTML","JSON"]
-#  section = ["HTML","RSS", "JSON"]
 
 [params]
   author = "Esa P"
@@ -39,8 +39,12 @@ style = "github-dark"
   hidecolorschemetoggle = false
   
   # customCSS = ["css/custom.css"]
+  # customCSS = ["css/syntax.css"]
   # customSCSS = ["scss/custom.scss"]
   # customJS = ["js/custom.js"]
+
+  [markup.goldmark.renderer]
+    unsafe = true
 
   [params.shareButtons]
     size = "small"
