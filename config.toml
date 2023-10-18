@@ -23,29 +23,16 @@ paginate = 10
 [params]
   author = "Esa P"
   license = '<a rel="license" href="https://mit-license.org/">The MIT License (MIT)</a>'
-  info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää [blogi](/posts/)-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog [posts](/posts/). "
+  info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää [blogi](/posts/)-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog [posts](/posts/)."
   description = "Eddy's Homepages"
   keywords = "blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt"
   avatarurl = "images/omakuva.webp"
   dateFormat = "2.1.2006"
-  faviconSVG = "/img/favicon.svg"
-  favicon_32 = "/img/favicon-32x32.png"
-  favicon_16 = "/img/favicon-16x16.png"
   since = 2022
-
   enableTwemoji = true
-
   colorScheme = "auto"
   hidecolorschemetoggle = false
   
-  # customCSS = ["css/custom.css"]
-  # customCSS = ["css/syntax.css"]
-  # customSCSS = ["scss/custom.scss"]
-  # customJS = ["js/custom.js"]
-
-#  [markup.goldmark.renderer]
-#    unsafe = true
-
   [params.shareButtons]
     size = "small"
     icon = "solidcircle"
@@ -120,16 +107,12 @@ paginate = 10
 [[menu.main]]
   name = "Tietoja"
   weight = 3
-  url = "about/"
+  url = "about/about"
 [[menu.main]]
   name = "Tagit"
   weight = 4
   url = "tags"
 [[menu.main]]
-  name = "Kategoriat"
-  weight = 5
-  url = "categories"
-[[menu.main]]
   name = "Haku"
-  weight = 6
+  weight = 5
   url = "search"
