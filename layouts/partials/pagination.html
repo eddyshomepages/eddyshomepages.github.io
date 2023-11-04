@@ -9,7 +9,7 @@
     {{ if ne $paginator.PageNumber 1 }}
     <li>&nbsp<a href="{{ $paginator.First.URL }}">&laquo;&nbsp</a></li>
     {{ end }}
-    <li class="hidden"><a href="{{ $paginator.Prev.URL }}">&lsaquo;&nbsp</a></li>
+    <li class="hidden"><a href="{{ $paginator.Prev.URL }}">&lsaquo;</a></li>
   {{ end }}
   {{ range $paginator.Pagers }}
     {{ $.Scratch.Set "page_number_flag" false }}
