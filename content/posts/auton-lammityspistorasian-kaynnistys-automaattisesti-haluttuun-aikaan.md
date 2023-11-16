@@ -62,6 +62,18 @@ input_select:
     icon: 'mdi:cog'
 ```
 
+>**Edit 16.11.2023**  
+> Nyt täytyy nostaa käsi ylös virheen merkiksi. Eli tekstistä on jäänyt puuttumaan sensoritieto, joka tarvitaan ja jota ilman automaatio ei toimi. Tämä sensoritieto on jäänyt minulta puuttumaan alkuperäisestä tekstistä. Kiitos tästä huomiosta kuuluu kommentin jättäneelle lukijalle nimimerkiltään **jumalanruoska**. Mutta alla tämä sensori, joka luodaan `input_datetime.lahtoaika` -muuttujasta eli `sensor.yaml` -tiedostoon täytyy lisätä rivit:
+```
+#sensor.yaml
+  - platform: template
+    sensors:
+      autonlammitysaloitusaika:
+        value_template: "{{(state_attr('input_datetime.lahtoaika', 'timestamp') - (states('input_number.lammitysaika')|int *60))|timestamp_custom('%H:%M', false) }}"
+        friendly_name: 'Lämmityksen aloitusaika'
+        icon_template: 'mdi:clock-time-four'
+```
+
 Myös ulkopistorasia tulee liittää [Home Assistantiin](https://www.home-assistant.io/) ja minulla se on nimeltään `switch.pistorasia_autopaikka`. Lisäksi olen automaatiossa määrittänyt, että autolämmitysrasia pysyy päällä vielä 10 min sen jälkeen, kun lähtöaika on ollut käsillä. Tämä siksi, että mikäli lähtöaika hiukan venyy, niin auton lämmitys on kuitenkin vielä hetken päällä.
 
 Ennen automaation määrityksiä, täytyy [Home Assistant](https://www.home-assistant.io/) kuitenkin käynnistää uudestaan, jotta muuttujat tulevat näkyviin. Automaation osalta määritykset voidaan tehdä joko käyttöliittymän kautta, jolloin ne ovat seuraavat:
