@@ -1,6 +1,6 @@
 ---
 title: "Tervetuloa sivustolle!"
-date: "2022-07-01"
+date: "2024-08-31"
 ---
 
 ### Kaikenlaista Linuxista ja kotiautomaatiosta…

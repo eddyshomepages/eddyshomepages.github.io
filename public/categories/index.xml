@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Eddy&#39;s Homepages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>yleinen</title>
+      <link>https://eddyshomepages.github.io/categories/yleinen/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/categories/yleinen/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>docker</title>
       <link>https://eddyshomepages.github.io/categories/docker/</link>
@@ -94,15 +103,6 @@
       <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://eddyshomepages.github.io/categories/ruuvitag-discovery/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>yleinen</title>
-      <link>https://eddyshomepages.github.io/categories/yleinen/</link>
-      <pubDate>Wed, 28 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://eddyshomepages.github.io/categories/yleinen/</guid>
       <description></description>
     </item>
     

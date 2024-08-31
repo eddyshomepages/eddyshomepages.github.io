@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Eddy&#39;s Homepages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>github</title>
+      <link>https://eddyshomepages.github.io/tags/github/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://eddyshomepages.github.io/tags/hugo/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress.org</title>
+      <link>https://eddyshomepages.github.io/tags/wordpress.org/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/wordpress.org/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yleinen</title>
+      <link>https://eddyshomepages.github.io/tags/yleinen/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/yleinen/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>docker</title>
       <link>https://eddyshomepages.github.io/tags/docker/</link>
@@ -647,15 +683,6 @@
     </item>
     
     <item>
-      <title>github</title>
-      <link>https://eddyshomepages.github.io/tags/github/</link>
-      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://eddyshomepages.github.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>nodemcu</title>
       <link>https://eddyshomepages.github.io/tags/nodemcu/</link>
       <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
@@ -1133,6 +1160,15 @@
     </item>
     
     <item>
+      <title>pymysql</title>
+      <link>https://eddyshomepages.github.io/tags/pymysql/</link>
+      <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/tags/pymysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>baikal</title>
       <link>https://eddyshomepages.github.io/tags/baikal/</link>
       <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
@@ -1201,15 +1237,6 @@
       <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://eddyshomepages.github.io/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>wordpress.org</title>
-      <link>https://eddyshomepages.github.io/tags/wordpress.org/</link>
-      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://eddyshomepages.github.io/tags/wordpress.org/</guid>
       <description></description>
     </item>
     

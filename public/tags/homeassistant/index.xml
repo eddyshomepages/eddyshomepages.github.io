@@ -214,6 +214,16 @@ cd /home/pi/docker-data mkdir mosquitto cd mosquitto Seuraavaksi luodaan docker-
     </item>
     
     <item>
+      <title>MariaDB-tietokannan käyttöönotto Home Assistantissa</title>
+      <link>https://eddyshomepages.github.io/posts/mariadb-tietokannan-kayttoonotto-home-assistantissa/</link>
+      <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mariadb-tietokannan-kayttoonotto-home-assistantissa/</guid>
+      <description>Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pienissä järjestelmissä, mutta kun sensoreita ja muuta systeemiä alkaa olla enemmän käytössä, niin siinä vaiheessa voi tulla ongelmia vastaan. MariaDB -tietokanta on järkevää ottaa käyttöön jo heti alussa, niin siihen ei sitten tarvitse palata enää myöhemmin.
+MariaDB:n asennusta käytiin läpi myös aikaisemmassa kirjoituksessa, jossa käsiteltiin WordPress.org:n asennusta. Asennus etenee samaan tapaan, kuin WordPress.</description>
+    </item>
+    
+    <item>
       <title>Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</title>
       <link>https://eddyshomepages.github.io/posts/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</link>
       <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>

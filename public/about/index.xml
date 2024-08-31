@@ -6,38 +6,16 @@
     <description>Recent content in Abouts on Eddy&#39;s Homepages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tietoja sivustosta ja kirjoittajasta</title>
       <link>https://eddyshomepages.github.io/about/about/</link>
-      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate>
       
       <guid>https://eddyshomepages.github.io/about/about/</guid>
       <description>Sivuston ylläpitäjä on tällainen Linux -&amp;ldquo;nörtti&amp;rdquo;, joka tykkää puuhailla vapaa-aikoina Linuxin ja muiden siihen liittyvien juttujen kanssa kuten esim. Raspberry Pi -pikkutietokoneet. Lisäksi myös kaikki kotiautomaatioon liittyvät jutut ovat lähellä sydäntä.
-Minulla on taustalla rakennusinsinöörin koulutus ja melkein 25 vuoden työkokemus erilaisista tehtävistä rakennus- ja kiinteistöalalta. Nyt on kuitenkin tullut alan vaihto eteen ja helmikuun 2022 alussa aloitin opiskelemaan tieto- ja viestintätekniikan perustutkintoa suuntautuen hyvinvointiteknologiaan. Toisin sanoen nyt olisi tarkoitus suorittaa tutkinto ja saada pitkäaikaisesta harrastuksesta loppuelämän ammatti.</description>
-    </item>
-    
-    <item>
-      <title>Tietosuojaseloste</title>
-      <link>https://eddyshomepages.github.io/about/tietosuojaseloste/</link>
-      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://eddyshomepages.github.io/about/tietosuojaseloste/</guid>
-      <description>Kuka olen Link to heading Verkkosivustoni osoite on: https://fasted.dy.fi.
-Kommentit Link to heading Kun sivuston käyttäjät jättävät kommentteja sivustolle, keräämme kommenttilomakkeessa olevat tiedot, sekä käyttäjän IP-osoitteen ja selaimen versiotiedot roskaviestien tunnistamisen helpottamiseksi.
-Kun vierailijat jättävät kommentin tälle sivustolle keräämme tiedon, joka on näkyvissä kommentointikentissä, IP-osoitteen sekä selaimen versioon liittyvät tiedot. Sähköpostiosoitteesta luotu anonymisoitu hajautustieto (hash) voidaan lähettää Gravatar-palveluun, jotta tiedetään onko kommentoija palvelun käyttäjä. Gravatar-palvelun tietosuojaseloste löytyy osoitteesta https://automattic.com/privacy/.</description>
-    </item>
-    
-    <item>
-      <title>Tervetuloa sivustolle!</title>
-      <link>https://eddyshomepages.github.io/about/tietoja/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://eddyshomepages.github.io/about/tietoja/</guid>
-      <description>Kaikenlaista Linuxista ja kotiautomaatiosta… Link to heading Tervetuloa sivustolleni! Olet kenties eksynyt tänne vahingossa tai tietoisesti, yhtä kaikki, kiitos siitä.
-Tältä sivustolta löydät blogi -kirjoituksia liittyen Linuxiin, kotiautomaatioon sekä erilaisiin &amp;ldquo;pikku&amp;rdquo;-tietokoneisiin kuten RaspberryPi, BananaPi sekä OrangePi.
-Linuxiin liittyvissä kirjoituksissa käyttöjärjestelmänä minulla on käytössä Debian sekä siihen liittyvät johdannaiset kuten RaspberryPiOS ja Armbian.
-Kotiautomaatiojärjestelmänä minulla on käytössä Home Assistant, joka on asennettu RaspberryPiOS -käyttöjärjestelmään Docker Composen avulla, jotta kyseistä konetta voidaan käyttää myös muihinkin tarkoituksiin.</description>
+Minulla on taustalla rakennusinsinöörin koulutus ja melkein 25 vuoden työkokemus erilaisista tehtävistä rakennus- ja kiinteistöalalta toimien mm. projektipäällikkönä erilaisissa korjaus- ja energiatehokkuushankkeissa.
+Nyt olen kuitenkin vaihtanut alaa ja helmikuun 2022 alussa aloitin opiskelemaan tieto- ja viestintätekniikan perustutkintoa suuntautuen hyvinvointiteknologiaan. Tämän tutkinnon sain valmiiksi noin 1,5 vuodessa ja paperit sain lokakuussa 2023.</description>
     </item>
     
   </channel>

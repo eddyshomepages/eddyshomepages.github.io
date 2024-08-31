@@ -1,6 +1,6 @@
 ---
 title: "Tietoja sivustosta ja kirjoittajasta"
-date: "2022-07-22"
+date: "2024-08-31"
 ---
 
 Sivuston ylläpitäjä on tällainen [Linux](https://en.wikipedia.org/wiki/Linux) -"nörtti", joka tykkää puuhailla vapaa-aikoina Linuxin ja muiden siihen liittyvien juttujen kanssa kuten esim. [Raspberry Pi](https://www.raspberrypi.org/) -pikkutietokoneet. Lisäksi myös kaikki kotiautomaatioon liittyvät jutut ovat lähellä sydäntä.

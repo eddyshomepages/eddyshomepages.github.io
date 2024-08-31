@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Eddy&#39;s Homepages</title>
+    <link>https://eddyshomepages.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on Eddy&#39;s Homepages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eddy&#39;s Homepages on saanut uuden kodin</title>
+      <link>https://eddyshomepages.github.io/posts/eddys-homapages-new-site/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/eddys-homapages-new-site/</guid>
+      <description>Eddy&amp;rsquo;s Homepages on saanut uuden kodin Link to heading Lyhyesti sanottuna vanha sivusto https://fasted.dy.fi -osoitteesta on nyt muuttanut uuteen osoitteeseen https://eddyshomepages.github.io/.
+Vanhan sivuston osoitteesta on tehty ohjaus tälle uudelle sivustolle eli kaikki liikenne ohjautuu tämän uuden sivuston etusivulle. Lisäksi vanhalta sivustolta on siirretty kaikki aikaisemmin luodut kirjoitukset tähän uuteen osoitteeseen ja ne löytyvät Blogit -osiosta. Kirjoituksia on muokattu sen verran, että niiden sisäisten linkkien pitäisi toimia samalla tavoin kuin aikaisemminkin.</description>
+    </item>
+    
+  </channel>
+</rss>

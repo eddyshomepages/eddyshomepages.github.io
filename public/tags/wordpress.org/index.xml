@@ -6,7 +6,27 @@
     <description>Recent content in wordpress.org on Eddy&#39;s Homepages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/wordpress.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://eddyshomepages.github.io/tags/wordpress.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eddy&#39;s Homepages on saanut uuden kodin</title>
+      <link>https://eddyshomepages.github.io/posts/eddys-homapages-new-site/</link>
+      <pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/eddys-homapages-new-site/</guid>
+      <description>Eddy&amp;rsquo;s Homepages on saanut uuden kodin Link to heading Lyhyesti sanottuna vanha sivusto https://fasted.dy.fi -osoitteesta on nyt muuttanut uuteen osoitteeseen https://eddyshomepages.github.io/.
+Vanhan sivuston osoitteesta on tehty ohjaus tälle uudelle sivustolle eli kaikki liikenne ohjautuu tämän uuden sivuston etusivulle. Lisäksi vanhalta sivustolta on siirretty kaikki aikaisemmin luodut kirjoitukset tähän uuteen osoitteeseen ja ne löytyvät Blogit -osiosta. Kirjoituksia on muokattu sen verran, että niiden sisäisten linkkien pitäisi toimia samalla tavoin kuin aikaisemminkin.</description>
+    </item>
+    
+    <item>
+      <title>MariaDB-tietokannan käyttöönotto Home Assistantissa</title>
+      <link>https://eddyshomepages.github.io/posts/mariadb-tietokannan-kayttoonotto-home-assistantissa/</link>
+      <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://eddyshomepages.github.io/posts/mariadb-tietokannan-kayttoonotto-home-assistantissa/</guid>
+      <description>Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pienissä järjestelmissä, mutta kun sensoreita ja muuta systeemiä alkaa olla enemmän käytössä, niin siinä vaiheessa voi tulla ongelmia vastaan. MariaDB -tietokanta on järkevää ottaa käyttöön jo heti alussa, niin siihen ei sitten tarvitse palata enää myöhemmin.
+MariaDB:n asennusta käytiin läpi myös aikaisemmassa kirjoituksessa, jossa käsiteltiin WordPress.org:n asennusta. Asennus etenee samaan tapaan, kuin WordPress.</description>
+    </item>
+    
     <item>
       <title>WordPress.org, PHP ja MariaDB asennus Caddy web-serverille</title>
       <link>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</link>

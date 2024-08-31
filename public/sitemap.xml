@@ -2,8 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://eddyshomepages.github.io/about/</loc>
+    <lastmod>2024-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/</loc>
+    <lastmod>2024-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/info/</loc>
+    <lastmod>2024-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/about/about/</loc>
+    <lastmod>2024-08-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://eddyshomepages.github.io/categories/</loc>
-    <lastmod>2023-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/posts/eddys-homapages-new-site/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/github/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/search/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/hugo/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/posts/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/wordpress.org/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/yleinen/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/categories/yleinen/</loc>
+    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/docker/</loc>
     <lastmod>2023-07-30T00:00:00+00:00</lastmod>
@@ -21,9 +60,6 @@
     <lastmod>2023-07-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/categories/duplicati/</loc>
-    <lastmod>2023-07-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/</loc>
     <lastmod>2023-07-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/homeassistant/</loc>
@@ -65,13 +101,7 @@
     <loc>https://eddyshomepages.github.io/categories/ruuvitag-discovery/</loc>
     <lastmod>2023-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eddyshomepages.github.io/tags/</loc>
-    <lastmod>2023-07-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eddyshomepages.github.io/posts/huoltokatko/</loc>
-    <lastmod>2023-06-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/categories/yleinen/</loc>
     <lastmod>2023-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/433-mhz/</loc>
@@ -350,9 +380,6 @@
     <loc>https://eddyshomepages.github.io/categories/zwave/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eddyshomepages.github.io/tags/github/</loc>
-    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eddyshomepages.github.io/posts/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</loc>
     <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -443,13 +470,13 @@
     <loc>https://eddyshomepages.github.io/tags/alytelevisio/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eddyshomepages.github.io/posts/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</loc>
-    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eddyshomepages.github.io/tags/mediaplayer/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/categories/mediaplayer/</loc>
+    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/posts/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/autolammitys/</loc>
@@ -512,13 +539,13 @@
     <loc>https://eddyshomepages.github.io/tags/sensor/</loc>
     <lastmod>2022-12-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</loc>
-    <lastmod>2022-12-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eddyshomepages.github.io/tags/genie-client/</loc>
     <lastmod>2022-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/genie-server/</loc>
+    <lastmod>2022-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/posts/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</loc>
     <lastmod>2022-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/posts/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</loc>
@@ -584,6 +611,12 @@
     <loc>https://eddyshomepages.github.io/tags/zwavejs2mqtt/</loc>
     <lastmod>2022-09-13T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://eddyshomepages.github.io/posts/mariadb-tietokannan-kayttoonotto-home-assistantissa/</loc>
+    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://eddyshomepages.github.io/tags/pymysql/</loc>
+    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://eddyshomepages.github.io/tags/baikal/</loc>
     <lastmod>2022-09-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -626,9 +659,6 @@
     <loc>https://eddyshomepages.github.io/categories/php/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://eddyshomepages.github.io/tags/wordpress.org/</loc>
-    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://eddyshomepages.github.io/posts/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -664,15 +694,6 @@
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/matrix-synapse/</loc>
     <lastmod>2022-08-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/about/</loc>
-    <lastmod>2022-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/about/about/</loc>
-    <lastmod>2022-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/about/tietosuojaseloste/</loc>
-    <lastmod>2022-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/tags/armbian/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
@@ -718,12 +739,6 @@
   </url><url>
     <loc>https://eddyshomepages.github.io/posts/moikka-maailma/</loc>
     <lastmod>2022-07-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/about/tietoja/</loc>
-    <lastmod>2022-07-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://eddyshomepages.github.io/posts/</loc>
-    <lastmod>2022-06-13T20:55:37+01:00</lastmod>
   </url><url>
     <loc>https://eddyshomepages.github.io/authors/</loc>
   </url><url>
