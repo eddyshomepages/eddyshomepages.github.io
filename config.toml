@@ -25,7 +25,7 @@ paginate = 10
   license = '<a rel="license" href="https://mit-license.org/">The MIT License (MIT)</a>'
   info = "Olen intohimoinen Linuxin ja kotiautomaatiojärjestelmien harrastaja. Tutustu ja lue lisää [blogi](/posts/)-kirjoituksistani. I am a passionate enthusiast of Linux and home automation systems. Read and discover more from my blog [posts](/posts/)."
   description = "Eddy's Homepages"
-  keywords = "blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt"
+  keywords = "blog,developer,personal,homeautomation,kotiautomaatio,homeassistant,powerconsumption,energiankulutus,nordpool,pörssisähkö,sähkönkulutus,sähkö,energia,zigbee,z-wavw,zwave,mqtt,zigbee2mqtt,zwavejstomqtt,linux,jellyfin,debian,fedora,dietpi,armbian,linuxmint,bash,ansible,linuxadmin,raspberrypi,bananapi,orangepi,rockpi,esphome,script,python,nodemcu,esp8266,esp32,wemos,pihole,caddy,baikal,caldav,cardav,docker,docker-compose,hacs,matrix,mosquitto,rfxcom,sademittari,rainmeter,pulse,reed,tvheadend,webdav,xmpp,deconz,bluetooth,alarmo,agentvdr,autolämmitys,433mhz"
   avatarurl = "images/omakuva.webp"
   dateFormat = "2.1.2006"
   since = 2022
@@ -71,7 +71,7 @@ paginate = 10
   name = "Mastodon"
   icon = "fa fa-mastodon fa-2x"
   weight = 4
-  url = "https://mastodo.fi/@esa_p/"
+  url = "https://mastodontti.fi/@esa_p/"
 [[params.social]]
   name = "Facebook"
   icon = "fa fa-facebook fa-2x"
