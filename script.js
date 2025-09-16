@@ -1,4 +1,4 @@
-console.log('CLEAN BLOG VERSION 3.0');
+//console.log('CLEAN BLOG VERSION 3.0');
 
 function setLinksNewTab() {
 	document.querySelectorAll('#full-post-content a, #about-content a, #frontpage-content a').forEach(function(link) {
@@ -234,7 +234,8 @@ async function loadFrontpage() {
 	
 	return {
 		title: metadata.title || 'Welcome',
-		content: marked.parse(content)
+		//content: marked.parse(content)
+		content: sanitizeHTML(marked.parse(content))
 	};
 	} catch (error) {
 	console.error('Error loading frontpage:', error);
@@ -258,7 +259,8 @@ async function loadAboutPage() {
 	
 	return {
 		title: metadata.title || 'About',
-		content: marked.parse(content)
+		//content: marked.parse(content)
+		content: sanitizeHTML(marked.parse(content))
 	};
 	} catch (error) {
 	console.error('Error loading about page:', error);
@@ -573,7 +575,8 @@ async function loadPost(filename) {
 			id: filename.replace('.md', ''),
 			title: metadata.title || filename.replace('.md', '').replace(/-/g, ' '),
 			excerpt: stripMarkdown(content).substring(0, 150) + '...',
-			content: marked.parse(content),
+			//content: marked.parse(content),
+			content: sanitizeHTML(marked.parse(content))
 			date: metadata.date || '2023-01-01',
 			tags: allTags,
 			filename: filename
@@ -602,6 +605,29 @@ function stripMarkdown(text) {
 	.replace(/^\s*\d+\.\s+/gm, '')
 	.replace(/\s+/g, ' ')
 	.trim();
+}
+
+// Security: HTML sanitization function
+function sanitizeHTML(html) {
+    if (typeof DOMPurify !== 'undefined') {
+        return DOMPurify.sanitize(html);
+    } else {
+        console.warn('DOMPurify not loaded, using fallback sanitization');
+        const div = document.createElement('div');
+        div.textContent = html;
+        return div.innerHTML;
+    }
+}
+
+// Development mode detection for console logging
+const isDevelopment = window.location.hostname === 'localhost' || 
+                     window.location.hostname === '127.0.0.1' || 
+                     window.location.hostname.includes('192.168.');
+
+function debugLog(...args) {
+    if (isDevelopment) {
+        console.log(...args);
+    }
 }
 
 // Display posts with pagination
@@ -739,9 +765,9 @@ function generateShareButtons(postTitle, postId) {
 	const currentUrl = `${baseUrl}/#post/${postId}`;
 	
 	// Temporary debug logging - remove after testing
-	console.log('Generated URL:', currentUrl);
-	console.log('Post ID:', postId);
-	console.log('Post Title:', postTitle);
+	//console.log('Generated URL:', currentUrl);
+	//console.log('Post ID:', postId);
+	//console.log('Post Title:', postTitle);
 	
 	
 	return `
@@ -880,7 +906,7 @@ function loadUtterancesComments(postId) {
 // Initialize
 async function init() {
 	try {
-	console.log('Initializing blog version 3.0...');
+	//console.log('Initializing blog version 3.0...');
 	
 	initTheme();
 	
@@ -893,7 +919,7 @@ async function init() {
 	
 	handleInitialRoute();
 	
-	console.log('Blog initialization complete');
+	//console.log('Blog initialization complete');
 	
 	} catch (error) {
 
