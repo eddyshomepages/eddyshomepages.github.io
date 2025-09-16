@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>Eddy's Homepages</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="alternate" type="application/rss+xml" title="Eddy's Homepages RSS Feed" href="/rss.xml">
+	<meta name="description" content="Your guide to Linux systems and Home Assistant automation">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Eddy's Homepages</div>
+                <nav>
+                    <ul>
+                        <li><a onclick="showFrontpage()">Home</a></li>
+                        <li><a onclick="showPosts()">Posts</a></li>
+                        <li><a onclick="showSearch()">Search</a></li>
+                        <li><a onclick="showAbout()">About</a></li>
+                        <li><a onclick="downloadRSSFeed()" title="RSS Feed"><i class="fas fa-rss"></i></a></li>
+                        <li>
+			    <select id="language-selector" onchange="changeLanguage()">
+				<option value="fi">Suomi</option>
+				<option value="en">English</option>
+			    </select>
+			</li>
+                        <li>
+			    <button id="theme-toggle" onclick="toggleTheme()">
+				🌙
+			    </button>
+			</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="content">
+                <!-- Frontpage -->
+                <div class="full-post" id="frontpage-page">
+                    <div id="frontpage-content">
+                        <div style="padding: 2rem; text-align: center;">Loading frontpage...</div>
+                    </div>
+                </div>
+
+                <!-- Posts listing -->
+                <div class="posts-container" id="posts-content" style="display: none;">
+                    <div class="hero-section">
+                        <h1 class="hero-title">Blog Posts</h1>
+                        <p>Your guide to Linux systems and Home Assistant automation</p>
+                    </div>
+			<div class="pagination-controls">
+			    <label>Posts per page: 
+				<select id="posts-per-page" onchange="changePostsPerPage(this)">
+				    <option value="10" selected>10</option>
+				    <option value="25">25</option>
+				    <option value="50">50</option>
+				    <option value="100">100</option>
+				</select>
+			    </label>
+			    <span id="page-info"></span>
+			    <div id="pagination-buttons">
+			    </div>
+			</div>
+			<div id="posts-display">
+			    <div style="padding: 2rem; text-align: center;">Loading posts...</div>
+			</div>
+			<div class="pagination-controls bottom">
+			    <label>Posts per page: 
+				<select id="posts-per-page-bottom" onchange="changePostsPerPage(this)">
+				    <option value="10" selected>10</option>
+				    <option value="25">25</option>
+				    <option value="50">50</option>
+				    <option value="100">100</option>
+				</select>
+			    </label>
+			    <span id="page-info-bottom"></span>
+			    <div id="pagination-buttons-bottom">
+			    </div>
+			</div>
+                </div>
+
+                <!-- Individual post view -->
+                <div class="full-post" id="full-post" style="display: none;">
+                    <button class="back-button" onclick="showPosts()">← Back</button>
+                    <div id="full-post-content"></div>
+                </div>
+                
+                <!-- Search page -->
+                <div class="full-post" id="search-page" style="display: none;">
+		    <button class="back-button" onclick="showFrontpage()">← Back</button>
+		    <div id="search-content">
+			<h1>Search Posts</h1>
+			
+			<div class="search-container" style="margin-bottom: 2rem;">
+			    <input type="text" id="search-input" placeholder="Search posts by title, content, or tags..." 
+				   style="width: 100%; padding: 1rem; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem;"
+				   oninput="performSearch()">
+			    
+			    <div class="tag-filters" style="margin-bottom: 1rem;">
+				<h3>Filter by tags:</h3>
+				<div id="tag-filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;"></div>
+			    </div>
+			    
+			    <button onclick="clearSearch()" style="padding: 0.5rem 1rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
+			</div>
+			
+			<div id="search-results">
+			    <p>Enter a search term or select tags to find posts...</p>
+			</div>
+		    </div>
+		</div>
+                
+                <!-- About page -->
+                <div class="full-post" id="about-page" style="display: none;">
+		    <button class="back-button" onclick="showFrontpage()">← Back</button>
+		    <div id="about-content">
+			<div style="padding: 2rem; text-align: center;">Loading about page...</div>
+		    </div>
+		</div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="widget">
+                    <h3>Posts</h3>
+                    <p id="post-count">Loading...</p>
+                </div>
+                <div class="widget">
+                    <h3>Recent Posts</h3>
+                    <ul id="recent-posts">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <footer>
+        <div class="container">
+            <p>© 2025 Esa P · Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">The MIT License (MIT)</a></p>
+        </div>
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
