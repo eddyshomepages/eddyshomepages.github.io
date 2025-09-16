@@ -1,5 +1,3 @@
-//console.log('CLEAN BLOG VERSION 3.0');
-
 function setLinksNewTab() {
 	document.querySelectorAll('#full-post-content a, #about-content a, #frontpage-content a').forEach(function(link) {
 		if (link.protocol && link.protocol.startsWith('http')) {
@@ -319,12 +317,6 @@ function showPosts() {
 	}
 	
 	window.scrollTo(0, 0);
-
-	// In showPost function, after setting innerHTML, add:
-	setTimeout(() => {
-		loadUtterancesComments(post.id);
-		setLinksNewTab();
-	}, 100);
 }
 
 // Show search page
@@ -388,11 +380,16 @@ function showPost(postId) {
 		<div>${post.content}</div>
 `   ;
 
+	setTimeout(() => {
+		loadUtterancesComments(post.id);
+		setLinksNewTab();
+	}, 100);
+
 	window.scrollTo(0, 0);
 	setLinksNewTab();
 }
 
-// Helper function to hide all pages
+// Helper functions to hide all pages
 function hideAllPages() {
 	document.getElementById('frontpage-page').style.display = 'none';
 	document.getElementById('posts-content').style.display = 'none';
@@ -764,12 +761,6 @@ function generateShareButtons(postTitle, postId) {
 	const baseUrl = window.location.origin + window.location.pathname.replace(/\/+$/, '');
 	const currentUrl = `${baseUrl}/#post/${postId}`;
 	
-	// Temporary debug logging - remove after testing
-	//console.log('Generated URL:', currentUrl);
-	//console.log('Post ID:', postId);
-	//console.log('Post Title:', postTitle);
-	
-	
 	return `
 		<div class="share-buttons">
 		<span>Share this post:</span>
@@ -867,6 +858,7 @@ function generateRSSFeed() {
 	return rssXml;
 }
 
+// Generate sitemap.xml file
 function generateSitemap() {
     const baseUrl = window.location.origin;
     const currentDate = new Date().toISOString().split('T')[0];
@@ -923,6 +915,7 @@ function downloadRSSFeed() {
 	URL.revokeObjectURL(url);
 }
 
+// Load Utterances comments
 function loadUtterancesComments(postId) {
     const existingComments = document.querySelector('.utterances');
     if (existingComments) {
