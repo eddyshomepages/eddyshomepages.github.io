@@ -576,7 +576,7 @@ async function loadPost(filename) {
 			title: metadata.title || filename.replace('.md', '').replace(/-/g, ' '),
 			excerpt: stripMarkdown(content).substring(0, 150) + '...',
 			//content: marked.parse(content),
-			content: sanitizeHTML(marked.parse(content))
+			content: sanitizeHTML(marked.parse(content)),
 			date: metadata.date || '2023-01-01',
 			tags: allTags,
 			filename: filename
