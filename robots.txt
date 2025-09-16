@@ -1,0 +1,9 @@
+User-agent: *
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://eddyshomepages.fi/sitemap.xml
+
+# Optional: Block any admin or private areas
+# Disallow: /admin/

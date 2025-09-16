@@ -867,6 +867,48 @@ function generateRSSFeed() {
 	return rssXml;
 }
 
+function generateSitemap() {
+    const baseUrl = window.location.origin;
+    const currentDate = new Date().toISOString().split('T')[0];
+    
+    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>${baseUrl}/</loc>
+        <lastmod>${currentDate}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>${baseUrl}/#posts</loc>
+        <lastmod>${currentDate}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>${baseUrl}/#about</loc>
+        <lastmod>${currentDate}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>`;
+
+    // Add individual posts
+    allPosts.forEach(post => {
+        sitemap += `
+    <url>
+        <loc>${baseUrl}/#post/${post.id}</loc>
+        <lastmod>${post.date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>`;
+    });
+
+    sitemap += `
+</urlset>`;
+
+    return sitemap;
+}
+
 // Download RSS feed
 function downloadRSSFeed() {
 	const rssContent = generateRSSFeed();
