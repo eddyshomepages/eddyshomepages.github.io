@@ -445,6 +445,9 @@ function updatePageTexts() {
             backButton: '← Takaisin',
             backToHome: '← Takaisin',
             backToPosts: '← Takaisin'
+            footerLicense: 'Lisensoitu',
+            footerLicenseLink: 'MIT-lisenssillä',
+            paginationLabel: 'Artikkeleita sivulla:'
         },
         en: {
             home: 'Home', posts: 'Posts', search: 'Search', about: 'About',
@@ -459,6 +462,9 @@ function updatePageTexts() {
             backButton: '← Back',
             backToHome: '← Back', 
             backToPosts: '← Back'
+            footerLicense: 'Licensed under',
+            footerLicenseLink: 'The MIT License (MIT)',
+            paginationLabel: 'Posts per page:'
         }
     };
     
@@ -473,6 +479,10 @@ function updatePageTexts() {
         ['search-instructions', t.searchInstructions], ['filter-title', t.filterTitle],
         ['clear-button', t.clearButton], ['sidebar-posts-title', t.sidebarPostsTitle],
         ['sidebar-recent-title', t.sidebarRecentTitle]
+        ['footer-license-text', t.footerLicense],
+        ['footer-license-link', t.footerLicenseLink],
+        ['pagination-label', t.paginationLabel],
+        ['pagination-label-bottom', t.paginationLabel]
     ];
     
     elements.forEach(([id, text]) => {
