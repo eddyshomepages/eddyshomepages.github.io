@@ -640,12 +640,54 @@ function showPosts() {
 	    { name: currentLanguage === 'fi' ? 'Artikkelit' : 'Posts', url: baseUrl + '/#posts' }
 	]);
 	
+	// FORCE display posts immediately
+	if (allPosts.length > 0) {
+        displayPosts(allPosts);
+	} else {
+	    // If no posts loaded yet, wait a bit and try again
+	    setTimeout(() => {
+	        if (allPosts.length > 0) {
+	            displayPosts(allPosts);
+	        }
+	    }, 500);
+	}
+	
+	window.scrollTo(0, 0);
+}
+
+/*function showPosts() {
+	hideAllPages();
+	document.getElementById('posts-content').style.display = 'block';
+	document.body.classList.remove('frontpage-active');
+	
+	// Ensure sidebar is visible on posts page
+	document.querySelector('.sidebar').style.display = 'flex';
+	
+	// SEO: Update URL and meta tags
+	const baseUrl = window.location.origin + window.location.pathname.replace(/\/+$/, '');
+	window.history.replaceState({page: 'posts'}, '', baseUrl + '/#posts');
+	
+	const title = currentLanguage === 'fi' ? 
+	    'Blogiartikkelit — Eddy\'s Homepages' :
+	    'Blog Posts — Eddy\'s Homepages';
+	const description = currentLanguage === 'fi' ?
+	    `Selaa ${allPosts.length} artikkelia Linux-järjestelmistä, Home Assistantista ja kotiautomaatiosta.` :
+	    `Browse ${allPosts.length} articles about Linux systems, Home Assistant and home automation.`;
+	
+	updatePageMeta(title, description, baseUrl + '/#posts');
+	
+	// Update breadcrumb
+	updateBreadcrumbSchema([
+	    { name: currentLanguage === 'fi' ? 'Etusivu' : 'Home', url: baseUrl + '/' },
+	    { name: currentLanguage === 'fi' ? 'Artikkelit' : 'Posts', url: baseUrl + '/#posts' }
+	]);
+	
 	if (allPosts.length > 0) {
         displayPosts(allPosts);
 	}
 	
 	window.scrollTo(0, 0);
-}
+}*/
 
 // Show search page with SEO improvements
 function showSearch() {
