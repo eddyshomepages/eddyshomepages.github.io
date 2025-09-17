@@ -1406,7 +1406,7 @@ img {
 
 /* Ensure pagination controls are visible */
 .pagination-controls {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -1414,7 +1414,6 @@ img {
     background: var(--bg-secondary);
     flex-wrap: wrap;
     gap: 1rem;
-    visibility: visible;
 }
 
 .pagination-controls.bottom {
@@ -1433,4 +1432,35 @@ img {
 #page-info-bottom {
     font-size: 0.9rem;
     color: var(--text-secondary);
+}
+
+/* ADD this to ensure pagination elements are properly displayed */
+.pagination-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.pagination-controls select {
+    padding: 0.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+#pagination-buttons,
+#pagination-buttons-bottom {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#page-info,
+#page-info-bottom {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
