@@ -1403,3 +1403,34 @@ img {
 .profile-image {
     loading: eager; /* Load profile image immediately */
 }
+
+/* Ensure pagination controls are visible */
+.pagination-controls {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    flex-wrap: wrap;
+    gap: 1rem;
+    visibility: visible;
+}
+
+.pagination-controls.bottom {
+    border-top: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+#pagination-buttons,
+#pagination-buttons-bottom {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+#page-info,
+#page-info-bottom {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
