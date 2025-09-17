@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi" prefix="og: http://ogp.me/ns#">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -164,38 +164,38 @@
     }
     </script>
 </head>
-<body itemscope itemtype="https://schema.org/WebPage">
+<body>
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Siirry pääsisältöön</a>
     
-    <header role="banner">
+    <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="#home" onclick="showFrontpage(); return false;" aria-label="Eddy's Homepages etusivulle">
+                    <a href="#home" onclick="showFrontpage(); return false;">
                         Eddy's Homepages
                     </a>
                 </div>
-                <nav role="navigation" aria-label="Main navigation">
+                <nav>
                     <ul>
                         <li><a href="#home" onclick="showFrontpage(); return false;" id="nav-home">Home</a></li>
                         <li><a href="#posts" onclick="showPosts(); return false;" id="nav-posts">Posts</a></li>
                         <li><a href="#search" onclick="showSearch(); return false;" id="nav-search">Search</a></li>
                         <li><a href="#about" onclick="showAbout(); return false;" id="nav-about">About</a></li>
                         <li>
-                            <a onclick="downloadRSSFeed()" title="RSS Feed" aria-label="Download RSS feed">
-                                <i class="fas fa-rss" aria-hidden="true"></i>
+                            <a onclick="downloadRSSFeed()" title="RSS Feed">
+                                <i class="fas fa-rss"></i>
                             </a>
                         </li>
                         <li>
                             <label for="language-selector" class="sr-only">Select language</label>
-                            <select id="language-selector" onchange="changeLanguage()" aria-label="Language selection">
+                            <select id="language-selector" onchange="changeLanguage()">
                                 <option value="fi">Suomi</option>
                                 <option value="en">English</option>
                             </select>
                         </li>
                         <li>
-                            <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                            <button id="theme-toggle" onclick="toggleTheme()">
                                 🌙
                             </button>
                         </li>
@@ -206,7 +206,7 @@
     </header>
 
     <div class="container">
-        <main id="main-content" role="main">
+        <main id="main-content">
             <div class="content">
                 <!-- Frontpage -->
                 <div class="full-post" id="frontpage-page">
@@ -227,6 +227,116 @@
                                 <option value="10" selected>10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </label>
+                        <span id="page-info"></span>
+                        <div id="pagination-buttons"></div>
+                    </div>
+                    <div id="posts-display">
+                        <div style="padding: 2rem; text-align: center;">Ladataan artikkeleita...</div>
+                    </div>
+                    <div class="pagination-controls bottom">
+                        <label id="pagination-label-bottom">Artikkeleita sivulla:
+                            <select id="posts-per-page-bottom" onchange="changePostsPerPage(this)">
+                                <option value="10" selected>10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </label>
+                        <span id="page-info-bottom"></span>
+                        <div id="pagination-buttons-bottom"></div>
+                    </div>
+                </div>
+
+                <!-- Individual post view -->
+                <article class="full-post" id="full-post" style="display: none;">
+                    <button class="back-button" onclick="showPosts()">← Takaisin</button>
+                    <div id="full-post-content"></div>
+                </article>
+
+                <!-- Search page -->
+                <div class="full-post" id="search-page" style="display: none;">
+                    <button class="back-button" onclick="showFrontpage()">← Takaisin</button>
+                    <div id="search-content">
+                        <h1 id="search-title">Search Posts</h1>
+                        <div class="search-container" style="margin-bottom: 2rem;">
+                            <label for="search-input" class="sr-only" id="search-label">Search term</label>
+                            <input type="text" id="search-input" placeholder="Search posts by title, content, or tags..."
+                                   style="width: 100%; padding: 1rem; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem;"
+                                   oninput="performSearch()">
+                            <div class="tag-filters" style="margin-bottom: 1rem;">
+                                <h3 id="filter-title">Filter by tags:</h3>
+                                <div id="tag-filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;"></div>
+                            </div>
+                            <button onclick="clearSearch()" id="clear-button" style="padding: 0.5rem 1rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
+                        </div>
+                        <div id="search-results">
+                            <p>Enter a search term or select tags to find posts...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About page -->
+                <div class="full-post" id="about-page" style="display: none;">
+                    <button class="back-button" onclick="showFrontpage()">← Takaisin</button>
+                    <div id="about-content">
+                        <div style="padding: 2rem; text-align: center;">Ladataan tietoja-sivua...</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar" style="display: flex;">
+                <div class="widget">
+                    <h3 id="sidebar-posts-title">Posts</h3>
+                    <p id="post-count">Loading...</p>
+                </div>
+                <div class="widget">
+                    <h3 id="sidebar-recent-title">Recent Posts</h3>
+                    <ul id="recent-posts">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Esa P &middot; <span id="footer-license-text">Lisensoitu</span> <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" id="footer-license-link">MIT-lisenssillä</a></p>
+        </div>
+    </footer>
+
+    <!-- External dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js" defer></script>
+
+    <!-- Main script -->
+    <script src="script.js" defer></script>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Enhanced error handling
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+        });
+        
+        // Service Worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function(registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+</html> value="50">50</option>
                                 <option value="100">100</option>
                             </select>
                         </label>
