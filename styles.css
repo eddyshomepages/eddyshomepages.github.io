@@ -1464,3 +1464,14 @@ img {
     color: var(--text-secondary);
     white-space: nowrap;
 }
+
+.pagination-controls {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+}
+
+.pagination-controls * {
+    display: initial !important;
+}
