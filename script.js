@@ -23,6 +23,15 @@ function setLinksNewTab() {
     });
 }
 
+/*function setLinksNewTab() {
+	document.querySelectorAll('#full-post-content a, #about-content a, #frontpage-content a').forEach(function(link) {
+		if (link.protocol && link.protocol.startsWith('http')) {
+			link.setAttribute('target', '_blank');
+			link.setAttribute('rel', 'noopener'); // Security enhancement
+		}
+	});
+}*/
+
 // SEO: Dynamic meta tag management
 function updatePageMeta(title, description, canonicalUrl, ogType = 'website', keywords = '') {
     // Update title
@@ -419,6 +428,7 @@ function updateThemeButton() {
 	    (currentLanguage === 'fi' ? 'Vaihda vaalea teema' : 'Switch to light theme'));
 }
 
+// **ADD THIS ENTIRE FUNCTION TO YOUR SCRIPT.JS**
 // Update all page texts based on current language
 function updatePageTexts() {
     const texts = {
@@ -431,11 +441,10 @@ function updatePageTexts() {
             searchLabel: 'Hakusana', searchInstructions: 'Kirjoita hakusana löytääksesi artikkeleita',
             filterTitle: 'Suodata tageilla:', clearButton: 'Tyhjennä kaikki',
             sidebarPostsTitle: 'Artikkelit', sidebarRecentTitle: 'Viimeisimmät artikkelit',
-            postsLoaded: 'artikkelia ladattu', loading: 'Ladataan...',
+            postsLoaded: 'artikkelia ladattu', loading: 'Ladataan...', // ADDED MISSING COMMA
             backButton: '← Takaisin',
-            footerLicense: 'Lisensoitu',
-            footerLicenseLink: 'MIT-lisenssillä',
-            paginationLabel: 'Artikkeleita sivulla:'
+            backToHome: '← Takaisin',
+            backToPosts: '← Takaisin'
         },
         en: {
             home: 'Home', posts: 'Posts', search: 'Search', about: 'About',
@@ -446,14 +455,14 @@ function updatePageTexts() {
             searchLabel: 'Search term', searchInstructions: 'Type search term to find posts',
             filterTitle: 'Filter by tags:', clearButton: 'Clear All',
             sidebarPostsTitle: 'Posts', sidebarRecentTitle: 'Recent Posts',
-            postsLoaded: 'posts loaded', loading: 'Loading...',
+            postsLoaded: 'posts loaded', loading: 'Loading...', // ADDED MISSING COMMA
             backButton: '← Back',
-            footerLicense: 'Licensed under',
-            footerLicenseLink: 'The MIT License (MIT)',
-            paginationLabel: 'Posts per page:'
+            backToHome: '← Back', 
+            backToPosts: '← Back'
         }
     };
     
+    // MOVED THIS LINE BEFORE using 't' variable
     const t = texts[currentLanguage];
     
     // Update all elements if they exist
@@ -463,11 +472,7 @@ function updatePageTexts() {
         ['search-title', t.searchTitle], ['search-label', t.searchLabel],
         ['search-instructions', t.searchInstructions], ['filter-title', t.filterTitle],
         ['clear-button', t.clearButton], ['sidebar-posts-title', t.sidebarPostsTitle],
-        ['sidebar-recent-title', t.sidebarRecentTitle],
-        ['footer-license-text', t.footerLicense],
-        ['footer-license-link', t.footerLicenseLink],
-        ['pagination-label', t.paginationLabel],
-        ['pagination-label-bottom', t.paginationLabel]
+        ['sidebar-recent-title', t.sidebarRecentTitle]
     ];
     
     elements.forEach(([id, text]) => {
@@ -479,13 +484,100 @@ function updatePageTexts() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.placeholder = t.searchPlaceholder;
     
-    // Update back buttons
+    // Update back buttons (SIMPLIFIED TO ONE VERSION)
     document.querySelectorAll('.back-button').forEach(btn => {
         btn.textContent = t.backButton;
+        btn.setAttribute('aria-label', currentLanguage === 'fi' ? 'Takaisin' : 'Back');
     });
 }
 
-// Update navigation text based on language
+/*function updatePageTexts() {
+    const texts = {
+        fi: {
+            // Navigation
+            home: 'Etusivu',
+            posts: 'Artikkelit', 
+            search: 'Haku',
+            about: 'Tietoja',
+            // Posts page
+            postsTitle: 'Blogiartikkelit',
+            postsSubtitle: 'Oppaasi Linux-järjestelmiin ja Home Assistant automaatioon',
+            // Search page
+            searchTitle: 'Hae artikkeleita',
+            searchPlaceholder: 'Hae artikkeleita otsikon, sisällön tai tagien perusteella...',
+            searchLabel: 'Hakusana',
+            searchInstructions: 'Kirjoita hakusana löytääksesi artikkeleita',
+            filterTitle: 'Suodata tageilla:',
+            clearButton: 'Tyhjennä kaikki',
+            // Sidebar
+            sidebarPostsTitle: 'Artikkelit',
+            sidebarRecentTitle: 'Viimeisimmät artikkelit',
+            // Other
+            postsLoaded: 'artikkelia ladattu',
+            loading: 'Ladataan...'
+        },
+        en: {
+            // Navigation
+            home: 'Home',
+            posts: 'Posts',
+            search: 'Search', 
+            about: 'About',
+            // Posts page
+            postsTitle: 'Blog Posts',
+            postsSubtitle: 'Your guide to Linux systems and Home Assistant automation',
+            // Search page
+            searchTitle: 'Search Posts',
+            searchPlaceholder: 'Search posts by title, content, or tags...',
+            searchLabel: 'Search term',
+            searchInstructions: 'Type search term to find posts',
+            filterTitle: 'Filter by tags:',
+            clearButton: 'Clear All',
+            // Sidebar
+            sidebarPostsTitle: 'Posts',
+            sidebarRecentTitle: 'Recent Posts',
+            // Other
+            postsLoaded: 'posts loaded',
+            loading: 'Loading...'
+        }
+    };
+    
+    const t = texts[currentLanguage];
+    
+    // Update navigation
+    document.getElementById('nav-home').textContent = t.home;
+    document.getElementById('nav-posts').textContent = t.posts;
+    document.getElementById('nav-search').textContent = t.search;
+    document.getElementById('nav-about').textContent = t.about;
+    
+    // Update posts page
+    const postsTitle = document.getElementById('posts-title');
+    const postsSubtitle = document.getElementById('posts-subtitle');
+    if (postsTitle) postsTitle.textContent = t.postsTitle;
+    if (postsSubtitle) postsSubtitle.textContent = t.postsSubtitle;
+    
+    // Update search page
+    const searchTitle = document.getElementById('search-title');
+    const searchInput = document.getElementById('search-input');
+    const searchLabel = document.getElementById('search-label');
+    const searchInstructions = document.getElementById('search-instructions');
+    const filterTitle = document.getElementById('filter-title');
+    const clearButton = document.getElementById('clear-button');
+    
+    if (searchTitle) searchTitle.textContent = t.searchTitle;
+    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+    if (searchLabel) searchLabel.textContent = t.searchLabel;
+    if (searchInstructions) searchInstructions.textContent = t.searchInstructions;
+    if (filterTitle) filterTitle.textContent = t.filterTitle;
+    if (clearButton) clearButton.textContent = t.clearButton;
+    
+    // Update sidebar
+    const sidebarPostsTitle = document.getElementById('sidebar-posts-title');
+    const sidebarRecentTitle = document.getElementById('sidebar-recent-title');
+    if (sidebarPostsTitle) sidebarPostsTitle.textContent = t.sidebarPostsTitle;
+    if (sidebarRecentTitle) sidebarRecentTitle.textContent = t.sidebarRecentTitle;
+}*/
+
+// **NEW FUNCTION** - Update navigation text based on language
 function updateNavigationText() {
     const navTexts = {
         fi: {
@@ -640,54 +732,12 @@ function showPosts() {
 	    { name: currentLanguage === 'fi' ? 'Artikkelit' : 'Posts', url: baseUrl + '/#posts' }
 	]);
 	
-	// FORCE display posts immediately
 	if (allPosts.length > 0) {
         displayPosts(allPosts);
-	} else {
-	    // If no posts loaded yet, wait a bit and try again
-	    setTimeout(() => {
-	        if (allPosts.length > 0) {
-	            displayPosts(allPosts);
-	        }
-	    }, 500);
 	}
 	
 	window.scrollTo(0, 0);
 }
-
-/*function showPosts() {
-	hideAllPages();
-	document.getElementById('posts-content').style.display = 'block';
-	document.body.classList.remove('frontpage-active');
-	
-	// Ensure sidebar is visible on posts page
-	document.querySelector('.sidebar').style.display = 'flex';
-	
-	// SEO: Update URL and meta tags
-	const baseUrl = window.location.origin + window.location.pathname.replace(/\/+$/, '');
-	window.history.replaceState({page: 'posts'}, '', baseUrl + '/#posts');
-	
-	const title = currentLanguage === 'fi' ? 
-	    'Blogiartikkelit — Eddy\'s Homepages' :
-	    'Blog Posts — Eddy\'s Homepages';
-	const description = currentLanguage === 'fi' ?
-	    `Selaa ${allPosts.length} artikkelia Linux-järjestelmistä, Home Assistantista ja kotiautomaatiosta.` :
-	    `Browse ${allPosts.length} articles about Linux systems, Home Assistant and home automation.`;
-	
-	updatePageMeta(title, description, baseUrl + '/#posts');
-	
-	// Update breadcrumb
-	updateBreadcrumbSchema([
-	    { name: currentLanguage === 'fi' ? 'Etusivu' : 'Home', url: baseUrl + '/' },
-	    { name: currentLanguage === 'fi' ? 'Artikkelit' : 'Posts', url: baseUrl + '/#posts' }
-	]);
-	
-	if (allPosts.length > 0) {
-        displayPosts(allPosts);
-	}
-	
-	window.scrollTo(0, 0);
-}*/
 
 // Show search page with SEO improvements
 function showSearch() {

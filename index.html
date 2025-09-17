@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="fi" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -47,27 +47,9 @@
     <meta name="theme-color" content="#2c3e50">
     <meta name="msapplication-TileColor" content="#2c3e50">
     <meta name="application-name" content="Eddy's Homepages">
-    <meta name="color-scheme" content="light dark">
-    
-    <!-- Critical CSS inline -->
-    <style>
-        body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 1rem 0; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.5rem; font-weight: bold; }
-        .logo a { color: white; text-decoration: none; }
-        nav ul { display: flex; list-style: none; gap: 1rem; align-items: center; margin: 0; padding: 0; }
-        nav a { color: white; text-decoration: none; padding: 0.5rem; border-radius: 4px; }
-        nav a:hover { background-color: rgba(255,255,255,0.1); }
-    </style>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
     
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://utteranc.es">
     <link rel="dns-prefetch" href="https://giscus.app">
     
@@ -87,10 +69,12 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     
-    <!-- Non-critical CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <!-- Font loading optimization -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
     
     <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
@@ -180,49 +164,49 @@
     }
     </script>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Siirry pääsisältöön</a>
     
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="#home" onclick="showFrontpage(); return false;">
+                    <a href="#home" onclick="showFrontpage(); return false;" aria-label="Eddy's Homepages etusivulle">
                         Eddy's Homepages
                     </a>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home" onclick="showFrontpage(); return false;" id="nav-home">Home</a></li>
-                        <li><a href="#posts" onclick="showPosts(); return false;" id="nav-posts">Posts</a></li>
-                        <li><a href="#search" onclick="showSearch(); return false;" id="nav-search">Search</a></li>
-                        <li><a href="#about" onclick="showAbout(); return false;" id="nav-about">About</a></li>
-                        <li>
-                            <a onclick="downloadRSSFeed()" title="RSS Feed">
-                                <i class="fas fa-rss"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <label for="language-selector" class="sr-only">Select language</label>
-                            <select id="language-selector" onchange="changeLanguage()">
-                                <option value="fi">Suomi</option>
-                                <option value="en">English</option>
-                            </select>
-                        </li>
-                        <li>
-                            <button id="theme-toggle" onclick="toggleTheme()">
-                                🌙
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
+			<nav role="navigation" aria-label="Main navigation">
+			    <ul>
+				<li><a href="#home" onclick="showFrontpage(); return false;" id="nav-home">Home</a></li>
+				<li><a href="#posts" onclick="showPosts(); return false;" id="nav-posts">Posts</a></li>
+				<li><a href="#search" onclick="showSearch(); return false;" id="nav-search">Search</a></li>
+				<li><a href="#about" onclick="showAbout(); return false;" id="nav-about">About</a></li>
+				<li>
+				    <a onclick="downloadRSSFeed()" title="RSS Feed" aria-label="Download RSS feed">
+					<i class="fas fa-rss" aria-hidden="true"></i>
+				    </a>
+				</li>
+				<li>
+				    <label for="language-selector" class="sr-only">Select language</label>
+				    <select id="language-selector" onchange="changeLanguage()" aria-label="Language selection">
+					<option value="fi">Suomi</option>
+					<option value="en">English</option>
+				    </select>
+				</li>
+				<li>
+				    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+					🌙
+				    </button>
+				</li>
+			    </ul>
+			</nav>
             </div>
         </div>
     </header>
 
     <div class="container">
-        <main id="main-content">
+        <main id="main-content" role="main">
             <div class="content">
                 <!-- Frontpage -->
                 <div class="full-post" id="frontpage-page">
@@ -234,11 +218,11 @@
                 <!-- Posts listing -->
                 <div class="posts-container" id="posts-content" style="display: none;">
                     <div class="hero-section">
-                        <h1 class="hero-title" id="posts-title">Blog Posts</h1>
-                        <p id="posts-subtitle">Your guide to Linux systems and Home Assistant automation</p>
-                    </div>
+			<h1 class="hero-title" id="posts-title">Blog Posts</h1>
+			<p id="posts-subtitle">Your guide to Linux systems and Home Assistant automation</p>
+		    </div>
                     <div class="pagination-controls">
-                        <label id="pagination-label">Artikkeleita sivulla:
+                        <label>Artikkeleita sivulla:
                             <select id="posts-per-page" onchange="changePostsPerPage(this)">
                                 <option value="10" selected>10</option>
                                 <option value="25">25</option>
@@ -253,7 +237,7 @@
                         <div style="padding: 2rem; text-align: center;">Ladataan artikkeleita...</div>
                     </div>
                     <div class="pagination-controls bottom">
-                        <label id="pagination-label-bottom">Artikkeleita sivulla:
+                        <label>Artikkeleita sivulla:
                             <select id="posts-per-page-bottom" onchange="changePostsPerPage(this)">
                                 <option value="10" selected>10</option>
                                 <option value="25">25</option>
@@ -268,83 +252,90 @@
 
                 <!-- Individual post view -->
                 <article class="full-post" id="full-post" style="display: none;">
-                    <button class="back-button" onclick="showPosts()">← Takaisin</button>
+                    <button class="back-button" onclick="showPosts()" aria-label="Takaisin artikkeleihin">← Takaisin</button>
                     <div id="full-post-content"></div>
                 </article>
 
                 <!-- Search page -->
                 <div class="full-post" id="search-page" style="display: none;">
-                    <button class="back-button" onclick="showFrontpage()">← Takaisin</button>
-                    <div id="search-content">
-                        <h1 id="search-title">Search Posts</h1>
-                        <div class="search-container" style="margin-bottom: 2rem;">
-                            <label for="search-input" class="sr-only" id="search-label">Search term</label>
-                            <input type="text" id="search-input" placeholder="Search posts by title, content, or tags..."
-                                   style="width: 100%; padding: 1rem; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem;"
-                                   oninput="performSearch()">
-                            <div class="tag-filters" style="margin-bottom: 1rem;">
-                                <h3 id="filter-title">Filter by tags:</h3>
-                                <div id="tag-filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;"></div>
-                            </div>
-                            <button onclick="clearSearch()" id="clear-button" style="padding: 0.5rem 1rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
-                        </div>
-                        <div id="search-results">
-                            <p>Enter a search term or select tags to find posts...</p>
-                        </div>
-                    </div>
+                    <button class="back-button" onclick="showFrontpage()" aria-label="Takaisin etusivulle">← Takaisin</button>
+		    <div id="search-content">
+			    <h1 id="search-title">Search Posts</h1>
+			    <div class="search-container" style="margin-bottom: 2rem;">
+				<label for="search-input" class="sr-only" id="search-label">Search term</label>
+				<input type="text" id="search-input" placeholder="Search posts by title, content, or tags..."
+				       style="width: 100%; padding: 1rem; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem;"
+				       oninput="performSearch()" aria-describedby="search-instructions">
+				<div id="search-instructions" class="sr-only">Type search term to find articles</div>
+				<div class="tag-filters" style="margin-bottom: 1rem;">
+				    <h3 id="filter-title">Filter by tags:</h3>
+				    <div id="tag-filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;" role="group" aria-label="Tag filters"></div>
+				</div>
+				<button onclick="clearSearch()" id="clear-button" style="padding: 0.5rem 1rem; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear All</button>
+			    </div>
+			    <div id="search-results" role="region" aria-live="polite" aria-label="Search results">
+				<p>Enter a search term or select tags to find posts...</p>
+			    </div>
+		    </div>
+                    
                 </div>
 
                 <!-- About page -->
                 <div class="full-post" id="about-page" style="display: none;">
-                    <button class="back-button" onclick="showFrontpage()">← Takaisin</button>
+                    <button class="back-button" onclick="showFrontpage()" aria-label="Takaisin etusivulle">← Takaisin</button>
                     <div id="about-content">
                         <div style="padding: 2rem; text-align: center;">Ladataan tietoja-sivua...</div>
                     </div>
                 </div>
             </div>
 
-            <aside class="sidebar" style="display: flex;">
-                <div class="widget">
-                    <h3 id="sidebar-posts-title">Posts</h3>
-                    <p id="post-count">Loading...</p>
-                </div>
-                <div class="widget">
-                    <h3 id="sidebar-recent-title">Recent Posts</h3>
-                    <ul id="recent-posts">
-                        <li>Loading...</li>
-                    </ul>
-                </div>
-            </aside>
+	    <aside class="sidebar" style="display: flex;" role="complementary" aria-label="Sidebar">
+		    <div class="widget">
+			<h3 id="sidebar-posts-title">Posts</h3>
+			<p id="post-count">Loading...</p>
+		    </div>
+		    <div class="widget">
+			<h3 id="sidebar-recent-title">Recent Posts</h3>
+			<ul id="recent-posts">
+			    <li>Loading...</li>
+			</ul>
+		    </div>
+	    </aside>
         </main>
     </div>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; <span id="current-year">2025</span> Esa P &middot; <span id="footer-license-text">Lisensoitu</span> <a href="https://eddyshomepages.fi/opensource.org/licenses/MIT" target="_blank" rel="noopener" id="footer-license-link">MIT-lisenssillä</a></p>
+            <p>&copy; <span id="current-year">2025</span> Esa P &middot; Lisensoitu <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT-lisenssillä</a></p>
         </div>
     </footer>
 
-    <!-- Scripts loaded at bottom for better performance -->
-    <script>
-        // Critical inline JS for theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-        
-        // Set current year immediately
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
-    
     <!-- External dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js" defer></script>
+
+    <!-- Main script -->
     <script src="script.js" defer></script>
 
     <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
         // Enhanced error handling
         window.addEventListener('error', function(e) {
             console.error('Global error:', e.error);
         });
+        
+        // Service Worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function(registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
     </script>
 </body>
 </html>
