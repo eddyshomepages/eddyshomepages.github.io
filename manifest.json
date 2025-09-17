@@ -1,0 +1,21 @@
+{
+  "name": "Eddy's Homepages",
+  "short_name": "EddysPages",
+  "description": "Linux-järjestelmien ja Home Assistant automaation oppaat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#2c3e50",
+  "icons": [
+    {
+      "src": "/assets/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
