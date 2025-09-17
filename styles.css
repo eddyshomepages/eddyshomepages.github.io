@@ -1393,3 +1393,13 @@ a:not(.share-btn):not(.page-btn):hover {
 [data-theme="dark"] #frontpage-content a:not(.share-btn):not(.page-btn):not(.tag):not(.back-button):not([role="button"]):not([onclick]):not(.social-links a):hover {
     color: #99ccff !important; /* Lighter blue on hover in dark theme */
 }
+
+/* Add to styles.css */
+img {
+    loading: lazy;
+    decoding: async;
+}
+
+.profile-image {
+    loading: eager; /* Load profile image immediately */
+}
