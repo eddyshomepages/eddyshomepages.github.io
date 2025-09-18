@@ -1696,3 +1696,12 @@ a:not(.share-btn):not(.page-btn):hover {
         padding: 0.75rem;
     }
 }
+
+img {
+    loading: lazy;
+    decoding: async;
+}
+
+.profile-image {
+    loading: eager;
+}
