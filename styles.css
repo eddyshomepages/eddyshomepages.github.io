@@ -1697,3 +1697,16 @@ a:not(.share-btn):not(.page-btn):hover {
     }
 }
 
+img {
+    loading: lazy;
+    decoding: async;
+}
+
+.profile-image {
+    loading: eager;
+}
+
+@font-face {
+  font-family: system-ui;
+  font-display: swap;
+}
