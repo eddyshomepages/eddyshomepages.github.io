@@ -354,7 +354,7 @@ function updateRecentPosts() {
 
 // SEO: Generate sitemap data for better indexing
 function generateSitemapData() {
-    // This creates a client-side sitemap that can be used by crawlers
+    // Creates a client-side sitemap that can be used by crawlers
     const sitemapData = {
         pages: [
             { url: window.location.origin + '/#home', changefreq: 'weekly', priority: '1.0' },
@@ -460,7 +460,6 @@ function updatePageTexts() {
         ['sidebar-recent-title', t.sidebarRecentTitle],
         ['footer-license-text', t.footerLicense],
         ['footer-license-link', t.footerLicenseLink]
-        // REMOVED pagination-label entries - they break the HTML content
     ];
     
     elements.forEach(([id, text]) => {
@@ -670,6 +669,13 @@ function showSearch() {
 	    'Hae artikkeleita otsikon, sisällön tai tagien perusteella.' :
 	    'Search articles by title, content or tags.';
 	
+	// Set initial search instructions in the correct language
+	const initialText = currentLanguage === 'fi' ?
+	    'Syötä hakusana tai valitse tagit löytääksesi artikkeleita...' :
+	    'Enter a search term or select tags to find posts...';
+
+	document.getElementById('search-results').innerHTML = `<p>${initialText}</p>`;
+
 	updatePageMeta(title, description, baseUrl + '/#search');
 	
 	// Update breadcrumb
