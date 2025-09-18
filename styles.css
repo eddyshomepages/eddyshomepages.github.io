@@ -1351,7 +1351,7 @@ a:not(.share-btn):not(.page-btn):hover {
 
 /* **NEW** - Dark theme link fixes */
 [data-theme="dark"] a:not(.share-btn):not(.page-btn) {
-    color: var(--text-color, #e0e0e0);
+    color: var(--text-color, #3498db); /* #e0e0e0);*/
 }
 
 /* Normal link colors for content links only - exclude all buttons and interactive elements */
