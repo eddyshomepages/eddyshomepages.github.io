@@ -315,6 +315,10 @@ async function changeLanguage() {
 	updateNavigationText(); 
 	handleInitialRoute();
 	updatePageTexts();
+
+        if (typeof cookieConsent !== 'undefined' && cookieConsent) {
+            cookieConsent.updateLanguage();
+        }
 	
         if (document.getElementById('search-page').style.display !== 'none') {
             generateTagFilters();
@@ -1457,6 +1461,434 @@ function loadUtterancesComments(postId) {
     document.getElementById('full-post-content').appendChild(commentsDiv);
 }
 
+// Cookie Consent System - Add this to the END of script.js (before the init call)
+
+class CookieConsent {
+    constructor() {
+        this.cookiePreferences = {
+            necessary: true,
+            analytics: false,
+            marketing: false,
+            functional: false
+        };
+        
+        this.consentGiven = false;
+        this.consentKey = 'eddys_homepages_cookie_consent';
+        this.preferencesKey = 'eddys_homepages_cookie_preferences';
+        
+        this.init();
+    }
+    
+    init() {
+        this.loadSavedPreferences();
+        this.createBanner();
+        this.createModal();
+        this.checkConsent();
+    }
+    
+    loadSavedPreferences() {
+        const savedConsent = localStorage.getItem(this.consentKey);
+        const savedPreferences = localStorage.getItem(this.preferencesKey);
+        
+        if (savedConsent) {
+            this.consentGiven = JSON.parse(savedConsent);
+        }
+        
+        if (savedPreferences) {
+            this.cookiePreferences = { ...this.cookiePreferences, ...JSON.parse(savedPreferences) };
+        }
+    }
+    
+    createBanner() {
+        const banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.className = 'cookie-banner';
+        
+        const texts = this.getTexts();
+        
+        banner.innerHTML = `
+            <div class="cookie-banner-content">
+                <div class="cookie-text">
+                    <h3>${texts.title}</h3>
+                    <p>${texts.description}</p>
+                </div>
+                <div class="cookie-buttons">
+                    <button class="cookie-btn accept" onclick="cookieConsent.acceptAll()">${texts.acceptAll}</button>
+                    <button class="cookie-btn decline" onclick="cookieConsent.declineAll()">${texts.declineAll}</button>
+                    <button class="cookie-btn settings" onclick="cookieConsent.showSettings()">${texts.settings}</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(banner);
+    }
+    
+    createModal() {
+        const modal = document.createElement('div');
+        modal.id = 'cookie-modal';
+        modal.className = 'cookie-modal';
+        
+        const texts = this.getTexts();
+        
+        modal.innerHTML = `
+            <div class="cookie-modal-content">
+                <div class="cookie-modal-header">
+                    <h2>${texts.settingsTitle}</h2>
+                    <button class="cookie-close" onclick="cookieConsent.hideSettings()">×</button>
+                </div>
+                <div class="cookie-modal-body">
+                    <p>${texts.settingsDescription}</p>
+                    
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h3>${texts.necessary.title}</h3>
+                            <label class="cookie-toggle">
+                                <input type="checkbox" checked disabled>
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>${texts.necessary.description}</p>
+                    </div>
+                    
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h3>${texts.functional.title}</h3>
+                            <label class="cookie-toggle">
+                                <input type="checkbox" id="functional-toggle" onchange="cookieConsent.updatePreference('functional', this.checked)">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>${texts.functional.description}</p>
+                    </div>
+                    
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h3>${texts.analytics.title}</h3>
+                            <label class="cookie-toggle">
+                                <input type="checkbox" id="analytics-toggle" onchange="cookieConsent.updatePreference('analytics', this.checked)">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>${texts.analytics.description}</p>
+                    </div>
+                    
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h3>${texts.marketing.title}</h3>
+                            <label class="cookie-toggle">
+                                <input type="checkbox" id="marketing-toggle" onchange="cookieConsent.updatePreference('marketing', this.checked)">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>${texts.marketing.description}</p>
+                    </div>
+                </div>
+                <div class="cookie-modal-footer">
+                    <button class="cookie-save-btn" onclick="cookieConsent.savePreferences()">${texts.savePreferences}</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        this.updateToggleStates();
+    }
+    
+    getTexts() {
+        let lang = currentLanguage || 
+                   document.getElementById('language-selector')?.value || 
+                   localStorage.getItem('preferredLanguage') || 
+                   (navigator.language && navigator.language.startsWith('fi') ? 'fi' : 'en');
+        
+        const texts = {
+            fi: {
+                title: 'Evästeiden käyttö',
+                description: 'Käytämme evästeitä parantaaksemme käyttökokemustasi. Voit hyväksyä kaikki evästeet tai valita asetukset.',
+                acceptAll: 'Hyväksy kaikki',
+                declineAll: 'Hylkää kaikki',
+                settings: 'Asetukset',
+                settingsTitle: 'Evästeiden asetukset',
+                settingsDescription: 'Voit hallita evästeiden käyttöä valitsemalla alla olevista vaihtoehdoista.',
+                savePreferences: 'Tallenna asetukset',
+                necessary: {
+                    title: 'Välttämättömät evästeet',
+                    description: 'Nämä evästeet ovat välttämättömiä sivuston toiminnalle. Ne mahdollistavat perustoiminnot kuten navigoinnin ja pääsyn suojatuille alueille.'
+                },
+                functional: {
+                    title: 'Toiminnalliset evästeet',
+                    description: 'Nämä evästeet parantavat sivuston toimivuutta tallentamalla asetuksiasi kuten teema ja kieli.'
+                },
+                analytics: {
+                    title: 'Analytiikkaevästeet',
+                    description: 'Nämä evästeet auttavat meitä ymmärtämään, miten käytät sivustoa. Tiedot kerätään anonyymisti.'
+                },
+                marketing: {
+                    title: 'Markkinointievästeet',
+                    description: 'Nämä evästeet mahdollistavat kohdennettujen mainosten näyttämisen ja sosiaalisen median integraation.'
+                }
+            },
+            en: {
+                title: 'Cookie Usage',
+                description: 'We use cookies to improve your browsing experience. You can accept all cookies or customize your settings.',
+                acceptAll: 'Accept All',
+                declineAll: 'Decline All',
+                settings: 'Settings',
+                settingsTitle: 'Cookie Settings',
+                settingsDescription: 'You can manage cookie usage by selecting from the options below.',
+                savePreferences: 'Save Preferences',
+                necessary: {
+                    title: 'Necessary Cookies',
+                    description: 'These cookies are essential for the website to function. They enable basic features like navigation and access to secure areas.'
+                },
+                functional: {
+                    title: 'Functional Cookies',
+                    description: 'These cookies enhance website functionality by remembering your preferences like theme and language settings.'
+                },
+                analytics: {
+                    title: 'Analytics Cookies',
+                    description: 'These cookies help us understand how you use the website. Data is collected anonymously.'
+                },
+                marketing: {
+                    title: 'Marketing Cookies',
+                    description: 'These cookies enable targeted advertising and social media integration.'
+                }
+            }
+        };
+        
+        return texts[lang] || texts.en;
+    }
+    
+    checkConsent() {
+        if (!this.consentGiven) {
+            this.showBanner();
+        } else {
+            this.loadAllowedScripts();
+        }
+    }
+    
+    showBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.classList.add('show');
+        }
+    }
+    
+    hideBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.classList.remove('show');
+        }
+    }
+    
+    showSettings() {
+        const modal = document.getElementById('cookie-modal');
+        if (modal) {
+            modal.classList.add('show');
+            this.updateToggleStates();
+        }
+    }
+    
+    hideSettings() {
+        const modal = document.getElementById('cookie-modal');
+        if (modal) {
+            modal.classList.remove('show');
+        }
+    }
+    
+    updateToggleStates() {
+        const functionalToggle = document.getElementById('functional-toggle');
+        const analyticsToggle = document.getElementById('analytics-toggle');
+        const marketingToggle = document.getElementById('marketing-toggle');
+        
+        if (functionalToggle) functionalToggle.checked = this.cookiePreferences.functional;
+        if (analyticsToggle) analyticsToggle.checked = this.cookiePreferences.analytics;
+        if (marketingToggle) marketingToggle.checked = this.cookiePreferences.marketing;
+    }
+    
+    updatePreference(type, value) {
+        this.cookiePreferences[type] = value;
+    }
+    
+    acceptAll() {
+        this.cookiePreferences = {
+            necessary: true,
+            analytics: true,
+            marketing: true,
+            functional: true
+        };
+        this.saveConsent();
+    }
+    
+    declineAll() {
+        this.cookiePreferences = {
+            necessary: true,
+            analytics: false,
+            marketing: false,
+            functional: false
+        };
+        this.saveConsent();
+    }
+    
+    savePreferences() {
+        this.saveConsent();
+        this.hideSettings();
+    }
+    
+    saveConsent() {
+        this.consentGiven = true;
+        localStorage.setItem(this.consentKey, JSON.stringify(this.consentGiven));
+        localStorage.setItem(this.preferencesKey, JSON.stringify(this.cookiePreferences));
+        
+        this.hideBanner();
+        this.loadAllowedScripts();
+        this.cleanupDisallowedCookies();
+    }
+    
+    loadAllowedScripts() {
+        if (this.cookiePreferences.analytics) {
+            // Add Google Analytics or other analytics here if needed
+            console.log('Analytics cookies accepted');
+        }
+        
+        if (this.cookiePreferences.marketing) {
+            // Add marketing scripts here if needed  
+            console.log('Marketing cookies accepted');
+        }
+        
+        if (this.cookiePreferences.functional) {
+            console.log('Functional cookies accepted');
+        }
+    }
+    
+    cleanupDisallowedCookies() {
+        if (!this.cookiePreferences.analytics) {
+            this.deleteCookiesByPattern(['_ga', '_gid', '_gat']);
+        }
+        
+        if (!this.cookiePreferences.marketing) {
+            this.deleteCookiesByPattern(['_fbp', '_fbc', 'fr']);
+        }
+    }
+    
+    deleteCookiesByPattern(patterns) {
+        const cookies = document.cookie.split(';');
+        
+        cookies.forEach(cookie => {
+            const cookieName = cookie.split('=')[0].trim();
+            
+            patterns.forEach(pattern => {
+                if (cookieName.includes(pattern)) {
+                    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${window.location.hostname}`;
+                    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.${window.location.hostname}`;
+                }
+            });
+        });
+    }
+    
+    updateLanguage() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            const wasVisible = banner.classList.contains('show');
+            banner.remove();
+            this.createBanner();
+            if (wasVisible) {
+                this.showBanner();
+            }
+        }
+        
+        const modal = document.getElementById('cookie-modal');
+        if (modal) {
+            const wasModalVisible = modal.classList.contains('show');
+            modal.remove();
+            this.createModal();
+            if (wasModalVisible) {
+                this.showSettings();
+            }
+        }
+    }
+}
+
+// Initialize cookie consent
+let cookieConsent;
+
+function initCookieConsent() {
+    setTimeout(() => {
+        cookieConsent = new CookieConsent();
+    }, 100);
+}
+
+// Enhanced loadUtterancesComments with cookie consent check
+function loadUtterancesComments(postId) {
+    if (!cookieConsent || !cookieConsent.consentGiven) {
+        const commentsDiv = document.createElement('div');
+        commentsDiv.className = 'comments-placeholder';
+        commentsDiv.style.marginTop = '3rem';
+        commentsDiv.style.padding = '2rem';
+        commentsDiv.style.textAlign = 'center';
+        commentsDiv.style.background = 'var(--bg-tertiary)';
+        commentsDiv.style.borderRadius = '8px';
+        commentsDiv.style.border = '1px solid var(--border-color)';
+        
+        const texts = currentLanguage === 'fi' ? {
+            title: 'Kommentit vaativat evästeiden hyväksynnän',
+            description: 'Hyväksy evästeet nähdäksesi kommentit ja osallistuaksesi keskusteluun.',
+            button: 'Hyväksy evästeet'
+        } : {
+            title: 'Comments require cookie consent',
+            description: 'Accept cookies to view comments and participate in discussions.',
+            button: 'Accept cookies'
+        };
+        
+        commentsDiv.innerHTML = `
+            <h3 style="color: var(--text-primary); margin-bottom: 1rem;">${texts.title}</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${texts.description}</p>
+            <button onclick="cookieConsent.showSettings()" style="background: var(--accent); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer;">
+                ${texts.button}
+            </button>
+        `;
+        
+        document.getElementById('full-post-content').appendChild(commentsDiv);
+        return;
+    }
+    
+    // Existing Utterances loading code
+    const existingComments = document.querySelector('.utterances');
+    if (existingComments) {
+        existingComments.remove();
+    }
+    
+    const commentsDiv = document.createElement('div');
+    commentsDiv.className = 'comments-section';
+    commentsDiv.style.marginTop = '3rem';
+    
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', 'eddyshomepages/eddyshomepages.github.io');
+    script.setAttribute('issue-term', `post-${postId}`);
+    script.setAttribute('theme', currentTheme === 'dark' ? 'github-dark' : 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    
+    const loadingDiv = document.createElement('div');
+    loadingDiv.textContent = currentLanguage === 'fi' ? 'Ladataan kommentteja...' : 'Loading comments...';
+    loadingDiv.style.textAlign = 'center';
+    loadingDiv.style.padding = '2rem';
+    loadingDiv.style.color = '#666';
+    
+    commentsDiv.appendChild(loadingDiv);
+    commentsDiv.appendChild(script);
+    
+    script.onload = () => {
+        setTimeout(() => {
+            if (loadingDiv.parentNode) {
+                loadingDiv.remove();
+            }
+        }, 1000);
+    };
+    
+    document.getElementById('full-post-content').appendChild(commentsDiv);
+}
+
+
 // Enhanced initialization with error handling and performance improvements
 async function init() {
 	try {
@@ -1510,6 +1942,7 @@ async function init() {
                 </button>
             </div>`;
 	}
+    initCookieConsent();
 }
 
 // Preload critical resources for better performance
