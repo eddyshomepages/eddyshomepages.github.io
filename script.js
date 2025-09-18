@@ -148,44 +148,44 @@ const frontpageFiles = {
 
 const markdownPosts = {
 	fi: [
-	'aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen.md',
-	'moikka-maailma.md',
-	'mita-olen-vuosien-aikana-puuhaillut.md',
-	'uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus.md',
-	'dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan.md',
-	'caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan.md',
-	'wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille.md',
-	'home-assistantin-asennus-docker-composen-avulla.md',
-	'baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla.md',
-	'docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla.md',
-	'mariadb-tietokannan-kayttoonotto-home-assistantissa.md',
-	'mosquitto-brokerin-asennus-kayttaen-docker-composea.md',
-	'ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen.md',
-	'zigbee2mqtt-asentaminen-docker-composen-avulla.md',
-	'sivuston-rss-syote-saatavilla.md',
-	'oman-streemauspalvelun-rakentaminen.md',
-	'energian-hinnan-seurantaa-home-assistantilla.md',
-	'sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla.md',
-	'almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin.md',
-	'energian-hinnan-seurantaa-home-assistantilla-osa-2.md',
-	'mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto.md',
-	'auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan.md',
-	'alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla.md',
-	'raspberrypiosn-asentaminen-ja-kayttoonotto.md',
-	'home-assistantin-kaytto-halytysjarjestelmana-osa-1.md',
-	'nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla.md',
-	'esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan.md',
-	'sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla.md',
-	'raspberrypi-osn-asentaminen-kiosk-tilaan.md',
-	'home-assistantin-kaytto-halytysjarjestelmana-osa-2.md',
-	'jellyfin-mediapalvelimen-asennus.md',
-	'syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto.md',
-	'motioneye-kameravalvonta-ohjelmiston-asennus.md',
-	'sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi.md',
-	'huoltokatko.md',
-	'ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa.md',
-	'eddys-homapages-new-site.md',
-	'paivitetyt-sivut.md'
+        'aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen.md',
+        'moikka-maailma.md',
+        'mita-olen-vuosien-aikana-puuhaillut.md',
+        'uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus.md',
+        'dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan.md',
+        'caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan.md',
+        'wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille.md',
+        'home-assistantin-asennus-docker-composen-avulla.md',
+        'baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla.md',
+        'docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla.md',
+        'mariadb-tietokannan-kayttoonotto-home-assistantissa.md',
+        'mosquitto-brokerin-asennus-kayttaen-docker-composea.md',
+        'ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen.md',
+        'zigbee2mqtt-asentaminen-docker-composen-avulla.md',
+        'sivuston-rss-syote-saatavilla.md',
+        'oman-streemauspalvelun-rakentaminen.md',
+        'energian-hinnan-seurantaa-home-assistantilla.md',
+        'sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla.md',
+        'almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin.md',
+        'energian-hinnan-seurantaa-home-assistantilla-osa-2.md',
+        'mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto.md',
+        'auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan.md',
+        'alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla.md',
+        'raspberrypiosn-asentaminen-ja-kayttoonotto.md',
+        'home-assistantin-kaytto-halytysjarjestelmana-osa-1.md',
+        'nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla.md',
+        'esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan.md',
+        'sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla.md',
+        'raspberrypi-osn-asentaminen-kiosk-tilaan.md',
+        'home-assistantin-kaytto-halytysjarjestelmana-osa-2.md',
+        'jellyfin-mediapalvelimen-asennus.md',
+        'syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto.md',
+        'motioneye-kameravalvonta-ohjelmiston-asennus.md',
+        'sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi.md',
+        'huoltokatko.md',
+        'ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa.md',
+        'eddys-homapages-new-site.md',
+        'paivitetyt-sivut.md'
 	],
 	en: [
 		'hello-world.md',
@@ -433,7 +433,8 @@ function updatePageTexts() {
             backButton: '← Takaisin',
             footerLicense: 'Lisensoitu',
             footerLicenseLink: 'MIT-lisenssillä',
-            paginationLabel: 'Artikkeleita sivulla:'
+            paginationLabel: 'Artikkeleita sivulla:',
+            cookiePolicy: 'Evästekäytäntö'
         },
         en: {
             home: 'Home', posts: 'Posts', search: 'Search', about: 'About',
@@ -448,7 +449,8 @@ function updatePageTexts() {
             backButton: '← Back',
             footerLicense: 'Licensed under',
             footerLicenseLink: 'The MIT License (MIT)',
-            paginationLabel: 'Posts per page:'
+            paginationLabel: 'Posts per page:',
+            cookiePolicy: 'Cookie Policy'
         }
     };
     
@@ -463,7 +465,8 @@ function updatePageTexts() {
         ['clear-button', t.clearButton], ['sidebar-posts-title', t.sidebarPostsTitle],
         ['sidebar-recent-title', t.sidebarRecentTitle],
         ['footer-license-text', t.footerLicense],
-        ['footer-license-link', t.footerLicenseLink]
+        ['footer-license-link', t.footerLicenseLink],
+        ['cookie-policy-text', t.cookiePolicy]
     ];
     
     elements.forEach(([id, text]) => {
