@@ -353,7 +353,6 @@ main {
 	border: 1px solid var(--border-color);
 }
 
-/* Frontpage specific styles */
 #frontpage-page {
 	background: var(--bg-primary);
 	min-height: 80vh;
@@ -452,7 +451,7 @@ main {
 	box-shadow: var(--shadow);
 }
 
-/* Dark theme social links - maintain consistent colors */
+/* Dark theme social links */
 [data-theme="dark"] .social-links a:link,
 [data-theme="dark"] .social-links a:visited,
 [data-theme="dark"] .social-links a:hover,
@@ -494,7 +493,6 @@ main {
 	max-width: 100%;
 	overflow-x: auto;
 	display: block;
-	/*white-space: nowrap;*/
 	white-space: normal;
 }
 
@@ -537,7 +535,6 @@ pre code {
 
 *:not(pre) > code {
 	padding: 0.3rem 0.6rem;
-	/*white-space: nowrap;*/
 	white-space: normal;
 	background: #e9e9e9;
 	border: 1px solid #dcdcdc;
@@ -1326,7 +1323,7 @@ mark.search-highlight {
     }
 }
 
-/* **NEW** - Fix navigation link colors */
+/* Fix navigation link colors */
 nav ul li a {
     color: inherit !important;
     text-decoration: none;
@@ -1340,7 +1337,7 @@ nav ul li a:visited {
     color: inherit !important;
 }
 
-/* **NEW** - Ensure consistent link styling throughout */
+/* Ensure consistent link styling throughout */
 a:not(.share-btn):not(.page-btn) {
     color: var(--text-color, #333);
 }
@@ -1349,7 +1346,7 @@ a:not(.share-btn):not(.page-btn):hover {
     color: var(--accent, #007bff);
 }
 
-/* **NEW** - Dark theme link fixes */
+/* Dark theme link fixes */
 [data-theme="dark"] a:not(.share-btn):not(.page-btn) {
     color: var(--text-color, #e0e0e0);
 }
@@ -1394,7 +1391,7 @@ a:not(.share-btn):not(.page-btn):hover {
     color: #99ccff !important; /* Lighter blue on hover in dark theme */
 }
 
-/* Cookie Consent System Styles - Add this to the END of styles.css */
+/* Cookie Consent System Styles */
 
 .cookie-banner {
     position: fixed;
