@@ -1165,7 +1165,7 @@ function sharePost(platform, title, url) {
         whatsapp: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
         instagram: `https://www.instagram.com/`,
         snapchat: `https://www.snapchat.com/scan?attachmentUrl=${encodedUrl}`,
-        mastodon: `https://mastodon.social/share?text=${encodedTitle}%20${encodedUrl}`,
+        mastodon: `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`,
         email: `mailto:?subject=${encodedTitle}&body=${encodedTitle}%0A${encodedUrl}`
 	};
 	
