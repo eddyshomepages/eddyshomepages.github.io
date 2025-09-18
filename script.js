@@ -23,15 +23,6 @@ function setLinksNewTab() {
     });
 }
 
-/*function setLinksNewTab() {
-	document.querySelectorAll('#full-post-content a, #about-content a, #frontpage-content a').forEach(function(link) {
-		if (link.protocol && link.protocol.startsWith('http')) {
-			link.setAttribute('target', '_blank');
-			link.setAttribute('rel', 'noopener'); // Security enhancement
-		}
-	});
-}*/
-
 // SEO: Dynamic meta tag management
 function updatePageMeta(title, description, canonicalUrl, ogType = 'website', keywords = '') {
     // Update title
@@ -317,17 +308,11 @@ async function changeLanguage() {
 	    fi: 'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant automaatiosta.',
 	    en: 'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant automation.'
 	};
-	
-	//updatePageMeta(titles[currentLanguage], descriptions[currentLanguage], window.location.href);
-	
-	//handleInitialRoute();
-	// **ADD THIS LINE** at the end of the existing changeLanguage() function, before handleInitialRoute():
+
 	updateNavigationText();
 
-	// So the end of changeLanguage() function should look like:
-	// ...existing code...
 	updatePageMeta(titles[currentLanguage], descriptions[currentLanguage], window.location.href);
-	updateNavigationText(); // **ADD THIS LINE**
+	updateNavigationText(); 
 	handleInitialRoute();
 	updatePageTexts();
 	
@@ -428,7 +413,6 @@ function updateThemeButton() {
 	    (currentLanguage === 'fi' ? 'Vaihda vaalea teema' : 'Switch to light theme'));
 }
 
-// **ADD THIS ENTIRE FUNCTION TO YOUR SCRIPT.JS**
 // Update all page texts based on current language
 function updatePageTexts() {
     const texts = {
@@ -441,10 +425,11 @@ function updatePageTexts() {
             searchLabel: 'Hakusana', searchInstructions: 'Kirjoita hakusana löytääksesi artikkeleita',
             filterTitle: 'Suodata tageilla:', clearButton: 'Tyhjennä kaikki',
             sidebarPostsTitle: 'Artikkelit', sidebarRecentTitle: 'Viimeisimmät artikkelit',
-            postsLoaded: 'artikkelia ladattu', loading: 'Ladataan...', // ADDED MISSING COMMA
+            postsLoaded: 'artikkelia ladattu', loading: 'Ladataan...',
             backButton: '← Takaisin',
-            backToHome: '← Takaisin',
-            backToPosts: '← Takaisin'
+            footerLicense: 'Lisensoitu',
+            footerLicenseLink: 'MIT-lisenssillä',
+            paginationLabel: 'Artikkeleita sivulla:'
         },
         en: {
             home: 'Home', posts: 'Posts', search: 'Search', about: 'About',
@@ -455,24 +440,27 @@ function updatePageTexts() {
             searchLabel: 'Search term', searchInstructions: 'Type search term to find posts',
             filterTitle: 'Filter by tags:', clearButton: 'Clear All',
             sidebarPostsTitle: 'Posts', sidebarRecentTitle: 'Recent Posts',
-            postsLoaded: 'posts loaded', loading: 'Loading...', // ADDED MISSING COMMA
+            postsLoaded: 'posts loaded', loading: 'Loading...',
             backButton: '← Back',
-            backToHome: '← Back', 
-            backToPosts: '← Back'
+            footerLicense: 'Licensed under',
+            footerLicenseLink: 'The MIT License (MIT)',
+            paginationLabel: 'Posts per page:'
         }
     };
     
-    // MOVED THIS LINE BEFORE using 't' variable
     const t = texts[currentLanguage];
     
-    // Update all elements if they exist
+    // Update simple text elements (NOT the pagination labels that contain HTML)
     const elements = [
         ['nav-home', t.home], ['nav-posts', t.posts], ['nav-search', t.search], ['nav-about', t.about],
         ['posts-title', t.postsTitle], ['posts-subtitle', t.postsSubtitle],
         ['search-title', t.searchTitle], ['search-label', t.searchLabel],
         ['search-instructions', t.searchInstructions], ['filter-title', t.filterTitle],
         ['clear-button', t.clearButton], ['sidebar-posts-title', t.sidebarPostsTitle],
-        ['sidebar-recent-title', t.sidebarRecentTitle]
+        ['sidebar-recent-title', t.sidebarRecentTitle],
+        ['footer-license-text', t.footerLicense],
+        ['footer-license-link', t.footerLicenseLink]
+        // REMOVED pagination-label entries - they break the HTML content
     ];
     
     elements.forEach(([id, text]) => {
@@ -480,104 +468,29 @@ function updatePageTexts() {
         if (el) el.textContent = text;
     });
     
+    // Update pagination labels separately without destroying HTML content
+    const paginationLabel = document.getElementById('pagination-label');
+    if (paginationLabel) {
+        // Only update the text, keep the select element
+        paginationLabel.childNodes[0].textContent = t.paginationLabel;
+    }
+    
+    const paginationLabelBottom = document.getElementById('pagination-label-bottom');
+    if (paginationLabelBottom) {
+        paginationLabelBottom.childNodes[0].textContent = t.paginationLabel;
+    }
+    
     // Update search input placeholder
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.placeholder = t.searchPlaceholder;
     
-    // Update back buttons (SIMPLIFIED TO ONE VERSION)
+    // Update back buttons
     document.querySelectorAll('.back-button').forEach(btn => {
         btn.textContent = t.backButton;
-        btn.setAttribute('aria-label', currentLanguage === 'fi' ? 'Takaisin' : 'Back');
     });
 }
 
-/*function updatePageTexts() {
-    const texts = {
-        fi: {
-            // Navigation
-            home: 'Etusivu',
-            posts: 'Artikkelit', 
-            search: 'Haku',
-            about: 'Tietoja',
-            // Posts page
-            postsTitle: 'Blogiartikkelit',
-            postsSubtitle: 'Oppaasi Linux-järjestelmiin ja Home Assistant automaatioon',
-            // Search page
-            searchTitle: 'Hae artikkeleita',
-            searchPlaceholder: 'Hae artikkeleita otsikon, sisällön tai tagien perusteella...',
-            searchLabel: 'Hakusana',
-            searchInstructions: 'Kirjoita hakusana löytääksesi artikkeleita',
-            filterTitle: 'Suodata tageilla:',
-            clearButton: 'Tyhjennä kaikki',
-            // Sidebar
-            sidebarPostsTitle: 'Artikkelit',
-            sidebarRecentTitle: 'Viimeisimmät artikkelit',
-            // Other
-            postsLoaded: 'artikkelia ladattu',
-            loading: 'Ladataan...'
-        },
-        en: {
-            // Navigation
-            home: 'Home',
-            posts: 'Posts',
-            search: 'Search', 
-            about: 'About',
-            // Posts page
-            postsTitle: 'Blog Posts',
-            postsSubtitle: 'Your guide to Linux systems and Home Assistant automation',
-            // Search page
-            searchTitle: 'Search Posts',
-            searchPlaceholder: 'Search posts by title, content, or tags...',
-            searchLabel: 'Search term',
-            searchInstructions: 'Type search term to find posts',
-            filterTitle: 'Filter by tags:',
-            clearButton: 'Clear All',
-            // Sidebar
-            sidebarPostsTitle: 'Posts',
-            sidebarRecentTitle: 'Recent Posts',
-            // Other
-            postsLoaded: 'posts loaded',
-            loading: 'Loading...'
-        }
-    };
-    
-    const t = texts[currentLanguage];
-    
-    // Update navigation
-    document.getElementById('nav-home').textContent = t.home;
-    document.getElementById('nav-posts').textContent = t.posts;
-    document.getElementById('nav-search').textContent = t.search;
-    document.getElementById('nav-about').textContent = t.about;
-    
-    // Update posts page
-    const postsTitle = document.getElementById('posts-title');
-    const postsSubtitle = document.getElementById('posts-subtitle');
-    if (postsTitle) postsTitle.textContent = t.postsTitle;
-    if (postsSubtitle) postsSubtitle.textContent = t.postsSubtitle;
-    
-    // Update search page
-    const searchTitle = document.getElementById('search-title');
-    const searchInput = document.getElementById('search-input');
-    const searchLabel = document.getElementById('search-label');
-    const searchInstructions = document.getElementById('search-instructions');
-    const filterTitle = document.getElementById('filter-title');
-    const clearButton = document.getElementById('clear-button');
-    
-    if (searchTitle) searchTitle.textContent = t.searchTitle;
-    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
-    if (searchLabel) searchLabel.textContent = t.searchLabel;
-    if (searchInstructions) searchInstructions.textContent = t.searchInstructions;
-    if (filterTitle) filterTitle.textContent = t.filterTitle;
-    if (clearButton) clearButton.textContent = t.clearButton;
-    
-    // Update sidebar
-    const sidebarPostsTitle = document.getElementById('sidebar-posts-title');
-    const sidebarRecentTitle = document.getElementById('sidebar-recent-title');
-    if (sidebarPostsTitle) sidebarPostsTitle.textContent = t.sidebarPostsTitle;
-    if (sidebarRecentTitle) sidebarRecentTitle.textContent = t.sidebarRecentTitle;
-}*/
-
-// **NEW FUNCTION** - Update navigation text based on language
+// Update navigation text based on language
 function updateNavigationText() {
     const navTexts = {
         fi: {
@@ -1139,8 +1052,7 @@ function debugLog(...args) {
     }
 }
 
-// Enhanced posts display with better semantic HTML
-// Display posts with original styling
+/// Display posts with original styling
 function displayPosts(posts) {
 	const startIndex = (currentPage - 1) * postsPerPage;
 	const endIndex = startIndex + postsPerPage;
@@ -1599,9 +1511,6 @@ function preloadCriticalResources() {
     // Preload profile image
     const profileImg = new Image();
     profileImg.src = '/assets/profile.jpg';
-    
-    // Preload most common post images (if any)
-    // This could be extended based on your content
 }
 
 // Enhanced error handling for global errors
