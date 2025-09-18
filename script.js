@@ -603,7 +603,18 @@ async function showFrontpage() {
 	document.getElementById('frontpage-content').innerHTML = `
         <div class="frontpage-layout">
             <div class="frontpage-hero">
-                <img src="/assets/profile.jpg" alt="${currentLanguage === 'fi' ? 'Profiilikuva' : 'Profile Picture'}" class="profile-image" onerror="this.style.display='none'">
+                <picture>
+                    <source srcset="/assets/profile-150.webp 150w, /assets/profile-300.webp 300w" 
+                            sizes="(max-width: 768px) 150px, 300px" 
+                            type="image/webp">
+                    <img src="/assets/profile.jpg" 
+                        alt="${currentLanguage === 'fi' ? 'Profiilikuva' : 'Profile Picture'}" 
+                        class="profile-image" 
+                        width="150" 
+                        height="150" 
+                        loading="lazy"
+                        onerror="this.style.display='none'">
+                </picture>
                 <h1>${frontpageData.title || 'Esa P'}</h1>
                 <div>${frontpageData.content}</div>
                 <div class="social-links">

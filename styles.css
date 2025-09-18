@@ -1705,3 +1705,9 @@ img {
 .profile-image {
     loading: eager;
 }
+
+/* Improve font loading */
+@font-face {
+  font-family: system-ui;
+  font-display: swap;
+}
