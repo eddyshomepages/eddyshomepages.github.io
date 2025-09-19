@@ -169,78 +169,95 @@ class LocalAnalytics {
   createDashboardContent(stats, rawData) {
     const content = document.createElement('div');
     content.style.cssText = `
-      background: white; padding: 30px; border-radius: 10px;
-      max-width: 800px; max-height: 90vh; overflow-y: auto; width: 100%;
+      background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 900px; max-height: 85vh; overflow-y: auto; width: 95%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     `;
 
     content.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="margin: 0;">📊 Private Analytics Dashboard</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;">
+        <h2 style="margin: 0; color: #2c3e50; font-size: 1.8em;">📊 Analytics Dashboard</h2>
         <button class="close-analytics-btn" 
-                style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">
+                style="background: #e74c3c; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: bold;">
           ✕ Close
         </button>
       </div>
       
-      <div style="padding: 12px; background: #e3f2fd; border-left: 4px solid #2196f3; margin-bottom: 20px; font-size: 14px;">
-        <strong>💻 Console Commands:</strong><br>
-        <code>analytics.stats()</code> - Show summary statistics<br>
-        <code>analytics.data()</code> - Show recent data entries<br>
-        <code>analytics.export()</code> - Download all data as JSON<br>
-        <code>analytics.clear()</code> - Clear all stored data<br>
-        <code>analytics.dashboard()</code> - Show this dashboard
-      </div>
+      <details style="margin-bottom: 25px;">
+        <summary style="cursor: pointer; padding: 12px; background: #f8f9fa; border-radius: 8px; font-weight: bold; color: #495057;">
+          💻 Console Commands (click to expand)
+        </summary>
+        <div style="padding: 15px; background: #e8f4fd; border-radius: 0 0 8px 8px; margin-top: 2px;">
+          <div style="display: grid; gap: 8px; font-family: 'Courier New', monospace; font-size: 13px;">
+            <div><strong>analytics.stats()</strong> - Show summary table</div>
+            <div><strong>analytics.data()</strong> - Show recent data entries</div>
+            <div><strong>analytics.export()</strong> - Download JSON file</div>
+            <div><strong>analytics.clear()</strong> - Clear all data</div>
+            <div><strong>analytics.dashboard()</strong> - Show this dashboard</div>
+          </div>
+        </div>
+      </details>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
-        <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px;">
-          <div style="font-size: 2.5em; font-weight: bold;">${stats.totalPageviews}</div>
-          <div style="opacity: 0.9;">Total Page Views</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 30px;">
+        <div style="text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(102,126,234,0.3);">
+          <div style="font-size: 2.8em; font-weight: bold; margin-bottom: 8px;">${stats.totalPageviews}</div>
+          <div style="opacity: 0.9; font-size: 14px; font-weight: 500;">Total Page Views</div>
         </div>
-        <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 10px;">
-          <div style="font-size: 2.5em; font-weight: bold;">${stats.uniquePages}</div>
-          <div style="opacity: 0.9;">Unique Pages</div>
+        <div style="text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(240,147,251,0.3);">
+          <div style="font-size: 2.8em; font-weight: bold; margin-bottom: 8px;">${stats.uniquePages}</div>
+          <div style="opacity: 0.9; font-size: 14px; font-weight: 500;">Unique Pages</div>
         </div>
-        <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 10px;">
-          <div style="font-size: 2.5em; font-weight: bold;">${stats.todayViews}</div>
-          <div style="opacity: 0.9;">Today's Views</div>
+        <div style="text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(79,172,254,0.3);">
+          <div style="font-size: 2.8em; font-weight: bold; margin-bottom: 8px;">${stats.todayViews}</div>
+          <div style="opacity: 0.9; font-size: 14px; font-weight: 500;">Today's Views</div>
         </div>
-        <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 10px;">
-          <div style="font-size: 2.5em; font-weight: bold;">${stats.totalClicks}</div>
-          <div style="opacity: 0.9;">Total Clicks</div>
+        <div style="text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(67,233,123,0.3);">
+          <div style="font-size: 2.8em; font-weight: bold; margin-bottom: 8px;">${stats.totalClicks}</div>
+          <div style="opacity: 0.9; font-size: 14px; font-weight: 500;">Total Clicks</div>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
         <div>
-          <h3 style="margin-bottom: 15px;">🔝 Top Pages</h3>
-          <div style="background: #f8f9fa; border-radius: 8px; padding: 15px; max-height: 300px; overflow-y: auto;">
+          <h3 style="margin: 0 0 18px 0; color: #2c3e50; font-size: 1.3em; display: flex; align-items: center; gap: 8px;">
+            🔝 <span>Top Pages</span>
+          </h3>
+          <div style="background: #f8f9fa; border-radius: 10px; padding: 18px; border: 1px solid #e9ecef;">
             ${stats.topPages.length > 0 ? stats.topPages.map(page => `
-              <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee;">
-                <span style="color: #495057; font-size: 14px;">${page.path}</span>
-                <span style="background: #007bff; color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px;">${page.count}</span>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #dee2e6; last-child: border-bottom: none;">
+                <span style="color: #495057; font-size: 14px; font-weight: 500; flex: 1; word-break: break-all;">${page.path}</span>
+                <span style="background: #007bff; color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; margin-left: 10px; min-width: 30px; text-align: center;">${page.count}</span>
               </div>
-            `).join('') : '<p style="color: #6c757d; text-align: center; margin: 20px 0;">No page data yet</p>'}
+            `).join('') : '<p style="color: #6c757d; text-align: center; margin: 30px 0; font-style: italic;">No page data yet</p>'}
           </div>
         </div>
         
         <div>
-          <h3 style="margin-bottom: 15px;">📅 Recent Activity</h3>
-          <div style="background: #f8f9fa; border-radius: 8px; padding: 15px; max-height: 300px; overflow-y: auto;">
+          <h3 style="margin: 0 0 18px 0; color: #2c3e50; font-size: 1.3em; display: flex; align-items: center; gap: 8px;">
+            📅 <span>Recent Activity</span>
+          </h3>
+          <div style="background: #f8f9fa; border-radius: 10px; padding: 18px; max-height: 350px; overflow-y: auto; border: 1px solid #e9ecef;">
             ${stats.recentActivity.length > 0 ? stats.recentActivity.map(activity => `
-              <div style="padding: 5px 0; font-size: 14px; color: #495057; border-bottom: 1px solid #eee;">
-                <strong>${activity.type}</strong>: ${activity.page}<br>
-                <span style="color: #6c757d; font-size: 12px;">${new Date(activity.timestamp).toLocaleString('fi-FI')}</span>
+              <div style="padding: 12px 0; border-bottom: 1px solid #dee2e6; last-child: border-bottom: none;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <strong style="color: #495057; font-size: 14px;">${activity.type}</strong>
+                  <span style="color: #6c757d; font-size: 13px; flex: 1; word-break: break-all;">${activity.page}</span>
+                </div>
+                <div style="color: #6c757d; font-size: 11px; font-family: monospace;">${new Date(activity.timestamp).toLocaleString('fi-FI')}</div>
               </div>
-            `).join('') : '<p style="color: #6c757d; text-align: center; margin: 20px 0;">No recent activity</p>'}
+            `).join('') : '<p style="color: #6c757d; text-align: center; margin: 30px 0; font-style: italic;">No recent activity</p>'}
           </div>
         </div>
       </div>
       
-      <div style="border-top: 1px solid #eee; padding-top: 20px;">
-        <div style="text-align: center;">
-          <p style="color: #6c757d; margin: 0;">
-            📊 ${rawData.length} events tracked | 💾 ~${Math.round(JSON.stringify(rawData).length / 1024)}KB storage used
-          </p>
+      <div style="border-top: 2px solid #e9ecef; padding-top: 20px; text-align: center;">
+        <div style="display: inline-flex; align-items: center; gap: 20px; background: #f8f9fa; padding: 12px 20px; border-radius: 25px; border: 1px solid #e9ecef;">
+          <span style="color: #495057; font-size: 14px; font-weight: 500;">
+            📊 ${rawData.length} events tracked
+          </span>
+          <span style="color: #6c757d;">•</span>
+          <span style="color: #495057; font-size: 14px; font-weight: 500;">
+            💾 ~${Math.round(JSON.stringify(rawData).length / 1024)}KB used
+          </span>
         </div>
       </div>
     `;
