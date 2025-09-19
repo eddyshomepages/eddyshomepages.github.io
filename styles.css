@@ -1454,7 +1454,7 @@ a:not(.share-btn):not(.page-btn):hover {
 }
 
 .cookie-btn.accept {
-    background: #27ae60;
+    background: #1e7e34;;
     color: white;
 }
 
@@ -1463,7 +1463,7 @@ a:not(.share-btn):not(.page-btn):hover {
 }
 
 .cookie-btn.decline {
-    background: #e74c3c;
+    background: #bd2130;
     color: white;
 }
 
