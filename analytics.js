@@ -1,19 +1,20 @@
-// analytics.js - Simple local storage analytics
+// analytics.js - Hidden analytics, no public button
 class LocalAnalytics {
   constructor() {
     this.storageKey = 'site_analytics';
-    this.maxEntries = 1000; // Prevent storage bloat
+    this.maxEntries = 1000;
     this.init();
   }
 
   init() {
-    // Only run in browser environment
     if (typeof window === 'undefined') return;
     
     this.trackPageView();
     this.setupRouteTracking();
     this.setupEventTracking();
-    this.addAnalyticsButton();
+    
+    // NO BUTTON CREATED - Analytics runs silently
+    this.setupSecretAccess();
   }
 
   trackPageView() {
@@ -33,10 +34,8 @@ class LocalAnalytics {
   }
 
   setupRouteTracking() {
-    // For SPAs using History API
     const originalPushState = history.pushState;
     const originalReplaceState = history.replaceState;
-    
     const self = this;
 
     history.pushState = function(...args) {
@@ -49,18 +48,15 @@ class LocalAnalytics {
       setTimeout(() => self.trackPageView(), 100);
     };
 
-    // Handle back/forward buttons
     window.addEventListener('popstate', () => {
       setTimeout(() => this.trackPageView(), 100);
     });
   }
 
   setupEventTracking() {
-    // Track clicks on important elements
     document.addEventListener('click', (e) => {
       const element = e.target;
       
-      // Only track specific elements to avoid noise
       if (element.tagName === 'A' || 
           element.tagName === 'BUTTON' || 
           element.classList.contains('track-click')) {
@@ -80,12 +76,51 @@ class LocalAnalytics {
     });
   }
 
+  setupSecretAccess() {
+    // Secret keyboard combination: Ctrl+Shift+A+N+A
+    let sequence = [];
+    const secretSequence = ['ControlLeft', 'ShiftLeft', 'KeyA', 'KeyN', 'KeyA'];
+    
+    document.addEventListener('keydown', (e) => {
+      // Reset if too much time passed
+      if (sequence.length > 0 && Date.now() - sequence[sequence.length - 1].time > 2000) {
+        sequence = [];
+      }
+      
+      sequence.push({ key: e.code, time: Date.now() });
+      
+      // Keep only last 5 keys
+      if (sequence.length > 5) {
+        sequence.shift();
+      }
+      
+      // Check if sequence matches
+      if (sequence.length === 5) {
+        const matches = sequence.every((item, index) => 
+          item.key === secretSequence[index]
+        );
+        
+        if (matches) {
+          sequence = []; // Reset
+          this.showDashboard();
+        }
+      }
+    });
+
+    // Alternative: Secret URL parameter
+    // Access with: yoursite.com/#analytics
+    if (window.location.hash === '#analytics') {
+      // Remove hash to hide evidence
+      history.replaceState(null, null, window.location.pathname);
+      this.showDashboard();
+    }
+  }
+
   storeEvent(data) {
     try {
       const stored = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
       stored.push(data);
       
-      // Keep only recent entries
       if (stored.length > this.maxEntries) {
         stored.splice(0, stored.length - this.maxEntries);
       }
@@ -94,59 +129,6 @@ class LocalAnalytics {
     } catch (error) {
       console.warn('Analytics: Could not store data', error);
     }
-  }
-
-  addAnalyticsButton() {
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.createButton());
-    } else {
-      this.createButton();
-    }
-  }
-
-  createButton() {
-    const button = document.createElement('button');
-    button.innerHTML = '📊';
-    button.title = 'View Analytics';
-    button.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #007bff;
-      color: white;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      z-index: 10000;
-      transition: all 0.3s ease;
-    `;
-    
-    button.addEventListener('mouseenter', () => {
-      button.style.transform = 'scale(1.1)';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      button.style.transform = 'scale(1)';
-    });
-    
-    button.onclick = () => this.showDashboard();
-    document.body.appendChild(button);
-  }
-
-  showDashboard() {
-    const data = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
-    const stats = this.calculateStats(data);
-    
-    const modal = this.createModal();
-    const content = this.createDashboardContent(stats, data);
-    
-    modal.appendChild(content);
-    document.body.appendChild(modal);
   }
 
   createModal() {
@@ -162,11 +144,40 @@ class LocalAnalytics {
       padding: 20px;
     `;
     
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.remove();
-    });
-    
     return modal;
+  }
+
+  showDashboard() {
+    const data = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+    const stats = this.calculateStats(data);
+    
+    const modal = this.createModal();
+    const content = this.createDashboardContent(stats, data);
+    
+    modal.appendChild(content);
+    document.body.appendChild(modal);
+
+    const closeBtn = content.querySelector('.close-analytics-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.remove();
+      });
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.remove();
+      }
+    });
+
+    // ESC key to close
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        modal.remove();
+        document.removeEventListener('keydown', handleEsc);
+      }
+    };
+    document.addEventListener('keydown', handleEsc);
   }
 
   createDashboardContent(stats, rawData) {
@@ -183,11 +194,17 @@ class LocalAnalytics {
 
     content.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="margin: 0;">📊 Site Analytics</h2>
-        <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" 
+        <h2 style="margin: 0;">📊 Private Analytics</h2>
+        <button class="close-analytics-btn" 
                 style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">
           ✕ Close
         </button>
+      </div>
+      
+      <div style="padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 20px; font-size: 14px;">
+        <strong>🔒 Access Methods:</strong><br>
+        • Keyboard: Ctrl+Shift+A+N+A (hold keys in sequence)<br>
+        • URL: Add #analytics to your URL and refresh
       </div>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
@@ -238,16 +255,13 @@ class LocalAnalytics {
       <div style="border-top: 1px solid #eee; padding-top: 20px;">
         <h3 style="margin-bottom: 15px;">🛠️ Data Management</h3>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <button onclick="this.downloadData(${JSON.stringify(rawData).replace(/"/g, '&quot;')})" 
-                  style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          <button class="download-data-btn" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
             📥 Download Data
           </button>
-          <button onclick="navigator.clipboard.writeText(JSON.stringify(${JSON.stringify(rawData)}, null, 2)).then(() => alert('Data copied to clipboard!'))" 
-                  style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          <button class="copy-data-btn" style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer;">
             📋 Copy Data
           </button>
-          <button onclick="if(confirm('Clear all analytics data?')) { localStorage.removeItem('${this.storageKey}'); location.reload(); }" 
-                  style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          <button class="clear-data-btn" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
             🗑️ Clear Data
           </button>
         </div>
@@ -257,18 +271,48 @@ class LocalAnalytics {
       </div>
     `;
 
-    // Add download functionality
-    content.querySelector('button[onclick*="downloadData"]').onclick = () => {
-      const blob = new Blob([JSON.stringify(rawData, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `analytics-${new Date().toISOString().split('T')[0]}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-    };
-
+    this.attachEventListeners(content, rawData);
     return content;
+  }
+
+  attachEventListeners(content, rawData) {
+    const downloadBtn = content.querySelector('.download-data-btn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(rawData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `analytics-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    const copyBtn = content.querySelector('.copy-data-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(JSON.stringify(rawData, null, 2));
+          copyBtn.textContent = '✅ Copied!';
+          setTimeout(() => {
+            copyBtn.innerHTML = '📋 Copy Data';
+          }, 2000);
+        } catch (err) {
+          alert('Could not copy data to clipboard');
+        }
+      });
+    }
+
+    const clearBtn = content.querySelector('.clear-data-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Clear all analytics data? This cannot be undone!')) {
+          localStorage.removeItem(this.storageKey);
+          location.reload();
+        }
+      });
+    }
   }
 
   calculateStats(data) {
@@ -311,7 +355,7 @@ class LocalAnalytics {
   }
 }
 
-// Initialize analytics when script loads
+// Initialize analytics
 if (typeof window !== 'undefined') {
   window.siteAnalytics = new LocalAnalytics();
 }
