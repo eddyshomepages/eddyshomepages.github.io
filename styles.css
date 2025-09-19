@@ -1711,8 +1711,8 @@ img {
 }
 
 @font-face {
-  font-family: system-ui;
-  font-display: swap;
+	font-family: system-ui;
+	font-display: swap;
 }
 
 /* Force logo to always be white regardless of theme */
