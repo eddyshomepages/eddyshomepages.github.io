@@ -1209,13 +1209,14 @@ main {
     padding: 8px;
     text-decoration: none;
     z-index: 1000;
-	border: 2px solid #fff;
+    opacity: 0; 
+    pointer-events: none; 
 }
 
 .skip-link:focus {
     top: 6px;
-	background: #000; 
-    color: #fff;
+    opacity: 1; 
+    pointer-events: auto;
 }
 
 /* Search highlights */
