@@ -288,7 +288,9 @@ class LocalAnalytics {
   }
 }
 
-// Initialize analytics
+// Initialize analytics and make it globally available
 if (typeof window !== 'undefined') {
-  new LocalAnalytics();
+  window.analytics = new LocalAnalytics();
+  console.log('📊 Analytics loaded successfully');
+  console.log('💻 Try: analytics.dashboard()');
 }
