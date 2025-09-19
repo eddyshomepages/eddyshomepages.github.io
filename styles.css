@@ -1710,3 +1710,24 @@ img {
   font-family: system-ui;
   font-display: swap;
 }
+
+/* Force logo to always be white regardless of theme */
+.logo a {
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Or if you want different colors for light/dark themes: */
+header .logo a {
+    color: white;
+    text-decoration: none;
+}
+
+[data-theme="dark"] header .logo a {
+    color: white;
+}
+
+/* Ensure it stays white in light theme too */
+html:not([data-theme="dark"]) header .logo a {
+    color: white;
+}
