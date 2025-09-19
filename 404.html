@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sivu ei löytynyt - Eddy's Homepages</title>
-    <meta http-equiv="refresh" content="3;url=https://eddyshomepages.fi/">
+    <title>Redirecting - Eddy's Homepages</title>
     <style>
         body {
             font-family: system-ui, sans-serif;
@@ -24,16 +23,41 @@
 </head>
 <body>
     <div class="container">
-        <h1>Sivu ei löytynyt</h1>
-        <p>Sivua ei löytynyt. Sinut ohjataan automaattisesti etusivulle 3 sekunnin kuluttua.</p>
-        <p><a href="https://eddyshomepages.fi/">Klikkaa tästä siirtyäksesi heti etusivulle</a></p>
+        <h1>Ohjataan...</h1>
+        <p>Sinut ohjataan oikealle sivulle...</p>
     </div>
     
     <script>
-        // Redirect after 3 seconds
-        setTimeout(function() {
+        function redirectOldUrls() {
+            const path = window.location.pathname;
+            
+            // Check if it's an old post URL pattern
+            if (path.startsWith('/posts/') && path.endsWith('/')) {
+                // Extract post slug from /posts/post-name/ 
+                const postSlug = path.replace('/posts/', '').replace('/', '');
+                if (postSlug) {
+                    window.location.href = `https://eddyshomepages.fi/#post/${postSlug}`;
+                    return;
+                }
+            }
+            
+            // Check for other old URL patterns you might have
+            if (path === '/about/' || path === '/about') {
+                window.location.href = 'https://eddyshomepages.fi/#about';
+                return;
+            }
+            
+            if (path === '/search/' || path === '/search') {
+                window.location.href = 'https://eddyshomepages.fi/#search';
+                return;
+            }
+            
+            // Default: redirect to home
             window.location.href = 'https://eddyshomepages.fi/';
-        }, 3000);
+        }
+        
+        // Run the redirect logic immediately
+        redirectOldUrls();
     </script>
 </body>
 </html>
