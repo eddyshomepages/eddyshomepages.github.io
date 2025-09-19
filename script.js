@@ -351,7 +351,7 @@ async function loadPostsForLanguage() {
 function updateRecentPosts() {
 	const recent = allPosts.slice(0, 5);
 	document.getElementById('recent-posts').innerHTML = recent
-	.map(post => `<li><a onclick="showPost('${post.id}')" style="cursor: pointer; color: var(--accent);" title="${post.title}">${post.title}</a></li>`)
+	.map(post => `<li><a href="#post/${post.id}" onclick="showPost('${post.id}'); return false;" style="cursor: pointer; color: var(--accent);" title="${post.title}">${post.title}</a></li>`)
 	.join('');
 }
 
