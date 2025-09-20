@@ -185,7 +185,8 @@ const markdownPosts = {
         'huoltokatko.md',
         'ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa.md',
         'eddys-homapages-new-site.md',
-        'paivitetyt-sivut.md'
+        'paivitetyt-sivut.md',
+        'uuden-sivuston-taustaa.md'
 	],
 	en: [
 		'hello-world.md',
