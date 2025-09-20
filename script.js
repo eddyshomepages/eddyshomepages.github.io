@@ -190,7 +190,8 @@ const markdownPosts = {
 	],
 	en: [
 		'hello-world.md',
-		'renewed-pages.md'
+		'renewed-pages.md',
+        'history-about-the-pages.md'
 	]
 };
 
