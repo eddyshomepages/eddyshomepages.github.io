@@ -289,15 +289,19 @@ function parseYAML(content) {
 // SEO: Change language with proper meta updates
 async function changeLanguage() {
 	const newLanguage = document.getElementById('language-selector').value;
-	//if (newLanguage === currentLanguage) return;
-	if (newLanguage === 'en' && markdownPosts.en.length < 10) {
-    // Don't switch to English if there's insufficient content
-        document.getElementById('language-selector').value = 'fi';
-        return;
-    }
 	
+	// Remove the arbitrary number check - instead, allow switching but handle gracefully
 	currentLanguage = newLanguage;
 	localStorage.setItem('preferredLanguage', currentLanguage);
+	
+	// Update URL to reflect language choice
+	const url = new URL(window.location);
+	if (newLanguage === 'en') {
+		url.searchParams.set('lang', 'en');
+	} else {
+		url.searchParams.delete('lang');
+	}
+	window.history.replaceState({}, '', url);
 	
 	// Update HTML lang attribute for SEO
 	document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';
@@ -315,22 +319,42 @@ async function changeLanguage() {
 	    fi: 'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant automaatiosta.',
 	    en: 'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant automation.'
 	};
-
+	
+	// Update canonical URL to include language parameter
+	const canonicalUrl = newLanguage === 'en' ? 
+		window.location.origin + window.location.pathname + '?lang=en' :
+		window.location.origin + window.location.pathname;
+	
 	updateNavigationText();
-
-	updatePageMeta(titles[currentLanguage], descriptions[currentLanguage], window.location.href);
-	updateNavigationText(); 
+	updatePageMeta(titles[currentLanguage], descriptions[currentLanguage], canonicalUrl);
 	handleInitialRoute();
 	updatePageTexts();
-
-        if (typeof cookieConsent !== 'undefined' && cookieConsent) {
-            cookieConsent.updateLanguage();
-        }
 	
-        if (document.getElementById('search-page').style.display !== 'none') {
-            generateTagFilters();
-        }
+	if (typeof cookieConsent !== 'undefined' && cookieConsent) {
+		cookieConsent.updateLanguage();
+	}
+	
+	if (document.getElementById('search-page').style.display !== 'none') {
+		generateTagFilters();
+	}
+}
 
+// Add this new function
+function detectLanguageFromURL() {
+	const urlParams = new URLSearchParams(window.location.search);
+	const langParam = urlParams.get('lang');
+	
+	if (langParam === 'en') {
+		currentLanguage = 'en';
+		document.getElementById('language-selector').value = 'en';
+		document.documentElement.lang = 'en';
+	} else {
+		// Default to Finnish or saved preference
+		const preferredLanguage = localStorage.getItem('preferredLanguage') || 'fi';
+		currentLanguage = preferredLanguage;
+		document.getElementById('language-selector').value = currentLanguage;
+		document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';
+	}
 }
 
 // Load posts for specific language
@@ -1937,21 +1961,24 @@ async function init() {
         debugLog('Initializing blog version 3.0 with SEO enhancements...');
         
         initTheme();
+
+		detectLanguageFromURL();
         
         // Set language from localStorage or browser preference
-        const browserLanguage = navigator.language || navigator.userLanguage;
+        /*const browserLanguage = navigator.language || navigator.userLanguage;
         const preferredLanguage = localStorage.getItem('preferredLanguage') || 
             (browserLanguage.startsWith('fi') ? 'fi' : 'en');
             
         currentLanguage = preferredLanguage;
         document.getElementById('language-selector').value = currentLanguage;
-        document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';
+        document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';*/
         
         await loadPostsForLanguage();
         
-        currentLanguage = preferredLanguage;
+        /*currentLanguage = preferredLanguage;
         document.getElementById('language-selector').value = currentLanguage;
-        document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';
+        document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';*/
+		
         updatePageTexts();
         
         // Enhanced browser back/forward handling
