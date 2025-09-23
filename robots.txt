@@ -5,5 +5,5 @@ Allow: /
 Sitemap: https://eddyshomepages.fi/sitemap.xml
 
 # Optional: Block crawling of certain file types
-Disallow: /*.js$
-Disallow: /*.css$
+#Disallow: /*.js$
+#Disallow: /*.css$
