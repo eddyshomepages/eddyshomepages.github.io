@@ -289,7 +289,12 @@ function parseYAML(content) {
 // SEO: Change language with proper meta updates
 async function changeLanguage() {
 	const newLanguage = document.getElementById('language-selector').value;
-	if (newLanguage === currentLanguage) return;
+	//if (newLanguage === currentLanguage) return;
+	if (newLanguage === 'en' && markdownPosts.en.length < 10) {
+    // Don't switch to English if there's insufficient content
+        document.getElementById('language-selector').value = 'fi';
+        return;
+    }
 	
 	currentLanguage = newLanguage;
 	localStorage.setItem('preferredLanguage', currentLanguage);
