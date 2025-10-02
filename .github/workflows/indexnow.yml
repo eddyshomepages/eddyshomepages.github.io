@@ -1,0 +1,38 @@
+name: IndexNow Submission
+
+on:
+  push:
+    branches: [main]  # Change to 'master' if that's your default branch
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+jobs:
+  submit-to-indexnow:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Get list of HTML files
+        id: get-urls
+        run: |
+          # Find all HTML files and convert to URLs
+          echo "Building URL list..."
+          urls=$(find . -name "*.html" -not -path "./.git/*" | sed 's|^\./|https://eddyshomepages.fi/|' | jq -R . | jq -s .)
+          echo "urls=$urls" >> $GITHUB_OUTPUT
+          echo "Found URLs:"
+          echo "$urls" | jq .
+      
+      - name: Submit to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"host\": \"eddyshomepages.fi\",
+              \"key\": \"7f5777c6feb94b39a97d483d907371f5\",
+              \"keyLocation\": \"https://eddyshomepages.fi/7f5777c6feb94b39a97d483d907371f5.txt\",
+              \"urlList\": ${{ steps.get-urls.outputs.urls }}
+            }"
+      
+      - name: Verify submission
+        run: echo "IndexNow submission completed"
