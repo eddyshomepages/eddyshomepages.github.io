@@ -3,7 +3,7 @@ name: IndexNow Submission
 on:
   push:
     branches: [main]  # Change to 'master' if that's your default branch
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
+  workflow_dispatch:
 
 jobs:
   submit-to-indexnow:
@@ -13,26 +13,39 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      - name: Get list of HTML files
-        id: get-urls
-        run: |
-          # Find all HTML files and convert to URLs
-          echo "Building URL list..."
-          urls=$(find . -name "*.html" -not -path "./.git/*" | sed 's|^\./|https://eddyshomepages.fi/|' | jq -R . | jq -s .)
-          echo "urls=$urls" >> $GITHUB_OUTPUT
-          echo "Found URLs:"
-          echo "$urls" | jq .
-      
       - name: Submit to IndexNow
         run: |
-          curl -X POST "https://api.indexnow.org/indexnow" \
+          # Build a simple JSON array of URLs
+          echo "Building URL list..."
+          
+          # Find all HTML files and create URL list
+          urls=""
+          for file in $(find . -name "*.html" -not -path "./.git/*"); do
+            url="https://eddyshomepages.fi${file#.}"
+            if [ -z "$urls" ]; then
+              urls="\"$url\""
+            else
+              urls="$urls,\"$url\""
+            fi
+          done
+          
+          # Create the JSON payload
+          json_payload="{\"host\":\"eddyshomepages.fi\",\"key\":\"7f5777c6feb94b39a97d483d907371f5\",\"keyLocation\":\"https://eddyshomepages.fi/7f5777c6feb94b39a97d483d907371f5.txt\",\"urlList\":[$urls]}"
+          
+          echo "Submitting URLs to IndexNow..."
+          echo "$json_payload"
+          
+          # Submit to IndexNow
+          response=$(curl -s -w "\n%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json" \
-            -d "{
-              \"host\": \"eddyshomepages.fi\",
-              \"key\": \"7f5777c6feb94b39a97d483d907371f5\",
-              \"keyLocation\": \"https://eddyshomepages.fi/7f5777c6feb94b39a97d483d907371f5.txt\",
-              \"urlList\": ${{ steps.get-urls.outputs.urls }}
-            }"
-      
-      - name: Verify submission
-        run: echo "IndexNow submission completed"
+            -d "$json_payload")
+          
+          http_code=$(echo "$response" | tail -n1)
+          echo "HTTP Status Code: $http_code"
+          
+          if [ "$http_code" = "200" ] || [ "$http_code" = "202" ]; then
+            echo "✓ Successfully submitted to IndexNow"
+          else
+            echo "✗ Submission failed with status code: $http_code"
+            exit 1
+          fi
