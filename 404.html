@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting - Eddy's Homepages</title>
+    <title>Sivu ei löydy - Eddy's Homepages</title>
     <style>
         body {
             font-family: system-ui, sans-serif;
@@ -19,45 +19,91 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        a { color: #0066cc; }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Ohjataan...</h1>
-        <p>Sinut ohjataan oikealle sivulle...</p>
-    </div>
-    
     <script>
-        function redirectOldUrls() {
-            const path = window.location.pathname;
-            
-            // Check if it's an old post URL pattern
-            if (path.startsWith('/posts/') && path.endsWith('/')) {
-                // Extract post slug from /posts/post-name/ 
-                const postSlug = path.replace('/posts/', '').replace('/', '');
-                if (postSlug) {
-                    window.location.href = `https://eddyshomepages.fi/#post/${postSlug}`;
+        // Run immediately before page renders to avoid flash
+        (function() {
+            var path = window.location.pathname;
+
+            // Map of old URL slugs to new real paths
+            var redirectMap = {
+                // Finnish posts
+                'aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen': '/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/',
+                'almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiln': '/posts/fi/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiln/',
+                'alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla': '/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/',
+                'auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan': '/posts/fi/auton-lammityspistorasian-kayttoonotto-automaattisesti-haluttuun-aikaan/',
+                'baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla': '/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/',
+                'caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan': '/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/',
+                'docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla': '/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/',
+                'dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan': '/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/',
+                'eddys-homapages-new-site': '/posts/fi/eddys-homapages-new-site/',
+                'energian-hinnan-seurantaa-home-assistantilla-osa-2': '/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/',
+                'energian-hinnan-seurantaa-home-assistantilla': '/posts/fi/energian-hinnan-seurantaa-home-assistantilla/',
+                'esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan': '/posts/fi/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/',
+                'home-assistantin-asennus-docker-composen-avulla': '/posts/fi/home-assistantin-asennus-docker-composen-avulla/',
+                'home-assistantin-kaytto-halytysjarjestelmana-osa-1': '/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/',
+                'home-assistantin-kaytto-halytysjarjestelmana-osa-2': '/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/',
+                'huoltokatko': '/posts/fi/huoltokatko/',
+                'jellyfin-mediapalvelimen-asennus': '/posts/fi/jellyfin-mediapalvelimen-asennus/',
+                'mariadb-tietokannan-kayttoonotto-home-assistantissa': '/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/',
+                'mita-olen-vuosien-aikana-puuhaillut': '/posts/fi/mita-olen-vuosien-aikana-puuhaillut/',
+                'moikka-maailma': '/posts/fi/moikka-maailma/',
+                'mosquitto-brokerin-asennus-kayttaen-docker-composea': '/posts/fi/mosquitto-brokerin-asennus-kayttaen-docker-composea/',
+                'motioneye-kameravalvonta-ohjelmiston-asennus': '/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/',
+                'mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto': '/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/',
+                'nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla': '/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/',
+                'oman-streeemauspalvelun-rakentaminen': '/posts/fi/oman-streeemauspalvelun-rakentaminen/',
+                'paivitetyt-sivut': '/posts/fi/paivitetyt-sivut/',
+                'raspberrypi-osn-asentaminen-kiosk-tilaan': '/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/',
+                'raspberrypiosn-asentaminen-ja-kayttoonotto': '/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/',
+                'ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen': '/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/',
+                'ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa': '/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/',
+                'sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi': '/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/',
+                'sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla': '/posts/fi/sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla/',
+                'sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla': '/posts/fi/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla/',
+                'sivuston-rss-syote-saatavilla': '/posts/fi/sivuston-rss-syote-saatavilla/',
+                'syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto': '/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/',
+                'uuden-sivuston-taustat': '/posts/fi/uuden-sivuston-taustat/',
+                'uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus': '/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/',
+                'wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille': '/posts/fi/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/',
+                'zigbee2mqtt-asentaminen-docker-composen-avulla': '/posts/fi/zigbee2mqtt-asentaminen-docker-composen-avulla/',
+                // English posts
+                'hello-world': '/posts/en/hello-world/',
+                'history-about-the-pages': '/posts/en/history-about-the-pages/',
+                'renewed-pages': '/posts/en/renewed-pages/'
+            };
+
+            // Match old /posts/slug/ or /posts/slug patterns
+            var match = path.match(/^\/posts\/([^\/]+)\/?$/);
+            if (match) {
+                var slug = match[1];
+                if (redirectMap[slug]) {
+                    window.location.replace(redirectMap[slug]);
                     return;
                 }
             }
-            
-            // Check for other old URL patterns you might have
-            if (path === '/about/' || path === '/about') {
-                window.location.href = 'https://eddyshomepages.fi/#about';
-                return;
+
+            // Match any slug directly e.g. /slug/
+            var directMatch = path.match(/^\/([^\/]+)\/?$/);
+            if (directMatch) {
+                var slug = directMatch[1];
+                if (redirectMap[slug]) {
+                    window.location.replace(redirectMap[slug]);
+                    return;
+                }
             }
-            
-            if (path === '/search/' || path === '/search') {
-                window.location.href = 'https://eddyshomepages.fi/#search';
-                return;
-            }
-            
-            // Default: redirect to home
-            window.location.href = 'https://eddyshomepages.fi/';
-        }
-        
-        // Run the redirect logic immediately
-        redirectOldUrls();
+
+            // Default: redirect to homepage
+            window.location.replace('https://eddyshomepages.fi/');
+        })();
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sivu ei löydy</h1>
+        <p>Tätä sivua ei enää ole. Sinut ohjataan automaattisesti...</p>
+        <p><a href="https://eddyshomepages.fi/">Klikkaa tästä jos ohjaus ei toimi</a></p>
+    </div>
 </body>
 </html>
