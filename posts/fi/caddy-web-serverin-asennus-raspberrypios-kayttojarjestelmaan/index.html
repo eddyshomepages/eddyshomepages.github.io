@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään — Eddy's Homepages</title>
+    <meta name="description" content="Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11). My">
+    <meta name="keywords" content="apache2, bullseye, caddy, debian, dna, dy.fi, elisa, letsencrypt, nextcloud, owncloud, raspberrypios, wordpress.org, zerossl">
+    <meta name="author" content="Esa P">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään">
+    <meta property="og:description" content="Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11). My">
+    <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Eddy's Homepages">
+    
+    <!-- Article meta -->
+    <meta property="article:published_time" content="2022-08-09">
+    <meta property="article:author" content="Esa P">
+    <meta property="article:tag" content="apache2"><meta property="article:tag" content="bullseye"><meta property="article:tag" content="caddy"><meta property="article:tag" content="debian"><meta property="article:tag" content="dna"><meta property="article:tag" content="dy.fi"><meta property="article:tag" content="elisa"><meta property="article:tag" content="letsencrypt"><meta property="article:tag" content="nextcloud"><meta property="article:tag" content="owncloud"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="wordpress.org"><meta property="article:tag" content="zerossl">
+    
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään",
+        "description": "Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11). My",
+        "datePublished": "2022-08-09",
+        "author": {
+            "@type": "Person",
+            "name": "Esa P",
+            "url": "https://eddyshomepages.fi"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Esa P",
+            "url": "https://eddyshomepages.fi"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/"
+        },
+        "url": "https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/",
+        "keywords": "apache2, bullseye, caddy, debian, dna, dy.fi, elisa, letsencrypt, nextcloud, owncloud, raspberrypios, wordpress.org, zerossl"
+    }
+    </script>
+    
+    <!-- Redirect to SPA -->
+    <script>
+        window.location.replace("https://eddyshomepages.fi/#post/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan");
+    </script>
+    
+    <style>
+        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; font-size: 1.5rem; }
+        a { color: #0066cc; }
+        .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
+        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav style="margin-bottom:1rem; font-size:0.85rem;">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+            Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään
+        </nav>
+        <h1>Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään</h1>
+        <div class="meta">
+            <span>📅 2022-08-09</span>
+            &nbsp;&nbsp;<span>🏷️ apache2, bullseye, caddy, debian, dna, dy.fi, elisa, letsencrypt, nextcloud, owncloud, raspberrypios, wordpress.org, zerossl</span>
+        </div>
+        <p>Tässä blogissa on tarkoitus käydä läpi Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään, josta minulla on käytössä Bullseye -versio (Debian 11). Myös tämän sivuston pohjana käytetään Cadd</p>
+        <div class="tags"><span>apache2</span><span>bullseye</span><span>caddy</span><span>debian</span><span>dna</span><span>dy.fi</span><span>elisa</span><span>letsencrypt</span><span>nextcloud</span><span>owncloud</span><span>raspberrypios</span><span>wordpress.org</span><span>zerossl</span></div>
+        <hr>
+        <p>Ladataan artikkelia...</p>
+        <p><a href="https://eddyshomepages.fi/#post/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan">Klikkaa tästä jos sivu ei lataudu</a></p>
+    </div>
+</body>
+</html>

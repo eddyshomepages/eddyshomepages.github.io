@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla — Eddy's Homepages</title>
+    <meta name="description" content="Tässä kirjoituksessa on tarkoituksena käydä läpi Baïkal -kalenteripalvelimen asennus Docker-Composelle ja määrittää Caddy\-webserverille reverse proxy asetukset">
+    <meta name="keywords" content="baikal, caddy, caldav, cardav, debian, docker-compose, linux, webdav">
+    <meta name="author" content="Esa P">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla">
+    <meta property="og:description" content="Tässä kirjoituksessa on tarkoituksena käydä läpi Baïkal -kalenteripalvelimen asennus Docker-Composelle ja määrittää Caddy\-webserverille reverse proxy asetukset">
+    <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Eddy's Homepages">
+    
+    <!-- Article meta -->
+    <meta property="article:published_time" content="2022-09-01">
+    <meta property="article:author" content="Esa P">
+    <meta property="article:tag" content="baikal"><meta property="article:tag" content="caddy"><meta property="article:tag" content="caldav"><meta property="article:tag" content="cardav"><meta property="article:tag" content="debian"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="linux"><meta property="article:tag" content="webdav">
+    
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla",
+        "description": "Tässä kirjoituksessa on tarkoituksena käydä läpi Baïkal -kalenteripalvelimen asennus Docker-Composelle ja määrittää Caddy\-webserverille reverse proxy asetukset",
+        "datePublished": "2022-09-01",
+        "author": {
+            "@type": "Person",
+            "name": "Esa P",
+            "url": "https://eddyshomepages.fi"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Esa P",
+            "url": "https://eddyshomepages.fi"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/"
+        },
+        "url": "https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/",
+        "keywords": "baikal, caddy, caldav, cardav, debian, docker-compose, linux, webdav"
+    }
+    </script>
+    
+    <!-- Redirect to SPA -->
+    <script>
+        window.location.replace("https://eddyshomepages.fi/#post/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla");
+    </script>
+    
+    <style>
+        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; font-size: 1.5rem; }
+        a { color: #0066cc; }
+        .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
+        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav style="margin-bottom:1rem; font-size:0.85rem;">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+            Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla
+        </nav>
+        <h1>Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla</h1>
+        <div class="meta">
+            <span>📅 2022-09-01</span>
+            &nbsp;&nbsp;<span>🏷️ baikal, caddy, caldav, cardav, debian, docker-compose, linux, webdav</span>
+        </div>
+        <p>Tässä kirjoituksessa on tarkoituksena käydä läpi Baïkal -kalenteripalvelimen asennus Docker-Composelle ja määrittää Caddy\-webserverille reverse proxy asetukset siten, että myös kalenteripalvelimella </p>
+        <div class="tags"><span>baikal</span><span>caddy</span><span>caldav</span><span>cardav</span><span>debian</span><span>docker-compose</span><span>linux</span><span>webdav</span></div>
+        <hr>
+        <p>Ladataan artikkelia...</p>
+        <p><a href="https://eddyshomepages.fi/#post/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla">Klikkaa tästä jos sivu ei lataudu</a></p>
+    </div>
+</body>
+</html>

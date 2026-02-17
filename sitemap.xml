@@ -4,189 +4,29 @@
     <!-- Homepage -->
     <url>
         <loc>https://eddyshomepages.fi/</loc>
-        <lastmod>2025-09-19</lastmod>
+        <lastmod>2026-02-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/en/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/?lang=en"/>
     </url>
 
-    <!-- Finnish posts -->
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</loc>
-        <lastmod>2022-09-12</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/uuden-sivuston-taustaa/</loc>
+        <lastmod>2025-09-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/uuden-sivuston-taustaa/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiln/</loc>
-        <lastmod>2022-11-26</lastmod>
+        <loc>https://eddyshomepages.fi/posts/en/history-about-the-pages/</loc>
+        <lastmod>2025-09-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiln/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/history-about-the-pages/"/>
     </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</loc>
-        <lastmod>2023-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kayttoonotto-automaattisesti-haluttuun-aikaan/</loc>
-        <lastmod>2022-12-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kayttoonotto-automaattisesti-haluttuun-aikaan/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/</loc>
-        <lastmod>2022-09-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</loc>
-        <lastmod>2022-08-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</loc>
-        <lastmod>2022-09-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/</loc>
-        <lastmod>2022-08-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/eddys-homapages-new-site/</loc>
-        <lastmod>2023-10-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/eddys-homapages-new-site/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/</loc>
-        <lastmod>2022-12-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/</loc>
-        <lastmod>2022-11-07</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</loc>
-        <lastmod>2023-02-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/</loc>
-        <lastmod>2022-08-21</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</loc>
-        <lastmod>2023-01-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/</loc>
-        <lastmod>2023-03-31</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/huoltokatko/</loc>
-        <lastmod>2023-06-28</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/huoltokatko/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/</loc>
-        <lastmod>2023-04-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/</loc>
-        <lastmod>2022-09-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/mita-olen-vuosien-aikana-puuhaillut/</loc>
-        <lastmod>2022-07-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mita-olen-vuosien-aikana-puuhaillut/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/moikka-maailma/</loc>
-        <lastmod>2022-07-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/moikka-maailma/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/mosquitto-brokerin-asennus-kayttaen-docker-composea/</loc>
-        <lastmod>2022-09-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mosquitto-brokerin-asennus-kayttaen-docker-composea/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/</loc>
-        <lastmod>2023-05-21</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</loc>
-        <lastmod>2022-12-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</loc>
-        <lastmod>2023-02-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/oman-streeemauspalvelun-rakentaminen/</loc>
-        <lastmod>2022-11-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/oman-streeemauspalvelun-rakentaminen/"/>
-    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/</loc>
         <lastmod>2025-09-14</lastmod>
@@ -194,27 +34,23 @@
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/</loc>
-        <lastmod>2023-03-15</lastmod>
+        <loc>https://eddyshomepages.fi/posts/en/renewed-pages/</loc>
+        <lastmod>2025-09-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/renewed-pages/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/</loc>
-        <lastmod>2023-01-13</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/eddys-homapages-new-site/</loc>
+        <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/eddys-homapages-new-site/"/>
     </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</loc>
-        <lastmod>2022-09-21</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/"/>
-    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/</loc>
         <lastmod>2023-07-30</lastmod>
@@ -222,6 +58,15 @@
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/"/>
     </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/huoltokatko/</loc>
+        <lastmod>2023-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/huoltokatko/"/>
+    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</loc>
         <lastmod>2023-06-20</lastmod>
@@ -229,27 +74,15 @@
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla/</loc>
-        <lastmod>2022-11-12</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/</loc>
+        <lastmod>2023-05-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/"/>
     </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla/</loc>
-        <lastmod>2023-03-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/fi/sivuston-rss-syote-saatavilla/</loc>
-        <lastmod>2022-10-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sivuston-rss-syote-saatavilla/"/>
-    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/</loc>
         <lastmod>2023-05-07</lastmod>
@@ -257,27 +90,143 @@
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/uuden-sivuston-taustat/</loc>
-        <lastmod>2022-07-12</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/</loc>
+        <lastmod>2023-04-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/uuden-sivuston-taustat/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</loc>
-        <lastmod>2022-07-16</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/</loc>
+        <lastmod>2023-03-31</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/"/>
     </url>
+
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</loc>
-        <lastmod>2022-08-16</lastmod>
+        <loc>https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/</loc>
+        <lastmod>2023-03-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/"/>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/"/>
     </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla/</loc>
+        <lastmod>2023-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/</loc>
+        <lastmod>2023-02-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/esphomen-asennus-paatteen-kautta-linux-kayttojarjestelmaan/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/</loc>
+        <lastmod>2023-02-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/</loc>
+        <lastmod>2023-01-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/</loc>
+        <lastmod>2023-01-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/</loc>
+        <lastmod>2023-01-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/</loc>
+        <lastmod>2022-12-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/</loc>
+        <lastmod>2022-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/</loc>
+        <lastmod>2022-12-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/</loc>
+        <lastmod>2022-11-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla/</loc>
+        <lastmod>2022-11-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sahkon-hinnan-maarittaminen-kvartaaleittain-home-assistantilla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/</loc>
+        <lastmod>2022-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/</loc>
+        <lastmod>2022-11-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/sivuston-rss-syote-saatavilla/</loc>
+        <lastmod>2022-10-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sivuston-rss-syote-saatavilla/"/>
+    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/fi/zigbee2mqtt-asentaminen-docker-composen-avulla/</loc>
         <lastmod>2022-10-05</lastmod>
@@ -286,27 +235,116 @@
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/zigbee2mqtt-asentaminen-docker-composen-avulla/"/>
     </url>
 
-    <!-- English posts -->
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/</loc>
+        <lastmod>2022-09-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/mosquitto-brokerin-asennus-kayttaen-docker-composea/</loc>
+        <lastmod>2022-09-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mosquitto-brokerin-asennus-kayttaen-docker-composea/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/</loc>
+        <lastmod>2022-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/</loc>
+        <lastmod>2022-09-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/</loc>
+        <lastmod>2022-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/</loc>
+        <lastmod>2022-09-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/</loc>
+        <lastmod>2022-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/</loc>
+        <lastmod>2022-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/</loc>
+        <lastmod>2022-08-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/</loc>
+        <lastmod>2022-08-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/</loc>
+        <lastmod>2022-07-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/mita-olen-vuosien-aikana-puuhaillut/</loc>
+        <lastmod>2022-07-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/mita-olen-vuosien-aikana-puuhaillut/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/moikka-maailma/</loc>
+        <lastmod>2022-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/moikka-maailma/"/>
+    </url>
+
     <url>
         <loc>https://eddyshomepages.fi/posts/en/hello-world/</loc>
         <lastmod>2022-07-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/hello-world/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/en/history-about-the-pages/</loc>
-        <lastmod>2022-07-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/history-about-the-pages/"/>
-    </url>
-    <url>
-        <loc>https://eddyshomepages.fi/posts/en/renewed-pages/</loc>
-        <lastmod>2025-09-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/renewed-pages/"/>
     </url>
 
 </urlset>
