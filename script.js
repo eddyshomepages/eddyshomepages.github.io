@@ -316,8 +316,8 @@ async function changeLanguage() {
 	};
 	
 	const descriptions = {
-	    fi: 'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant automaatiosta.',
-	    en: 'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant automation.'
+	    fi: 'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant kotiautomaatiosta.',
+	    en: 'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant homeautomation.'
 	};
 	
 	// Update canonical URL to include language parameter
@@ -454,7 +454,7 @@ function updatePageTexts() {
         fi: {
             home: 'Etusivu', posts: 'Artikkelit', search: 'Haku', about: 'Tietoja',
             postsTitle: 'Blogiartikkelit',
-            postsSubtitle: 'Oppaasi Linux-järjestelmiin ja Home Assistant automaatioon',
+            postsSubtitle: 'Oppaasi Linux-järjestelmiin ja Home Assistant kotiautomaatioon',
             searchTitle: 'Hae artikkeleita',
             searchPlaceholder: 'Hae artikkeleita otsikon, sisällön tai tagien perusteella...',
             searchLabel: 'Hakusana', searchInstructions: 'Kirjoita hakusana löytääksesi artikkeleita',
@@ -470,7 +470,7 @@ function updatePageTexts() {
         en: {
             home: 'Home', posts: 'Posts', search: 'Search', about: 'About',
             postsTitle: 'Blog Posts',
-            postsSubtitle: 'Your guide to Linux systems and Home Assistant automation',
+            postsSubtitle: 'Your guide to Linux systems and Home Assistant homeautomation',
             searchTitle: 'Search Posts',
             searchPlaceholder: 'Search posts by title, content, or tags...',
             searchLabel: 'Search term', searchInstructions: 'Type search term to find posts',
@@ -620,8 +620,8 @@ async function showFrontpage() {
 	    'Eddy\'s Homepages — Linux-järjestelmät ja Home Assistant -oppaat' :
 	    'Eddy\'s Homepages — Linux Systems & Home Assistant Guides';
 	const description = frontpageData.description || (currentLanguage === 'fi' ? 
-	    'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant automaatiosta.' :
-	    'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant automation.');
+	    'Askel askeleelta -oppaat Linux-järjestelmistä, Raspberry Pi:stä, Dockerista ja Home Assistant kotiautomaatiosta.' :
+	    'Step-by-step guides on Linux systems, Raspberry Pi, Docker, and Home Assistant homeautomation.');
 	
 	updatePageMeta(title, description, baseUrl + '/', 'website');
 	
@@ -704,7 +704,7 @@ function showPosts() {
 	    'Blog Posts — Eddy\'s Homepages';
 	const description = currentLanguage === 'fi' ?
 	    `Selaa ${allPosts.length} artikkelia Linux-järjestelmistä, Home Assistantista ja kotiautomaatiosta.` :
-	    `Browse ${allPosts.length} articles about Linux systems, Home Assistant and home automation.`;
+	    `Browse ${allPosts.length} articles about Linux systems, Home Assistant and homeautomation.`;
 	
 	updatePageMeta(title, description, baseUrl + '/#posts');
 	
@@ -1368,7 +1368,7 @@ function generateRSSFeed() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title><![CDATA[Eddy's Homepages]]></title>
-        <description><![CDATA[${currentLanguage === 'fi' ? 'Oppaasi Linux-järjestelmiin ja Home Assistant automaatioon' : 'Your guide to Linux systems and Home Assistant automation'}]]></description>
+        <description><![CDATA[${currentLanguage === 'fi' ? 'Oppaasi Linux-järjestelmiin ja Home Assistant kotiautomaatioon' : 'Your guide to Linux systems and Home Assistant homeautomation'}]]></description>
         <link>${baseUrl}</link>
         <atom:link href="${feedUrl}" rel="self" type="application/rss+xml"/>
         <language>${language}</language>
