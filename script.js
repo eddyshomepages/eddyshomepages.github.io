@@ -192,7 +192,8 @@ const markdownPosts = {
 		'hello-world.md',
 		'renewed-pages.md',
         'history-about-the-pages.md',
-        'how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant.md'
+        'how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant.md',
+        'tuning-raingauge-to-zigbee-network.md'
 	]
 };
 
