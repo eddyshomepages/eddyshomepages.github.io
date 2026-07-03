@@ -9,77 +9,158 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Oman streemauspalvelun rakentaminen">
     <meta property="og:description" content="Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joit">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-11-01">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="caddy"><meta property="article:tag" content="debian"><meta property="article:tag" content="emby"><meta property="article:tag" content="raspberrypios">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Oman streemauspalvelun rakentaminen",
-        "description": "Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joit",
-        "datePublished": "2022-11-01",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/",
-        "keywords": "caddy, debian, emby, raspberrypios"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Oman streemauspalvelun rakentaminen",
+  "description": "Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joit",
+  "datePublished": "2022-11-01",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/oman-streemauspalvelun-rakentaminen/",
+  "keywords": "caddy, debian, emby, raspberrypios",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/oman-streemauspalvelun-rakentaminen");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Oman streemauspalvelun rakentaminen
         </nav>
-        <h1>Oman streemauspalvelun rakentaminen</h1>
-        <div class="meta">
-            <span>📅 2022-11-01</span>
-            &nbsp;&nbsp;<span>🏷️ caddy, debian, emby, raspberrypios</span>
-        </div>
-        <p>Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joita on tullut muutettua MP3 ja MP4 -musiik</p>
-        <div class="tags"><span>caddy</span><span>debian</span><span>emby</span><span>raspberrypios</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/oman-streemauspalvelun-rakentaminen">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Oman streemauspalvelun rakentaminen</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-11-01" itemprop="datePublished">2022-11-01</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">caddy, debian, emby, raspberrypios</span></span>
+            </div>
+            <div class="tags"><span class="tag">caddy</span><span class="tag">debian</span><span class="tag">emby</span><span class="tag">raspberrypios</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Minulla on ollut jo vuosia mielessä, että pitäisi tehdä omalle musiikille striimaus-palvelu, koska minullekin on kertynyt vuosien varrella paljonkin CD:tä, joita on tullut muutettua <a href="https://en.wikipedia.org/wiki/MP3">MP3</a> ja <a href="https://en.wikipedia.org/wiki/MP4_file_format">MP4</a> -musiikkimuotoon eli .m4a muotoon. Voisihan sitä kuunnella musiikkia myös maksullisista palveluista, mutta ajattelin nyt kertoa tämmöisestäkin vaihtoehdosta eli tässä kirjoituksessa käydään läpi <a href="https://emby.media/index.html">Emby</a> -mediaserverin asennus- ja käyttöön ottaminen, joka on mielestäni suoraviivainen ja helppo tehdä.</p>
+<p><a href="https://emby.media/index.html">Emby</a> on tarkoitettu oman median hallitsemiseen omalla palvelimella ja toimii esimerkiksi mainiosti omassa sisäverkossa ja ulkoverkossa palvelun saa toimimaan <a href="https://emby.media/premiere.html">Emby Premiere</a> -tilin avulla. Vaihtoehtoisesti yhteyden ulkopuolelta saa myös toimimaan <a href="https://caddyserver.com/">Caddy</a> -webserverin <a href="https://caddyserver.com/docs/quick-starts/reverse-proxy#reverse-proxy-quick-start">reverse proxy</a>:n avulla tai sitten ottamalla sisäverkkoon VPN -yhteys eli pienellä säätämisellä yhteys kodin ulkopuolelta onnistuu myös ilman <a href="https://emby.media/premiere.html">Emby Premiere</a> -tiliä.</p>
+<p><a href="https://emby.media/index.html">Embyllä</a> voi hallita musiikin lisäksi myös videoita sekä Live TV lähetyksiä, joka tosin vaatii maksullisen <a href="https://emby.media/premiere.html">Emby Premiere</a> -tilin. Minun on tarkoitus hallita toistaiseksi ainoastaan musiikki -kokoelmaani, johon ilmainen vaihtoehto riittää siis mainiosti.</p>
+<p>Minä asennan <a href="https://emby.media/index.html">Embyn</a> RaspberryPi 3 -tietokoneelle siten, että kone boottaa ulkoiselta SSD -levyltä ilman muistikortteja. Käyttöjärjestelmänä Raspissa on <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a>. Varmuuskopioinnin teen verkkolevyasemalla käyttäen <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a> (Network File System) -protokollaa.</p>
+<h3>Embyn asentaminen</h3>
+<p><a href="https://emby.media/index.html">Embyn</a> asentaminen aloitetaan ajamalla ensin tarvittavat käyttöjärjestelmän päivitykset eli ajetaan komennot</p>
+<pre><code>sudo apt update
+sudo apt upgrade
+</code></pre>
+<p>Mikäli tarjolla on päivityksiä, niin asennetaan ne aluksi ennen kuin jatketaan.</p>
+<p>Seuraavaksi tarkistetaan vielä järjestelmän tiedot, jotta voidaan hakea oikea versio eli ajetaan käsky</p>
+<pre><code>uname -a
+</code></pre>
+<p>Käskyllä saadaan seuraavat tiedot eli</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva1.png" /></p>
+<p>Ympyröidystä kohdasta nähdään, että meillä on kyseessä tavallinen 32-bit käyttöjärjestelmä. Seuraavaksi haetaan oikea <a href="https://emby.media/index.html">Embyn</a> paketti, joka löytyy <a href="https://emby.media/linux-server.html">Embyn sivustolta</a> eli meillä käyttöjärjestelmänä on <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a>, jolloin valitaan alasvetovalikosta vaihtoehdoksi <code>Debian</code>. Jotta asennus saadaan suoritettua, ajetaan seuraavat käskyt</p>
+<pre><code>wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.7.8.0/emby-server-deb_4.7.8.0_armhf.deb
+sudo dpkg -i emby-server-deb_4.7.8.0_armhf.deb
+</code></pre>
+<p>Tämän jälkeen voimmekin avata selaimessa osoitteet <code>http://x.x.x.x:8096</code>, jossa <code>x.x.x.x</code> on taas sen koneen IP-osoite, jolle <a href="https://emby.media/index.html">Emby</a> on asennettu. Eli meille avautuu alla olevan näköinen näkymä</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva2.png" /></p>
+<p><em>Kuva: Embyn konffausikkuna</em></p>
+<p>Aluksi valitaan haluttu kieli, jonka jälkeen annetaan ensimmäinen käyttäjätunnus ja tunnukselle salasana. Käyttäjätunnuksia voidaan luoda lisää palvelimella kirjautumisen jälkeen.</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva3.png" /></p>
+<p><em>Kuva: Embyn käyttäjän luonti</em></p>
+<p>Seuraavaksi valitaan hakemisto, johon on musiikki yms. mediat ovat tallennettu</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva4.png" /></p>
+<p><em>Kuva: Embyn mediakirjaston hakemiston asetus</em></p>
+<p>Seuraavaksi valitaan oletuskieli meta-datalle</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva5.png" /></p>
+<p><em>Kuva: Embyn meta-datan oletuskieli</em></p>
+<p>Seuraavaksi konfiguroidaan etäyhteyttä eli mennään oletusasetuksella eteenpäin</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva6.png" /></p>
+<p><em>Kuva: Embyn etäyhteyden konfigurointi</em></p>
+<p>Lopuksi vielä luetaan tiedot yksityisyysasetuksista ja käyttöehdoista ennen hyväksymistä</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva7.png" /></p>
+<p><em>Kuva: Embyn yksityisyysasetukset ja käyttöehdot</em></p>
+<p>Tämän jälkeen ollaankin sitten valmiita</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva8.png" /></p>
+<p><em>Kuva: Embyn konfigurointi on nyt valmis</em></p>
+<p>Lopuksi painetaan vielä <code>Finish</code> -näppäintä. Ikkunasta löytyvät myös linkit asiakas-sovelluksiin, jotka voidaan asentaa ja yhdistää palvelimeen.</p>
+<p>Seuraavaksi päästään kirjautumaan sovellukseen ja aloittamaan sen käyttö</p>
+<p><img alt="" src="/images/oman-streemauspalvelun-rakentaminen/kuva9.png" /></p>
+<p><em>Kuva: Embyn kirjautumisikkuna</em></p>
+<p>Nyt ei muuta kuin kuuntelemaan musiikkia sovelluksen kautta.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/oman-streemauspalvelun-rakentaminen">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

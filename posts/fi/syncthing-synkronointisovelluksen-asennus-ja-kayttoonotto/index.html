@@ -9,77 +9,158 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Syncthing synkronointisovelluksen asennus- ja käyttöönotto">
     <meta property="og:description" content="Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tie">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-05-07">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="android"><meta property="article:tag" content="bananapi"><meta property="article:tag" content="debian"><meta property="article:tag" content="freebsd"><meta property="article:tag" content="linux"><meta property="article:tag" content="macos"><meta property="article:tag" content="openpsd"><meta property="article:tag" content="sailfishos"><meta property="article:tag" content="solaris"><meta property="article:tag" content="syncthing"><meta property="article:tag" content="windows">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Syncthing synkronointisovelluksen asennus- ja käyttöönotto",
-        "description": "Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tie",
-        "datePublished": "2023-05-07",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/",
-        "keywords": "android, bananapi, debian, freebsd, linux, macos, openpsd, sailfishos, solaris, syncthing, windows"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Syncthing synkronointisovelluksen asennus- ja käyttöönotto",
+  "description": "Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tie",
+  "datePublished": "2023-05-07",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/",
+  "keywords": "android, bananapi, debian, freebsd, linux, macos, openpsd, sailfishos, solaris, syncthing, windows",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Syncthing synkronointisovelluksen asennus- ja käyttöönotto
         </nav>
-        <h1>Syncthing synkronointisovelluksen asennus- ja käyttöönotto</h1>
-        <div class="meta">
-            <span>📅 2023-05-07</span>
-            &nbsp;&nbsp;<span>🏷️ android, bananapi, debian, freebsd, linux, macos, openpsd, sailfishos, solaris, syncthing, windows</span>
-        </div>
-        <p>Seuraavaksi ajattelin kirjoittaa Syncthing -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tietokoneelle ilman, että tarvitsee juurika</p>
-        <div class="tags"><span>android</span><span>bananapi</span><span>debian</span><span>freebsd</span><span>linux</span><span>macos</span><span>openpsd</span><span>sailfishos</span><span>solaris</span><span>syncthing</span><span>windows</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Syncthing synkronointisovelluksen asennus- ja käyttöönotto</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-05-07" itemprop="datePublished">2023-05-07</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">android, bananapi, debian, freebsd, linux, macos, openpsd, sailfishos, solaris, syncthing, windows</span></span>
+            </div>
+            <div class="tags"><span class="tag">android</span><span class="tag">bananapi</span><span class="tag">debian</span><span class="tag">freebsd</span><span class="tag">linux</span><span class="tag">macos</span><span class="tag">openpsd</span><span class="tag">sailfishos</span><span class="tag">solaris</span><span class="tag">syncthing</span><span class="tag">windows</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin kirjoittaa <a href="https://syncthing.net/">Syncthing</a> -nimisestä synkronointisovelluksesta, jolla pystyy esim. synkronoimaan puhelimen valokuvat automaattisesti omalle tietokoneelle ilman, että tarvitsee juurikaan tietää/tuntea oman kotiverkon asetuksista mitään. Riittää, että molemmille laitteille on asennettu <a href="https://syncthing.net/">Syncthing</a> ja laitteet on yhdistetty toimimaan yhdessä.</p>
+<p><a href="https://syncthing.net/">Syncthing</a> on avoimen lähdekoodin sovellus ja sen toiminta perustuu <a href="https://docs.syncthing.net/specs/bep-v1.html">Block Exchange Protocollan 1. versioon</a>. Lisäksi <a href="https://syncthing.net/">Synctingin</a> saa asetettua toimimaan, joko pelkästään omassa sisäverkossa tai vaihtoehtoisesti myös internetin yli. <a href="https://syncthing.net/">Syncthing</a> myös salaa kaiken liikenteen käyttäen <a href="https://fi.wikipedia.org/wiki/TLS">TLS</a>:n versiota 1.2 tai uudempi sekä luo automaattisesti tarvittavat sertifikaatit, joten käyttäjän ei tarvitse tehdä muuta kuin asentaa sovellus ja käynnistää se. Loppu konfigurointi hoidetaan nettiselaimen kautta.</p>
+<p><a href="https://syncthing.net/downloads/">Syncthingistä</a> löytyy versiot <a href="https://fi.wikipedia.org/wiki/MacOS">macOS</a>:lle, <a href="https://fi.wikipedia.org/wiki/Microsoft_Windows">Windows</a>:lle, <a href="https://fi.wikipedia.org/wiki/Linux">Linuxille</a>, <a href="https://fi.wikipedia.org/wiki/FreeBSD">FreeBSD</a>:lle, <a href="https://fi.wikipedia.org/wiki/Oracle_Solaris">Solarikselle</a>, <a href="https://fi.wikipedia.org/wiki/OpenBSD">OpenBSD</a>:lle, <a href="https://fi.wikipedia.org/wiki/Android">Androidille</a> ja mm. <a href="https://fi.wikipedia.org/wiki/Sailfish_OS">SailfishOS</a>:lle.</p>
+<h3>Syncthingin asennus</h3>
+<p>Itse käytän <a href="https://syncthing.net/">Syncthingiä</a> siten, että minulla <a href="https://en.wikipedia.org/wiki/Banana_Pi">BananaPi</a> -tietokone toimii "keskuskoneena" ja jota kautta jaettavat tiedostot jaetaan eri tietokoneiden ja puhelimien kesken. Käyttöjärjestelminä minulla on käytössä <a href="https://fi.wikipedia.org/wiki/Debian">Debian</a> -pohjaisia käyttöjärjestelmiä, joten <a href="https://syncthing.net/">Syncthingin</a> asennuksen saa tehtyä suoraan ohjelmistolähteiden kautta antamalla komento <code>sudo apt install syncthing</code>, jota ennen kuitenkin tarkistetaan ja asennetaan päivitykset antamalla komento</p>
+<pre><code>sudo apt update &amp;&amp; sudoa apt upgrade
+</code></pre>
+<p>Vaihtoehtoisesti <a href="https://syncthing.net/">Syncthingin</a> voi asentaa myös käyttäen ohjelmistolähteenä <a href="http://apt.syncthing.net">apt.syncthing.net</a> -ohjelmistolähdettä, mutta tällöin täytyy aluksi asentaa <em>release-key</em> ja <em>stable</em> -ohjelmistolähteet komennoilla</p>
+<pre><code>sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+
+echo &quot;deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable&quot; | sudo tee /etc/apt/sources.list.d/syncthing.list
+</code></pre>
+<p>Seuraavaksi asennetaan itse sovellus samalla komennolla kuin aikaisemmin eli annetaan komennot</p>
+<pre><code>sudo apt update
+sudo apt install syncthing
+</code></pre>
+<h3>Syncthin käynnistys ja asetukset</h3>
+<p>Seuraavaksi <a href="https://syncthing.net/">Syncthing</a> voidaan käynnistää ja työpöydällä tämä tapahtuu aloitusvalikon kautta. Ainakin Linuxin puolella aloitusvalikkoon tulee kuvake <a href="https://syncthing.net/">Syncthingin</a> käynnistämiseksi ja sen saa asetettua käynnistymään myös automaattisesti työpöydän asetuksien kautta.</p>
+<p>Seuraavaksi avataan selain eli annetaan sen koneen IP-osoite, jolle <a href="https://syncthing.net/">Syncthing</a> on asennettu eli minulla esimerkiksi tämä sama tietokone, jolloin osoite on <em>http://127.0.0.1:8384</em> (tai vaihtoehtoisesti voidaan käyttää myös osoitetta <em>http://localhost:8384</em>).</p>
+<p><a href="https://syncthing.net/">Syncthing</a> käyttää oletusporttina porttia <em>8384</em>, mutta tämän voi halutessaan muuttaa sovelluksen asetuksien kautta.</p>
+<p>Eli avaamisen jälkeen selaimelle avautuu alla olevan kaltainen ikkuna</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva1.webp" /><br />
+<em>Kuva: Syncthing aloitusikkuna</em></p>
+<p>Tässä ikkunassa kohdassa <em>Kansiot</em> näkyvät kaikki ne laitteen kansiot, jotka jaetaan kohdassa <em>Laitteet</em> näkyvien laitteiden kanssa. Kohdassa <em>Tämä laite</em> näkyy tämän kyseisen laitteen tiedot.</p>
+<h4>Lisää jaettavia kansioita</h4>
+<p><a href="https://syncthing.net/">Syncthing</a> tekee valmiiksi oletuksena <em>Sync</em> -nimisen kansion, mutta mikäli halutaan jakaa muitakin kansioita, se voidaan tehdä valitsemalla <em>Lisää kansio</em>, jolloin avautuu alla oleva näkymä</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva2.webp" /><br />
+<em>Kuva: Syncthing, lisää kansio</em></p>
+<p>Kansiota lisätessä annetaan aluksi <em>kansion nimi</em>, <em>kansion ID</em> (tulee yleensä automaattisesti) sekä <em>kansion polku</em>. Tässä huomataan, että oletuksena kansio luodaan kotihakemistoon eli hakemistopolku on tässä tapauksessa <code>/home/user/kansio</code>.</p>
+<h4>Lisää laitteita</h4>
+<p>Kansion asetuksien jälkeen voidaan lisätä uusia laitteita ja tämä tapahtuu painamalla kohdasta <em>Lisää laite</em>, jolloin avautuu alla olevan kaltainen ikkuna</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva3.webp" /><br />
+<em>Kuva: Syncthing, lisää laite</em> <em>- Yleinen</em></p>
+<p>Laitteen lisäämiseksi tarvitaan tieto lisättävän laitteen ID:stä ja tämä tieto saadaan avaamalla <a href="https://syncthing.net/">Syncthing</a> lisättävän laitteen selaimessa. Tämän jälkeen avataan oikeasta yläreunasta kohta <em>Muokkaa - Näytä ID</em>, jolloin näkyviin tulee QR -koodi sekä numero/kirjainsarja, jossa on kahdeksan kappaletta seitsemän merkkisiä numero/kirjain -yhdistelmiä.</p>
+<p>Tämä merkkisarja tarvitaan, jotta uusi laite voidaan lisätä. <a href="https://syncthing.net/">Syncthing</a> yleensä löytää samassa verkossa olevat laitteet automaattisesti ja ne näkyvät <em>Laitteen ID</em> -kohdan alla, josta sitten voidaan valita oikea laite. </p>
+<p>Tämän jälkeen, kun laite on valittu, tulee nettisivun yläreunaan näkyviin kysymys, että saako tämä lisättävä laite yhdistää ja tähän voidaan vastata kyllä. Seuraavaksi valitaan vielä kansiot, jotka halutaan jakaa eli alla minulla jaettavaksi tulisivat kansiot <em>Dokumentit</em> sekä <em>Kuvat_SailfishOS</em>.</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva4.webp" /><br />
+<em>Kuvat: Syncthing, lisää laite - Jakaminen</em></p>
+<p>Oikeasta ylerunasta kohdasta <em>Muokkaa - Asetukset</em> voidaan kohdassa <em>Yleinen</em> muuttaa esim. hakemistojen oletuspolkua. Tämä tapahtuu kohdasta <em>Oletuspolku kansioille</em> eli tässä kohdassa määritetään oletuskansio, johon kansioon muiden laitteiden kanssa jaetut kansiot tallennetaan. Tässä tapauksessa oletuskansiona <em>~ (tilde)</em> eli tämän tarkoittaa kotikansiota, joka tässä Linuxilla on <em>/home/user</em>.</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva5.webp" /><br />
+<em>Kuva: Syncthing asetukset, kohta Yleinen</em></p>
+<p>Kohdasta <em>GUI</em> avautuu alla oleva näkymä ja tässä voidaan muokata mm. käyttöliittymän osoitetta ja porttia sekä ottaa käyttöön suojattu <em>https</em> -yhteys käyttöliittymän kanssa.</p>
+<p><img alt="" src="/images/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto/kuva6.webp" /><br />
+<em>Kuva: Syncthing asetukset, kohta GUI</em></p>
+<p>Asetuksien muista kohdista löytyy tietoja yhteyksistä ja täältä voidaan määrittää myös mahdolliset ohitetut laitteet tai -kansiot, mutta näihin ei ole yleensä tarvinnut tehdä muutoksia.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/syncthing-synkronointisovelluksen-asennus-ja-kayttoonotto">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

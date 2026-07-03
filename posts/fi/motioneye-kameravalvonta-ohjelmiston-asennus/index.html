@@ -9,77 +9,160 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="MotionEye kameravalvonta -ohjelmiston asennus">
     <meta property="og:description" content="Tässä kirjoituksessa ajattelin kirjoittaa MotionEye -kameravalvonta -ohjelmiston asennuksesta RaspberryPi 3 -tietokoneelle. MotionEye on myös siitä mukava, että">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-05-21">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="halytysjarjestelma"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="linux"><meta property="article:tag" content="motioneye"><meta property="article:tag" content="python"><meta property="article:tag" content="raspberrypi"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="rtsp">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "MotionEye kameravalvonta -ohjelmiston asennus",
-        "description": "Tässä kirjoituksessa ajattelin kirjoittaa MotionEye -kameravalvonta -ohjelmiston asennuksesta RaspberryPi 3 -tietokoneelle. MotionEye on myös siitä mukava, että",
-        "datePublished": "2023-05-21",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/",
-        "keywords": "halytysjarjestelma, homeassistant, kotiautomaatio, linux, motioneye, python, raspberrypi, raspberrypios, rtsp"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MotionEye kameravalvonta -ohjelmiston asennus",
+  "description": "Tässä kirjoituksessa ajattelin kirjoittaa MotionEye -kameravalvonta -ohjelmiston asennuksesta RaspberryPi 3 -tietokoneelle. MotionEye on myös siitä mukava, että",
+  "datePublished": "2023-05-21",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/",
+  "keywords": "halytysjarjestelma, homeassistant, kotiautomaatio, linux, motioneye, python, raspberrypi, raspberrypios, rtsp",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/motioneye-kameravalvonta-ohjelmiston-asennus");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             MotionEye kameravalvonta -ohjelmiston asennus
         </nav>
-        <h1>MotionEye kameravalvonta -ohjelmiston asennus</h1>
-        <div class="meta">
-            <span>📅 2023-05-21</span>
-            &nbsp;&nbsp;<span>🏷️ halytysjarjestelma, homeassistant, kotiautomaatio, linux, motioneye, python, raspberrypi, raspberrypios, rtsp</span>
-        </div>
-        <p>Tässä kirjoituksessa ajattelin kirjoittaa MotionEye -kameravalvonta -ohjelmiston asennuksesta RaspberryPi 3 -tietokoneelle. MotionEye on myös siitä mukava, että se toimii Home Assistantin kanssa hyvin</p>
-        <div class="tags"><span>halytysjarjestelma</span><span>homeassistant</span><span>kotiautomaatio</span><span>linux</span><span>motioneye</span><span>python</span><span>raspberrypi</span><span>raspberrypios</span><span>rtsp</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/motioneye-kameravalvonta-ohjelmiston-asennus">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">MotionEye kameravalvonta -ohjelmiston asennus</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-05-21" itemprop="datePublished">2023-05-21</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">halytysjarjestelma, homeassistant, kotiautomaatio, linux, motioneye, python, raspberrypi, raspberrypios, rtsp</span></span>
+            </div>
+            <div class="tags"><span class="tag">halytysjarjestelma</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">linux</span><span class="tag">motioneye</span><span class="tag">python</span><span class="tag">raspberrypi</span><span class="tag">raspberrypios</span><span class="tag">rtsp</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Tässä kirjoituksessa ajattelin kirjoittaa <a href="https://github.com/motioneye-project">MotionEye</a> -kameravalvonta -ohjelmiston asennuksesta <a href="https://fi.wikipedia.org/wiki/Raspberry_Pi">RaspberryPi 3</a> -tietokoneelle. <a href="https://github.com/motioneye-project">MotionEye</a> on myös siitä mukava, että se toimii <a href="https://www.home-assistant.io/">Home Assistantin</a> kanssa hyvin yhteen ja kameroista saa tehtyä esim. liiketunnistimet <a href="https://www.home-assistant.io/">Home Assistantiin</a> samalla, kun ne hoitavat kameran virkaa.</p>
+<p>Toki näitä vastaavia kameravalvonta -ohjelmistoja on muitakin, kuten esim. <a href="https://zoneminder.com/">ZoneMinder</a>, <a href="https://shinobi.video/">Shinobi</a> ja <a href="https://www.ispyconnect.com/download.aspx">Agent DVR</a> (ent. iSpy), jotka toimivat myös hyvin <a href="https://www.home-assistant.io/">Home Assistantin</a> kanssa.</p>
+<p><a href="https://github.com/motioneye-project">MotionEye</a> -sovelluksen on alun perin kehittänyt <a href="https://github.com/ccrisan">Calin Crisan</a>, joka ei enää jatka ohjelmiston kehittämistä, vaan kehityksestä vastaa jatkossa uusi <a href="https://github.com/orgs/motioneye-project/people">tiimi</a>. Tällä hetkellä <a href="https://github.com/motioneye-project">MotienEye</a>:stä on tarjolla tosin vielä versio, joka käyttää vanhempaa <a href="https://www.python.org/download/releases/2.0/">Python 2</a> -versiota, mutta jatkossa ohjelma on tarkoitus kääntää <a href="https://www.python.org/downloads/">Python 3</a> -versiolle.<a href="https://github.com/motioneye-project"></a></p>
+<p><a href="https://github.com/motioneye-project">MotionEye</a> -ohjelmistosta löytyy myös valmis levy-image <a href="https://github.com/motioneye-project/motioneyeos">MotionEyeOS</a>, jonka voi kopioida muistikortille, laittaa kortin kiinni Raspiin ja laittaa virrat päälle, niin sen jälkeen on kameravalvonta -palvelin valmiina käyttöön.</p>
+<h4>Järjestelmän päivittäminen ja tarvittavien sovellusten asentaminen</h4>
+<p>Minulla Raspi on myös muussa käytössä, joten asennan ohjelmiston erikseen järjestelmään. Asennukseen löytyvät tarkemmat asennusohjeet projektin <a href="https://github.com/motioneye-project/motioneye/wiki/Installation">Wiki</a> -sivuilta, josta niitä voi tarkemmin katsoa. Minulle käyttiksenä on <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a>:n Bullseye -versio, jonka asentamisesta ja konffaamisesta löytyy vanha kirjoitus <a href="https://fasted.dy.fi/index.php/2023/01/raspberrypiosn-asentaminen-ja-kayttoonotto/">täältä</a>.</p>
+<p>Ja vaikka minulla onkin käytössä Raspi, niin asennan <a href="https://github.com/motioneye-project">MotionEye</a>:n kuitenkin <a href="https://www.debian.org/releases/bullseye/">Debian 11</a> (Bullseye) -asennusohjeen mukaisesti eli asennus menee <a href="https://github.com/motioneye-project/motioneye/wiki/Install-on-Debian-11-(Bullseye)">Wiki</a> -sivuston perusteella aika lailla seuraavasti, mutta tarkistetaan ja asennetaan aluksi kuitenkin mahdolliset päivitykset komennolla</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+<p>Seuraavaksi asennetaan tarvittavat muut sovellukset eli annetaan komento</p>
+<pre><code>sudo apt install python2 curl motion ffmpeg v4l-utils python-dev-is-python2 python-setuptools libssl-dev libcurl4-openssl-dev libjpeg-dev zlib1g-dev libffi-dev libzbar-dev libzbar0
+</code></pre>
+<p>Seuraavaksi suljetaan ja poistetaan <em>motion</em> -sovellus käytöstä komennoilla</p>
+<pre><code>sudo systemctl stop motion
+sudo systemctl disable motion
+</code></pre>
+<p>Tämän jälkeen haetaan ja asennetaan <a href="https://pypi.org/project/pip/">Pythoniin</a> <em>pip</em> -niminen sovellus komennoilla</p>
+<pre><code>sudo curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+</code></pre>
+<h4>MotionEye:n asentaminen</h4>
+<p>Seuraavaksi asennetaan <a href="https://github.com/motioneye-project">MotionEye</a> komennolla (komento asentaa automaattisesti myös muut tarvittavat paketit, joita ovat <em>tornado, jinja2, pillow</em> ja <em>pycurl</em>)</p>
+<pre><code>sudo pip install motioneye
+</code></pre>
+<p>Asennuksen jälkeen tehdään vielä tarvittavat muutokset järjestelmään eli aluksi luodaan hakemisto <em>motioneye</em> hakemistoon <em>/etc</em> sekä kopioidaan hakemistoon <em>motioneye.conf</em> -tiedosto komennoilla</p>
+<pre><code>sudo mkdir -p /etc/motioneye
+sudo cp /usr/local/share/motioneye/extra/motioneye.conf.sample /etc/motioneye/motioneye.conf
+</code></pre>
+<p>Seuraavaksi luodaan medialle oma hakemisto komennolla</p>
+<pre><code>sudo mkdir -p /var/lib/motioneye
+</code></pre>
+<p>Lopuksi vielä tehdään <a href="https://github.com/motioneye-project/motioneye">MotionEye</a>:stä automaattisesti käynnistyvä palvelin eli annetaan komennot</p>
+<pre><code>sudo cp /usr/local/share/motioneye/extra/motioneye.systemd-unit-local /etc/systemd/system/motioneye.service
+sudo systemctl daemon-reload
+sudo systemctl enable motioneye
+sudo systemctl start motioneye
+</code></pre>
+<p>Tarvittaessa <a href="https://github.com/motioneye-project">MotionEye</a> -sovelluksen saa päivitettyä komennolla</p>
+<pre><code>sudo pip install motioneye --upgrade
+sudo systemctl restart motioneye
+</code></pre>
+<h4>MotionEye:n konfigurointi</h4>
+<p>Nyt on <a href="https://github.com/motioneye-project">MotionEye</a> asennettu ja seuraavaksi avataan <a href="https://github.com/motioneye-project">MotionEye</a> -palvelin webbi-selaimessa eli tämä tapahtuu siten, että avataan selaimessa osoite <em>http://x.x.x.x:8765</em>, jossa <em>x.x.x.x</em> on sen tietokoneen IP-osoite, johon <a href="https://github.com/motioneye-project">MotionEye</a> on asennettu.</p>
+<p>Järjestelmän kaikki konfigurointi sekä kameroiden lisääminen järjestelmään tapahtuu webbi-selaimen kautta ja <a href="https://github.com/motioneye-project">MotionEye</a> tukee mm. Raspiin liitettävää omaa kameraa sekä erilaisia <a href="https://fi.wikipedia.org/wiki/Valvontakamera">IP</a>- kameroita, jotka lähettävät kuvaa <a href="https://fi.wikipedia.org/wiki/RTSP">rtsp</a> -protokollaa käyttäen.</p>
+<p>Kameroista löytyy hyvä tietokokanta iSpy -sivustolta osoitteesta <a href="https://www.ispyconnect.com/cameras">https://www.ispyconnect.com/cameras</a> ja täältä melkein kannattaa katsoa oman kameran osalta kameran käyttämä protokolla ja striimin osoite.</p>
+<p>Esimerkiksi D-linkin kameroihin löytyy nettisivulta <a href="https://www.ispyconnect.com/camera/d-link">https://www.ispyconnect.com/camera/d-link</a> tieto, että esim. DCS 4701E -mallisen kameran käyttämä protokolla on <a href="https://fi.wikipedia.org/wiki/RTSP">rtsp</a> ja striimin osoite <em>live3.sdp</em> eli omassa verkossa tämä kamera pitäisi löytyä osoitteesta <em>rtsp://x.x.x.x/live3.sdp</em>.</p>
+<p>Seuraavissa kirjoituksissa kerron sitten tarkemmin, että miten <a href="https://github.com/motioneye-project">MotionEye</a> -järjestelmään liitetystä kamerasta saadaan tehtyä liiketunnistimen ja liitettyä se <a href="https://www.home-assistant.io/">Home Assistant</a> -pohjaiseen hälytysjärjestelmään.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/motioneye-kameravalvonta-ohjelmiston-asennus">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

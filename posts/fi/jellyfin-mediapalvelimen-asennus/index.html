@@ -9,77 +9,144 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Jellyfin -mediapalvelimen asennus">
     <meta property="og:description" content="Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-04-23">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="android"><meta property="article:tag" content="androidtv"><meta property="article:tag" content="archlinux"><meta property="article:tag" content="bananapi"><meta property="article:tag" content="centos"><meta property="article:tag" content="debian"><meta property="article:tag" content="emby"><meta property="article:tag" content="fedora"><meta property="article:tag" content="gentoo"><meta property="article:tag" content="ios"><meta property="article:tag" content="kodi"><meta property="article:tag" content="linux"><meta property="article:tag" content="roku"><meta property="article:tag" content="sailfishos"><meta property="article:tag" content="ubuntu"><meta property="article:tag" content="webos">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Jellyfin -mediapalvelimen asennus",
-        "description": "Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen",
-        "datePublished": "2023-04-23",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/",
-        "keywords": "android, androidtv, archlinux, bananapi, centos, debian, emby, fedora, gentoo, ios, kodi, linux, roku, sailfishos, ubuntu, webos"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jellyfin -mediapalvelimen asennus",
+  "description": "Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen",
+  "datePublished": "2023-04-23",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/jellyfin-mediapalvelimen-asennus/",
+  "keywords": "android, androidtv, archlinux, bananapi, centos, debian, emby, fedora, gentoo, ios, kodi, linux, roku, sailfishos, ubuntu, webos",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/jellyfin-mediapalvelimen-asennus");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Jellyfin -mediapalvelimen asennus
         </nav>
-        <h1>Jellyfin -mediapalvelimen asennus</h1>
-        <div class="meta">
-            <span>📅 2023-04-23</span>
-            &nbsp;&nbsp;<span>🏷️ android, androidtv, archlinux, bananapi, centos, debian, emby, fedora, gentoo, ios, kodi, linux, roku, sailfishos, ubuntu, webos</span>
-        </div>
-        <p>Kirjoitin aikaisemmin tarinan Emby -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli Jellyfin -mediaserverin asentaminen. Jellyfin on oma palvelimensa vaikka se</p>
-        <div class="tags"><span>android</span><span>androidtv</span><span>archlinux</span><span>bananapi</span><span>centos</span><span>debian</span><span>emby</span><span>fedora</span><span>gentoo</span><span>ios</span><span>kodi</span><span>linux</span><span>roku</span><span>sailfishos</span><span>ubuntu</span><span>webos</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/jellyfin-mediapalvelimen-asennus">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Jellyfin -mediapalvelimen asennus</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-04-23" itemprop="datePublished">2023-04-23</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">android, androidtv, archlinux, bananapi, centos, debian, emby, fedora, gentoo, ios, kodi, linux, roku, sailfishos, ubuntu, webos</span></span>
+            </div>
+            <div class="tags"><span class="tag">android</span><span class="tag">androidtv</span><span class="tag">archlinux</span><span class="tag">bananapi</span><span class="tag">centos</span><span class="tag">debian</span><span class="tag">emby</span><span class="tag">fedora</span><span class="tag">gentoo</span><span class="tag">ios</span><span class="tag">kodi</span><span class="tag">linux</span><span class="tag">roku</span><span class="tag">sailfishos</span><span class="tag">ubuntu</span><span class="tag">webos</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Kirjoitin aikaisemmin tarinan <a href="#post/oman-streemauspalvelun-rakentaminen">Emby</a> -mediaserverin asentamisesta ja nyt ajattelin kirjoittaa vaihtoehtoisesta ratkaisusta eli <a href="https://jellyfin.org/">Jellyfin</a> -mediaserverin asentaminen. <a href="https://jellyfin.org/">Jellyfin</a> on oma palvelimensa vaikka sen alkujuuret juontavatkin <a href="https://emby.media/">Emby</a> -mediaserveriin eli toisin sanoen <a href="https://jellyfin.org/">Jellyfin</a> on forkki <a href="https://emby.media/">Emby</a> -mediaserveristä. <a href="https://jellyfin.org/">Jellyfin</a> -mediaserverin kautta voi mm. katsoa videoita ja TV -tallennuksia, kuunnella musiikkia sekä katsella myös valokuvia eli sovellus on siinä mielessä monipuolinen.</p>
+<h4>Jellyfinin asennus</h4>
+<p>Minä asennan <a href="https://jellyfin.org/">Jellyfin</a> -mediaserverin <a href="https://www.banana-pi.org/en/banana-pi-sbcs/10.html">BananaPi</a> -tietokoneella ja katsotaan miten se siinä toimii. Eli aluksi ladataan <a href="https://jellyfin.org/">Jellyfin</a> -sivustolta <a href="https://jellyfin.org/downloads/server">asennus</a> -scripti, jolla asennus saadaan suoritettua eli aluksi kirjaudutaan <a href="https://www.banana-pi.org/en/banana-pi-sbcs/10.html">BananaPi</a> -koneelle etänä <a href="https://fi.wikipedia.org/wiki/SSH">SSH</a>:n avulla. Aluksi kuitenkin tarkistetaan ja asennetaan päivitykset eli annetaan komento</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+<p>Seuraavaksi voidaan ajaa asennus -scripti eli annetaan komento</p>
+<pre><code>curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
+</code></pre>
+<p>Tämän jälkeen odotellaan hetki asennuksen suorittamista. Kun asennus on valmis, voidaan jatkaa <a href="https://jellyfin.org/">Jellyfinin</a> asennusta selaimen kautta eli otetaan selaimella yhteyttä ko. koneeseen, johon <a href="https://jellyfin.org/">Jellyfin</a> on asennettu eli <code>http://x.x.x.x:8096</code>. Tämän jälkeen avautuun alla olevan kaltainen ikkuna eli aluksi valitaan asennuskieli.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva1.webp" /></p>
+<p><em>Kuva 1: Jellyfin - asennuskielen valinta</em></p>
+<p>Seuraavaksi luodaan pääkäyttäjä.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva2.webp" /></p>
+<p><em>Kuva 2: Jellyfin - pääkäyttäjän luonti</em></p>
+<p>Seuraavana lisätään <a href="https://jellyfin.org/">Jellyfiniin</a> mahdolliset mediakirjastot. Mediakirjastojen lisäys voidaan tehdä myös myöhemminkin sen jälkeen, kun asennukset on suoritettu.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva3.webp" /></p>
+<p><em>Kuva 3: Jellyfin - mediakirjaston asetus</em></p>
+<p>Mediakirjaston tietojen antamisen jälkeen valitaan metatietojen kieli ja maa.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva4.webp" /></p>
+<p><em>Kuva 4: Jellyfin - metatietojen kieli- ja maa-asetus</em></p>
+<p>Kieliasetuksien jälkeen määritetään etäkäyttö eli voidaan sallia serverin etäkäyttö. Reitittimien porttien automaattista avaamista (UPnP) en suosittele sallittavaksi.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva5.webp" /></p>
+<p><em>Kuva 5: Jellyfin - etäkäytön määritys</em></p>
+<p>Tämän jälkeen asennus on valmis ja <a href="https://jellyfin.org/">Jellyfin</a> -mediaserveri on valmis käyttöön otettavaksi.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva6.webp" /></p>
+<p><em>Kuva</em> 6: Jellyfin - asennus on valmis</p>
+<p>Lopuksi voidaan kirjautua järjestelmään sisään ja aluksi kannattaa luoda tavallinen käyttäjä, jolla käyttää <a href="https://jellyfin.org/">Jellyfin</a> -mediaserveriä.</p>
+<p><img alt="" src="/images/jellyfin-mediapalvelimen-asennus/Kuva7.webp" /></p>
+<p><em>Kuva 7: Jellyfin - kirjautumisikkuna</em></p>
+<p><a href="https://jellyfin.org/downloads">Jellyfiniin</a> löytyy useita eri clienttejä eri alustoille kuten <a href="https://fi.wikipedia.org/wiki/Linux">Linux</a>, <a href="https://fi.wikipedia.org/wiki/Android">Android</a>, <a href="https://fi.wikipedia.org/wiki/Android_TV">AndroidTV</a>, <a href="https://fi.wikipedia.org/wiki/IOS">iOS</a>, <a href="https://en.wikipedia.org/wiki/Roku">Roku</a>, <a href="https://fi.wikipedia.org/wiki/Kodi">Kodi</a>, <a href="https://fi.wikipedia.org/wiki/WebOS">webOS</a> sekä myös <a href="https://sailfishos.org/">SailfishOS</a> -käyttöjärjestelmälle. Myös palvelin -versiot löytyvät yleisimmille <a href="https://fi.wikipedia.org/wiki/Linux">Linux</a> -jakeluille kuten <a href="https://www.debian.org/">Debian</a>, <a href="https://ubuntu.com/">Ubuntu</a>, <a href="https://archlinux.org/">Arch</a>, <a href="https://fedoraproject.org/">Fedora</a>, <a href="https://www.centos.org/">CentOS</a>, <a href="https://www.gentoo.org/">Gentoo</a> sekä geneerinen- ja portable -versio <a href="https://fi.wikipedia.org/wiki/Linux">Linuxille</a>.</p>
+<p>Itselläni on asennettuna <a href="https://www.sony.fi/electronics/alypuhelimet/xperia-10m2">Sony Xperia 10 II</a> -puhelimeen <a href="https://sailfishos.org/">SailfishOS</a> -käyttöjräjestelmä ja seuraaville kerroilla voin käydä hiukan läpi tätä käyttistä.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/jellyfin-mediapalvelimen-asennus">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

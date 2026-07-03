@@ -9,77 +9,149 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="RaspberryPiOS:n asentaminen ja käyttöönotto">
     <meta property="og:description" content="Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käy">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-01-13">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="apertis"><meta property="article:tag" content="balena-etcher"><meta property="article:tag" content="batocera"><meta property="article:tag" content="chrony"><meta property="article:tag" content="gladysassistant"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="homebridge"><meta property="article:tag" content="lakka"><meta property="article:tag" content="libreelec"><meta property="article:tag" content="linux"><meta property="article:tag" content="mainsailos"><meta property="article:tag" content="manjaro"><meta property="article:tag" content="noobs"><meta property="article:tag" content="nymea"><meta property="article:tag" content="octopi"><meta property="article:tag" content="oktoklipperpi"><meta property="article:tag" content="openhab"><meta property="article:tag" content="osmc"><meta property="article:tag" content="raspberrymatic"><meta property="article:tag" content="raspberrypi"><meta property="article:tag" content="raspberrypi-imager"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="recalbox"><meta property="article:tag" content="retropie"><meta property="article:tag" content="risc-os-pi"><meta property="article:tag" content="simplypi"><meta property="article:tag" content="ssh"><meta property="article:tag" content="ubuntu"><meta property="article:tag" content="volumio">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "RaspberryPiOS:n asentaminen ja käyttöönotto",
-        "description": "Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käy",
-        "datePublished": "2023-01-13",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/",
-        "keywords": "apertis, balena-etcher, batocera, chrony, gladysassistant, homeassistant, homebridge, lakka, libreelec, linux, mainsailos, manjaro, noobs, nymea, octopi, oktoklipperpi, openhab, osmc, raspberrymatic, raspberrypi, raspberrypi-imager, raspberrypios, recalbox, retropie, risc-os-pi, simplypi, ssh, ubuntu, volumio"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RaspberryPiOS:n asentaminen ja käyttöönotto",
+  "description": "Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käy",
+  "datePublished": "2023-01-13",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/",
+  "keywords": "apertis, balena-etcher, batocera, chrony, gladysassistant, homeassistant, homebridge, lakka, libreelec, linux, mainsailos, manjaro, noobs, nymea, octopi, oktoklipperpi, openhab, osmc, raspberrymatic, raspberrypi, raspberrypi-imager, raspberrypios, recalbox, retropie, risc-os-pi, simplypi, ssh, ubuntu, volumio",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/raspberrypiosn-asentaminen-ja-kayttoonotto");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             RaspberryPiOS:n asentaminen ja käyttöönotto
         </nav>
-        <h1>RaspberryPiOS:n asentaminen ja käyttöönotto</h1>
-        <div class="meta">
-            <span>📅 2023-01-13</span>
-            &nbsp;&nbsp;<span>🏷️ apertis, balena-etcher, batocera, chrony, gladysassistant, homeassistant, homebridge, lakka, libreelec, linux, mainsailos, manjaro, noobs, nymea, octopi, oktoklipperpi, openhab, osmc, raspberrymatic, raspberrypi, raspberrypi-imager, raspberrypios, recalbox, retropie, risc-os-pi, simplypi, ssh, ubuntu, volumio</span>
-        </div>
-        <p>Minulla on käytössä RaspberryPi -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä RaspberryPiOS. Tähän liittyen ajattelinkin käydä läpi sen asentamista ja käyttöönottoa</p>
-        <div class="tags"><span>apertis</span><span>balena-etcher</span><span>batocera</span><span>chrony</span><span>gladysassistant</span><span>homeassistant</span><span>homebridge</span><span>lakka</span><span>libreelec</span><span>linux</span><span>mainsailos</span><span>manjaro</span><span>noobs</span><span>nymea</span><span>octopi</span><span>oktoklipperpi</span><span>openhab</span><span>osmc</span><span>raspberrymatic</span><span>raspberrypi</span><span>raspberrypi-imager</span><span>raspberrypios</span><span>recalbox</span><span>retropie</span><span>risc-os-pi</span><span>simplypi</span><span>ssh</span><span>ubuntu</span><span>volumio</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/raspberrypiosn-asentaminen-ja-kayttoonotto">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">RaspberryPiOS:n asentaminen ja käyttöönotto</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-01-13" itemprop="datePublished">2023-01-13</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">apertis, balena-etcher, batocera, chrony, gladysassistant, homeassistant, homebridge, lakka, libreelec, linux, mainsailos, manjaro, noobs, nymea, octopi, oktoklipperpi, openhab, osmc, raspberrymatic, raspberrypi, raspberrypi-imager, raspberrypios, recalbox, retropie, risc-os-pi, simplypi, ssh, ubuntu, volumio</span></span>
+            </div>
+            <div class="tags"><span class="tag">apertis</span><span class="tag">balena-etcher</span><span class="tag">batocera</span><span class="tag">chrony</span><span class="tag">gladysassistant</span><span class="tag">homeassistant</span><span class="tag">homebridge</span><span class="tag">lakka</span><span class="tag">libreelec</span><span class="tag">linux</span><span class="tag">mainsailos</span><span class="tag">manjaro</span><span class="tag">noobs</span><span class="tag">nymea</span><span class="tag">octopi</span><span class="tag">oktoklipperpi</span><span class="tag">openhab</span><span class="tag">osmc</span><span class="tag">raspberrymatic</span><span class="tag">raspberrypi</span><span class="tag">raspberrypi-imager</span><span class="tag">raspberrypios</span><span class="tag">recalbox</span><span class="tag">retropie</span><span class="tag">risc-os-pi</span><span class="tag">simplypi</span><span class="tag">ssh</span><span class="tag">ubuntu</span><span class="tag">volumio</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Minulla on käytössä <a href="https://www.raspberrypi.com/">RaspberryPi</a> -tietokoneita monessa eri tarkoituksessa ja yleensä niissä on käyttöjärjestelmänä <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a>. Tähän liittyen ajattelinkin käydä läpi sen asentamista ja käyttöönottoa.</p>
+<p>Aikaisemmin <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> ja sen edeltäjän Raspbianin sai asennettua <code>image</code> -tiedostosta esim. <a href="https://www.balena.io/etcher/">Balena Etcher</a> -sovelluksella, mutta nykyisin se on ainakin hankalampaa, koska asetuksien teko käyttöjärjestelmälle on muuttunut vanhaan verrattuna. Nykyisin asennus onkin helpoin tehdä käyttäen <a href="https://www.raspberrypi.com/software/">RaspberryPi Imager</a> -sovellusta, josta on tehty omat versiot Linuxille, Windowsille ja macOS-käyttikselle.</p>
+<p><a href="https://www.raspberrypi.com/software/">RaspberryPi Imagerin</a> avulla pystyy asentamaan <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> -käyttöjärjestelmän myös ulkoiselle kiintolevylle, kuten SSD -levylle. Tämän jälkeen, kun kytkee ulkoisen SSD -levyn Raspin USB -porttiin, niin Raspi käynnistyy suoraan käyttöjärjestelmään ilman, että tarvitaan muistikorttia. Tämä siis Raspberry Pi 3+ ja 4 versioissa. Versiossa 3 pystyy myös ottamaan käynnistyksen käyttöön, mutta se vaatii vähän työtä, koska järjestelmän <code>/boot/config.txt</code> -tiedostoon täytyy tehdä muutoksia. Näitä vanhemmat Raspit eivät tue käynnistystä ulkoiselta kiintolevyltä tai massamuistilta.</p>
+<h3>RaspberryPiOS:n asennus muistikortille</h3>
+<p>Asennuksen jälkeen käynnistetään <a href="https://www.raspberrypi.com/software/">RaspberryPi Imager</a>, jolloin avautuu alla oleva ikkuna</p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva1.webp" /></p>
+<p><em>Kuva: RaspberryPi Imager aloitusvalikko</em></p>
+<p><code>Operating System</code> -kohdasta voidaan valita monipuolisesti erilaisia käyttöjärjestelmiä, joita <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a>:n lisäksi ovat <a href="https://ubuntu.com/download/raspberry-pi">Ubuntu</a>, <a href="https://wiki.manjaro.org/index.php/Manjaro-ARM">Manjaro Arm Linux</a>, <a href="https://www.apertis.org/">Apertis</a> sekä <a href="https://www.riscosopen.org/content/downloads/raspberry-pi">Risc OS Pi</a>. Nämä muut käyttöjärjestelmät löytyvät <code>Other general-purpose OS</code> -kohdasta.</p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva2.webp" /></p>
+<p>Sovelluksesta voidaan valita myös erilaisia <code>media player</code> -käyttöjärjestelmiä kuten <a href="https://libreelec.tv/">LibreElec</a>, <a href="https://osmc.tv/">OSMC</a> tai <a href="https://volumio.com/en/">Volumio</a> ja nämä löytyvät kohdasta <code>Media Player OS</code>.</p>
+<p>Mikäli pitää vanhoista Emulaattoreista, löytyy näihinkin valmiita käyttöjärjestelmiä kuten <a href="https://www.lakka.tv/">Lakka.tv</a>, <a href="https://www.recalbox.com/">Recalbox</a> tai <a href="https://retropie.org.uk/">Retropie</a>, tosin <a href="https://batocera.org/">Batocera</a> puuttuu, mutta eiköhän sekin kohta valikosta löydy. Nämä löytyvät valikosta <code>Emulation and Game OS</code>.</p>
+<p>Lisäksi löytyy vielä paljon muitakin distroja, kuten 3D -tulostukseen <a href="https://github.com/guysoft/OctoKlipperPi">OktoKlipperPi</a>, <a href="https://github.com/SimplyPrint/SimplyPi">SimplyPi</a>, <a href="https://docs.mainsail.xyz/setup/mainsail-os">Mainsail OS</a> ja <a href="https://octoprint.org/download/">OctoPi</a> sekä kotiautomaatiojärjestelmiä kuten kuten mm. <a href="https://homebridge.io/">Home Bridge</a>, <a href="https://gladysassistant.com/">Gladys Assistant</a>, <a href="https://www.openhab.org/">openHAB</a>, <a href="https://www.home-assistant.io/">Home Assistant</a>, <a href="https://raspberrymatic.de/">RaspberryMatic</a> ja <a href="https://nymea.io/">nymea</a>.</p>
+<p>Minulla on kyseessä RaspberryPi 3 -tietokone, jota on tarkoitus käyttää palvelimena eli minulle riittää <code>Raspberry Pi OS (other)</code> -kohdasta löytyvä <code>RaspberryPiOS Lite (64-bit)</code> -versio.</p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva3.webp" /></p>
+<p>Käyttöjärjestelmän version valinnan jälkeen valitaan kohdasta <code>Storage</code> tallennuspaikka eli minulla <code>Transcend USB Device</code></p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva4.webp" /></p>
+<p>Ennen kuin tallennetaan levykuva muistikortille, niin avataan kuitenkin <code>Ratas</code> -kohdasta asetukset</p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva5.webp" /></p>
+<p><code>Asetukset</code> -kohdasta voidaan asettaa koneelle <em>hostname</em>, ottaa käyttöön <em>SSH -palvelin</em> (erittäin suositeltavaa), asettaa <em>käyttäjätunnus</em> ja <em>-salasana</em>, tehdä <em>langattamon WIFI -verkon asetukset</em> ja tehdä <em>lokaatio -asetukset</em>. Sen jälkeen, kun nämä asetukset on tehty, tallennetaan muutokset ja kirjoitetaan levykuva muistikortille painamalla <code>Write</code> -nappia. Kun tallennus on tehty ja tulee alla olevan kaltainen ilmoitus, voidaan muistikortti ottaa pois koneesta ja laittaa se Raspiin.</p>
+<p><img alt="" src="/images/raspberrypiosn-asentaminen-ja-kayttoonotto/kuva6.webp" /></p>
+<h3>RaspberryPi:n käynnistys ja asetuksien teko</h3>
+<p>Seuraavaksi laitetaan muistikortti kiinni Raspiin ja annetaan koneen käynnistyä rauhassa. Seuraavaksi voidaan tarkistaa esim. modeemista, että mikä on koneen IP-osoite. Linuxin puolella yhteys saadaan otettua <code>päätteen (terminal)</code> kautta, mutta myös Windowsin <code>komentokehote</code> tukee SSH:n käyttöä. Eli yhteys Raspiin saadaan antamalla esim. <code>komentokehotteessa</code> käsky <code>ssh pi@x.x.x.x</code>. Tämän jälkeen Raspi kysyy halutaanko muodostaa yhteys, johon tulee vastata <code>yes</code> (ensimmäinen kirjautuminen) ja antaa sen jälkeen asetuksissa määritetty salasana.</p>
+<p>Itse olen huomannut, että jostakin syystä <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> ei osaa alussa päivittää kellonaikaa oikeaksi, jonka vuoksi myöskään päivityksien asennus ei onnistu. Koneen päivämäärä ja aika saa tarkastettua komennolla <code>timedatectl</code> ja mikäli kellonaika/päiväys näyttää mitä sattuu sekä rivillä <code>System clock synchronized:</code> lukee <code>no</code>, niin tällöin kellonaika asetuksia täytyy korjata. Itse olen nykyisin tehnyt sen siten, että olen korvannut oletus <code>ntp</code> -palvelimen <code>chrony</code> -nimisellä <code>ntp</code> -palvelimella.</p>
+<p>Tämän asennus onnistuu komennolla <code>sudo apt install chrony</code>, jonka jälkeen järjestelmä haluaa asentaa/poistaa paketteja ja tähän voidaan vastata <code>yes</code>. Seuraavaksi tarkistetaan <code>chronyn</code> asetukset komennolla <code>sudo nano /etc/chrony/chrony.conf</code>. Asetustiedostoon laitetaan alla olevat rivit, jotka tarkoittavat sitä, että järjestelmä käyttää Suomen <a href="https://en.wikipedia.org/wiki/NTP_pool">NTP pool</a> -palvelimia.</p>
+<pre><code>server 0.fi.pool.ntp.org iburst
+server 1.fi.pool.ntp.org iburst
+server 2.fi.pool.ntp.org iburst
+server 3.fi.pool.ntp.org iburst
+</code></pre>
+<p>Lopuksi vielä tallennetaan muutokset, käynnistetään <code>chrony</code> uudestaan sekä tehdään siitä automaattisesti käynnistyvä eli annetaan komennot</p>
+<pre><code>sudo systemctl restart chrony
+sudo systemctl enable chrony
+</code></pre>
+<p>Tämän jälkeen voidaan vielä tarkistaa komennolla <code>timedatectl</code>, että onko kellonaika asetukset kunnossa eli rivillä <code>System clock synchronized:</code> pitäisi olla <code>yes</code> sekä päivämäärän ja kellonajan pitäisivät olla nyt synkronoitu oikeaksi.</p>
+<p>Lopuksi tarkistetaan ja asennetaan vielä järjestelmään viimeisimmät päivitykset ajamalla komento <code>sudo apt update &amp;&amp; sudo apt upgrade -y</code>.</p>
+<p>Nyt meillä on <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> -käyttis asennettu ja käyttöönotettu. Seuraavaksi voidaan vaikka selata aikaisemmin kirjoittamiani <a href="#posts">blogeja</a> ja miettiä, että mitä koneelle seuraavaksi asentaisi.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/raspberrypiosn-asentaminen-ja-kayttoonotto">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

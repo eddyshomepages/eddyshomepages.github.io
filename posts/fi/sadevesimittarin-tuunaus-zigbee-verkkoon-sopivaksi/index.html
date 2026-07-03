@@ -9,77 +9,189 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi">
     <meta property="og:description" content="Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaise">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-06-20">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="433-mhz"><meta property="article:tag" content="elektroniikka"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mqtt"><meta property="article:tag" content="raingauge"><meta property="article:tag" content="reed-rele"><meta property="article:tag" content="sademittari"><meta property="article:tag" content="tipping-bucket"><meta property="article:tag" content="utility_meter"><meta property="article:tag" content="zigbee"><meta property="article:tag" content="zigbee2mqtt">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi",
-        "description": "Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaise",
-        "datePublished": "2023-06-20",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/",
-        "keywords": "433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi",
+  "description": "Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaise",
+  "datePublished": "2023-06-20",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/",
+  "keywords": "433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi
         </nav>
-        <h1>Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi</h1>
-        <div class="meta">
-            <span>📅 2023-06-20</span>
-            &nbsp;&nbsp;<span>🏷️ 433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt</span>
-        </div>
-        <p>Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy Home Assistantin lisäksi myös hiukan elektroniikkaan. Tarkoituksena on tuunata sadevesimittaria sellaiseksi, että se voidaan liittää Zigbee -ver</p>
-        <div class="tags"><span>433-mhz</span><span>elektroniikka</span><span>homeassistant</span><span>kotiautomaatio</span><span>mqtt</span><span>raingauge</span><span>reed-rele</span><span>sademittari</span><span>tipping-bucket</span><span>utility_meter</span><span>zigbee</span><span>zigbee2mqtt</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Sadevesimittarin tuunaus Zigbee-verkkoon sopivaksi</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-06-20" itemprop="datePublished">2023-06-20</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt</span></span>
+            </div>
+            <div class="tags"><span class="tag">433-mhz</span><span class="tag">elektroniikka</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mqtt</span><span class="tag">raingauge</span><span class="tag">reed-rele</span><span class="tag">sademittari</span><span class="tag">tipping-bucket</span><span class="tag">utility_meter</span><span class="tag">zigbee</span><span class="tag">zigbee2mqtt</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin kirjoittaa aiheesta, joka liittyy <a href="https://www.home-assistant.io/">Home Assistantin</a> lisäksi myös hiukan <a href="https://fi.wikipedia.org/wiki/Elektroniikka">elektroniikkaan</a>. Tarkoituksena on tuunata sadevesimittaria sellaiseksi, että se voidaan liittää <a href="https://fi.wikipedia.org/wiki/ZigBee">Zigbee</a> -verkkoon. Innostuksen tähän sain, kun luin vastaavanlaisesta muutoksesta <a href="https://www.home-assistant.io/">Home Assistantin</a> keskustelupalstalta, johon linkki <a href="https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379">https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379</a>. Pienenä varoituksen sanana myös, että tämän muutostyön yhteydessä tarvitaan <a href="https://fi.wikipedia.org/wiki/Juotin">juotoskolvia</a>.</p>
+<h4>Mitä tarvitaan?</h4>
+<p>Tarvikkeina tarvitaan jokin sadevesimittari, joka minulla on tällainen <a href="https://www.motonet.fi/fi/tuote/8601352/MTX-Basic-langaton-sadevesimittari">MTX Basic langanton sadevesimittari</a> (HUOM! ei ole maksettu mainos) sekä <a href="https://fi.wikipedia.org/wiki/ZigBee">Zigbee</a> -verkkoon liitettävä ovi- ja ikkuna -anturi, kuten esimerkiksi <a href="https://www.aqara.com/eu/door_and_window_sensor.html">Aqara</a>, joka minulla on käytössä. Tämä MTX:n sadevesimittari toimii 433 MHz -verkkoon liitettynä, mutta minulla ei ollut sellaista mökillä käytössä, jonka vuoksi tuunasin tämän mittarin toimimaan <a href="https://fi.wikipedia.org/wiki/ZigBee">Zigbee</a> -verkossa.</p>
+<p>Tämä MTX:n sadevesimittari, kuten myös useat muut markkinoilla olevat mittarit, toimivat siten, että mittarin sisällä on eräänlainen heiluri -kuppi (engl. <a href="https://en.wikipedia.org/wiki/Rain_gauge#Tipping_bucket_rain_gauge">tipping bucket</a>), joka ohjaa sadevesimittarissa olevaa <a href="https://fi.wikipedia.org/wiki/Rele#Reed-rele">reed</a> -relettä sitä mukaan, kun kuppi täyttyy vedellä. Eli sademäärän laskenta tapahtuu laskemalla pulsseina <a href="https://fi.wikipedia.org/wiki/Rele#Reed-rele">reed</a> -releen aukeamista ja sulkeutumista samalla tavalla kuten tapahtuu ovi- ja ikkuna -antureissa eli kun ovi sulkeutuu, rele sulkeutuu ja kun ovi avautuu, niin rele avautuu. Samalla tavalla toimii myös tämä tuunattu sadevesimittari eli lasketaan sen antamaa pulssia ja annetaan <a href="https://www.home-assistant.io/">Home Assistantin</a> hoitaa sitten muunnos millimetreiksi.</p>
+<h4>Toteutus lyhykäisyydessään</h4>
+<p>Aluksi avataan sadevesimittari ja poistetaan vanha piirilevy siten, että olemassa olevan <a href="https://fi.wikipedia.org/wiki/Rele#Reed-rele">reed</a> -releen johdot jäävät näkyville (tässä kuvassa piirilevy on jo poistettu ja johdot liitetty ovi- ja ikkuna -anturiin)</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva1.webp" /></p>
+<p><em>Kuva: Sademittari, josta alkuperäinen piirilevy poistettu</em></p>
+<p>Seuraavaksi avataan ovi- ja ikkuna -tunnistin ja poistetaan siitä <a href="https://fi.wikipedia.org/wiki/Rele#Reed-rele">reed</a> -rele juottamalla se irti piirilevyltä sekä juottamalla sadevesimittarin <a href="https://fi.wikipedia.org/wiki/Rele#Reed-rele">reed</a> -releen johdot tilalle  </p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva2.webp" /></p>
+<p><em>Kuva: Sademittarin reed -releen johdot juotettu ovianturin reed -releen tilalle</em></p>
+<p>Alla vielä kuva valmiista toteutuksesta ennen kuin paketti suljetaan</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva3.webp" /></p>
+<p><em>Kuva: Sademäärä -anturi valmis</em></p>
+<h4>Muutokset Home Assistantiin</h4>
+<p>Lopuksi vielä yhdistetään sadevesimittari <a href="https://www.home-assistant.io/">Home Assistantiin</a> (ellei jo tehty) eli minä lisään mittarin <a href="https://www.zigbee2mqtt.io/">Zigbee2MQTT</a> kautta <a href="https://www.home-assistant.io/">Home Assistantiin</a>, jolloin se tulee näkyviin <a href="https://mqtt.org/">MQTT</a> -liitännäisen kautta. Laitteen olen nimennyt "raingauge" eli sademäärämittari eli minulla laite näkyy nimellä <em>binary_sensor.raingauge_contact</em>.</p>
+<p>Seuraavaksi luodaan <a href="https://www.home-assistant.io/">Home Assistantiin</a> kaksi uutta sensoria eli lisätään <em>configuration.yaml</em> -tiedostoon alla olevat rivit</p>
+<pre><code>sensor:
+  - platform: history_stats
+    name: Raingauge laskuri
+    entity_id: binary_sensor.raingauge_contact #ovianturi
+    state: 'off'
+    type: count
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: template
+    sensors:
+      rainfall_today:
+        friendly_name: Sademäärä tänään
+        unit_of_measurement: mm
+        icon_template: mdi:water
+        value_template: &gt;-
+          {% set count = states('sensor.raingauge_laskuri') | int %}
+          {% set mm_per_pulse = 0.330024 %}
+          {% set mm = count * mm_per_pulse %}
+          {{ mm|round(1, 'floor') }}
+</code></pre>
+<h4>Sademittarin kalibrointi</h4>
+<p>Sadevesimittarin kalibrointi voidaan tehdä seuraavasti (selitetty myös <a href="https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379">keskustelupalstalla</a>) eli aluksi mitataan sadevesimittarin pinta-ala sekä kuinka monta pulssia 10 ml vettä aiheuttaa. Laskelmia alla</p>
+<ul>
+<li>
+<p>sadevesimittarin koko on 17,2 cm x 9,6 cm</p>
+</li>
+<li>
+<p>1 mm sadetta mittarissa on tällöin 0,1 x 17,2 x 9,6 = 16,512 ml</p>
+</li>
+<li>
+<p>10 ml vettä sademäärämittarissa aiheuttaa 5 pulssi eli 2 ml / pulssi</p>
+</li>
+<li>
+<p>tällöin saadaan sademääräksi per pulssi 16,512 / 10 / 5 = 0,33024 mm / pulssi</p>
+</li>
+</ul>
+<p>Eli edellä lasketulla tavalla saadaan laskettua vuorokautista kokonaissademäärää, mutta mikäli halutaan laskea tarkemmin myös esim. tunti-, viikko- jne. kohtaisia sademääriä, täytyy <a href="https://www.home-assistant.io/">Home Assistantin</a> <em>configuration.yaml</em> -tiedostoon lisätä vielä laskentakaavat näille eli tässä voidaan käyttää <a href="https://www.home-assistant.io/integrations/utility_meter/">Home Assistantin</a> <em>utility_meter</em> -integraatiota.</p>
+<pre><code>utility_meter:
+# sademäärä per tunti
+  rainfall_hour:
+    source: sensor.rainfall_today
+    cycle: hourly
+# sademäärä per viikko
+  rainfall_week:
+    source: sensor.rainfall_today
+    cycle: weekly
+# sademäärä per kuukausi
+  rainfall_month:
+    source: sensor.rainfall_today
+    cycle: monthly
+# sademäärä per vuosi
+  rainfall_year:
+    source: sensor.rainfall_today
+    cycle: yearly
+</code></pre>
+<p>Lopuksi voidaan vielä lisätä <a href="https://www.home-assistant.io/">Home Assistantin</a> työpöydälle tiedot sademääristä eli lisätään <em>entities</em> -kortti alla olevan mukaisesti</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva4.webp" /></p>
+<p><em>Kuva: Home Assistantin entities -kortti</em></p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

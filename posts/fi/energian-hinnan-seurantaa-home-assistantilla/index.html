@@ -9,77 +9,191 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Energian hinnan seurantaa Home Assistantilla, osa 1">
     <meta property="og:description" content="Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy linkin takaa. Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli s">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-11-07">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="binary_sensor"><meta property="article:tag" content="energia"><meta property="article:tag" content="energiankulutus"><meta property="article:tag" content="hacs"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="input_number"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="nordpool"><meta property="article:tag" content="sensor">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Energian hinnan seurantaa Home Assistantilla, osa 1",
-        "description": "Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy linkin takaa. Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli s",
-        "datePublished": "2022-11-07",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/",
-        "keywords": "binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Energian hinnan seurantaa Home Assistantilla, osa 1",
+  "description": "Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy linkin takaa. Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli s",
+  "datePublished": "2022-11-07",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla/",
+  "keywords": "binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Energian hinnan seurantaa Home Assistantilla, osa 1
         </nav>
-        <h1>Energian hinnan seurantaa Home Assistantilla, osa 1</h1>
-        <div class="meta">
-            <span>📅 2022-11-07</span>
-            &nbsp;&nbsp;<span>🏷️ binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor</span>
-        </div>
-        <p>Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy linkin takaa. Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli sähkön hinnasta. Minulla oli aikaisemmin </p>
-        <div class="tags"><span>binary_sensor</span><span>energia</span><span>energiankulutus</span><span>hacs</span><span>homeassistant</span><span>input_number</span><span>kotiautomaatio</span><span>nordpool</span><span>sensor</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Energian hinnan seurantaa Home Assistantilla, osa 1</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-11-07" itemprop="datePublished">2022-11-07</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor</span></span>
+            </div>
+            <div class="tags"><span class="tag">binary_sensor</span><span class="tag">energia</span><span class="tag">energiankulutus</span><span class="tag">hacs</span><span class="tag">homeassistant</span><span class="tag">input_number</span><span class="tag">kotiautomaatio</span><span class="tag">nordpool</span><span class="tag">sensor</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Edit: 12.12.2022 Energian laskenta päivitetty, uusi päivitetty kirjoitus löytyy <a href="#post/energian-hinnan-seurantaa-home-assistantilla-osa-2">linkin</a> takaa.</p>
+<p>Seuraavaksi ajattelin kirjoittaa päivän polttavasta aiheesta eli sähkön hinnasta. Minulla oli aikaisemmin kvartaaleittain vaihtuva sähkön hinta, mutta koska vanhan sähkösopimuksen hinta oli jo yli 50 cnt/kWh, tulin siihen tulokseen, että nyt olisi ehkä hyvä kuitenkin vaihtaa sopimus pörssisähköön, jolloin pystyn vaikuttamaan sähkön hintaan sentään jollakin tavalla. Nyt siis mennään pörssisähköllä ja käytössä on <a href="https://hacs.xyz/">HACS</a>:in kautta saatava <a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatio, jonka kautta haetaan pörssisähkölle hinta.</p>
+<p><a href="https://www.home-assistant.io/">Home Assistantin</a> avulla pystytään tekemään hyvinkin erilaisia sähkön hinnan mukaan muuttuvia ohjauksia. Tähän liittyen tehdään erilliset muuttujat sähköyhtiön pörssisähkön marginaalille, siirtohinnalle sekä lisäksi muuttuja, jossa on mahdollisuus asettaa sähkön hinnalle ns. "kipuraja"-hinta eli kun ollaan tämän hinnan alapuolella, niin tällöin voidaan ohjata esim. koristevalaistusta tms. päälle. "Kipuraja"-hinnasta tehdään vielä erillinen binääri-sensori <code>(binary_sensor)</code> eli tästä saadaan kyllä / ei -tieto siitä, että onko hinta yli vai alle asetetun "kipurajan".</p>
+<p>Nämä muuttujat toteutetaan <a href="https://www.home-assistant.io/">Home Assistantin</a> <code>input_number</code>-muuttujalla eli <code>configuration.yaml</code>-tiedostoon lisätään alla olevan mukaiset rivit:</p>
+<pre><code>#configuration.yaml
+input_number:
+  sahkon_hinta_siirto:
+    name: Sähkön siirtohinta
+    min: 0
+    max: 50
+    step: 0.01
+    initial: 2.15
+    icon: mdi:currency-eur
+    unit_of_measurement: cnt/kWh
+    mode: box
+
+  sahkon_hinta_marginaali:
+    name: Sähköyhtiön marginaali pörssisähkölle
+    min: 0
+    max: 10
+    step: 0.01
+    initial: 0.31
+    icon: mdi:currency-eur
+    unit_of_measurement: cnt/kWh
+    mode: box
+
+  sahkon_hinta_kipuraja:
+    name: Sähkön hinnan kipuraja
+    min: 0
+    max: 25
+    step: 0.5
+    initial: 6.0
+    icon: mdi:currency-eur
+    unit_of_measurement: cnt/kWh
+    mode: box
+</code></pre>
+<p>Seuraavaksi tehdään muuttujista sekä sähkön kokonaishinnasta sensorit sekä "kipuraja"-hinnasta binääri-sensori eli lisätään alla olevat tiedot <code>configuration.yaml</code>-tiedostoon</p>
+<pre><code>sensor:
+  - platform: template
+    sensors:
+      sahkon_hinta_siirto:
+        friendly_name: Sähkön hinta siirto
+        unit_of_measurement: EUR/kWh
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_siirto') | float / 100 | round(4) }}&quot;
+
+      sahkon_hinta_marginaali:
+        friendly_name: Sähköyhtiön marginaali
+        unit_of_measurement: EUR/kWh
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_marginaali') | float / 100| round(4) }}&quot;
+
+      sahkon_hinta_kipuraja:
+        friendly_name: Sähkön hinta kipuraja
+        unit_of_measurement: EUR/kWh
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_kipuraja') | float / 100 | round(4) }}&quot;
+
+      sahkonhinta_spotti_nyt:
+        friendly_name: Sähkön kok.hinta tällä hetkellä
+        unit_of_measurement: EUR/kWh
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ (states('sensor.nordpool_kwh_fi_eur_4_025_024') |float + states('sensor.sahkon_hinta_siirto') | float + states('sensor.sahkon_hinta_marginaali') | float ) | round(4)}}&quot;
+
+binary_sensor:
+  - platform: template
+    sensors:
+      sahko_kipuraja_hinta:
+        friendly_name: 'Sähkön hinta alle kipurajan'
+        value_template: &gt;-
+            {{ states('sensor.sahkonhinta_spotti_nyt') &lt; states('sensor.sahkon_hinta_kipuraja') }}
+</code></pre>
+<p>Nyt voidaan vielä käynnistää <a href="https://www.home-assistant.io">Home Assistant</a> uudestaan ja lisätä muuttujat ja sensorit työpöydälle, joista kuvat alla</p>
+<p><img alt="" src="/images/energian-hinnan-seurantaa-home-assistantilla/kuva1.png" /></p>
+<p><em>Kuva: Muuttujien tiedot</em></p>
+<p><img alt="" src="/images/energian-hinnan-seurantaa-home-assistantilla/kuva2.png" /></p>
+<p><em>Kuva: Sensorien tiedot</em></p>
+<p>Nyt meillä on saatavilla sähkölle kokonaishintatieto (pois lukien mahdolliset kiinteät kuukausinnat) sensorin muodossa eli tämä tieto voidaan liittää suoraan <a href="https://www.home-assistant.io/">Home Assistantin</a> Energia -osioon, jolloin saadaan energian kulutuksen lisäksi myös hinta kulutetulle sähkölle.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

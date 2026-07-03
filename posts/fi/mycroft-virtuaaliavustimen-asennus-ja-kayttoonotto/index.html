@@ -9,77 +9,152 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Mycroft -virtuaaliavustimen asennus ja käyttöönotto">
     <meta property="og:description" content="Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ra">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-12-26">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="almond"><meta property="article:tag" content="almond-genie"><meta property="article:tag" content="emby"><meta property="article:tag" content="genie"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mycroft"><meta property="article:tag" content="picroft"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="virtuaaliavustin">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Mycroft -virtuaaliavustimen asennus ja käyttöönotto",
-        "description": "Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ra",
-        "datePublished": "2022-12-26",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/",
-        "keywords": "almond, almond-genie, emby, genie, homeassistant, kotiautomaatio, mycroft, picroft, raspberrypios, virtuaaliavustin"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mycroft -virtuaaliavustimen asennus ja käyttöönotto",
+  "description": "Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ra",
+  "datePublished": "2022-12-26",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/",
+  "keywords": "almond, almond-genie, emby, genie, homeassistant, kotiautomaatio, mycroft, picroft, raspberrypios, virtuaaliavustin",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Mycroft -virtuaaliavustimen asennus ja käyttöönotto
         </nav>
-        <h1>Mycroft -virtuaaliavustimen asennus ja käyttöönotto</h1>
-        <div class="meta">
-            <span>📅 2022-12-26</span>
-            &nbsp;&nbsp;<span>🏷️ almond, almond-genie, emby, genie, homeassistant, kotiautomaatio, mycroft, picroft, raspberrypios, virtuaaliavustin</span>
-        </div>
-        <p>Kirjoitin taannoin Genie -virtuaaliavustimen sekä ääniohjauksen käyttöönotosta Home Assistantin kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin </p>
-        <div class="tags"><span>almond</span><span>almond-genie</span><span>emby</span><span>genie</span><span>homeassistant</span><span>kotiautomaatio</span><span>mycroft</span><span>picroft</span><span>raspberrypios</span><span>virtuaaliavustin</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Mycroft -virtuaaliavustimen asennus ja käyttöönotto</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-12-26" itemprop="datePublished">2022-12-26</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">almond, almond-genie, emby, genie, homeassistant, kotiautomaatio, mycroft, picroft, raspberrypios, virtuaaliavustin</span></span>
+            </div>
+            <div class="tags"><span class="tag">almond</span><span class="tag">almond-genie</span><span class="tag">emby</span><span class="tag">genie</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mycroft</span><span class="tag">picroft</span><span class="tag">raspberrypios</span><span class="tag">virtuaaliavustin</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Kirjoitin taannoin <a href="https://wiki.almond.stanford.edu/">Genie</a> -<a href="#post/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin">virtuaaliavustimen</a> sekä <a href="#post/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen">ääniohjauksen</a> käyttöönotosta <a href="https://www.home-assistant.io/">Home Assistantin</a> kanssa, mutta yrityksistä huolimatta en ole kuitenkaan saanut ratkaistua sijaintiongelmaa, joten päätin kokeilla myös toista avoimen lähdekoodin järjestelmää nimeltään <a href="https://mycroft.ai/">Mycroft</a>.</p>
+<p><a href="https://mycroft.ai/">Mycroft</a> vaikuttaa lupaavalta siinäkin mielessä, että sillä pystyy <a href="https://www.home-assistant.io/">Home Assistantin</a> lisäksi komentamaan mm. <a href="https://emby.media/">Emby-media</a> -serveriä, jonka pystyttämisestä myös <a href="#post/oman-streemauspalvelun-rakentaminen">kirjoittelin</a> aikaisemmin. <a href="https://mycroft.ai/">Mycroftin</a> avulla pystyy myös mm. kuuntelemaan <a href="https://areena.yle.fi/tv">Yle Areenan</a> kautta tuoreimmat kotimaan uutiset ja lisäksi siihen on saatavilla paljon muitakin lisätaitoja eli ns. Skills:ejä, joista löytyy enemmän tietoa Mycroftin <a href="https://market.mycroft.ai/skills">sivustolta</a>.</p>
+<p><a href="https://mycroft.ai/">Mycroftin</a> pystyy asentamaan siten, että se toimii ainoastaan omassa kotiverkossa, mutta tällöin avustimen puhesyntetisaattorina (<a href="https://en.wikipedia.org/wiki/Speech_synthesis">TTS, Text to Speech engines</a>) toimii <a href="https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mimic-tts/mimic-overview">Mimic1</a>, joka on ääneltään aika robottimainen. Tosin se on nopea ja kevyt, kun taas uudempi <a href="https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mimic-tts/mimic-2">Mimic2</a>, joka on oletuksena ja joka toimii täysin pilven kautta. Lisäksi on saatavilla myös uusin versio <a href="https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mimic-tts/mimic-3">Mimic3</a>, joka toimii niin ikään Mimic1:n lailla omassa kotiverkossa, mutta se taas vaatii asennusalustalta enemmän tehoa, mutta esim. <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">RaspberryPi 4</a>:n kanssa sen pitäisi toimia hyvin. Lisää tietoa näistä löytyy tämän <a href="https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mimic-tts">linkin</a> takaa.</p>
+<h3>Mycroftin asennus käyttäen Picroft -levykuvaa</h3>
+<p>Minulla oli käyttämättömänä yksi kpl <a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">RaspberryPi 3</a> -tietokoneita, joten päätin kokeilla valmista <a href="https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft/picroft">Picroft</a> -levykuvaa, joka perustuu <a href="https://www.raspberrypi.com/software/">RasberryPiOS</a>:n Buster -versioon. Asennus oli hyvin suoraviivainen eli aluksi ladataan Picroftin <a href="https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft/picroft">levykuva</a> ja tallennetaan se muistikortille esim. <a href="https://www.balena.io/etcher/">Balena Etcher</a> -sovelluksella. Tämän jälkeen laitetaan muistikortti Raspiin ja virrat päälle, jonka jälkeen käyttöjärjestelmä käynnistyy ja meillä pitäisi olla <a href="https://mycroft.ai/">Mycroftin</a> asennus valmiina. Yleensä <a href="https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft/picroft">Picroft</a> löytää laitteet automaattisesti, kuten minulla, mutta joskus niiden kanssa voi tulla ongelmia.</p>
+<p><a href="https://mycroft.ai/">Mycroftin</a> asennuksen lisäksi tarvitaan myös mikrofoni sekä kaiuttimet ja minulle on käytössä <a href="https://www.audio-technica.com/en-eu/atr4697-usb">Audio Technica ATR4697-USB</a> -mikrofoni sekä kaiuttimena tällainen pieni Trustin valmistama <a href="https://www.trust.com/en/product/22946-arys-soundbar-for-pc">soundbar</a>, jotka molemmat sopivat olohuoneen tasolle ihan kivasti. Musiikin kuuntelua varten olen yhdistänyt <a href="https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft/picroft">Picroftin</a> stereoihin, jollon musiikit saa kuunneltua myös stereoiden kautta.</p>
+<h3>Mycroftin käyttöön ottaminen</h3>
+<p>Ennen <a href="https://mycroft.ai/">Mycroftin</a> käyttöönottoa luodaan <a href="https://home.mycroft.ai">pilvipalveluun</a> käyttäjätunnus, jonka voi luoda esim. olemassa olevan Google-tilin avulla. Tilin luomisen jälkeen kirjaudutaan sisään, jolloin vasemmalla näkyy valikko <code>My Mycroft</code>, jonka alta valitaan kohta <code>Devices</code> (kuva alla)</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva1.png" /></p>
+<p><em>Kuva: My Mycroft -valikko</em></p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva2.png" /></p>
+<p><em>Kuva: Laitteen lisääminen</em></p>
+<p>Seuraavaksi painetaan kohdasta <code>Add Device</code>, jonka jälkeen avautuu alla olevan mukainen ikkuna</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva3.png" /></p>
+<p><em>Kuva: Laitteen lisäämisen ikkuna</em></p>
+<p>Tässä ikkunassa annetaan tarvittavat tiedot kuten oman kodin sijainti, laitteen nimi, laitteen sijainti, aikavyöhyke sekä myös kaikkein tärkein eli <code>Pairing Code</code>. <code>Pairing Code</code> saadaan laitteelta, johon asensimme <a href="https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft/picroft">Picroft</a> -käyttöjärjestelmän ja koodi saadaan siten, että sanotaan <a href="https://mycroft.ai/">Mycroftille</a> <code>"Hey Mycroft, pair my device"</code>. Tämän jälkeen ääniavustin kertoo koodin (6 merkkiä) englanninkielisinä ja se sisältää numeroita ja kirjaimia.</p>
+<p>HUOM. Vinkkinä, että mikäli koodin kuuleminen ei kunnolla onnistu, niin kirjaudu Picroftille SSH:n (SSH toimii myös Windowsin komentokehotteessa antamalla komento <code>ssh pi@x.x.x.x</code>, oletussalasana on <code>mycroft</code>) avulla ennen koodin pyytämistä, jolloin saat koodin näkyviin päättee kohdan <code>History</code> alapuolella.</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva4.png" /></p>
+<p><em>Kuva: Picroftiin kirjautuminen SSH:n avulla</em></p>
+<p>Picroftin parittamisen jälkeen laite näkyy <code>My Mycroft</code> -sivulla kohdan <code>Devices</code> alla seuraavasti:</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva5.png" /></p>
+<p><em>Kuva: Laitehallinta, jossa liitetyt laitteet näkyvät</em></p>
+<h3>Taitojen eli Skillsien asentaminen</h3>
+<p><a href="https://mycroft-ai.gitbook.io/docs/skill-development/voice-user-interface-design-guidelines">Mycroftilla</a> on jo valmiiksi asennettuja erilaisia taitoja eli <code>Skills</code>:ejä (jatkossa taito) ja niitä saa asennettua lisää antamalla <a href="https://mycroft.ai/">Mycroftille</a> äänikomento <code>install &lt;taidon nimi&gt;</code> tai vaihtoehtoisesti SSH:n kautta komennolla <code>mycroft-msm install &lt;taidon nimi&gt;</code>. Esimerkiksi <a href="https://www.home-assistant.io/">Home Assistant</a> -taito saadaan lisättyä <a href="https://mycroft.ai/">Mycroftiin</a> antamalla äänikomento <code>install home assistant</code> tai SSH:n kautta komennolla <code>mycroft-msm install home assistant</code>.</p>
+<h4>Home Assistant -taidon asetukset</h4>
+<p><a href="https://www.home-assistant.io/">Home Assistant</a> -taidon asentamisen jälkeen täytyy vielä tehdä <a href="https://www.home-assistant.io/">Home Assistantin</a> osalta tarvittavat asetukset, jotka löytyvät vasemmalta valikosta kohdasta <code>Skills</code> (kuva alla), johon asennetut taidot tulevat näkyviin</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva6.png" /></p>
+<p><em>Kuva: Skills -valikko</em></p>
+<p>Tämän jälkeen valitaan asennetuista taidoista <a href="https://www.home-assistant.io/">Home Assistant</a>, jolloin avautuu alla olevan mukainen ikkuna</p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva7.png" /></p>
+<p><em>Kuva: Home Assistant skills -asetukset</em></p>
+<p>Täällä annetaan <a href="https://www.home-assistant.io/">Home Assistantin</a> <code>IP-osoite</code> sekä <code>Long Lived Access Token</code>, joka pitää luoda <a href="https://www.home-assistant.io/">Home Assistantin</a> <code>käyttäjä profiili</code> -kohdan kohdassa <code>Pitkäaikaiset käyttötunnussanomat</code></p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva8.png" /></p>
+<p><em>Kuva: Home Assistant - käyttäjäprofiili</em></p>
+<p><img alt="" src="/images/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto/kuva9.png" /></p>
+<p><em>Kuva: Home Assistant - Pitkäaikaiset käyttötunnussanomat</em></p>
+<p>Seuraavaksi valitaan kohta <code>Luo token</code> ja annetaan sille jokin nimi ja painetaan <code>OK</code>. Tämän jälkeen ikkunaan tulee koodi, joka kopioidaan ja lisätään <a href="https://home.mycroft.ai/">My Mycroftin</a> <a href="https://www.home-assistant.io/">Home Assistant</a> -taidon kohtaan <code>Long Lived Access Token</code>.</p>
+<p>Tämän jälkeen voidaan kokeilla esimerkiksi sammuttaa valot antamalla <a href="https://mycroft.ai/">Mycroftille</a> komento <code>Turn off &lt;valaisimen nimi&gt;</code>. Tässä täytyy taas huomioida, että <a href="https://www.home-assistant.io/">Home Assistantissa</a> kannattaa nimetä valaisimet yms. englannin kielisenä, jolloin <a href="https://mycroft.ai/">Mycroft</a> ymmärtää käskyt paremmin.</p>
+<p>Lisää taidoista kuten myös muistakin asetuksista löytyy enemmän Mycroftin sivulta <a href="https://mycroft-ai.gitbook.io/docs/skill-development/mycroft-skills-manager">https://mycroft-ai.gitbook.io/docs/skill-development/mycroft-skills-manager</a>.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/mycroft-virtuaaliavustimen-asennus-ja-kayttoonotto">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

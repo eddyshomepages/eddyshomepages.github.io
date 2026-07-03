@@ -9,77 +9,151 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen">
     <meta property="og:description" content="Edellisessä kirjoituksessa kävimme läpi Almond\-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että mi">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-09-12">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="almond"><meta property="article:tag" content="genie"><meta property="article:tag" content="genie-client"><meta property="article:tag" content="genie-server"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="raspberrypi"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="virtuaaliavustin">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen",
-        "description": "Edellisessä kirjoituksessa kävimme läpi Almond\-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että mi",
-        "datePublished": "2022-09-12",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/",
-        "keywords": "almond, genie, genie-client, genie-server, homeassistant, kotiautomaatio, raspberrypi, raspberrypios, virtuaaliavustin"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen",
+  "description": "Edellisessä kirjoituksessa kävimme läpi Almond\\-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että mi",
+  "datePublished": "2022-09-12",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/",
+  "keywords": "almond, genie, genie-client, genie-server, homeassistant, kotiautomaatio, raspberrypi, raspberrypios, virtuaaliavustin",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen
         </nav>
-        <h1>Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</h1>
-        <div class="meta">
-            <span>📅 2022-09-12</span>
-            &nbsp;&nbsp;<span>🏷️ almond, genie, genie-client, genie-server, homeassistant, kotiautomaatio, raspberrypi, raspberrypios, virtuaaliavustin</span>
-        </div>
-        <p>Edellisessä kirjoituksessa kävimme läpi Almond\-/Genie -virtuaaliavustimen asentamista Home Assistantin yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan A</p>
-        <div class="tags"><span>almond</span><span>genie</span><span>genie-client</span><span>genie-server</span><span>homeassistant</span><span>kotiautomaatio</span><span>raspberrypi</span><span>raspberrypios</span><span>virtuaaliavustin</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Ääniohjauksen lisääminen Almond-/Genie -virtuaaliavustimeen</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-09-12" itemprop="datePublished">2022-09-12</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">almond, genie, genie-client, genie-server, homeassistant, kotiautomaatio, raspberrypi, raspberrypios, virtuaaliavustin</span></span>
+            </div>
+            <div class="tags"><span class="tag">almond</span><span class="tag">genie</span><span class="tag">genie-client</span><span class="tag">genie-server</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">raspberrypi</span><span class="tag">raspberrypios</span><span class="tag">virtuaaliavustin</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Edellisessä <a href="#post/almond-genie-virtuaaliavustimen-lisaaminen-home-assistantiin">kirjoituksessa</a> kävimme läpi <a href="https://www.home-assistant.io/integrations/almond">Almond</a>-/<a href="https://genie.stanford.edu/">Genie</a> -virtuaaliavustimen asentamista <a href="https://www.home-assistant.io/">Home Assistantin</a> yhteyteen. Seuraavaksi olisi tarkoitus kokeilla, että miten myös ääniohjauksen saisi toimimaan <a href="https://www.home-assistant.io/integrations/almond">Almond</a>-/<a href="https://genie.stanford.edu/">Genie</a> -virtuaaliavustimen kanssa. Ääniohjausta varten meidän tarvitsee asentaa <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> -paketti, josta löytyy valmis <code>.deb</code> -paketti <a href="https://www.debian.org/">Debian</a> pohjaisille käyttöjärjestelmille. Muille käyttöjärjetelmille <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> täytyy asentaa lähdekoodin kautta.</p>
+<p>Minulla on alustana <a href="https://www.raspberrypi.org/">RaspberryPi</a> -tietokoneen <a href="https://www.sparkfun.com/products/retired/11546">1. Model B</a> -versio, joten <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> -paketti asennetaan <a href="https://www.raspberrypi.org/">RaspberryPi</a>:lle tehdyn <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide/raspberry-pi-speaker">ohjeen</a> mukaisesti. <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> on myös sen verran kevyt, että sen pystyy asentamaan <a href="https://www.sparkfun.com/products/retired/11546">Raspberry Pi 1 Model B</a> -koneelle ja näin minulla on myös tarkoitus tehdä. Käyttöjärjestelmänä Raspille on asennettuna <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> -käyttöjärjestelmä. Lisäksi minulla on käytössä USB-väyläinen mikrofoni sekä kaiuttimet, jotka on yhdistetty Raspin 3,5 mm <a href="https://fi.wikipedia.org/wiki/Jakkiliitin">jack</a> -liittimeen. Vaihtoehtoisesti Raspiin voisi liittää myös USB-väyläisen äänikortin, johon saisi kytkettyä sekä mikrofonin että äänen ulostulon kaiuttimille 3,5 mm <a href="https://fi.wikipedia.org/wiki/Jakkiliitin">jack</a> -liittimillä.</p>
+<h3>Genie-clientin asennus ja konfigurointi</h3>
+<p>Asennus aloitetaan aluksi valitsemalla oikea asennuspaketti ja meillä kyseessä on <a href="https://www.sparkfun.com/products/retired/11546">Raspberry Pi 1 Model B</a>, niin haetaan asennuspaketti komennolla <code>wget https://almond-static.stanford.edu/releases/raspios/bullseye/genie-client_0.1.0_armhf.deb</code>. Seuraavaksi asennetaan tarvittavat muut paketit komennolla <code>sudo apt install gstreamer1.0-alsa</code> , jonka jälkeen asennetaan <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> komennolla <code>sudo apt install ./genie-client_0.1.0_armhf.deb</code>. Mikäli järjestelmä tarjoaa muita paketteja asennettavaksi, niin ne voi myös asentaa.</p>
+<p>Nyt meillä asennettuna tarvittavat paketit, jonka jälkeen voidaan tehdä tarvittavat asetukset järjestelmään. Aluksi ajetaan komento <code>sudo nano /etc/pulse/default.pa</code> ja lisätään tietoston loppuun alla olevat rivit</p>
+<pre><code>load-module module-echo-cancel source_name=echosrc sink_name=echosink aec_method=speex
+load-module module-role-ducking trigger_roles=voice-assistant ducking_roles=music volume=20% global=true
+</code></pre>
+<p>Lopuksi käynnistetään vielä kone uudestaan, jonka jälkeen voimme kokeilla, että miten <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> toimii eli annetaan komento <code>genie-client</code>, jolloin <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-Clientin</a> pitäisi käynnistyä. Kun <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> on käynnistynyt, voidaan se yhdistää <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-serveriin</a> seuraavasti eli aluksi kirjaudutaan <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-serverille</a> ja valitaan oikeasta yläreunasta kohta <code>Configuration</code> (kuva alla).</p>
+<p><img alt="" src="/images/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/kuva1.png" /></p>
+<p><em>Kuva: Genie-server</em></p>
+<p><code>Configuration</code> -sivulla selataan loppuun kohtaan <code>External Clients</code>, josta saamme tarvittavat tiedot <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-clientille</a></p>
+<p><img alt="" src="/images/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/kuva2.png" /></p>
+<p><em>Kuva: Genie-server asetukset</em></p>
+<p>Seuraavaksi avataan <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-clientin</a> konffausikkuna eli mennään selaimella osoitteeseen <code>http://x.x.x.x:8000</code>, jolloin meillä avautuu alla olevan mukainen näkymä (ja <code>x.x.x.x</code> on taas sen koneen IP-soite, jolle <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-client</a> on asennettu)</p>
+<p><img alt="" src="/images/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/kuva3.png" /></p>
+<p><em>Kuva: Genie-client asetukset</em></p>
+<p>Tällä sivulla annamme kohtaan <code>URL</code> <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-serveriltä</a> saatu URL-tieto, valitaan <code>Authentication Mode</code> -kohdan alasvetovalikosta <code>Genie Server (standalone)</code>, kopioidaan kohtaan <code>Access Token</code> serveriltä vastaava merkkisarja ja lopuksi annetaan vielä <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-clientille</a> <code>Conversation ID</code> kohtaan nimi, jonka tulee olla eri clienteille oma. Ja lopuksi tallennetaan tiedot, jonka jälkeen <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-clientin</a> asetukset ovat valmiit.</p>
+<p>Lopuksi tehdään vielä tehdä <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-clientista</a> automaattisesti käynnistyvä palvelu, joka tulee ajaa käyttäjänä eli aluksi annetaan komento <code>nano ~/.config/systemd/user/genie-client.service</code>, kopiodaan tiedostoon alla olevat rivit sekä lopuksi tallennetaan tiedot</p>
+<pre><code>[Unit]
+Description=GenieClient
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/genie-client
+Restart=always
+
+[Install]
+WantedBy=default.target
+</code></pre>
+<p>Seuraavaksi luodaan vielä tyhjä tiedosto <code>`genie-client.timer`</code> komennolla <code>touch ~/.config/systemd/user/genie-client.timer</code> ja ajetaan komennot</p>
+<pre><code>systemctl --user enable genie-client.service
+systemctl --user start genie-client.service
+</code></pre>
+<p>Nyt meillä on virtuaaliavustimen yhteyteen luotu ääniohjaus eli seuraavaksi sitten vain opettelemaan ääniohjauskomentojen antamista. Virtuaaliavustimen saa herätettyä komennolla <code>Hey Genie</code>, jonka perään annetaan haluttu komento. Komennoista löytyy kattava yhteenveto <a href="https://wiki.genie.stanford.edu/getting-started/installation-guide">Genie-serverin</a> <code>Cheatsheet</code> -kohdasta, kuva alla</p>
+<p><img alt="" src="/images/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen/kuva4.png" /></p>
+<p><em>Kuva: Genie-server Cheatsheet</em></p>
+<p><a href="https://wiki.genie.stanford.edu/en/getting-started/intro-genie">Genie</a> -virtuaaliavustin on mielestäni muutoin oikein hyvä, mutta ainakaan itse en ole vielä keksinyt, että miten saisin annettua sille sijaintitiedot sellaisessa muodossa, että järjestelmä sen ymmärtäisi. Olen itse ymmärtänyt, että tiedot pitäisi antaa englannin kielisenä, jotta se osaisi hakea sijainnin oikein. Mikäli sinulla on tästä tietoa, niin laita ihmeessä viestiä vaikka kommentilla, jolloin saadaan se myös muillekin tiedoksi.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/aaniohjauksen-lisaaminen-almond-genie-virtuaaliavustimeen">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

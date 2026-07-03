@@ -9,77 +9,129 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Home Assistantin käyttö hälytysjärjestelmänä, osa 1">
     <meta property="og:description" content="Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-01-23">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="alarmo"><meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="github"><meta property="article:tag" content="halytysjarjestelma"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="nodemcu"><meta property="article:tag" content="rfid"><meta property="article:tag" content="ups"><meta property="article:tag" content="zigbee"><meta property="article:tag" content="zwave">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Home Assistantin käyttö hälytysjärjestelmänä, osa 1",
-        "description": "Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ",
-        "datePublished": "2023-01-23",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/",
-        "keywords": "alarmo, docker, docker-compose, github, halytysjarjestelma, homeassistant, nodemcu, rfid, ups, zigbee, zwave"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Home Assistantin käyttö hälytysjärjestelmänä, osa 1",
+  "description": "Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ",
+  "datePublished": "2023-01-23",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-1/",
+  "keywords": "alarmo, docker, docker-compose, github, halytysjarjestelma, homeassistant, nodemcu, rfid, ups, zigbee, zwave",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-1");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Home Assistantin käyttö hälytysjärjestelmänä, osa 1
         </nav>
-        <h1>Home Assistantin käyttö hälytysjärjestelmänä, osa 1</h1>
-        <div class="meta">
-            <span>📅 2023-01-23</span>
-            &nbsp;&nbsp;<span>🏷️ alarmo, docker, docker-compose, github, halytysjarjestelma, homeassistant, nodemcu, rfid, ups, zigbee, zwave</span>
-        </div>
-        <p>Seuraavaksi ajattelin kirjoittaa Home Assistantin käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ota vastuuta siitä, jos joku henkilö tul</p>
-        <div class="tags"><span>alarmo</span><span>docker</span><span>docker-compose</span><span>github</span><span>halytysjarjestelma</span><span>homeassistant</span><span>nodemcu</span><span>rfid</span><span>ups</span><span>zigbee</span><span>zwave</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-1">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Home Assistantin käyttö hälytysjärjestelmänä, osa 1</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-01-23" itemprop="datePublished">2023-01-23</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">alarmo, docker, docker-compose, github, halytysjarjestelma, homeassistant, nodemcu, rfid, ups, zigbee, zwave</span></span>
+            </div>
+            <div class="tags"><span class="tag">alarmo</span><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">github</span><span class="tag">halytysjarjestelma</span><span class="tag">homeassistant</span><span class="tag">nodemcu</span><span class="tag">rfid</span><span class="tag">ups</span><span class="tag">zigbee</span><span class="tag">zwave</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin kirjoittaa <a href="https://www.home-assistant.io/">Home Assistantin</a> käyttämisestä hälytysjärjestelmänä ja haluan myös heti jo tässä vaiheessa huomauttaa, että minä en kuitenkaan ota vastuuta siitä, jos joku henkilö tulee ja pääsee murtautumaan sisälle sen perusteella, että on järjestelmää rakentanut näiden minun ohjeiden mukaisesti.</p>
+<p><a href="https://www.home-assistant.io/">Home Assistant</a> ei tietenkään ole kaupallisten versioiden veroinen lähinnä ehkä siksi, että laiteyhteydet voivat tekniikasta riippuen pätkiä, jolloin ne putoavat pois järjestelmästä. Mutta esim. laadukkaat <a href="https://en.wikipedia.org/wiki/ZigBee">Zigbee</a>- tai <a href="https://en.wikipedia.org/wiki/Z-Wave">Zwave</a> -laitteet pitävät kyllä hyvin yhteydet yllä. Samoin tulee myös huolehtia siitä, että järjestelmän virransaanti on turvattu esim. <a href="#post/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus">UPS</a>:in avulla siinä vaiheessa, jos ja kun sähköt mahdollisesti menevät poikki.</p>
+<p>Nämä em. seikat kun huomioi, niin mielestäni <a href="https://www.home-assistant.io/">Home Assistantia</a> pystyy hyvinkin käyttämään hälytysjärjestelmän "keskusyksikkönä" hyväksyen kuitenkin sen tosiasian, että aivan kaupallisien versioiden toimintavarmuutta sillä ei välttämättä saada. Ja mikäli järjestelmästä haluaa saada mahdollisimman kattavan, niin se tietysti vaatii myös erilaisia antureita, liiketunnistimia, paloilmaisimia jne, mutta hyvälaatuisilla laitteilla järjestelmästä saa kuitenkin toimivan. Itse käytän <a href="https://www.home-assistant.io/">Home Assistantin</a> kanssa pääasiassa <a href="https://en.wikipedia.org/wiki/ZigBee">Zigbee</a>- ja <a href="https://en.wikipedia.org/wiki/Z-Wave">Zwave</a> -laitteita sekä <a href="https://hacs.xyz/">HACS</a>:in kautta saatavaa <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> -lisäosaa, mutta <a href="https://www.home-assistant.io/">Home Assistantiin</a> saa myös itse koodattua tarpeelliset jutut ilman sitä.</p>
+<p>HUOM! <a href="https://hacs.xyz/">HACS</a> vaatii toimiakseen <a href="https://github.com/">Github</a> -tilin, mutta mikäli sinulla ei sellaista ole, niin <a href="https://github.com/nielsfaber/alarmo">Alarmon</a> saa asennettua myös manuaalisesti <a href="https://www.home-assistant.io/">Home Assistantin</a> <code>custom_components</code> ominaisuutta hyödyntäen ja tarkemmin tietoja siitä löytyy <a href="https://github.com/nielsfaber/alarmo">tekijän</a> Niels Faberin <a href="https://github.com/">Github</a> -sivuilta.</p>
+<p>Minulla itselläni <a href="https://www.home-assistant.io/">Home Assistantiin</a> on yhdistetty vuotovahteja, palovaroittimia, ovitunnistimia, kameroita, sireeni sekä myös paljon muuta, joten näistä saa hyvän kombinaation hälytysjärjestelmän pohjaksi. Olen myös tehnyt mm. <a href="https://www.nodemcu.com/index_en.html">NodeMCU</a> -kehityskortin ja <a href="https://joy-it.net/en/products/SBC-RFID-RC522">Joy-IT RFID -lukijan</a> avulla lukijan, josta <a href="https://en.wikipedia.org/wiki/RFID">RFID</a> -tagia käyttämällä saa laitettua hälyt päälle sekä myös otettua ne pois päältä. Ja lisäksi tietenkin täytyy myös ohjelmoida <a href="https://www.home-assistant.io/">Home Assistantiin</a> tarvittavat automaatiot, jotta järjestelmä tietää mitä milloinkin täytyy tehdä.</p>
+<h4>HACS:in asennus</h4>
+<p>Minulla <a href="https://www.home-assistant.io/">Home Assistant</a> on <a href="#post/home-assistantin-asennus-docker-composen-avulla">asennettuna</a> <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla eli minun täytyy asentaa <a href="https://hacs.xyz/">HACS</a> sen mukaisesti. Aluksi siis kirjaudumme Raspiin, johon <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu ja menemme <a href="https://www.docker.com/">Dockeriin</a> "sisälle" komennolla <code>docker exec -it homeassistant bash</code>. Seuraavaksi ladataan <a href="https://hacs.xyz/">HACS</a>:in asennus scripti komennolla <code>wget -O - https://get.hacs.xyz | bash -</code> ja annetaan scriptin hoitaa <a href="https://hacs.xyz/">HACS</a>:in asennus. Ennen kuin mennään eteenpäin, käynnistetään <a href="https://www.home-assistant.io/">Home Assistant</a> vielä uudestaan, jonka jälkeen <a href="https://hacs.xyz/">HACS</a> asennetaan <a href="https://www.home-assistant.io/">Home Assistantin</a> integraatioiden kautta.</p>
+<h4>Alarmon asennus ja konfigurointi</h4>
+<p>Asennuksen jälkeen etsitään <a href="https://hacs.xyz/">HACS</a>in ohjelmalähteistä <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> ja asennetaan se. Asennuksen jälkeen <a href="https://www.home-assistant.io/">Home Assistant</a> tulee käynnistää uudestaan, jotta <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> aktivoituu. Tämän jälkeen <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> voidaan asentaa integraatioiden kautta eli haetaan sieltä käsin <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> ja asennetaan se. Asennuksen jälkeen <a href="https://github.com/nielsfaber/alarmo">Alarmo</a> pitäisi tulla näkyviin vasemmalle sivupalkkiin eli valitaan se seuraavaksi. Tämän jälkeen tulee näkyviin neljä erilaista välilehteä, jotka ovat <code>General</code>, <code>Sensors</code>, <code>Codes</code> ja <code>Actions</code> (kuva alla).</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-1/kuva1.webp" /></p>
+<p><code>General</code> kohdasta voidaan asettaa erilaisia tiloja hälytysjärjestelmälle kuten esim. <code>Poissa-</code> ja <code>Kotona-</code>tila. <code>Poissa</code> -tilassa voidaan asettaa aktivoitumaan esim. kaikki ovi- ja liiketunnistimet, vuotovahdit, palovaroittimet jne, kun taas <code>Kotona</code> -tilassa voidaan aktivoida pelkästään ovitunnistimet, vuotovahdit ja palovaroittimet. Eli miten vain haluaa tehdä.</p>
+<p><code>Sensors</code> -kohdasta voidaan lisätä järjestelmään halutut anturit ja valita, että mitkä niistä aktivoituvat aina ja mitkä esim. vain silloin kun ollaan kotona.</p>
+<p><code>Codes</code> -kohdassa annetaan järjestelmän käyttäjät ja heille omat <code>pin</code> -koodit tai <code>salasanat</code>, joilla järjestelmän saadaan kytkettyä päälle ja pois. Samoin tässä voidaan määrittää, että hälytykset voidaan ottaa pois käytöstä vain koodilla ja että ne voidaan esim. ilman koodia laittaa päälle.</p>
+<p><code>Actions</code> -kohdassa määritetään toimenpiteet, joita järjestelmä tekee, kun esim. hälytysjärjestelmä on lauennut tai se ei mene jostain syystä päälle. Minulla esim. hälytysten mennessä päälle alkaa sireeni soimaan, ulkovalot välkkymään ja lisäksi tulee vielä puhelimeen ilmoitus asiasta. Tässä kohdassa voidaan myös määrittää muut ilmoitukset, joita järjestelmä lähettää esim. silloin kuin hälytysjärjestelmä on kytkeytymässä päälle.</p>
+<p>Lisäksi myös <a href="https://www.home-assistant.io/">Home Assistantin</a> automaatioissa voidaan <a href="https://github.com/nielsfaber/alarmo">Alarmon</a> lisäksi määrittää erilaisia toimenpiteitä sen mukaan miten järjestelmä reagoi tietyissä tilanteissa kuten silloin, kun hälytysjärjestelmä on lauennut.</p>
+<p>Eli tämä tällä kertaa ja käydään sitten seuraavissa kirjoituksissa läpi muita juttuja, joita <a href="https://github.com/nielsfaber/alarmo">Alarmon</a> avulla voidaan tehdä samoin kuin mm. tätä <a href="https://en.wikipedia.org/wiki/RFID">RFID</a> -lukijan rakentamista ja yhdistämistä <a href="https://www.home-assistant.io/">Home Assistantiin</a>.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-1">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

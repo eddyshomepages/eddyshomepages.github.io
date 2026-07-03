@@ -9,77 +9,246 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan">
     <meta property="og:description" content="Seuraavaksi ajattelin kirjoittaa tällä hetkellä melko ajankohtaisesta asiasta kuin auton lohkolämmittimen ajastuksen automatisointi. Tähän on löytyy erilaisia t">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-12-29">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="autolammitys"><meta property="article:tag" content="energia"><meta property="article:tag" content="energiankulutus"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="input_datetime"><meta property="article:tag" content="input_number"><meta property="article:tag" content="input_select"><meta property="article:tag" content="kotiautomaatio">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan",
-        "description": "Seuraavaksi ajattelin kirjoittaa tällä hetkellä melko ajankohtaisesta asiasta kuin auton lohkolämmittimen ajastuksen automatisointi. Tähän on löytyy erilaisia t",
-        "datePublished": "2022-12-29",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/",
-        "keywords": "autolammitys, energia, energiankulutus, homeassistant, input_datetime, input_number, input_select, kotiautomaatio"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan",
+  "description": "Seuraavaksi ajattelin kirjoittaa tällä hetkellä melko ajankohtaisesta asiasta kuin auton lohkolämmittimen ajastuksen automatisointi. Tähän on löytyy erilaisia t",
+  "datePublished": "2022-12-29",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/",
+  "keywords": "autolammitys, energia, energiankulutus, homeassistant, input_datetime, input_number, input_select, kotiautomaatio",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan
         </nav>
-        <h1>Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan</h1>
-        <div class="meta">
-            <span>📅 2022-12-29</span>
-            &nbsp;&nbsp;<span>🏷️ autolammitys, energia, energiankulutus, homeassistant, input_datetime, input_number, input_select, kotiautomaatio</span>
-        </div>
-        <p>Seuraavaksi ajattelin kirjoittaa tällä hetkellä melko ajankohtaisesta asiasta kuin auton lohkolämmittimen ajastuksen automatisointi. Tähän on löytyy erilaisia toteutuksia netistä vaikka kuinka paljon,</p>
-        <div class="tags"><span>autolammitys</span><span>energia</span><span>energiankulutus</span><span>homeassistant</span><span>input_datetime</span><span>input_number</span><span>input_select</span><span>kotiautomaatio</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Auton lohkolämmittimen käynnistys automaattisesti haluttuun aikaan</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-12-29" itemprop="datePublished">2022-12-29</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">autolammitys, energia, energiankulutus, homeassistant, input_datetime, input_number, input_select, kotiautomaatio</span></span>
+            </div>
+            <div class="tags"><span class="tag">autolammitys</span><span class="tag">energia</span><span class="tag">energiankulutus</span><span class="tag">homeassistant</span><span class="tag">input_datetime</span><span class="tag">input_number</span><span class="tag">input_select</span><span class="tag">kotiautomaatio</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin kirjoittaa tällä hetkellä melko ajankohtaisesta asiasta kuin auton lohkolämmittimen ajastuksen automatisointi. Tähän on löytyy erilaisia toteutuksia netistä vaikka kuinka paljon, mutta itselleni on riittänyt se, että olen voinut asettaa auton lämmitys- ja lähtöajan, jonka jälkeen <a href="https://www.home-assistant.io/">Home Assistant</a> on hoitanut lopun automaattisesti.</p>
+<p>Minulla on käytössä myös erillinen autolämmitysrasia, jossa on kaksi erillistä pistorasiaa. Näistä toinen on kellon takana ja toinen on sellainen, johon tulee jatkuva virta. Varsinkin kellon käyttö on mielestäni tosi hankalaa ja kömpelöä, jonka vuoksi olen päätynyt tähän ohjattavaan pistorasiaan. Jo pelkästään mahdollisuus ohjata pistorasiaa helpotti paljon, kun ei enää tarvinnut lähteä erikseen laittamaan lämmittimen johtoa seinään tai muuttamaan kellon asetusta.</p>
+<p>Pistorasiana minulla on tällainen <a href="https://hintaseuranta.fi/lyhdyt-ja-ulkovalaisimet/ledvance-smart-plus-outdoor-plug-eu-zigbee/8626997">Ledvance Smart+ Outdoor Plug</a> <a href="https://www.proshop.fi/Smart-Home-Aelykoti/LEDVANCE-Smart-Outdoor-Plug-EU-Zigbee/2799786"></a>-ulkopistorasia, jossa on erillinen johto. Tämä on siitä hyvä, että sen voi kytkeä autolämmitysrasian (jatkuva virta) pistorasiaan siten, että kansikin mahtuu vielä kiinni ja lukkoon. Lisäksi ulkopistorasiassa on myös kunnon kansi, jolloin se on suojassa kosteudelta. Tällä kokoonpanolla on menty jo muutama talvi läpi ja hyvin on toiminut.</p>
+<h4>Muuttujien ja automaation teko</h4>
+<p>Automaattista ohjausta varten <a href="https://www.home-assistant.io/">Home Assistantiin</a> tarvitsee luoda muuttujat lähtö- ja lämmitysajalle sekä myös tehdä valitsin, jolla voidaan määrittää toiminta siten, että autolämmitysrasia toimii joko automaattisesti tai manuaalisesti.</p>
+<p>Muuttujat määritetään <code>configuration.yaml</code> -tiedostoon seuraavasti:</p>
+<pre><code># configuration.yaml # eli tähän tiedostoon tehdään muuttujat
+
+# lähtöaika
+input_datetime:
+  lahtoaika:
+    name: 'Lähtöaika'
+    has_date: false
+    has_time: true
+    initial: '08:00'
+    icon: 'mdi:clock-time-four'
+
+# lämmitysaika
+input_number:
+  lammitysaika:
+    name: 'Lämmitysaika'
+    initial: 60
+    min: 0
+    max: 240
+    step: 5
+    icon: 'mdi:timer-outline'
+    unit_of_measurement: 'min'
+
+# lämmitysjan asetus manuaalisesti/automaattisesti
+input_select:
+  autonlammitysasetus:
+    name: 'Auton lämmityksen asetus'
+    options:
+      - Automaattinen
+      - Manuaalinen
+    initial: Manuaalinen
+    icon: 'mdi:cog'
+</code></pre>
+<blockquote>
+<p><strong>Edit 16.11.2023</strong><br />
+Nyt täytyy nostaa käsi ylös virheen merkiksi. Eli tekstistä on jäänyt puuttumaan sensoritieto, joka tarvitaan ja jota ilman automaatio ei toimi. Tämä sensoritieto on jäänyt minulta puuttumaan alkuperäisestä tekstistä. Kiitos tästä huomiosta kuuluu kommentin jättäneelle lukijalle nimimerkiltään <strong>jumalanruoska</strong>. Mutta alla tämä sensori, joka luodaan <code>input_datetime.lahtoaika</code> -muuttujasta eli <code>sensor.yaml</code> -tiedostoon täytyy lisätä rivit:</p>
+</blockquote>
+<pre><code>#sensor.yaml
+  - platform: template
+    sensors:
+      autonlammitysaloitusaika:
+        value_template: &quot;{{(state_attr('input_datetime.lahtoaika', 'timestamp') - (states('input_number.lammitysaika')|int *60))|timestamp_custom('%H:%M', false) }}&quot;
+        friendly_name: 'Lämmityksen aloitusaika'
+        icon_template: 'mdi:clock-time-four'
+</code></pre>
+<p>Myös ulkopistorasia tulee liittää <a href="https://www.home-assistant.io/">Home Assistantiin</a> ja minulla se on nimeltään <code>switch.pistorasia_autopaikka</code>. Lisäksi olen automaatiossa määrittänyt, että autolämmitysrasia pysyy päällä vielä 10 min sen jälkeen, kun lähtöaika on ollut käsillä. Tämä siksi, että mikäli lähtöaika hiukan venyy, niin auton lämmitys on kuitenkin vielä hetken päällä.</p>
+<p>Ennen automaation määrityksiä, täytyy <a href="https://www.home-assistant.io/">Home Assistant</a> kuitenkin käynnistää uudestaan, jotta muuttujat tulevat näkyviin. Automaation osalta määritykset voidaan tehdä joko käyttöliittymän kautta, jolloin ne ovat seuraavat:</p>
+<h6>Auton lämmitys päälle:</h6>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva1.png" /><br />
+<em>Kuva: Laukaisuehdot</em></p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva2.png" /><br />
+<em>Kuva: Ehdot</em></p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva3.png" /><br />
+<em>Kuva: Toiminnot</em></p>
+<h6>Auton lämmitys pois päältä:</h6>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva4.png" /><br />
+<em>Kuva: Laukaisuehdot</em></p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva5.webp" /><br />
+<em>Kuva: Ehdot</em></p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva7.webp" /><br />
+<em>Kuva: Toiminnot</em></p>
+<p>Tai vaihtoehtoisesti muutokset voidaan tehdä myös <code>automations.yaml</code> -tiedostoon, jolloin ne ovat alla olevan kaltaiset:</p>
+<pre><code># automations.yaml
+- id: e1897cef08d440cfa52696008714b83e
+  alias: Auton lämmitys päälle
+  trigger:
+  - platform: template
+    value_template: '{{states.sensor.time.state == states.sensor.autonlammitysaloitusaika.state}}'
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_off
+      device_id: 4bee6cbb7dff9ba9ac9ee503b5b554f8
+      entity_id: switch.pistorasia_autopaikka
+      domain: switch
+    - condition: state
+      entity_id: input_select.autonlammitysasetus
+      state: Automaattinen
+  action:
+  - type: turn_on
+    device_id: 4bee6cbb7dff9ba9ac9ee503b5b554f8
+    entity_id: switch.pistorasia_autopaikka
+    domain: switch
+  - service: notify.notify
+    data:
+      message: Auton lämmitys on käynnistynyt!
+  mode: single
+
+- id: 5af07494ae784eb79ecf7d0da8a2c444
+  alias: Auton lämmitys pois
+  trigger:
+  - platform: template
+    value_template: '{{states.sensor.time.state == states.input_datetime.lahtoaika.state[0:5]}}'
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_on
+      device_id: 4bee6cbb7dff9ba9ac9ee503b5b554f8
+      entity_id: switch.pistorasia_autopaikka
+      domain: switch
+    - condition: state
+      entity_id: input_select.autonlammitysasetus
+      state: Automaattinen
+  action:
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 4bee6cbb7dff9ba9ac9ee503b5b554f8
+    entity_id: switch.pistorasia_autopaikka
+    domain: switch
+  - service: notify.notify
+    data:
+      message: Auton lämmityspistorasia on nyt pois päältä!
+  mode: single
+</code></pre>
+<p>Automaatiossa olen myös ottanut ilmoitukset käyttöön, jolloin <a href="https://www.home-assistant.io/">Home Assistant</a> ilmoittaa aina, kun autolämmitysrasia on mennyt päälle tai pois päältä. Nämä näkyvät automaation lopussa.</p>
+<p>Lopuksi tehdään vielä <a href="https://www.home-assistant.io/">Home Assistantin</a> työpöydälle tarvittavat muutokset eli tehdään näistä muuttujista ja kytkimestä oma kortti, joka minulla on alla olevan mukainen:</p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva8.webp" /><br />
+<em>Kuva: Autolämmityksen ohjaus</em></p>
+<p>Ja sama vielä muokkausmuodossa koodieditorissa:</p>
+<p><img alt="" src="/images/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan/kuva9.webp" /><br />
+<em>Kuva: Autolämmityksen ohjaus koodieditorissa</em></p>
+<p>Ja nyt vain autoa lämmittämään aina sen mukaan, mitä säät vaativat ja mitä on tarpeen.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/auton-lammityspistorasian-kaynnistys-automaattisesti-haluttuun-aikaan">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

@@ -9,77 +9,171 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla">
     <meta property="og:description" content="Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-09-05">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="baikal"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="dropbox"><meta property="article:tag" content="duplicati"><meta property="article:tag" content="googledrive"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="onedrive"><meta property="article:tag" content="webdav">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla",
-        "description": "Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla",
-        "datePublished": "2022-09-05",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/",
-        "keywords": "baikal, docker-compose, dropbox, duplicati, googledrive, homeassistant, onedrive, webdav"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla",
+  "description": "Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla",
+  "datePublished": "2022-09-05",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/",
+  "keywords": "baikal, docker-compose, dropbox, duplicati, googledrive, homeassistant, onedrive, webdav",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla
         </nav>
-        <h1>Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</h1>
-        <div class="meta">
-            <span>📅 2022-09-05</span>
-            &nbsp;&nbsp;<span>🏷️ baikal, docker-compose, dropbox, duplicati, googledrive, homeassistant, onedrive, webdav</span>
-        </div>
-        <p>Tässä kirjoituksessa minulla on tarkoitus käydä läpi Docker-Composen avulla asennetun Home Assistantin varmuuskopiointia erillisen Duplicati -sovelluksen avulla. Home Assistantin omakin varmuuskopioin</p>
-        <div class="tags"><span>baikal</span><span>docker-compose</span><span>dropbox</span><span>duplicati</span><span>googledrive</span><span>homeassistant</span><span>onedrive</span><span>webdav</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-09-05" itemprop="datePublished">2022-09-05</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">baikal, docker-compose, dropbox, duplicati, googledrive, homeassistant, onedrive, webdav</span></span>
+            </div>
+            <div class="tags"><span class="tag">baikal</span><span class="tag">docker-compose</span><span class="tag">dropbox</span><span class="tag">duplicati</span><span class="tag">googledrive</span><span class="tag">homeassistant</span><span class="tag">onedrive</span><span class="tag">webdav</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Tässä kirjoituksessa minulla on tarkoitus käydä läpi <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla asennetun <a href="https://www.home-assistant.io/">Home Assistantin</a> varmuuskopiointia erillisen <a href="https://www.duplicati.com/">Duplicati</a> -sovelluksen avulla. <a href="https://www.home-assistant.io/">Home Assistantin</a> omakin varmuuskopiointi kyllä toimii, mutta esim. varmuuskopioinnin palautus ei toimi <a href="https://docs.docker.com/compose/">Docker-Compose</a> asennuksessa, vaan vaihtoehtona on ainoastaan poistaa- tai ladata varmuuskopio.</p>
+<p><a href="https://www.duplicati.com/">Duplicati</a> asennetaan samalle tietokoneelle kuin <a href="https://www.home-assistant.io/">Home Assistant</a> ja sen voi asentaa <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla tai vaihtoehtoisesti myös suoraan käyttöjärjestelmään, joista tarkemmin seuraavaksi.</p>
+<h3>Duplicatin asennus Docker-Composen avulla</h3>
+<p><a href="https://www.duplicati.com/">Duplicatin</a> asennus <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla onnistuu samaan tapaan, kuin teimme aikaisemmin <a href="https://fasted.dy.fi/index.php/2022/08/home-assistantin-asennus-docker-composen-avulla/">Home Assistantin</a> ja <a href="https://fasted.dy.fi/index.php/2022/09/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/">Baïkalin</a> kanssa. Aluksi luodaan <a href="https://docs.docker.com/compose/">Docker-Composen</a> asetustiedostoon <a href="https://www.duplicati.com/">Duplicatille</a> oma hakemisto, jonka jälkeen siirrytään luotuun hakemistoon eli</p>
+<pre><code>cd docker-data
+mkdir duplicati
+cd duplicati
+</code></pre>
+<p>Seuraavaksi avataan editorilla <code>docker-compose.yaml</code> -tiedosto eli annetaan komento <code>nano docker-compose.yaml</code> ja tallennetaan tiedostoon alla olevat tiedot</p>
+<pre><code>version: &quot;2.1&quot;
+services:
+  duplicati:
+    image: ghcr.io/linuxserver/duplicati
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Helsinki
+    volumes:
+      - /home/pi/docker-data/duplicati/config:/config
+      - /home/pi/docker-data/duplicati/backups/:/backups
+      - /home/pi/docker-data/:/source:ro
+    restart: always
+    ports:
+      - &quot;8200:8200&quot;
+</code></pre>
+<p>Tässä "<code>volumes</code>" -osiossa "<code>/config</code>" on hakemisto, johon tallentuvat konfigurointiin liittyvät tiedostot. Hakemisto "<code>/backups</code>" on hakemisto, johon tallentuvat paikallisesti tehdyt varmuuskopiot ja hakemisto "<code>/source</code>" on ns. lähdehakemisto, joka näkyy <a href="https://www.duplicati.com/">Duplicatin</a> lähdetiedosto -ikkunassa kohdassa nimeltään "<code>Lähdetiedostot</code>". Tässä tapauksessa olen antanut lähdetiedostoksi sen hakemiston, johon on tallennettu kaikki <a href="https://docs.docker.com/compose/">Docker-Composella</a> asennetut sovellukset.</p>
+<p><img alt="" src="/images/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/kuva1.png" /></p>
+<p>Tämän jälkeen suljetaan tiedosto ja tallennetaan muutokset. Seuraavaksi käynnistetään <a href="https://www.duplicati.com/">Duplicati</a> komennolla <code>docker-compose up -d</code>.</p>
+<p>Kun <a href="https://docs.docker.com/compose/">Docker-Compose</a> on hakenut tarvittavat tiedot ja <a href="https://www.duplicati.com/">Duplicati</a> on käynnistynyt, niin seuraavaksi voidaan käynnistää <a href="https://www.duplicati.com/">Duplicatin</a> web-käyttöliittymä eli menemme selaimella osoitteeseen <code>http://x.x.x.x:8200</code>, jossa <code>x.x.x.x</code> on taas sen tietokoneen sisäverkon IP-osoite, johon <a href="https://www.duplicati.com/">Duplicati</a> on asennettu.</p>
+<h3>Duplicatin asennus suoraan käyttöjärjestelmään</h3>
+<p>Toisena vaihtoehtona on asentaa <a href="https://www.duplicati.com/">Duplicati</a> suoraan käyttöjärjestelmään ja sekin onnistuu helposti. Aluksi haetaan asennuspaketti komennolla</p>
+<pre><code>wget https://updates.duplicati.com/beta/duplicati_2.0.6.3-1_all.deb
+</code></pre>
+<p>Seuraavaksi asennetaan haettu paketti komennolla</p>
+<pre><code>sudo dpkg -i duplicati_2.0.6.3-1_all.deb
+</code></pre>
+<p>Tämä antaa todennäköisesti virheilmoituksen puuttuvista paketeista</p>
+<pre><code>.......
+E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or specify a solution).
+</code></pre>
+<p>Asia korjaantuu ajamalla komento <code>sudo apt --fix-broken install</code>, joka asentaa puuttuvat tiedostot.</p>
+<p>Tämän jälkeen ajetaan uudestaan komento <code>sudo dpkg -i duplicati_2.0.6.3-1_all.deb</code>, jonka jälkeen meillä on <a href="https://www.duplicati.com/">Duplicati</a> asennettuna.</p>
+<p><a href="https://www.duplicati.com/">Duplicati</a> ei ole vielä käynnissä, joten se täytyy käynnistää ja asettaa käynnistymään automaattisesti. Ennen sitä tehdään kuitenkin muutos tiedostoon <code>/etc/default/duplicati</code> eli avataan tiedosto editorilla</p>
+<p><code>sudo nano /etc/default/duplicati</code></p>
+<p>Tähän tiedostoon täytyy tehdä seuraava muutos, jotta web-käyttöliittymä käynnistyy eli muutetaan alla oleva rivi</p>
+<pre><code>DAEMON_OPTS=&quot;&quot;
+</code></pre>
+<p>muotoon</p>
+<pre><code>DAEMON_OPTS=&quot;--webservice-interface=any&quot;
+</code></pre>
+<p>Tämän jälkeen laitetaan vielä <a href="https://www.duplicati.com/">Duplicati</a> käynnistymään automaattisesti sekä käynnistetään palvelu</p>
+<pre><code>sudo systemctl enable duplicati
+sudo systemctl start duplicati
+</code></pre>
+<p>Nyt meillä on <a href="https://www.duplicati.com/">Duplicati</a> asennettuna suoraan käyttöjärjestelmään ja seuraavaksi voidaan avata selaimella <a href="https://www.duplicati.com/">Duplicatin</a> web-käyttöliittymä eli avataan osoite <code>http://x.x.x.x:8200</code>.</p>
+<p>Tarkemmin <a href="https://www.duplicati.com/">Duplicatin</a> asetuksista voi lukea sivustolta <a href="https://duplicati.readthedocs.io/en/latest/">https://duplicati.readthedocs.io/en/latest/</a>, jossa on tarkemmin tietoa sovelluksen asetuksista.</p>
+<p>Kohdassa "<code>Storage Providers</code>" on tietoja eri tallennusmahdollisuuksista kuten varmuuskopiointi paikallisesti tai sitten pilveen esim. <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#webdav">WebDAV</a>, <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#dropbox">Dropbox</a>, <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#google-drive">Google Drive</a> tai <a href="https://duplicati.readthedocs.io/en/latest/05-storage-providers/#microsoft-onedrive-v2-microsoft-graph-api">Microsoft OneDrive</a>. Näitä mahdollisuuksia on monia ja niistä löytyy varmasti se hyvä vaihtoehto omaan käyttöön.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

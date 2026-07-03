@@ -9,77 +9,153 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Home Assistantin asennus Docker-Composen avulla">
     <meta property="og:description" content="Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja Home Assistant. Minulla itselläni on Home Assistant asennettuna Raspberry ">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-08-21">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="zwave"><meta property="article:tag" content="zigbee2mqtt"><meta property="article:tag" content="zwavejs2mqtt">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Home Assistantin asennus Docker-Composen avulla",
-        "description": "Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja Home Assistant. Minulla itselläni on Home Assistant asennettuna Raspberry ",
-        "datePublished": "2022-08-21",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/",
-        "keywords": "docker, docker-compose, homeassistant, kotiautomaatio, raspberrypios, zwave, zigbee2mqtt, zwavejs2mqtt"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Home Assistantin asennus Docker-Composen avulla",
+  "description": "Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja Home Assistant. Minulla itselläni on Home Assistant asennettuna Raspberry ",
+  "datePublished": "2022-08-21",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-asennus-docker-composen-avulla/",
+  "keywords": "docker, docker-compose, homeassistant, kotiautomaatio, raspberrypios, zwave, zigbee2mqtt, zwavejs2mqtt",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/home-assistantin-asennus-docker-composen-avulla");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Home Assistantin asennus Docker-Composen avulla
         </nav>
-        <h1>Home Assistantin asennus Docker-Composen avulla</h1>
-        <div class="meta">
-            <span>📅 2022-08-21</span>
-            &nbsp;&nbsp;<span>🏷️ docker, docker-compose, homeassistant, kotiautomaatio, raspberrypios, zwave, zigbee2mqtt, zwavejs2mqtt</span>
-        </div>
-        <p>Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja Home Assistant. Minulla itselläni on Home Assistant asennettuna Raspberry Pi 4 -tietokoneelle siten, että tietokon</p>
-        <div class="tags"><span>docker</span><span>docker-compose</span><span>homeassistant</span><span>kotiautomaatio</span><span>raspberrypios</span><span>zwave</span><span>zigbee2mqtt</span><span>zwavejs2mqtt</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/home-assistantin-asennus-docker-composen-avulla">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Home Assistantin asennus Docker-Composen avulla</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-08-21" itemprop="datePublished">2022-08-21</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">docker, docker-compose, homeassistant, kotiautomaatio, raspberrypios, zwave, zigbee2mqtt, zwavejs2mqtt</span></span>
+            </div>
+            <div class="tags"><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">raspberrypios</span><span class="tag">zwave</span><span class="tag">zigbee2mqtt</span><span class="tag">zwavejs2mqtt</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi päästään käsiksi yhteen lempiaiheistani eli kotiautomaatiojärjestelmät ja <a href="https://www.home-assistant.io/">Home Assistant</a>. Minulla itselläni on <a href="https://www.home-assistant.io/">Home Assistant</a> asennettuna <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/">Raspberry Pi 4</a> -tietokoneelle siten, että tietokoneessa on käyttöjärjestelmänä <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> ja <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla.</p>
+<p><a href="https://www.docker.com/">Docker</a> -asennuksessa on mm. se haittapuoli, että nämä lisäosat eivät ole käytössä samalla tavalla kuin <a href="https://www.home-assistant.io/">Home Assistantin</a> omassa käyttöjärjestelmässä. Samoin myös varmuuskopiointi ei toimi samalla tavalla, mutta näihinkin löytyy kyllä kuitenkin ratkaisut. Mielestäni etuna <a href="https://www.docker.com/">Docker</a>-asennuksessa on kuitenkin se, että tietokoneen resursseja voi helpommin käyttää myös muuhunkin.</p>
+<p>Tässä kirjoituksessa käydään siis läpi <a href="https://www.home-assistant.io/">Home Assistantin</a> asennus <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla. Itselläni ei ollut oikeastaan juurikaan kokemusta <a href="https://www.docker.com/">Dockerista</a> tai <a href="https://docs.docker.com/compose/">Docker-Composesta</a> ennen tätä asennusta, mutta sen jälkeen olen asentanut <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla mm. <a href="https://sabre.io/baikal/">Baikal</a> -kalenteripalvelimen, <a href="https://matrix.org/">Matrix</a> -pikaviestipalvelimen, <a href="https://www.duplicati.com/">Dublicati</a> -varmuuskopiointi -palvelimen sekä <a href="https://www.home-assistant.io/">Home Assistantille</a> <a href="https://en.wikipedia.org/wiki/Z-Wave">Z-Wave</a> lisäosan <a href="https://zwave-js.github.io/zwavejs2mqtt/#/">ZWavejs2Mqtt</a>:n avulla.</p>
+<p>Nykyään pyrin asentamaan ohjelmistot <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla, mikäli se vain on mahdollista. Vanhoja asennuksia kuten <a href="https://mosquitto.org/">Mosquitto</a> -palvelin tai <a href="https://mariadb.org/">MariaDB</a> -palvelin, jotka ovat asennettu ohjelmistolähteistä, en ole lähtenyt muuttamaan, mutta nämäkin pystyy asentamaan myös <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla. Käydään läpi näitä muita asennuksia sitten erikseen seuraavissa kirjoituksessa.</p>
+<h3>Home Assistantin asennus</h3>
+<p>Ennen <a href="https://www.home-assistant.io/">Home Assistantin</a> asennusta meillä pitäisi olla asennettuna <a href="https://www.docker.com/">Docker</a> ja <a href="https://docs.docker.com/compose/">Docker-Compose</a>. Näiden asennuksesta kirjoitin jokin aika sitten kirjoituksessa "<a href="https://fasted.dy.fi/index.php/2022/08/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/">Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään</a>", josta voi tarvittaessa kerrata asennusta.</p>
+<p>Asennus on aika selkeä, aluksi täytyy luoda hakemisto, johon nämä <a href="https://docs.docker.com/compose/">Docker-Composen</a> asetus- ym. tiedostot tallennetaan. Tämä voi sijaita esim. kotihakemistossa ja tässä asennuksessa luodaan hakemisto nimeltään <code>docker-data</code> kotihakemistoon eli komento menee</p>
+<p><code>mkdir docker-data</code></p>
+<p>Seuraavaksi luodaan <code>docker-data</code> -hakemistoon kansio <code>homeassistant</code>, jonne <a href="https://docs.docker.com/compose/">Docker-Compose</a> tallentaa tarvittavat tiedostot eli</p>
+<p><code>cd docker-data</code></p>
+<p><code>mkdir homeassistant</code></p>
+<p>Sitten siirrytään kansioon</p>
+<p><code>cd homeassistant</code></p>
+<p>Tämän jälkeen luodaan <code>homeassistant</code> -kansioon <a href="https://docs.docker.com/compose/">Docker-Composen</a> asetustiedosto eli</p>
+<p><code>nano docker-compose.yaml</code></p>
+<p>Tähän tiedostoon kopioidaan alla olevat tiedot eli</p>
+<pre><code>version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: &quot;ghcr.io/home-assistant/home-assistant:stable&quot;
+    volumes:
+      - /home/pi/docker-data/homeassistant/:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+</code></pre>
+<p>Tämän jälkeen ajetaan vielä komento</p>
+<p><code>docker-compose up -d</code></p>
+<p>Kun <a href="https://docs.docker.com/compose/">Docker-Compose</a> on hakenut tarvittavat paketit ja on käynnistynyt, niin sen jälkeen meillä on asennus valmiina. Tämän jälkeen jatketaan asennusta nettiselaimen kautta eli mennään osoitteeseen <code>http://x.x.x.x:8123</code>, jossa x.x.x.x on oman tietokoneesi IP-osoite, johon <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu.</p>
+<p>Mikäli sinulla on käytössä <a href="https://en.wikipedia.org/wiki/Z-Wave">Z-Wave</a> tai <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a> -mokkula, täytyy <code>docker-compose.yaml</code> -tiedostoon lisätä vielä seuraavat rivit eli</p>
+<pre><code>version: '3'
+  services:
+    homeassistant:
+    ...
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+</code></pre>
+<p><a href="https://www.home-assistant.io/">Home Assistantin</a> päivitys hoituu jatkossa ajamalla komento <code>docker-compose pull</code> ja <code>docker-compose up -d</code> tässä samassa hakemistossa, jossa sijaitsee <code>docker-compose.yaml</code> -tiedosto.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/home-assistantin-asennus-docker-composen-avulla">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

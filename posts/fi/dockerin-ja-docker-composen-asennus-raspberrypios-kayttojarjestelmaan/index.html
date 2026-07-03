@@ -9,77 +9,151 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään">
     <meta property="og:description" content="Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut HomeAssistantin, Matrix Synapse -palvelimen,">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-08-02">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="baikal"><meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="duplicati"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="matrix-synapse"><meta property="article:tag" content="raspberrypios">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään",
-        "description": "Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut HomeAssistantin, Matrix Synapse -palvelimen,",
-        "datePublished": "2022-08-02",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/",
-        "keywords": "baikal, docker, docker-compose, duplicati, homeassistant, matrix-synapse, raspberrypios"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään",
+  "description": "Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut HomeAssistantin, Matrix Synapse -palvelimen,",
+  "datePublished": "2022-08-02",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan/",
+  "keywords": "baikal, docker, docker-compose, duplicati, homeassistant, matrix-synapse, raspberrypios",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään
         </nav>
-        <h1>Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään</h1>
-        <div class="meta">
-            <span>📅 2022-08-02</span>
-            &nbsp;&nbsp;<span>🏷️ baikal, docker, docker-compose, duplicati, homeassistant, matrix-synapse, raspberrypios</span>
-        </div>
-        <p>Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut HomeAssistantin, Matrix Synapse -palvelimen, Baikal -kalenteripalvelimen sekä Duplic</p>
-        <div class="tags"><span>baikal</span><span>docker</span><span>docker-compose</span><span>duplicati</span><span>homeassistant</span><span>matrix-synapse</span><span>raspberrypios</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-08-02" itemprop="datePublished">2022-08-02</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">baikal, docker, docker-compose, duplicati, homeassistant, matrix-synapse, raspberrypios</span></span>
+            </div>
+            <div class="tags"><span class="tag">baikal</span><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">duplicati</span><span class="tag">homeassistant</span><span class="tag">matrix-synapse</span><span class="tag">raspberrypios</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Olen alkanut itse nyt enemmän ja enemmän käyttämään Dockeria ja Docker-Composea ja niiden avulla olen mm. asentanut <a href="https://www.home-assistant.io/">HomeAssistantin</a>, <a href="https://matrix.org/docs/projects/server/synapse">Matrix Synapse</a> -palvelimen, <a href="https://sabre.io/baikal/">Baikal</a> -kalenteripalvelimen sekä <a href="https://github.com/duplicati/duplicati">Duplicati</a> -varmuuskopiopalvelimen käyttöön, mutta palataan näihin erikseen toisessa kirjoituksessa ja käydään tässä vähän läpi Dockerin ja Docker-Composen asennusta RaspberryPiOS -käyttöjärjestelmään.</p>
+<p>Lähtökohtaisesti meillä on siis valmiiksi asennettuna RaspberryPiOS -käyttöjärjestelmä RaspberryPi -tietokoneelle, jonka asennusta en tässä käy läpi tarkemmin, koska asentamiseen löytyvät hyvät ohjeet <a href="https://www.raspberrypi.com/software/">RaspberryPi</a> -sivustolta.</p>
+<p>Ennen Dockerin asennusta kuitenkin asennetaan viimeisimmät päivitykset käyttöjärjestelmään seuraavalla komennolla</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+<p>Dockerin asennus aloitetaan hakemalla asennusskripti komennolla </p>
+<pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
+</code></pre>
+<p>Seuraavaksi asennetaan Docker suorittamalla asennusskripti</p>
+<pre><code>sudo sh get-docker.sh
+</code></pre>
+<p>Dockerin asennuksen jälkeen lisätään RaspberryPiOS -käyttöjärjestelmän oletuskäyttäjä <code>pi</code> ryhmään <code>docker</code> komennolla</p>
+<pre><code>sudo usermod -aG docker pi
+</code></pre>
+<p>Dockerin versio voidaan tarkastaa komennolla</p>
+<pre><code>docker version
+</code></pre>
+<p>Sekä tarkemmat tiedot Dockerista komennolla</p>
+<pre><code>docker info
+</code></pre>
+<p>Paras tapa tarkastaa, että Docker on asentunut kunnolla, on asentaa <code>hello-world</code> -kontti komennolla</p>
+<pre><code>docker run hello-world
+</code></pre>
+<p>Mikäli <code>hello-world</code> -kontti asentui oikein ilman virheilmoituksia, niin tällöin meillä on kaikki valmiina Docker-Composen asennusta varten.</p>
+<h4>Docker Composen asennus</h4>
+<p>Docker Compose voidaan asentaa eri tavoin, mutta tässä tapauksessa asennamme sen <code>pip3</code> avulla. Tämä vaatii, että sinulla on asennettuna <code>python3</code> sekä lisäksi myös <code>python3-pip</code> -paketit. Tätä varten tarvittavat paketit saadaan asennettua komennolla</p>
+<pre><code>sudo apt-get install libffi-dev libssl-dev python3-dev python3 python3-pip -y
+</code></pre>
+<p>Docker Compose saadaan asennettua komennolla</p>
+<pre><code>pip3 install docker-compose
+</code></pre>
+<p>Docker-Composen asennettu versio voidaan tarkastaa komennolla</p>
+<pre><code>docker-compose --version
+</code></pre>
+<p>Ja lopuksi on vielä tärkeää ajaa komento</p>
+<pre><code>sudo systemctl enable docker
+</code></pre>
+<p>Tämä varmistaa, että Docker käynnistyy automaattisesti myös sen jälkeen, kun kone käynnistetään uudelleen.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

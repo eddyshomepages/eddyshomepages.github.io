@@ -9,77 +9,189 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="RaspberryPi OS:n asentaminen kiosk -tilaan">
     <meta property="og:description" content="Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten RaspberryPi OS:n saa asetettua kiosk -tilaan ja saako käyttöjärjestelmä">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-03-15">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="dns"><meta property="article:tag" content="dy.fi"><meta property="article:tag" content="hotspot"><meta property="article:tag" content="kiosk"><meta property="article:tag" content="openvpn"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="ssh"><meta property="article:tag" content="vpn">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "RaspberryPi OS:n asentaminen kiosk -tilaan",
-        "description": "Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten RaspberryPi OS:n saa asetettua kiosk -tilaan ja saako käyttöjärjestelmä",
-        "datePublished": "2023-03-15",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/",
-        "keywords": "dns, dy.fi, hotspot, kiosk, openvpn, raspberrypios, ssh, vpn"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RaspberryPi OS:n asentaminen kiosk -tilaan",
+  "description": "Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten RaspberryPi OS:n saa asetettua kiosk -tilaan ja saako käyttöjärjestelmä",
+  "datePublished": "2023-03-15",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/raspberrypi-osn-asentaminen-kiosk-tilaan/",
+  "keywords": "dns, dy.fi, hotspot, kiosk, openvpn, raspberrypios, ssh, vpn",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/raspberrypi-osn-asentaminen-kiosk-tilaan");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             RaspberryPi OS:n asentaminen kiosk -tilaan
         </nav>
-        <h1>RaspberryPi OS:n asentaminen kiosk -tilaan</h1>
-        <div class="meta">
-            <span>📅 2023-03-15</span>
-            &nbsp;&nbsp;<span>🏷️ dns, dy.fi, hotspot, kiosk, openvpn, raspberrypios, ssh, vpn</span>
-        </div>
-        <p>Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten RaspberryPi OS:n saa asetettua kiosk -tilaan ja saako käyttöjärjestelmän asetettua sellaiseen tilaan, että näpp</p>
-        <div class="tags"><span>dns</span><span>dy.fi</span><span>hotspot</span><span>kiosk</span><span>openvpn</span><span>raspberrypios</span><span>ssh</span><span>vpn</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/raspberrypi-osn-asentaminen-kiosk-tilaan">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">RaspberryPi OS:n asentaminen kiosk -tilaan</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-03-15" itemprop="datePublished">2023-03-15</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">dns, dy.fi, hotspot, kiosk, openvpn, raspberrypios, ssh, vpn</span></span>
+            </div>
+            <div class="tags"><span class="tag">dns</span><span class="tag">dy.fi</span><span class="tag">hotspot</span><span class="tag">kiosk</span><span class="tag">openvpn</span><span class="tag">raspberrypios</span><span class="tag">ssh</span><span class="tag">vpn</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin kirjoittaa asiasta, joka tuli vastaani jokin aika sitten eli miten <a href="https://www.raspberrypi.com/software/">RaspberryPi OS</a>:n saa asetettua <a href="https://en.wikipedia.org/wiki/Interactive_kiosk">kiosk</a> -tilaan ja saako käyttöjärjestelmän asetettua sellaiseen tilaan, että näppäimistön ja hiiren avulla ei päästä käsiksi käyttöjärjestelmään.</p>
+<p>Mikäli järjestelmään halutaan saada yhteys, mutta näppäimistön ja hiiren käyttö on estetty, niin tällöin täytyy miettiä jokin muu yhteystapa ja jäljelle jää oikeastaan ottaa yhteys koneeseen joko etänä tai paikan päällä esim. siten, että laite luo ympärilleen <a href="https://en.wikipedia.org/wiki/Wi-Fi_hotspot">hotspotin</a>, jonka WI-FI -verkkoon sitten yhdistetään ja kirjaudutaan koneelle esim. <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>:n avulla.</p>
+<p>Mikäli yhteys halutaan ottaa kokonaan etänä, niin tällöin pitäisi käyttää jonkinlaista etätyöympäristöä tai asentaa Raspille <a href="https://en.wikipedia.org/wiki/Virtual_private_network">VPN</a>-palvelin. Valmiiden etäyhteyssovellusten kuten <a href="https://www.teamviewer.com/en/">TeamViewerin</a> tms. käyttö ei taas välttämättä toimi, koska laite on <a href="https://en.wikipedia.org/wiki/Interactive_kiosk">kiosk</a> -tilassa ja varsinaista työpöytää ei ole käytössä. Voin olla tässä myös väärässäkin, koska en ole ehtinyt tähän oikein vielä perehtyä.</p>
+<p><a href="https://www.raspberrypi.com/software/">RaspberryPi OS</a>:lle pystyy asentamaan <a href="https://openvpn.net/">OpenVPN</a> -palvelimen helposti asentamalla se esim. <a href="https://pivpn.io/">PiVPN</a>:n avulla, joka on käytännössä valmis scripti, joka asentaa Raspille <a href="https://openvpn.net/">OpenVPN</a> -palvelimen. Tällöin täytyy olla kuitenkin tiedossa laitteen ulkoinen IP-osoite, jotta yhteys voidaan ottaa. Raspille voidaan tietysti konffata esim. 4G -mokkula, jonka liittymässä olisi julkinen IP-osoite käytössä, mutta tällöin tarvittaisiin vielä lisäksi jokin DNS-palvelu, jonka avulla laitteelle saataisiin ulkoinen nettisoite. Näitä ilmaisia DNS palveluita kyllä löytyy kuten esim. <a href="https://account.dyn.com/">DynDNS</a> jne. sekä suomalainen <a href="https://www.dy.fi/">dy.fi</a> -palvelu, joka minulla on käytössä.</p>
+<h4>RaspberryPiOS asentaminen kiosk -tilaan</h4>
+<p>Aloitetaan kuitenkin asennus asentamalla aluksi <a href="https://www.raspberrypi.com/software/">RaspberryPi OS</a> muistikortille ja tähän löytyi ohjeet aikaisemmasta kirjoituksesta, johon linkki <a href=".">tässä</a>/posts/fi/raspberrypiosn-asentaminen-ja-kayttoonotto/).</p>
+<p>Seuraavaksi laitetaan muistikortti koneeseen ja käynnistetään kone. Odotellaan hetki ja tarkistetaan vaikka modeemin kautta, että mikä on tullut laitteelle IP-osoitteeksi. Tämän jälkeen kirjaudutaan <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>:n avulla laitteelle sisään eli annetaan komento</p>
+<pre><code>ssh pi@x.x.x.x
+</code></pre>
+<p>Tässä tapauksessa käyttäjänä on <code>pi</code> ja <code>x.x.x.x</code> on koneen IP-osoite. Seuraavaksi asennetaan mahdolliset päivitykset koneelle eli annetaan komento</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+<p>Päivityksien jälkeen asennetaan <code>Xserver</code>, jotta <a href="https://www.chromium.org/chromium-projects/">Chromium</a> saadaan käynnistymään eli annetaan komento</p>
+<pre><code>sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox
+</code></pre>
+<p>Seuraavaksi asennetaan paketit <code>chromium</code> ja <code>unclutter</code> komennolla</p>
+<pre><code>sudo apt-get install --no-install-recommends chromium-browser unclutter
+</code></pre>
+<p>Eli <code>chromium</code> asennetaan minimi paketeilla ja <code>unclutter</code> on taas sovellus, jolla saadaan piilotettua hiiren kuvake näytöltä.</p>
+<p>Tässä vaiheessa voitaisiin asentaa myös esim. <code>lightdm</code> tms. ja asettaa järjestelmä kirjautumaan automaattisesti työpöydälle, mutta tehdään asia hiukan toisella tavalla.</p>
+<p>Seuraavaksi ajetaan komento <code>sudo raspi-config</code> ja asetetaan jäjestelmän kirjautumaan automaattisesti konsoliin eli aluksi valitaan kohta <em>1. System Options</em></p>
+<p><img alt="" src="/images/raspberrypi-osn-asentaminen-kiosk-tilaan/kuva1.webp" /></p>
+<p><em>Kuva: raspi-config - system options</em></p>
+<p>Seuraavaksi valitaan kohta <em>S5. Boot / Auto Login</em></p>
+<p><img alt="" src="/images/raspberrypi-osn-asentaminen-kiosk-tilaan/kuva2.webp" /></p>
+<p><em>Kuva: raspi-config - boot / auto login</em></p>
+<p>Ja lopuksi valitaan vielä kohta <em>B2. Console Autologin</em></p>
+<p><img alt="" src="/images/raspberrypi-osn-asentaminen-kiosk-tilaan/kuva3.webp" /></p>
+<p><em>Kuva: raspi-config - console autologin</em></p>
+<p>Tämän jälkeen poistutaan sovelluksesta ja käynnistetään kone uudestaan (tätä tarjotaan automaattisesti vaihtoehdoksi).</p>
+<p>Käynnistyksen jälkeen otetaan taas uusi yhteys SSH:n kautta ja annetaan komento <code>nano /home/pi/.bash_profile</code> ja lisätään tiedostoon seuraavat rivit eli tarkoittaen sitä, kun kone tunnistaa käynnistyksen yhteydessä näytön, niin sen jälkeen käynnistetään graafinen työpöytä komennolla <code>startx</code>.</p>
+<pre><code>if [ -z $DISPLAY ] &amp;&amp; [ $(tty) = /dev/tty1 ]
+then
+  startx
+fi
+</code></pre>
+<p>Tämän jälkeen suljetaan ja tallennetaan tiedosto sekä annetaan komento <code>nano /home/pi/.xinitrc</code> ja lisätään tänne seuraavat rivit</p>
+<pre><code>!/usr/bin/env sh
+xset -dpms
+xset s off
+xset s noblank
+
+unclutter &amp;
+chromium-browser https://fasted.dy.fi --window-size=1920,1080 --window-position=0,0 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars  --disable-features=TranslateUI --disk-cache-dir=/dev/null --overscroll-
+history-navigation=0 --disable-pinch
+</code></pre>
+<p>Näillä <code>xset</code> komennoilla estetään näytönsäästäjän meneminen päälle ja järjestelmän meneminen automaattisesti standby -tilaan ja annetaan <a href="https://www.chromium.org/chromium-projects/">chromiumille</a> komennot</p>
+<p>Tämän jälkeen voidaan käynnistää kone uudestaan, jolloin se käynnistyy <a href="https://en.wikipedia.org/wiki/Interactive_kiosk">kiosk</a> -tilassa ja em. mukaisesti se avaa tämän sivuston eli osoitteen <a href="https://fasted.dy.fi">https://fasted.dy.fi</a>.</p>
+<h4>Laitteen muut asetukset kuten USB-porttien poistaminen käytöstä</h4>
+<p>Lopuksi vielä poistetaan USB-portit käytöstä eli se saadaan tehty komennolla</p>
+<pre><code>echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/unbind
+</code></pre>
+<p>Portit saadaan palautettua käyttöön komennolla</p>
+<pre><code>echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/bind
+</code></pre>
+<p>Mikäli halutaan poistaa myös verkkoliitäntä pois käytöstä, niin tällöin voidaan antaa komento</p>
+<pre><code>sudo ifconfig eth0 down
+</code></pre>
+<p>Verkkoliitäntä saadaan palautettua käyttöön komennolla</p>
+<pre><code>sudo ifconfig eth0 up
+</code></pre>
+<p>Nämä edelle mainitut toimenpiteet komoutuvat siinä vaiheessa, kun kone käynnistetään uudelleen eli meidän tarvitsee muokata tiedostoa <code>/etc/rc.local</code> eli annetaan komento</p>
+<pre><code>sudo nano /etc/rc.local
+</code></pre>
+<p>Ja lisätään tiedoston loppuun ennen riviä <code>exit 0</code> rivit</p>
+<pre><code>echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/unbind
+#sudo ifconfig eth0 down
+</code></pre>
+<p>HUOM! Mikäli verkkoliitäntä poistetaan käytöstä, niin tulee muistaa asettaa WI-Fi -yhteys päälle mikäli verkkoyhteyttä tarvitaan. Nyt verkkoliitäntää ei oteta pois käytöstä, joten rivin alkuun on laitettu # -merkki.</p>
+<p>Mikäli myös <code>bluetooth</code> halutaan poistaa käytöstä, niin muokataan tiedostoa <code>/boot/config.txt</code> komennolla</p>
+<pre><code>sudo nano /boot/config.txt
+</code></pre>
+<p>Ja lisätään tiedoston loppuun rivi</p>
+<pre><code>dtoverlay=disable-bt
+</code></pre>
+<p>Näiden muutoksien jälkeen yhteys voidaan ottaa enää <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>:n kautta eli nyt laite on suojattu mahdolliselta muokkaukselta eli laitteelle ei pääse käsiksi esim. kytkemällä siihen erillien näppäimistö tai hiiri.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/raspberrypi-osn-asentaminen-kiosk-tilaan">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

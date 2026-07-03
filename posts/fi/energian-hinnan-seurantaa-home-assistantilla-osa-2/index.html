@@ -9,77 +9,257 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Energian hinnan seurantaa Home Assistantilla, osa 2">
     <meta property="og:description" content="Kirjoitin taannoin energian hinnan seurannasta Home Assistantilla ja käytössä minulla oli HACS:in kautta ladattava Nordpool -integraatio. Tämä konfiguraatio ant">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-12-12">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="binary_sensor"><meta property="article:tag" content="energia"><meta property="article:tag" content="energiankulutus"><meta property="article:tag" content="hacs"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="input_number"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="nordpool"><meta property="article:tag" content="sensor">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Energian hinnan seurantaa Home Assistantilla, osa 2",
-        "description": "Kirjoitin taannoin energian hinnan seurannasta Home Assistantilla ja käytössä minulla oli HACS:in kautta ladattava Nordpool -integraatio. Tämä konfiguraatio ant",
-        "datePublished": "2022-12-12",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/",
-        "keywords": "binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Energian hinnan seurantaa Home Assistantilla, osa 2",
+  "description": "Kirjoitin taannoin energian hinnan seurannasta Home Assistantilla ja käytössä minulla oli HACS:in kautta ladattava Nordpool -integraatio. Tämä konfiguraatio ant",
+  "datePublished": "2022-12-12",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/energian-hinnan-seurantaa-home-assistantilla-osa-2/",
+  "keywords": "binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla-osa-2");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Energian hinnan seurantaa Home Assistantilla, osa 2
         </nav>
-        <h1>Energian hinnan seurantaa Home Assistantilla, osa 2</h1>
-        <div class="meta">
-            <span>📅 2022-12-12</span>
-            &nbsp;&nbsp;<span>🏷️ binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor</span>
-        </div>
-        <p>Kirjoitin taannoin energian hinnan seurannasta Home Assistantilla ja käytössä minulla oli HACS:in kautta ladattava Nordpool -integraatio. Tämä konfiguraatio antoi spottisähkön hinnan arvonlisäverollis</p>
-        <div class="tags"><span>binary_sensor</span><span>energia</span><span>energiankulutus</span><span>hacs</span><span>homeassistant</span><span>input_number</span><span>kotiautomaatio</span><span>nordpool</span><span>sensor</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla-osa-2">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Energian hinnan seurantaa Home Assistantilla, osa 2</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-12-12" itemprop="datePublished">2022-12-12</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">binary_sensor, energia, energiankulutus, hacs, homeassistant, input_number, kotiautomaatio, nordpool, sensor</span></span>
+            </div>
+            <div class="tags"><span class="tag">binary_sensor</span><span class="tag">energia</span><span class="tag">energiankulutus</span><span class="tag">hacs</span><span class="tag">homeassistant</span><span class="tag">input_number</span><span class="tag">kotiautomaatio</span><span class="tag">nordpool</span><span class="tag">sensor</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Kirjoitin taannoin energian hinnan seurannasta <a href="https://www.home-assistant.io/">Home Assistantilla</a> ja käytössä minulla oli <a href="https://hacs.xyz/">HACS</a>:in kautta ladattava <a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatio. Tämä konfiguraatio antoi spottisähkön hinnan arvonlisäverollisena, mutta nyt joulukuun -22 alusta alkaen arvonlisävero on laskenut käyttösähkön osalta 10%. Tätä muutosta <a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatio ei osaa automaattisesti laskea, jolloin myöskin <a href="https://www.home-assistant.io/">Home Assistantin</a> laskema kustannustieto on liian suuri. Ja mikäli haluat lukea myös vanhan kirjoituksen, niin linkki on <a href="#post/energian-hinnan-seurantaa-home-assistantilla">tässä</a>.</p>
+<p>Tämän vuoksi tein muutoksia aikaisempaan laskentaan siten, että <a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatio antaa jatkossa spottihinnan arvonlisäverottomana ja arvonlisäveron laskenta tapahtuu <a href="https://www.home-assistant.io/">Home Assistantin</a> kautta. Selkeyden vuoksi olen laittanut tähän kaikki muuttujat ja sensorit kokonaisuudessaan uudestaan, koska muutoin voi käydä helposti niin, että nämä tehtävät muutokset menevät vanhojen kanssa sekaisin.</p>
+<p>Aluksi meidän täytyy tehdä vanhojen muuttujien lisäksi uusi <code>input_number</code> -muuttuja, jonka avulla annetaan voimassa olevan arvonlisäveron suuruus eli lisätään vanhat rivit mukaan lukien <code>configuration.yaml</code> -tiedostoon alla olevat rivit:</p>
+<pre><code>#configuration.yaml 
+
+input_number:
+# nämä muuttujat samoja kuin aikaisemmin tehdyt
+
+  sahkon_hinta_siirto:
+    name: 'Siirtohinta'
+    min: 0
+    max: 150
+    step: 0.01
+    initial: 2.15
+    icon: 'mdi:currency-eur'
+    unit_of_measurement: 'cnt/kWh'
+    mode: box
+
+  sahkon_hinta_marginaali:
+    name: 'Sähköyhtiön marginaali'
+    min: 0
+    max: 150
+    step: 0.01
+    initial: 0.31
+    icon: 'mdi:currency-eur'
+    unit_of_measurement: 'cnt/kWh'
+    mode: box
+
+  sahkon_hinta_kipuraja:
+    name: 'Sähkön hinnan kipuraja'
+    min: 0
+    max: 25
+    step: 0.5
+    initial: 6.0
+    icon: 'mdi:currency-eur'
+    unit_of_measurement: 'cnt/kWh'
+    mode: box
+
+#tämä on uusi lisättävä muuttuja
+  sahkon_arvonlisavero:
+    name: 'Käyttösähköstä perittävä arvonlisävero'
+    min: 0
+    max: 30
+    step: 0.5
+    initial: 10
+    icon: 'mdi:percent'
+    unit_of_measurement: '%'
+    mode: box
+</code></pre>
+<p><a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatioon täytyy myös tehdä muutoksia ja sen voi tehdä joko antamalla tiedot manuaalisesti <code>sensor</code> -kohdan kautta tai vaihtoehtoisesti <a href="https://www.home-assistant.io/">Home Assistantista</a> käsin. Minä olen lisännyt tiedot <code>sensor</code> -kohdan alle seuraavasti:</p>
+<pre><code>sensor:
+  - platform: nordpool
+
+    # Should the prices include vat? Default True
+    VAT: False
+
+    # What currency the api fetches the prices in
+    # this is only need if you want a sensor in a non local currecy
+    currency: &quot;EUR&quot;
+
+    # Helper so you can set your &quot;low&quot; price
+    # low_price = hour_price &lt; average * low_price_cutoff
+    low_price_cutoff: 0.25
+
+    # What power regions your are interested in.
+    # Possible values: &quot;DK1&quot;, &quot;DK2&quot;, &quot;FI&quot;, &quot;LT&quot;, &quot;LV&quot;, &quot;Oslo&quot;, &quot;Kr.sand&quot;, &quot;Bergen&quot;, &quot;Molde&quot;, &quot;Tr.heim&quot;, &quot;Tromsø&quot;, &quot;SE1&quot;, &quot;SE2&quot;, &quot;SE3&quot;,&quot;SE4&quot;, &quot;SYS&quot;, &quot;EE&quot;
+    region: &quot;FI&quot;
+
+    # How many decimals to use in the display of the price
+    precision: 4
+
+    # What the price should be displayed in default
+    # Possible values: MWh, kWh and Wh
+    # default: kWh
+    price_type: kWh
+</code></pre>
+<p><a href="https://github.com/custom-components/nordpool">Nordpool</a> -integraatiossa on myös mahdollista asettaa oma "low" price -tieto kohdassa <code>low_price_cutoff</code>, mutta itse olen tehnyt siitä yksinkertaisen <code>binary_sensor</code> -sensorin. Tämä sensori kertoo suoraan kyllä/ei tiedolla, että onko hinta alle itse määritettävän "kipu"-rajan.</p>
+<p>Seuraavaksi lisätään vielä vanhat muuttumattomat sensorit, uusi sensori sekä sensorit, joihin on tehty muutoksia eli lisätään kohdan <code>sensors</code> -alle seuraavat rivit:</p>
+<pre><code>  - platform: template
+    sensors:
+
+# nämä vanhoja sensoreita, joihin ei ole tehty muutoksia
+
+     sahkon_hinta_siirto:
+        friendly_name: 'Sähkön hinta siirto'
+        unit_of_measurement: 'EUR/kWh'
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_siirto') | float / 100 | round(4) }}&quot;
+
+      sahkon_hinta_marginaali:
+        friendly_name: 'Sähköyhtiön marginaali'
+        unit_of_measurement: 'EUR/kWh'
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_marginaali') | float / 100 | round(4) }}&quot;
+
+      sahkon_hinta_kipuraja:
+        friendly_name: 'Sähkön hinta kipuraja'
+        unit_of_measurement: 'EUR/kWh'
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ states('input_number.sahkon_hinta_kipuraja') | float / 100 | round(4) }}&quot;
+
+# nämä vanhoja sensoreita, joihin on tehty muutoksia
+
+      sahkonhinta_spotti_nyt:
+        friendly_name: 'Pörssisähkön kok.hinta tällä hetkellä'
+        unit_of_measurement: 'EUR/kWh'
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ ((states('sensor.nordpool_kwh_fi_eur_4_025_0') |float * (states('sensor.sahkon_arvonlisavero_desimaalilukuna')) |float) + states('sensor.sahkon_hinta_siirto') | float + states('sensor.sahkon_hinta_marginaali') | float ) | round(4)}}&quot;
+
+# tästä eteen päin uusia lisättyjä sensoreita
+
+      sahkonhinta_spotti_arvonlisaverollisena:
+        friendly_name: 'Pörssisähkön hinta tällä hetkellä sis. alv.'
+        unit_of_measurement: 'EUR/kWh'
+        icon_template: 'mdi:currency-eur'
+        value_template: &quot;{{ ((states('sensor.nordpool_kwh_fi_eur_4_025_0') |float) * (states('sensor.sahkon_arvonlisavero_desimaalilukuna')) |float) | round(4) }}&quot;
+
+      sahkon_arvonlisavero:
+        friendly_name: 'Sähköstä perittävä arvonlisävero'
+        unit_of_measurement: '%'
+        icon_template: 'mdi:percent'
+        value_template: &quot;{{ states('input_number.sahkon_arvonlisavero') | float | round(0) }}&quot;
+
+# tämä on apusensori, jonka avulla lasketaan arvonlisäverollinen hinta spottisähkölle
+
+      sahkon_arvonlisavero_desimaalilukuna:
+        friendly_name: 'Sähköstä perittävä arvonlisävero desimaalilukuna'
+        value_template: &quot;{{ states('input_number.sahkon_arvonlisavero') | float / 100 + 1| round(4) }}&quot;
+
+# tämä on vanha sensori, jolla ilmaistaan, että onko sähkön hinta alle halutun &quot;kipu&quot;-rajan
+
+binary_sensor:
+  - platform: template
+    sensors:
+      sahko_kipuraja_hinta:
+        friendly_name: 'Sähkön hinta alle kipurajan'
+        value_template: &gt;-
+            {{ states('sensor.sahkonhinta_spotti_nyt') &lt; states('sensor.sahkon_hinta_kipuraja') }}
+</code></pre>
+<p>Lopuksi käynnisteään <a href="https://www.home-assistant.io/">Home Assistant</a> uudestaan sekä lisätään työpöydälle tarvittavat sensorit ja muuttujat</p>
+<p><img alt="" src="/images/energian-hinnan-seurantaa-home-assistantilla-osa-2/kuva1.png" /></p>
+<p><em>Kuva: Home Assistant muuttujat</em></p>
+<p><img alt="" src="/images/energian-hinnan-seurantaa-home-assistantilla-osa-2/kuva2.png" /></p>
+<p><em>Kuva: Home Assistant sensorit</em></p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/energian-hinnan-seurantaa-home-assistantilla-osa-2">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

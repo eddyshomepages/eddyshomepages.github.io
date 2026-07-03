@@ -9,77 +9,169 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla">
     <meta property="og:description" content="Home Assistant on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voim">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-01-02">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="alytelevisio"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mediaplayer">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla",
-        "description": "Home Assistant on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voim",
-        "datePublished": "2023-01-02",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/",
-        "keywords": "alytelevisio, homeassistant, kotiautomaatio, mediaplayer"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla",
+  "description": "Home Assistant on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voim",
+  "datePublished": "2023-01-02",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/",
+  "keywords": "alytelevisio, homeassistant, kotiautomaatio, mediaplayer",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla
         </nav>
-        <h1>Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla</h1>
-        <div class="meta">
-            <span>📅 2023-01-02</span>
-            &nbsp;&nbsp;<span>🏷️ alytelevisio, homeassistant, kotiautomaatio, mediaplayer</span>
-        </div>
-        <p>Home Assistant on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voimakkuutta. Meillä kotona tuppasi käymään </p>
-        <div class="tags"><span>alytelevisio</span><span>homeassistant</span><span>kotiautomaatio</span><span>mediaplayer</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Älytelevision äänenvoimakkuuden rajoittaminen Home Assistantin avulla</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-01-02" itemprop="datePublished">2023-01-02</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">alytelevisio, homeassistant, kotiautomaatio, mediaplayer</span></span>
+            </div>
+            <div class="tags"><span class="tag">alytelevisio</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mediaplayer</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p><a href="https://www.home-assistant.io/">Home Assistant</a> on monikäyttöinen kotiautomaatiojärjestelmä, jonka tulin huomanneeksi, kun mietin, että miten voisin rajoittaa Samsungin älytelevision äänen voimakkuutta. Meillä kotona tuppasi käymään siten, että kiusalla äänen voimakkuutta nostettiin välillä lähes maksimiin, jonka vuoksi kyllästyin ja aloin miettimään ratkaisua tähän ongelmaan.</p>
+<p>Valmistajan sovelluskaupasta ei apuja löytynyt, joten päätin kokeilla, että miten <a href="https://www.home-assistant.io/">Home Assistant</a> tässa onnistuu. Ja onnistuuhan se, vieläpä oikein hyvin.</p>
+<p>Aluksi meidän täytyy lisätä älytelevio <a href="https://www.home-assistant.io/">Home Assistantiin</a> media playerinä, jonka <a href="https://www.home-assistant.io/">Home Assistant</a> yleensä tekee automaattisesti, mikäli TV on samassa verkossa. Minulla TV näkyy integraatiossa seuraavasti:</p>
+<p><img alt="" src="/images/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/kuva1.webp" /></p>
+<p><em>Kuva: Integraatiot, TV</em></p>
+<p>Seuraavaksi luodaan muuttuja, jolla määritetään äänen voimakkuuden yläraja. Tämä muuttuja luodaan <code>input_number</code> -muuttujana eli lisätään <code>configuration.yaml</code> -tiedostoon seuraavat rivit:</p>
+<pre><code># configuration.yaml
+
+input_number:
+  tv_volume_max:
+    name: 'Maksimi äänenvoimakkuus'
+    initial: 20
+    min: 0
+    max: 40
+    step: 1
+    icon: mdi:cog
+    mode: box
+</code></pre>
+<p>Alarajalle voidaan myös tehdä oma muuttuja, mutta itse olen määrittänyt automaatiossa tähän arvoksi 10. Eli tämä tarkoittaa sitä, että kun TV:n äänen voimakkuus nostetaan yli muuttujan määrittämän arvon, eli tässä tapauksessa 20, niin automaatio laskee äänen voimakuuden automaattisesti takaisin tasolle 10. HUOM! <a href="https://www.home-assistant.io/">Home Assistant</a> määrittää automaatiossa äänen voimakkuuden desimaalilukuna eli tässä tapauksessa lukuna <code>0,1</code>.</p>
+<p>Tämä <a href="https://www.home-assistant.io/">Home Assistantin</a> avulla tehty ratkaisu ei ole kuitenkaan aivan "idiootti"-varma, koska äänen voimakkuutta "renkuttamalla" automaatio voi joskus pudota kyydistä, jolloin rajoitus ei hetkeen toimi. Normaalissa käytössä se toimii kuitenkin hyvin.</p>
+<p>Seuraavaksi määritetään TV:n äänen voimakkuudesta oma sensori lisäämällä <code>sensor:</code> -kohtaan seuraavat rivit</p>
+<pre><code>sensor:
+  - platform: template
+    sensors:
+      tv_volume:
+        friendly_name: 'TVn äänen voimakkuus'
+        value_template: &quot;{{ (state_attr('media_player.tv','volume_level') *100 |float) | round(0) }}&quot;
+</code></pre>
+<p>Lopuksi tehdään vielä tarvittava automaatio, joka sitten laskee äänen voimakkuutta tarvittaessa alas päin. Käyttöliittymän kautta tehtynä se näyttää seuraavalta:</p>
+<p><strong>Laukaisuehdot:</strong></p>
+<p><img alt="" src="/images/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/kuva2.webp" /></p>
+<p><em>Kuva: Laukaisuehdot</em></p>
+<p><strong>Toiminnot:</strong></p>
+<p><img alt="" src="/images/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/kuva3.webp" /></p>
+<p><em>Kuva: Toiminnot</em></p>
+<p>Mikäli haluaa tehdä muutokset <code>automations.yaml</code> -tiedostoon, niin tällöin lisätään sinne rivit:</p>
+<pre><code># automations.yaml
+- id: '1650139109230'
+  alias: TVn äänenvoimakkuuden rajoitus
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{states.sensor.tv_volume.state &gt;= states.input_number.tv_volume_max.state}}'
+  condition: []
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.1
+    target:
+      entity_id:
+      - media_player.tv
+  mode: single
+</code></pre>
+<p><a href="https://www.home-assistant.io/">Home Assistantin</a> työpöydällä TV:n tiedot näkyvät seuraavasti:</p>
+<p><img alt="" src="/images/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla/kuva4.png" /></p>
+<p><em>Kuva: Älytelevision äänen voimakkuuden rajoitus</em></p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/alytelevision-aanenvoimakkuuden-rajoittaminen-home-assistantin-avulla">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

@@ -9,77 +9,149 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="MariaDB-tietokannan käyttöönotto Home Assistantissa">
     <meta property="og:description" content="Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pieni">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-09-10">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mariadb"><meta property="article:tag" content="pymysql"><meta property="article:tag" content="sqlite"><meta property="article:tag" content="wordpress.org">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "MariaDB-tietokannan käyttöönotto Home Assistantissa",
-        "description": "Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pieni",
-        "datePublished": "2022-09-10",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/",
-        "keywords": "docker, docker-compose, homeassistant, kotiautomaatio, mariadb, pymysql, sqlite, wordpress.org"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MariaDB-tietokannan käyttöönotto Home Assistantissa",
+  "description": "Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pieni",
+  "datePublished": "2022-09-10",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/mariadb-tietokannan-kayttoonotto-home-assistantissa/",
+  "keywords": "docker, docker-compose, homeassistant, kotiautomaatio, mariadb, pymysql, sqlite, wordpress.org",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/mariadb-tietokannan-kayttoonotto-home-assistantissa");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             MariaDB-tietokannan käyttöönotto Home Assistantissa
         </nav>
-        <h1>MariaDB-tietokannan käyttöönotto Home Assistantissa</h1>
-        <div class="meta">
-            <span>📅 2022-09-10</span>
-            &nbsp;&nbsp;<span>🏷️ docker, docker-compose, homeassistant, kotiautomaatio, mariadb, pymysql, sqlite, wordpress.org</span>
-        </div>
-        <p>Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman Home Assistantin tietokantaa, joka on oletuksena SQLite -tietokanta. Tämä tietokanta toimii hyvin pienissä järjestelmissä, mutta kun sensoreita</p>
-        <div class="tags"><span>docker</span><span>docker-compose</span><span>homeassistant</span><span>kotiautomaatio</span><span>mariadb</span><span>pymysql</span><span>sqlite</span><span>wordpress.org</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/mariadb-tietokannan-kayttoonotto-home-assistantissa">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">MariaDB-tietokannan käyttöönotto Home Assistantissa</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-09-10" itemprop="datePublished">2022-09-10</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">docker, docker-compose, homeassistant, kotiautomaatio, mariadb, pymysql, sqlite, wordpress.org</span></span>
+            </div>
+            <div class="tags"><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mariadb</span><span class="tag">pymysql</span><span class="tag">sqlite</span><span class="tag">wordpress.org</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi meillä olisi tarkoituksena käydä läpi hieman <a href="https://www.home-assistant.io/">Home Assistantin</a> tietokantaa, joka on oletuksena <a href="https://www.sqlite.org/index.html">SQLite</a> -tietokanta. Tämä tietokanta toimii hyvin pienissä järjestelmissä, mutta kun sensoreita ja muuta systeemiä alkaa olla enemmän käytössä, niin siinä vaiheessa voi tulla ongelmia vastaan. <a href="https://mariadb.org/">MariaDB</a> -tietokanta on järkevää ottaa käyttöön jo heti alussa, niin siihen ei sitten tarvitse palata enää myöhemmin.</p>
+<p><a href="https://mariadb.org/">MariaDB</a>:n asennusta käytiin läpi myös aikaisemmassa <a href="#post/wordpress-org-php-ja-mariadb-asennus-caddy-web-serverille">kirjoituksessa</a>, jossa käsiteltiin <a href="https://wordpress.org/">WordPress.org</a>:n asennusta. Asennus etenee samaan tapaan, kuin <a href="https://wordpress.org/">WordPress.org</a>:n asennuksen yhteydessä eli lähtökohtana meillä on, että olemme siis jo asentaneet <a href="https://mariadb.org/">MariaDB</a> ja ottaneet sen käyttöön.</p>
+<p>Tämä asennus on tehty <a href="https://www.home-assistant.io/">Home Assistantin</a> <a href="https://docs.docker.com/compose/">Docker-Compose</a> -version kanssa, mutta se toiminee myös muussakin asennuksessa. Mikäli <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu valmiin <a href="https://www.home-assistant.io/installation/">levykuvan</a> kautta, niin tällöin lisäosista löytyy valmiina lisäosa <a href="https://mariadb.org/">MariaDB</a> -tietokannan käyttöönottoa varten.</p>
+<p>Aluksi luomme <a href="https://www.home-assistant.io/">Home Assistanttia</a> varten tietokannan ja käyttäjän eli aluksi aluksi ajamme komennon</p>
+<pre><code>mysql -u root -p
+</code></pre>
+<p>Seuraavaksi luomme tietokannan <code>homeassistant</code>, käyttäjän <code>hauser</code> sekä päivitämme tietokannan oikeudet eli annetaan alla olevat komennot</p>
+<pre><code>CREATE DATABASE homeassistant;
+CREATE USER ‘hauser’ IDENTIFIED BY ‘salasana’;
+GRANT ALL PRIVILEGES on homeassistant.* TO 'hauser'@'localhost' IDENTIFIED BY 'salasana';
+FLUSH PRIVILEGES;
+exit;
+</code></pre>
+<p>Salasanaksi tulee tietysti valita jokin parempi salasana kuin esimerkissä käytetty <code>salasana</code>.</p>
+<p>Seuraavaksi teemme tarvittavat muutokset <a href="https://www.home-assistant.io/">Home Assistantin</a> puolelle eli lisäämme <code>configuration.yaml</code> -tiedostoon alla olevat rivit</p>
+<pre><code>recorder:
+  db_url: mysql+pymysql://hauser:salasana@localhost/homeassistant?charset=utf8mb4
+  purge_keep_days: 10
+</code></pre>
+<p>Edellä <code>purge_keep_days: 10</code> tarkoittaa sitä, että tallennamme tietokantaan tiedot viimeiseltä 10 vuorokaudelta. Tätä voi halutessaan muuttaa ja tarkempia asetusvaihtoehtoja, kuten esimerkiksi joidenkin tiettyjen sensorien pois jättäminen historiatiedoista, löytyy tämän seuraavan <a href="https://www.home-assistant.io/integrations/recorder">linkin</a> takaa.</p>
+<p>Voimme myös tehdä tietokannasta sensorin, joka kertoo tietokannan koon, lisäämällä <code>sensor:</code> -kohtaan alla olevat rivit</p>
+<pre><code>  - platform: sql
+    db_url: mysql+pymysql://hauser:salasana@localhost/homeassistant
+    queries:
+      - name: DB size
+        query: 'SELECT table_schema &quot;database&quot;, Round(Sum(data_length + index_length) / 1024 / 1024, 1) &quot;value&quot; FROM information_schema.tables WHERE table_schema=&quot;home_assistant&quot; GROUP BY table_schema;'
+        column: 'value'
+        unit_of_measurement: MB
+</code></pre>
+<p>Seuraavan kerran, kun päivitämme <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla asennetun <a href="https://www.home-assistant.io/">Home Assistantin</a>, niin meille tulee käynnistyksen jälkeen todennäköisesti virheilmoitus <code>The recorder could not start</code>, joka johtuu siitä, että [Home Assistantin] [Docker] -versiossa ei ole asennettuna <code>pymysql</code> -tiedostoa. Tämä tilanne saadaan korjattua seuraavasti eli aluksi menemme <a href="https://www.home-assistant.io/">Home Assistantin</a> dockeriin sisälle komennolla</p>
+<pre><code>docker exec -it homeassistant bash
+</code></pre>
+<p>Asennetaan <code>pymysql</code> -tiedosto komennolla</p>
+<pre><code>pip3 install pymysql
+</code></pre>
+<p>Lopuksi käynnistetään vielä <a href="https://www.home-assistant.io/">Home Assistant</a> uudestaan, jonka jälkeen <a href="https://mariadb.org/">MariaDB</a> -tietokannan pitäisi taas toimia normaalisti.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/mariadb-tietokannan-kayttoonotto-home-assistantissa">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

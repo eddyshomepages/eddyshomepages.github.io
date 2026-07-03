@@ -9,77 +9,189 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen">
     <meta property="og:description" content="Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita ">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2022-09-21">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="bluetooth"><meta property="article:tag" content="debian"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mqtt"><meta property="article:tag" content="node.js"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="ruuvitag"><meta property="article:tag" content="ruuvitag-discovery">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen",
-        "description": "Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita ",
-        "datePublished": "2022-09-21",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/",
-        "keywords": "bluetooth, debian, homeassistant, kotiautomaatio, mqtt, node.js, raspberrypios, ruuvitag, ruuvitag-discovery"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen",
+  "description": "Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita ",
+  "datePublished": "2022-09-21",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/",
+  "keywords": "bluetooth, debian, homeassistant, kotiautomaatio, mqtt, node.js, raspberrypios, ruuvitag, ruuvitag-discovery",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen
         </nav>
-        <h1>RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen</h1>
-        <div class="meta">
-            <span>📅 2022-09-21</span>
-            &nbsp;&nbsp;<span>🏷️ bluetooth, debian, homeassistant, kotiautomaatio, mqtt, node.js, raspberrypios, ruuvitag, ruuvitag-discovery</span>
-        </div>
-        <p>Lähtökohtaisesti meillä on Docker-Composen avulla asennettuna Home Assistant sekä Mosquitto -broker. Seuraavaksi lisäämme Home Assistanttin RuuviTag -antureita käyttäen MQTT -protokollaa ja siinä käyt</p>
-        <div class="tags"><span>bluetooth</span><span>debian</span><span>homeassistant</span><span>kotiautomaatio</span><span>mqtt</span><span>node.js</span><span>raspberrypios</span><span>ruuvitag</span><span>ruuvitag-discovery</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">RuuviTag -antureiden lisääminen Home Assistantiin Ruuvitag Discoveryn avulla MQTT-protokollaa käyttäen</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2022-09-21" itemprop="datePublished">2022-09-21</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">bluetooth, debian, homeassistant, kotiautomaatio, mqtt, node.js, raspberrypios, ruuvitag, ruuvitag-discovery</span></span>
+            </div>
+            <div class="tags"><span class="tag">bluetooth</span><span class="tag">debian</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mqtt</span><span class="tag">node.js</span><span class="tag">raspberrypios</span><span class="tag">ruuvitag</span><span class="tag">ruuvitag-discovery</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Lähtökohtaisesti meillä on <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla asennettuna <a href="https://www.home-assistant.io/">Home Assistant</a> sekä <a href="https://mosquitto.org/">Mosquitto</a> -broker. Seuraavaksi lisäämme <a href="https://www.home-assistant.io/">Home Assistanttin</a> <a href="https://ruuvi.com/fi/">RuuviTag</a> -antureita käyttäen <a href="https://mqtt.org/">MQTT</a> -protokollaa ja siinä käytämme apuna <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> -ohjelmistoa.</p>
+<p><a href="https://ruuvi.com/fi/">RuuviTag</a> on kotimainen tuote, joka toimii lämpötila-, kosteus-, ilmanpaine ja liike -anturina. <a href="https://ruuvi.com/fi/">RuuviTag</a> toimii <a href="https://en.wikipedia.org/wiki/Bluetooth">Bluetooth</a> -yhteydellä ja se voidaan yhdistää esim. puhelimeen tai kuten tässä tapauksessa, myös <a href="https://www.home-assistant.io/">Home Assistantiin</a> tai muihin kotiautomaatiojärjestelmiin.</p>
+<p><a href="https://ruuvi.com/fi/">RuuviTagit</a> voisi lisätä <a href="https://www.home-assistant.io/">Home Assistanttiin</a> myös erilaisilla lisäosilla, mutta me teemme sen <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discoveryn</a> ja <a href="https://mqtt.org/">MQTT</a>:n avulla. Tämä siksi, että meillä <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla, jolloin tämä lisäosat eivät toimi sellaisenaan. Jatkossa tarkoituksena on asentaa myös <a href="https://en.wikipedia.org/wiki/Zigbee">zigbee</a>- ja <a href="https://en.wikipedia.org/wiki/Z-Wave">z-wave</a> -antureita <a href="https://mqtt.org/">MQTT</a>:tä hyödyntäen, jolloin <a href="https://ruuvi.com/fi/">RuuviTagit</a> menevät siinä samalla mukana.</p>
+<h3>Node.js asennus</h3>
+<p>Aluksi meidän täytyy kuitenkin asentaa <a href="https://nodejs.org/en/">node.js</a>, jotta saamme <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discoveryn</a> asennettua. <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> on <a href="https://www.debian.org/">Debian</a> -pohjainen käyttöjärjestelmä eli saamme asennettua <a href="https://nodejs.org/en/">node.js</a>:n ohjelmistolähteistä, joihin löytyvät ohjeet <a href="https://github.com/nodesource/distributions/blob/master/README.md">linkin</a> takaa.</p>
+<p>Aluksi asennamme <a href="https://nodejs.org/en/">node.js</a>:n ohjelmistolähteet ja myös <a href="https://nodejs.org/en/">node.js</a>:n komennoilla</p>
+<pre><code>#HUOM! asennus tehdään root-käyttäjänä
+sudo su
+curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+apt-get install -y nodejs
+exit
+</code></pre>
+<h3>Ruuvitag Discoveryn asennus</h3>
+<p>Seuraavaksi haetaan <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> -tiedostot komennolla</p>
+<pre><code>git clone https://github.com/balda/ruuvitag-discovery
+</code></pre>
+<p>Seuraavaksi suoritetaan asennus</p>
+<pre><code>cd ruuvitag-discovery/
+npm install
+</code></pre>
+<p>Asennukseen jälkeen voimme käynnistää <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag-Discoveryn</a> komennolla</p>
+<pre><code>npm start
+</code></pre>
+<p>Voi olla, että järjestelmä ei vielä suoraan löydä <a href="https://ruuvi.com/fi/">RuuviTag</a> -antureita, jolloin pitää varmistaa, että järjestelmään on asennettu tarvittavat <code>bluetooth</code> -paketit sekä ajaa komento, jolloin <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> ei tarvitse <code>root/sudo</code> -oikeuksia</p>
+<pre><code>sudo apt-get install bluetooth bluez
+sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
+</code></pre>
+<p>Mikäli asennus onnistui, niin meillä pitäisi näkyä päätteessä alla olevan kaltaiset rivit, josta alimpana nähdään, että <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> on löytänyt kaksi erillistä <a href="https://ruuvi.com/fi/">RuuviTagia</a></p>
+<p><img alt="" src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva1.png" /></p>
+<h3>Palvelun ruuvitag-discovery.service luominen</h3>
+<p>Ennen kuin jatketaan asetuksien tekemistä, niin tehdään kuitenkin <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discoverystä</a> palvelu, joka käynnistyy automaattisesti tietokoneen käynnistyessä. Aluksi luodaan tiedosto <code>ruuvitag-discovery.service</code> komennolla <code>sudo nano /etc/systemd/system/ruuvitag-discovery.service</code> ja lisätään tiedostoon alla olevat rivit</p>
+<pre><code>[Unit]
+Description=RuuviTag Discovery
+
+[Service]
+Type=simple
+Restart=always
+User=pi
+WorkingDirectory=/home/pi/ruuvitag-discovery
+ExecStart=/usr/bin/npm start
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Seuraavaksi käynnistetään palvelu ja tehdään siitä automaattisesti käynnistyvä komennoilla</p>
+<pre><code>sudo systemctl start ruuvitag-discovery
+sudo systemctl enable ruuvitag-discovery
+</code></pre>
+<h3>Ruuvitag Discoveryn asetus web-selaimen kautta</h3>
+<p>Tämän jälkeen avataan selaimella osoite <code>http://x.x.x.x:8099</code>, jota kautta pääsemme avaamaan web-pohjaisen konfigurointi -ikkunan. IP-osoite <code>x.x.x.x</code> on sen tietokoneen IP-osoite, jolle <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> on asennettu.</p>
+<p>Etusivulla näkyvät löydetyt anturit ja kohdasta "<code>Targets</code>" päästään antamaan <a href="https://mqtt.org/">MQTT</a>:n asetukset. Lisätään asetukset painamalla napista "<code>+Home Assistant (MQTT)</code>" , jolloin avautuu alla olevan kaltainen ikkuna</p>
+<p><img alt="" src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva2.png" /></p>
+<p>Aluksi annetaan tarvittavat tiedot eli</p>
+<ul>
+<li>
+<p>kohtaan <code>name</code> jokin nimi esim. <code>mosquitto</code></p>
+</li>
+<li>
+<p>kohtaan <code>host</code> mosquitto -brokerin IP-osoite</p>
+</li>
+<li>
+<p>kohtaan <code>port</code> mosquitto -brokerin portti</p>
+</li>
+<li>
+<p>kohtaan <code>topic</code> otsikoksi <code>homeassistant</code></p>
+</li>
+<li>
+<p>kohtaan <code>username</code> käyttäjätunnus</p>
+</li>
+<li>
+<p>kohtaan <code>password</code> salasana</p>
+</li>
+</ul>
+<p>Kohdasta "Tags" voidaan ottaa käyttöön halutut anturit sekä tiedot, joita lähetetään <a href="https://www.home-assistant.io/">Home Assistantille</a> eli esim. ainakin <code>humidity</code>, <code>temperature</code> ja <code>pressure</code>. Lisäksi valittavana on myös muitakin tietoja, joita voidaan lähetään <a href="https://www.home-assistant.io/">Home Assistantille</a>.</p>
+<p><img alt="" src="/images/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen/kuva3.png" /></p>
+<p>Lopuksi otetaan vielä "<code>Home Assistant (MQTT)</code>" käyttöön valitsemalla "<code>enable</code>" ja tallennetaan asetukset, jonka jälkeen pitäisi alkaa tulla anturi-dataa <a href="https://www.home-assistant.io/">Home Assistantille</a>.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

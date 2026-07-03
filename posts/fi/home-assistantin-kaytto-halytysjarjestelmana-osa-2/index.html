@@ -9,77 +9,241 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Home Assistantin käyttö hälytysjärjestelmänä, osa 2">
     <meta property="og:description" content="Seuraavaksi ajatteli jatkaa tarinaa Home Assistantin käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen Home Assista">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-03-31">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="alarmo"><meta property="article:tag" content="esp8266"><meta property="article:tag" content="esphome"><meta property="article:tag" content="halytysjarjestelma"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="joy-it-rfid-rc522"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="rfid"><meta property="article:tag" content="wemos-d1-mini">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Home Assistantin käyttö hälytysjärjestelmänä, osa 2",
-        "description": "Seuraavaksi ajatteli jatkaa tarinaa Home Assistantin käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen Home Assista",
-        "datePublished": "2023-03-31",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/",
-        "keywords": "alarmo, esp8266, esphome, halytysjarjestelma, homeassistant, joy-it-rfid-rc522, kotiautomaatio, rfid, wemos-d1-mini"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Home Assistantin käyttö hälytysjärjestelmänä, osa 2",
+  "description": "Seuraavaksi ajatteli jatkaa tarinaa Home Assistantin käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen Home Assista",
+  "datePublished": "2023-03-31",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/home-assistantin-kaytto-halytysjarjestelmana-osa-2/",
+  "keywords": "alarmo, esp8266, esphome, halytysjarjestelma, homeassistant, joy-it-rfid-rc522, kotiautomaatio, rfid, wemos-d1-mini",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-2");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Home Assistantin käyttö hälytysjärjestelmänä, osa 2
         </nav>
-        <h1>Home Assistantin käyttö hälytysjärjestelmänä, osa 2</h1>
-        <div class="meta">
-            <span>📅 2023-03-31</span>
-            &nbsp;&nbsp;<span>🏷️ alarmo, esp8266, esphome, halytysjarjestelma, homeassistant, joy-it-rfid-rc522, kotiautomaatio, rfid, wemos-d1-mini</span>
-        </div>
-        <p>Seuraavaksi ajatteli jatkaa tarinaa Home Assistantin käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen Home Assistantiin siten, että RFID- tagilla tai -kor</p>
-        <div class="tags"><span>alarmo</span><span>esp8266</span><span>esphome</span><span>halytysjarjestelma</span><span>homeassistant</span><span>joy-it-rfid-rc522</span><span>kotiautomaatio</span><span>rfid</span><span>wemos-d1-mini</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-2">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Home Assistantin käyttö hälytysjärjestelmänä, osa 2</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-03-31" itemprop="datePublished">2023-03-31</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">alarmo, esp8266, esphome, halytysjarjestelma, homeassistant, joy-it-rfid-rc522, kotiautomaatio, rfid, wemos-d1-mini</span></span>
+            </div>
+            <div class="tags"><span class="tag">alarmo</span><span class="tag">esp8266</span><span class="tag">esphome</span><span class="tag">halytysjarjestelma</span><span class="tag">homeassistant</span><span class="tag">joy-it-rfid-rc522</span><span class="tag">kotiautomaatio</span><span class="tag">rfid</span><span class="tag">wemos-d1-mini</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajatteli jatkaa tarinaa <a href="#post/home-assistantin-kaytto-halytysjarjestelmana-osa-1">Home Assistantin</a> käytöstä hälytysjärjestelmänä. Tässä tarinassa käyn läpi RFID-lukijan tekemisen ja liittämisen <a href="https://www.home-assistant.io/">Home Assistantiin</a> siten, että RFID- tagilla tai -kortilla voi laittaa hälyt päälle ja ottaa ne pois päältä.</p>
+<p>Materiaalina tarvitaan RFID-lukija, RFID -tagi sekä jokin ESP8266 -mikrokontrolleri. Minulla on RFID -lukijana <a href="https://joy-it.net/en/products/SBC-RFID-RC522">joy-it RFID-RC522</a> -lukija ja mikrokontrollerina <a href="https://www.wemos.cc/en/latest/d1/d1_mini.html">Wemos D1 Mini</a> lähinnä sen pienuuden vuoksi. Mikrokontrollerissa käytän firmiksenä <a href="https://esphome.io/">ESPHome</a> -firmwarea, koska se on hyvin yhteensopiva <a href="https://www.home-assistant.io/">Home Assistantin</a> kanssa.</p>
+<h4>RFID -lukijan rakentaminen</h4>
+<p>Aluksi aloitetaan RFID -lukijan rakentaminen kytkemällä RFID -lukija mikrokontrolleriin seuraavasti:</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva1.webp" /></p>
+<p><em>Kuva: RFID -lukijan kytkentä, kuva luotu käyttäen Fritzing -sovellusta</em></p>
+<p>Eli pinnien osalta kytkentä on alla olevan mukainen:</p>
+<table>
+<thead>
+<tr>
+<th><strong>RFID-RC522</strong> (joy-it:in lukijan pinnijärjestys)</th>
+<th><strong>WEMOS D1 MINI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3V3</td>
+</tr>
+<tr>
+<td>NSS</td>
+<td>D8 (GPIO15)</td>
+</tr>
+<tr>
+<td>SCK</td>
+<td>D5 (GPIO14)</td>
+</tr>
+<tr>
+<td>MOSI</td>
+<td>D7 (GPIO13)</td>
+</tr>
+<tr>
+<td>MISO</td>
+<td>D6 (GPIO12)</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>RST</td>
+</tr>
+</tbody>
+</table>
+<p><em>Taulukko: Pinnien kytkentä</em></p>
+<p>Seuraavaksi muokataan <a href="https://esphome.io/">ESPHome</a> -asetustiedostoa sopivaksi eli mennään <a href="https://esphome.io/">ESPHomen</a> hakemistoon, joka luotiin asennuksen yhteydessä <code>home</code> -hakemistoon eli annetaan komento</p>
+<pre><code>cd esphome
+</code></pre>
+<p>Seuraavaksi tehdään firmiksen asetustiedosto seuraavalla komennolla</p>
+<pre><code>nano nodemcu-rfid.yaml
+</code></pre>
+<p>Tämän jälkeen kopioidaan tiedostoon seuraavat rivit</p>
+<pre><code>esphome:
+  name: nodemcu-rfid
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: &quot;tähän wifi-verkon ssid&quot;
+  password: &quot;tähän wifi-verkon salasana&quot;
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: &quot;rfid Fallback Hotspot&quot;
+    password: &quot;tähän jokin salasana&quot;
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+# Enable OTA updates
+ota:
+
+# Enable web-server
+web_server:
+  port: 80
+
+spi:
+  clk_pin: GPIO14
+  miso_pin: GPIO12
+  mosi_pin: GPIO13
+
+rc522_spi:
+  cs_pin: GPIO15
+  update_interval: 1s
+
+# Alla oleva asetus lisää tagin automaattisesti Home Assistantiin, kun lukija lukee tagin
+  on_tag:
+    then:
+      - homeassistant.tag_scanned: !lambda 'return x;'
+
+# Sensorit
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: 'IP-address' # Mikrokontrollerin IP-osoite
+    ssid:
+      name: 'SSID' # Mikrokontrollerin wifi-verkko, johon se on yhdistetty
+</code></pre>
+<p>Kun asetukset ovat kunnossa, edetään samaan tapaan kuin tehtiin aikaisemmassa <a href="#post/sahkon-kulutuksen-seurantaa-esp8266-esphomen-ja-home-assistantin-avulla">tarinassa</a>, jossa luotiin pulssianturi laskemaan sähkömittarin pulsseja. Eli yhdistetään mikrokontrolleri-kortti USB-kaapelilla tietokoneeseen ja annetaan alla olevat käskyt</p>
+<pre><code>esphome compile nodemcu-rfid.yaml
+esphome upload nodemcu-rfid.yaml
+</code></pre>
+<p>Ensimmäisenä käännetään firmis <code>compile</code> -käskyllä ja tässä menee hetki aikaa riippuen tietokoneen nopeudesta. Kun kääntäminen on valmis, niin seuraavaksi annetaan käsky <code>upload</code>, joka lataa käännetyn firmiksen mikrokontrollerille. Kun firmistä ladataan mikrokontrolleriin, niin valitaan se vaihtoehto, jolla firmis ladataan USB-väylän kautta.</p>
+<h4>Yhdistäminen Home Assistantiin</h4>
+<p>Seuraavaksi voidaan yhdistää tagi <a href="https://www.home-assistant.io/">Home Assistantiin</a> eli luetaan tagi lukijalla, jonka se pitäisi ilmestyä <a href="https://www.home-assistant.io/">Home Assistantiin</a> näkyviin asetuksien alle kohtaan "Merkinnät" (kts. kuva alla)</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva2.webp" /></p>
+<p><em>Kuva: Home Assistant, Asetukset - Merkinnät</em></p>
+<p>Luetut tagit näkyvät luettelossa ja avatessa tagin tiedot, ne näkyvät alla olevan mukaisesti (tiedoista poistettu tagin tunniste ja QR-koodi)</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva3.webp" /></p>
+<p><em>Kuva: Tagin tiedot</em></p>
+<h4>Automaatioiden luominen</h4>
+<p>Seuraavaksi luodaan tagille automaatio eli painetaan tagin rivillä tätä "robotin pää" -kuvaketta</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva4.webp" /></p>
+<p><em>Kuva: Automaation lisääminen tagille</em></p>
+<p>Ensimmäisenä lisätään automaatio, joka kytkee hälytykset päälle, kun tagi skannataan. Eli alla oleva automaatio tarkastaa aluksi ehdon, että hälyt eivät ole päällä ja mikäli tämä ehto toteutuu, niin automaatio laittaa ne päälle. Kuvassa näkyvä koodi asetetaan <a href="https://github.com/nielsfaber/alarmo">Alarmon</a> asetuksista, kun luodaan käyttäjä, jolle tagi kohdistetaan.</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva5.webp" /></p>
+<p><em>Kuva: Hälyt päälle, kun tagi skannataan</em></p>
+<p>Lopuksi luodaan vielä toinen automaatio, jolla hälyt otetaan pois päältä. Eli tässä automaatio tarkistaa aluksi, että hälyt ovat päällä ja mikäli tämä ehto täyttyy, niin automaatio ottaa ne pois päältä.</p>
+<p><img alt="" src="/images/home-assistantin-kaytto-halytysjarjestelmana-osa-2/kuva6.webp" /></p>
+<p><em>Kuva: Hälyt pois päältä, kun tagi skannataan</em></p>
+<p>Eli nyt meillä on luotuna <a href="https://www.home-assistant.io/">Home Assistantin</a> hälytysjärjestelmään lukija, joka lukee tagin ja laittaa sen perusteella hälytykset päälle tai pois päältä.</p>
+<p>Seuraavaksi tätä <a href="https://www.home-assistant.io/">Home Assistantin</a> avulla tehtyä hälytysjärjestelmää voidaan laajentaa esim. kameroilla, jotka voidaan laittaa ottamaan kuvia tai videoita, kun hälyt ovat lauenneet ja lähettämään ne esim. sähköpostiin, <a href="https://telegram.org/">Telegram</a> -sovellukseen tai <a href="https://signal.org/">Signal</a> -sovellukseen. Vaihtoehtoja siis löytyy mitä vain keksii tehdä.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/home-assistantin-kaytto-halytysjarjestelmana-osa-2">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

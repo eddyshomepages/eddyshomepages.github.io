@@ -9,77 +9,131 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa">
     <meta property="og:description" content="Minulla oli aikaisemmin RuuviTag -anturit yhdistettynä Home Assistantiin RuuviTag Discovery nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin jutun. Vi">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-07-30">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="duplicati"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="linux"><meta property="article:tag" content="node.js"><meta property="article:tag" content="ruuvitag"><meta property="article:tag" content="ruuvitag-ble"><meta property="article:tag" content="ruuvitag-discovery">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa",
-        "description": "Minulla oli aikaisemmin RuuviTag -anturit yhdistettynä Home Assistantiin RuuviTag Discovery nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin jutun. Vi",
-        "datePublished": "2023-07-30",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/",
-        "keywords": "docker, docker-compose, duplicati, homeassistant, kotiautomaatio, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa",
+  "description": "Minulla oli aikaisemmin RuuviTag -anturit yhdistettynä Home Assistantiin RuuviTag Discovery nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin jutun. Vi",
+  "datePublished": "2023-07-30",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/",
+  "keywords": "docker, docker-compose, duplicati, homeassistant, kotiautomaatio, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa
         </nav>
-        <h1>RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa</h1>
-        <div class="meta">
-            <span>📅 2023-07-30</span>
-            &nbsp;&nbsp;<span>🏷️ docker, docker-compose, duplicati, homeassistant, kotiautomaatio, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery</span>
-        </div>
-        <p>Minulla oli aikaisemmin RuuviTag -anturit yhdistettynä Home Assistantiin RuuviTag Discovery nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin jutun. Viime aikoina tämä konfiguraatio on kuiten</p>
-        <div class="tags"><span>docker</span><span>docker-compose</span><span>duplicati</span><span>homeassistant</span><span>kotiautomaatio</span><span>linux</span><span>node.js</span><span>ruuvitag</span><span>ruuvitag-ble</span><span>ruuvitag-discovery</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-07-30" itemprop="datePublished">2023-07-30</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">docker, docker-compose, duplicati, homeassistant, kotiautomaatio, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery</span></span>
+            </div>
+            <div class="tags"><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">duplicati</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">linux</span><span class="tag">node.js</span><span class="tag">ruuvitag</span><span class="tag">ruuvitag-ble</span><span class="tag">ruuvitag-discovery</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Minulla oli aikaisemmin <a href="https://ruuvi.com/fi/ruuvitag/">RuuviTag</a> -anturit yhdistettynä <a href="https://www.home-assistant.io/">Home Assistantiin</a> <a href="https://github.com/balda/ruuvitag-discovery/">RuuviTag Discovery</a> nimisen ohjelmiston avulla, josta myös aikoinaan kirjoitin <a href="#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen">jutun</a>. Viime aikoina tämä konfiguraatio on kuitenkin alkanut enemmän ja enemmän temppuilemaan. Tämä johtunee ilmeisesti siitä, että <a href="https://nodejs.org/en">node.js</a> -paketteihin on tullut päivityksiä, joiden kanssa <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> ei enää oikein toimi kunnolla.</p>
+<p>Tästä syystä aloin miettimään, että miten anturit olisi järkevä liittää <a href="https://www.home-assistant.io/">Home Assistantiin</a>, koska minulla ei ole esim. <a href="https://ruuvi.com/fi/gateway/">Ruuvi Gateway</a>:tä käytössä. <a href="https://www.home-assistant.io/">Home Assistantissa</a> on kuitenkin nykyisin olemassa <a href="https://www.home-assistant.io/integrations/ruuvitag_ble">RuuviTag BLE</a> -integraatio, jonka vuoksi aloin selvittämään, että miten anturit saisi lisättyä järjestelmään sen avulla.</p>
+<h4>Muutokset isäntä -järjestelmään</h4>
+<p><a href="https://www.home-assistant.io/">Home Assistant</a> on minulla asennettuna konttiin <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla, joten aluksi <em>isäntä</em> -järjestelmään piti asentaa tarvittavat paketit kuten <em>BlueZ</em>, lisätä <em>configurations.yaml</em> -tiedostoon rivi <em>bluetooth:</em> ja lopuksi käynnistää vielä <a href="https://www.home-assistant.io/">Home Assistantin</a> uudelleen.</p>
+<p>Mitään ei kuitenkaan tapahtunut kunnes tajusin lukea vielä tarkemmin <a href="https://www.home-assistant.io/">Home Assistantin</a> dokumentointia <a href="https://www.home-assistant.io/integrations/bluetooth">Bluetooth</a> -integraation osalta. Ratkaisu löytyikin kohdasta <em>Additional requirements by install method</em>, jossa mainitaan, että <a href="https://www.docker.com/">Dockerin</a> avulla asennetussa järjestelmässä täytyy <em>isäntä</em> -järjestelmässä olla käytössä <em>BlueZ</em> ja <em>D-Bus socket</em> ja ne täytyy olla myös <a href="https://www.home-assistant.io/">Home Assistantin</a> saatavilla kontin sisällä. Eli tämä korjaantuu lisäämällä <em>docker-compose.yaml</em> -tiedostoon kohdan <em>volumes:</em> alle rivi</p>
+<pre><code>  - /run/dbus:/run/dbus:ro
+</code></pre>
+<p>Ennen kuin käynnistetään <a href="https://www.home-assistant.io/">Home Assistantin</a> kontti uudestaan, niin tässä vaiheessa on hyvä viimeistään ottaa varmuuskopio <a href="https://www.home-assistant.io/">Home Assistantista</a>. Minulla nimittäin kävi niin, että järjestelmän käynnistyttyä uudestaan olivat kaikki vanhat historiatiedot yms. hävinneet ja <a href="https://www.home-assistant.io/">Home Assistant</a> käynnistyi kokonaan puhtaalta pöydältä. Tämä toi tietysti hiukan lisää työtä, kun järjestelmää joutui palauttamaan vanhoista varmuuskopioista, mutta se onnistui kuitenkin hyvin.</p>
+<p>Tietojen nollaantuminen johtunee todennäköisesti siitä, että lisäsin epähuomiossa tämän <em>/run/dbus:/run/dbus:ro</em> -rivin <em>docker-compose.yaml</em> tiedostoon loppuun uuteen <em>volumes</em> -kohtaan, jolloin se jostain syystä nollasi kaikki tiedot.</p>
+<h4>Home Assistantin varmuuskopiointi</h4>
+<p><a href="https://www.home-assistant.io/">Home Assistantin</a> varmuuskopioinnin voi hoitaa usealla tavalla ja minulla se on hoidettu automaattisesti <a href="https://www.duplicati.com/">Duplicati</a> -nimisellä selainpohjaisella sovelluksella, josta aikoinaan kirjoitin <a href="#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla">tämän</a> tarinan. Varmuuskopion järjestelmästä voi tehdä myös manuaalisesti päätteen kautta, kuten tein sen tässä tapauksessa eli toisin sanoen luodaan <a href="https://www.home-assistant.io/">Home Assistantin</a> -kansiosta kopio. Tämä tapahtuu päätteen kautta siten, että annetaan päätteessä komento (tällöin pitää olla tietysti oikeassa hakemistossa, jossa käsky annetaan)</p>
+<pre><code>sudo cp -r homeassistant homeassistant_backup
+</code></pre>
+<p>Varmuuskopioinnin jälkeen käynnistetään <a href="https://www.home-assistant.io/">Home Assistantin</a> kontti uudelleen komennolla</p>
+<pre><code>sudo docker-compose up -d
+</code></pre>
+<p>Seuraavaksi odotetaan hetken aikaa, että myös <a href="https://www.home-assistant.io/">Home Assistant</a> käynnistyy uudestaan. Tämän jälkeen <a href="https://www.home-assistant.io/">Home Assistant</a> tarjoaa suoraan <a href="https://www.home-assistant.io/integrations/bluetooth">Bluetooth</a> -integraatiota käyttöön otettavaksi eli otetaan se käyttöön. Seuraavaksi <a href="https://www.home-assistant.io/">Home Assistant</a> tarjoaa automaattisesti myös <a href="https://ruuvi.com/fi/ruuvitag/">RuuviTag</a> -antureita käyttöön otettavaksi. Eli nyt <a href="https://www.home-assistant.io/">Home Assistant</a> löytää automaattisesti kantaman päässä olevat <a href="https://ruuvi.com/fi/ruuvitag/">RuuviTag</a> -anturit ja ehdottaa niiden lisäämistä järjestelmään.</p>
+<p>Oman kokemukseni perusteella anturit ovat pysyneet hyvin käytössä ilman ongelmia. Mikäli käy kuitenkin niin, että <a href="https://www.home-assistant.io/">Home Assistant</a> ei löydäkään <a href="https://ruuvi.com/fi/ruuvitag/">RuuviTag</a> -antureita, niin seuraavaksi kannattaa päivittää <a href="https://ruuvi.com/fi/ruuvitag/">RuuviTagien</a> firmikset viimeisimpään versioon. Firmiksien päivitys yleensä viimeistään korjaa tilanteen.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>

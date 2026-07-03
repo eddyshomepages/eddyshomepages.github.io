@@ -9,77 +9,175 @@
     <meta name="author" content="Esa P">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla">
     <meta property="og:description" content="Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän Raspberr">
     <meta property="og:url" content="https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Eddy's Homepages">
-    
-    <!-- Article meta -->
     <meta property="article:published_time" content="2023-02-01">
     <meta property="article:author" content="Esa P">
     <meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="duplicati"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mariadb"><meta property="article:tag" content="mqtt"><meta property="article:tag" content="raspberrypi"><meta property="article:tag" content="raspberrypios"><meta property="article:tag" content="ruuvitag"><meta property="article:tag" content="ruuvitag-discovery"><meta property="article:tag" content="sqlite"><meta property="article:tag" content="zigbee"><meta property="article:tag" content="zigbee2mqtt"><meta property="article:tag" content="zwave">
-    
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla",
-        "description": "Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän Raspberr",
-        "datePublished": "2023-02-01",
-        "author": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "publisher": {
-            "@type": "Person",
-            "name": "Esa P",
-            "url": "https://eddyshomepages.fi"
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/"
-        },
-        "url": "https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/",
-        "keywords": "docker, docker-compose, duplicati, homeassistant, kotiautomaatio, mariadb, mqtt, raspberrypi, raspberrypios, ruuvitag, ruuvitag-discovery, sqlite, zigbee, zigbee2mqtt, zwave"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla",
+  "description": "Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän Raspberr",
+  "datePublished": "2023-02-01",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/"
+  },
+  "url": "https://eddyshomepages.fi/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/",
+  "keywords": "docker, docker-compose, duplicati, homeassistant, kotiautomaatio, mariadb, mqtt, raspberrypi, raspberrypios, ruuvitag, ruuvitag-discovery, sqlite, zigbee, zigbee2mqtt, zwave",
+  "inLanguage": "fi-FI"
+}
     </script>
-    
-    <!-- Redirect to SPA -->
-    <script>
-        window.location.replace("https://eddyshomepages.fi/#post/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla");
-    </script>
-    
     <style>
-        body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; background: #f8f9fa; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
         a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
-        .tags span { background: #e8f4f8; padding: 0.2rem 0.5rem; border-radius: 3px; margin: 0.2rem; display: inline-block; font-size: 0.85rem; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="margin-bottom:1rem; font-size:0.85rem;">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> › 
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> › 
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
             Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla
         </nav>
-        <h1>Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</h1>
-        <div class="meta">
-            <span>📅 2023-02-01</span>
-            &nbsp;&nbsp;<span>🏷️ docker, docker-compose, duplicati, homeassistant, kotiautomaatio, mariadb, mqtt, raspberrypi, raspberrypios, ruuvitag, ruuvitag-discovery, sqlite, zigbee, zigbee2mqtt, zwave</span>
-        </div>
-        <p>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla. Asennu</p>
-        <div class="tags"><span>docker</span><span>docker-compose</span><span>duplicati</span><span>homeassistant</span><span>kotiautomaatio</span><span>mariadb</span><span>mqtt</span><span>raspberrypi</span><span>raspberrypios</span><span>ruuvitag</span><span>ruuvitag-discovery</span><span>sqlite</span><span>zigbee</span><span>zigbee2mqtt</span><span>zwave</span></div>
-        <hr>
-        <p>Ladataan artikkelia...</p>
-        <p><a href="https://eddyshomepages.fi/#post/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla">Klikkaa tästä jos sivu ei lataudu</a></p>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</h1>
+            <div class="meta">
+                <span><strong>Päivämäärä:</strong> <time datetime="2023-02-01" itemprop="datePublished">2023-02-01</time></span><br>
+                <span><strong>Tagit:</strong> <span itemprop="keywords">docker, docker-compose, duplicati, homeassistant, kotiautomaatio, mariadb, mqtt, raspberrypi, raspberrypios, ruuvitag, ruuvitag-discovery, sqlite, zigbee, zigbee2mqtt, zwave</span></span>
+            </div>
+            <div class="tags"><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">duplicati</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mariadb</span><span class="tag">mqtt</span><span class="tag">raspberrypi</span><span class="tag">raspberrypios</span><span class="tag">ruuvitag</span><span class="tag">ruuvitag-discovery</span><span class="tag">sqlite</span><span class="tag">zigbee</span><span class="tag">zigbee2mqtt</span><span class="tag">zwave</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Seuraavaksi ajattelin vetää yhteen aikaisempia kirjoituksia ja tehdä yhteenvedon siitä, miten kuka tahansa voi rakentaa oman kotiautomaatiojärjestelmän <a href="https://www.raspberrypi.com/">RaspberryPi</a>:n ja <a href="https://www.home-assistant.io/">Home Assistantin</a> avulla.</p>
+<p>Asennuksessa käyn läpi kaksi eri vaihtoehtoa eli vaihtoehto 1, joka on helppo asennus tai vaihtoehto 2, joka on haastavampi tapa. Tässä kirjoituksessä keskitytään enemmän vaihtoehtoon 2.</p>
+<p>Mikäli <a href="https://www.home-assistant.io/">Home Assistantin</a> pystyttää vaihtoehdon 1 mukaisesti, niin tällöin ei juurikaan tarvitse <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> -tuntemusta, mutta jos haluaa tehdä asioita <a href="https://en.wikipedia.org/wiki/Terminal_emulator">pääte</a> -tasolla, niin tällöin on kuitenkin hyvä tietää jotakin <a href="https://en.wikipedia.org/wiki/YAML">yaml</a> -kielestä. Tosin minullakaan ei ollut tästä sen enempää tietämystä, kun ensimmäisen kerran asensin <a href="https://www.home-assistant.io/">Home Assistantin</a>, mutta aikaa myöden tässä on sitä oppinut.</p>
+<p>Jos taas on tietämystä <a href="https://en.wikipedia.org/wiki/Linux">Linuxin</a> perusteista tai on ainakin halu oppia niitä, niin <a href="https://www.home-assistant.io/">Home Assistantin</a> voi pystyttää helposti vaihtoehdon 2 mukaan eli tässä kirjoituksessa keskitytään enemmän tähän.</p>
+<p>Tarvikkeet, joilla pääsee alkuun, ovat seuraavat:</p>
+<ul>
+<li>
+<p><a href="https://www.raspberrypi.com/products/">RaspberryPi</a> -tietokone, versio 3, 3+ tai 4</p>
+</li>
+<li>
+<p>Raspiin sopiva virtalähde</p>
+<ul>
+<li>HUOM! tavallinen kännykkälaturi ei ole suositeltava</li>
+</ul>
+</li>
+<li>
+<p>SD -muistikortti 32 Gb</p>
+<ul>
+<li>HUOM! versiot 3+ ja 4 voivat buutata suoraan myös ulkoiselta SSD-levyltä</li>
+</ul>
+</li>
+<li>
+<p>verkkokaapeli, mutta yhteys toimii myös WLAN:in kautta</p>
+<ul>
+<li>HUOM! WLAN asetukset täytyy tehdä jo <a href="https://www.raspberrypi.com/software/">RaspberryPi Imager</a> -sovelluksessa</li>
+</ul>
+</li>
+<li>
+<p>toinen tietokone, jos yhteys otetaan <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>:n kautta</p>
+</li>
+<li>
+<p>Näppäimistö, hiiri ja näyttö, mikäli ei oteta yhteyttä <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>:n kautta</p>
+</li>
+<li>
+<p>Lisäksi myös jokin <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a>- tai <a href="https://en.wikipedia.org/wiki/Z-Wave">Zwave</a> -mokkula, mikäli haluaa liittää järjestelmään näitä laitteita</p>
+</li>
+</ul>
+<h2>Vaihtoehto 1, helppo tapa</h2>
+<p>Ensimmäinen ja helpompi vaihtoehto pystyttää <a href="https://www.home-assistant.io/">Home Assistant</a>, on käyttää valmista käyttöjärjestelmää. <a href="https://www.home-assistant.io/">Home Assistantin</a> käyttöjärjestelmän tarkempia asennusohjeita ja levykuvan voi noutaa <a href="https://www.home-assistant.io/installation/">täältä</a>. <a href="https://www.home-assistant.io/">Home Assistantin</a> voi asentaa myös suoraan <a href="https://www.raspberrypi.com/software/">RaspberryPi Imagerin</a> avulla, johon linkki <a href="/posts/raspberrypiosn-asentaminen-ja-kayttoonotto/">tässä</a>. Eli yhteenvetona on, että aluksi kirjoitetaan muistikortille käyttöjärjestelmän levykuva ja sen kortti kiinni Raspiin. Tämän jälkeen virrat päälle ja odottamaan, että käyttöjärjestelmä käynnistyy.</p>
+<p>Käynnistymisen jälkeen mennään nettiselaimella ko. koneelle eli <code>http://x.x.x.x:8123</code>, jossa <code>x.x.x.x</code> on tämän koneen IP-osoite, jolle <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu.</p>
+<h2>Vaihtoehto 2, hiukan haastavampi tapa</h2>
+<p>Toisessa vaihtoehdossa käyn läpi sen toteutustavan, miten itse olen ottanut <a href="https://www.home-assistant.io/">Home Assistantin</a> käyttöön eli asennetaan se <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> -käyttäjärjestelmään <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla. Tämän asennustavan olen valinnut puhtaasti siitä syystä, että voin käyttää Raspia myös muuhun tarkoitukseen, kuin pelkästään <a href="https://www.home-assistant.io/">Home Assistantin</a> pyörittämiseen.</p>
+<h4>1. RaspberryPiOS -käyttöjärjestelmän asennus</h4>
+<p>Ensimmäisenä asennamme <a href="https://www.raspberrypi.com/software/">RaspberryPiOS</a> -käyttöjärjestelmän muistikortille ja tähän olen tehnyt ohjeen, joka löytyy <a href="#post/raspberrypiosn-asentaminen-ja-kayttoonotto">tämän</a> linkin takaa. Asennuksen jälkeen laitetaan muistikortti Raspiin ja käynnistetään kone. Käynnistämisen jälkeen otetaan yhteys koneeseen SSH:n avulla tai vaihtoehtoisesti jos käytetään näyttöä, näppäimistöä ja hiirtä, niin yhteys on tällöin valmiina.</p>
+<p>Koneen käynnistymisen jälkeen ajetaan seuraavat komennot, jotka tarkistavat ja asentavat järjestelmän uusimmat päivitykset eli</p>
+<p><code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></p>
+<h4>2. Dockerin ja Docker-Composen asennus</h4>
+<p>Minulla <a href="https://www.home-assistant.io/">Home Assistant</a> on asennettu <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla eli seuraavaksi asennetaan <a href="https://www.raspberrypi.com/software/">RasperryPiOS</a> -käyttöjärjestelmään <a href="https://www.docker.com/">Docker</a> ja <a href="https://docs.docker.com/compose/">Docker-Compose</a>. Tähän löytyvät ohjeet <a href="#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan">täältä</a>.</p>
+<h4>3. Home Assistantin asennus Docker-Composen avulla</h4>
+<p>Sen jälkeen, kun <a href="https://www.docker.com/">Docker</a> ja <a href="https://docs.docker.com/compose/">Docker-Compose</a> on asennettu, niin seuraavaksi asennetaan <a href="https://www.home-assistant.io/">Home Assistant</a> <a href="https://docs.docker.com/compose/">Docker-Composen</a> avulla. Tähän olen tehnyt ohjeen, joka löytyy tämän <a href="#post/home-assistantin-asennus-docker-composen-avulla">linkin</a> takaa.</p>
+<p>Kun <a href="https://www.home-assistant.io/">Home Assistant</a> on asentunut ja otettu käyttöön, seuraavaksi otetaan yhteys selaimen kautta samalla tavalla kuin vaihtoehto 1:ssä kirjoitettiin.</p>
+<h4>4. MariaDB:n käyttöön ottaminen SQLiten sijaan (ei pakollista)</h4>
+<p><a href="https://www.home-assistant.io/">Home Assistant</a> käyttää oletuksena <a href="https://sqlite.org/index.html">SQLite</a> -tietokantaa ja pienissä kokonaisuuksissa se toimii hyvin. Mikäli järjestelmään tulee vähänkään enemmän laitteita, niin tällöin suosittelen ottamaan käyttöön <a href="https://en.wikipedia.org/wiki/SQL">SQL</a> -tietokannan kuten esim. <a href="https://mariadb.org/">MariaDB</a>. Tämä siksi, että järjestelmän vikaherkkyys kasvaa <a href="https://sqlite.org/index.html">SQLite</a> -tietokannan kanssa ja myöhemmin alkaa tulla sitten ongelmia. Ohjeet <a href="https://mariadb.org/">MariaDB</a>:n käyttöönottamiseksi löytyvät <a href="#post/mariadb-tietokannan-kayttoonotto-home-assistantissa">tämän</a> linkin takaa.</p>
+<h4>5. Home Assistantin varmuuskopiointi (ei pakollista)</h4>
+<p><a href="https://www.home-assistant.io/">Home Assistantista</a> kannattaa myös ottaa varmuuskopiot aika ajoin ja tämä on ehkä yksi miinuspuoli, että varmuuskopiointi ja sen palautus ei toimi <a href="https://www.docker.com/">Dockerin</a> tai <a href="https://docs.docker.com/compose/">Docker-Composen</a> asennuksen kanssa kunnolla. Varmuuskopion voi tehdä <a href="https://www.home-assistant.io/">Home Assistantin</a> kautta, mutta sen palauttaminen ei suoraan onnistu tätä kautta, vaan se täytyy tehdä esim. päätteen avulla.</p>
+<p>Itse olen hoitanut varmuuskopioinnin asentamalla tälle samalle Raspille <a href="https://www.duplicati.com/">Duplicati</a> -serverin, joka hoitaa <a href="https://www.home-assistant.io/">Home Assistantin</a> varmuuskopioinnin. Tähän löytyy kirjoitus <a href="#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla">tämän</a> linkin takaa.</p>
+<h4>6. Muita asennuksia, joita olen tehnyt Home Assistantin yhteyteen</h4>
+<p>Muita asennuksia, joita olen tehnyt <a href="https://www.home-assistant.io/">Home Assistantin</a> yhteyteen, ovat esim. <a href="https://mosquitto.org/">Mosquitto</a> -brokerin -asennus, jonka avulla yhdistän mm. kaikki <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a>-, <a href="https://en.wikipedia.org/wiki/Z-Wave">Zwave</a>- ja <a href="https://ruuvi.com/fi/">RuuviTag</a> -anturit järjestelmään käyttäen <a href="https://mqtt.org/">MQTT</a> -protokollaa. <a href="https://mosquitto.org/">Mosquitto</a> -brokerin asennuksen ohjeet löytyvät <a href="#post/mosquitto-brokerin-asennus-kayttaen-docker-composea">täältä</a>.</p>
+<p><a href="https://ruuvi.com/fi/">RuuviTag</a> -antureiden lisäämisen järjestelmään olen hoitanut <a href="https://github.com/balda/ruuvitag-discovery">ruuvitag-discovery</a> -ohjelmistoa käyttäen eli myös <a href="https://ruuvi.com/fi/">RuuviTagit</a> lisätään järjestelmään <a href="https://mqtt.org/">MQTT</a> -protokollaa käyttäen. Ohjeet tähän löytyvät <a href="#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen">täältä</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a> -laitteet olen lisännyt järjestelmään <a href="https://www.zigbee2mqtt.io/">Zigbee2MQTT</a>:n avulla eli myös nämä laitteeet yhdistyvät <a href="https://mqtt.org/">MQTT</a> -protokollan avulla <a href="https://www.home-assistant.io/">Home Assistantiin</a>. Ohjeet tähän löytyvät <a href="#post/zigbee2mqtt-asentaminen-docker-composen-avulla">täältä</a>.</p>
+<p>Lisäksi <a href="#posts">blogeista</a> löytyy kirjoituksia liittyen mm. sähkön hinnan seuraamiseen, autolämmityksen tekemiseen ja avoimen lähdekoodin virtuaaliavustimen käyttöön ottamiseen eli näitä voi halutessaan lukea sivustolta.</p>
+<p>Tervetuloa lukemaan ja toivottavasti näistä olisi teille lukijoille apua. Mikäli koet niin sivuston linkkiä saa jakaa eteenpäin.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla">Avaa artikkeli interaktiivisessa näkymässä →</a>
     </div>
 </body>
 </html>
