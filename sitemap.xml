@@ -11,14 +11,6 @@
     </url>
 
     <url>
-        <loc>https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/</loc>
-        <lastmod>2026-07-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/"/>
-    </url>
-
-    <url>
         <loc>https://eddyshomepages.fi/posts/fi/uuden-sivuston-taustaa/</loc>
         <lastmod>2025-09-20</lastmod>
         <changefreq>monthly</changefreq>
@@ -64,6 +56,14 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/</loc>
+        <lastmod>2023-07-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/"/>
     </url>
 
     <url>
