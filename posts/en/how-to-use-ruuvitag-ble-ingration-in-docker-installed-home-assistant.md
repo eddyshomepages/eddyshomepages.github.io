@@ -1,6 +1,6 @@
 ---
 title: "How to use RuuviTag ble ingration in docker installed Home Assistant"
-date: "2026-07-03"
+date: "2023-07-30"
 tags: 
   - "docker"
   - "docker-compose"
