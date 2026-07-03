@@ -59,6 +59,14 @@
     </url>
 
     <url>
+        <loc>https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/</loc>
+        <lastmod>2023-07-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/"/>
+    </url>
+
+    <url>
         <loc>https://eddyshomepages.fi/posts/fi/huoltokatko/</loc>
         <lastmod>2023-06-28</lastmod>
         <changefreq>monthly</changefreq>

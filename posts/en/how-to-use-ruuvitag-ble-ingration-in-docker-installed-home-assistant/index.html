@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to use RuuviTag ble ingration in docker installed Home Assistant — Eddy's Homepages</title>
+    <meta name="description" content="Here is my first blog post translated from Finnish to English. The original post was published on 30.7.2023 in Finnish. I previously had my RuuviTag sensors con">
+    <meta name="keywords" content="docker, docker-compose, duplicati, homeassistant, homeautomation, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery">
+    <meta name="author" content="Esa P">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/">
+    <meta property="og:title" content="How to use RuuviTag ble ingration in docker installed Home Assistant">
+    <meta property="og:description" content="Here is my first blog post translated from Finnish to English. The original post was published on 30.7.2023 in Finnish. I previously had my RuuviTag sensors con">
+    <meta property="og:url" content="https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Eddy's Homepages">
+    <meta property="article:published_time" content="2023-07-30">
+    <meta property="article:author" content="Esa P">
+    <meta property="article:tag" content="docker"><meta property="article:tag" content="docker-compose"><meta property="article:tag" content="duplicati"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="homeautomation"><meta property="article:tag" content="linux"><meta property="article:tag" content="node.js"><meta property="article:tag" content="ruuvitag"><meta property="article:tag" content="ruuvitag-ble"><meta property="article:tag" content="ruuvitag-discovery">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to use RuuviTag ble ingration in docker installed Home Assistant",
+  "description": "Here is my first blog post translated from Finnish to English. The original post was published on 30.7.2023 in Finnish. I previously had my RuuviTag sensors con",
+  "datePublished": "2023-07-30",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/"
+  },
+  "url": "https://eddyshomepages.fi/posts/en/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant/",
+  "keywords": "docker, docker-compose, duplicati, homeassistant, homeautomation, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery",
+  "inLanguage": "en-US"
+}
+    </script>
+    <style>
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
+        a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
+        .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Home</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Posts</a> ›
+            How to use RuuviTag ble ingration in docker installed Home Assistant
+        </nav>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">How to use RuuviTag ble ingration in docker installed Home Assistant</h1>
+            <div class="meta">
+                <span><strong>Date:</strong> <time datetime="2023-07-30" itemprop="datePublished">2023-07-30</time></span><br>
+                <span><strong>Tags:</strong> <span itemprop="keywords">docker, docker-compose, duplicati, homeassistant, homeautomation, linux, node.js, ruuvitag, ruuvitag-ble, ruuvitag-discovery</span></span>
+            </div>
+            <div class="tags"><span class="tag">docker</span><span class="tag">docker-compose</span><span class="tag">duplicati</span><span class="tag">homeassistant</span><span class="tag">homeautomation</span><span class="tag">linux</span><span class="tag">node.js</span><span class="tag">ruuvitag</span><span class="tag">ruuvitag-ble</span><span class="tag">ruuvitag-discovery</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Here is my first blog post translated from Finnish to English. The original post was published on 30.7.2023 in Finnish.</p>
+<p>I previously had my <a href="https://ruuvi.com/ruuvitag/">RuuviTag</a> sensors connected to <a href="https://www.home-assistant.io/">Home Assistant</a> using a piece of software called <a href="https://github.com/balda/ruuvitag-discovery/">RuuviTag Discovery</a>, about which I also wrote a <a href="#post/ruuvitag-antureiden-lisaaminen-home-assistantiin-ruuvitag-discoveryn-avulla-mqtt-protokollaa-kayttaen">story</a> back in the day. Lately, however, this configuration has started to act up more and more. This is apparently due to updates in the <a href="https://nodejs.org/en">node.js</a> packages, with which <a href="https://github.com/balda/ruuvitag-discovery">Ruuvitag Discovery</a> no longer works properly.</p>
+<p>For this reason, I started thinking about how it would make sense to connect the sensors to <a href="https://www.home-assistant.io/">Home Assistant</a>, since I don't have, for example, a <a href="https://ruuvi.com/gateway/">Ruuvi Gateway</a> in use. However, <a href="https://www.home-assistant.io/">Home Assistant</a> nowadays has a <a href="https://www.home-assistant.io/integrations/ruuvitag_ble">RuuviTag BLE</a> integration, so I started to find out how the sensors could be added to the system using it.</p>
+<h4>Changes to the host system</h4>
+<p>I have <a href="https://www.home-assistant.io/">Home Assistant</a> installed in a container using <a href="https://docs.docker.com/compose/">Docker Compose</a>, so first I had to install the necessary packages such as <em>BlueZ</em> on the <em>host</em> system, add the line <em>bluetooth:</em> to the <em>configurations.yaml</em> file, and finally restart <a href="https://www.home-assistant.io/">Home Assistant</a>.</p>
+<p>Nothing happened, however, until I realized to read the <a href="https://www.home-assistant.io/">Home Assistant</a> documentation more carefully regarding the <a href="https://www.home-assistant.io/integrations/bluetooth">Bluetooth</a> integration. The solution was found in the section <em>Additional requirements by install method</em>, which mentions that in a system installed with <a href="https://www.docker.com/">Docker</a>, the <em>host</em> system must have <em>BlueZ</em> and the <em>D-Bus socket</em> in use, and they must also be available to <a href="https://www.home-assistant.io/">Home Assistant</a> inside the container. In other words, this is fixed by adding the following line under the <em>volumes:</em> section in the <em>docker-compose.yaml</em> file</p>
+<pre><code>  - /run/dbus:/run/dbus:ro
+</code></pre>
+<p>Before restarting the <a href="https://www.home-assistant.io/">Home Assistant</a> container, this is the latest point at which you should take a backup of <a href="https://www.home-assistant.io/">Home Assistant</a>. In my case, what happened was that after the system restarted, all the old history data etc. had disappeared and <a href="https://www.home-assistant.io/">Home Assistant</a> started completely from a clean slate. This of course brought a bit of extra work, as the system had to be restored from old backups, but it went well nonetheless.</p>
+<p>The data reset was most likely due to the fact that I accidentally added this <em>/run/dbus:/run/dbus:ro</em> line to the end of the <em>docker-compose.yaml</em> file in a new <em>volumes</em> section, which for some reason reset all the data.</p>
+<h4>Backing up Home Assistant</h4>
+<p>Backing up <a href="https://www.home-assistant.io/">Home Assistant</a> can be done in several ways, and I have it handled automatically with a browser-based application called <a href="https://www.duplicati.com/">Duplicati</a>, about which I once wrote <a href="#post/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla">this</a> story. A backup of the system can also be made manually via the terminal, as I did in this case — in other words, a copy of the <a href="https://www.home-assistant.io/">Home Assistant</a> folder is created. This is done via the terminal by giving the following command (you must of course be in the correct directory where the command is given)</p>
+<pre><code>sudo cp -r homeassistant homeassistant_backup
+</code></pre>
+<p>After the backup, the <a href="https://www.home-assistant.io/">Home Assistant</a> container is restarted with the command</p>
+<pre><code>sudo docker-compose up -d
+</code></pre>
+<p>Next, wait a moment for <a href="https://www.home-assistant.io/">Home Assistant</a> to start up again. After this, <a href="https://www.home-assistant.io/">Home Assistant</a> directly offers the <a href="https://www.home-assistant.io/integrations/bluetooth">Bluetooth</a> integration to be taken into use, so let's enable it. Next, <a href="https://www.home-assistant.io/">Home Assistant</a> also automatically offers <a href="https://ruuvi.com/ruuvitag/">RuuviTag</a> sensors to be taken into use. So now <a href="https://www.home-assistant.io/">Home Assistant</a> automatically finds the <a href="https://ruuvi.com/ruuvitag/">RuuviTag</a> sensors within range and suggests adding them to the system.</p>
+<p>Based on my own experience, the sensors have stayed in use well without problems. However, if it happens that <a href="https://www.home-assistant.io/">Home Assistant</a> does not find the <a href="https://ruuvi.com/ruuvitag/">RuuviTag</a> sensors, the next thing to do is to update the firmware of the <a href="https://ruuvi.com/ruuvitag/">RuuviTags</a> to the latest version. Updating the firmware usually fixes the situation at the latest.</p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/how-to-use-ruuvitag-ble-ingration-in-docker-installed-home-assistant">Open article in interactive view →</a>
+    </div>
+</body>
+</html>
