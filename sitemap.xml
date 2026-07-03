@@ -83,6 +83,14 @@
     </url>
 
     <url>
+        <loc>https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/</loc>
+        <lastmod>2023-06-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/"/>
+    </url>
+
+    <url>
         <loc>https://eddyshomepages.fi/posts/fi/motioneye-kameravalvonta-ohjelmiston-asennus/</loc>
         <lastmod>2023-05-21</lastmod>
         <changefreq>monthly</changefreq>

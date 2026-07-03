@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifying a rain gauge to work in a Zigbee network — Eddy's Homepages</title>
+    <meta name="description" content="Next I thought I would write about a topic that, in addition to Home Assistant, also relates a bit to electronics. The idea is to modify a rain gauge so that it">
+    <meta name="keywords" content="433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt">
+    <meta name="author" content="Esa P">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/">
+    <meta property="og:title" content="Modifying a rain gauge to work in a Zigbee network">
+    <meta property="og:description" content="Next I thought I would write about a topic that, in addition to Home Assistant, also relates a bit to electronics. The idea is to modify a rain gauge so that it">
+    <meta property="og:url" content="https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Eddy's Homepages">
+    <meta property="article:published_time" content="2023-06-20">
+    <meta property="article:author" content="Esa P">
+    <meta property="article:tag" content="433-mhz"><meta property="article:tag" content="elektroniikka"><meta property="article:tag" content="homeassistant"><meta property="article:tag" content="kotiautomaatio"><meta property="article:tag" content="mqtt"><meta property="article:tag" content="raingauge"><meta property="article:tag" content="reed-rele"><meta property="article:tag" content="sademittari"><meta property="article:tag" content="tipping-bucket"><meta property="article:tag" content="utility_meter"><meta property="article:tag" content="zigbee"><meta property="article:tag" content="zigbee2mqtt">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Modifying a rain gauge to work in a Zigbee network",
+  "description": "Next I thought I would write about a topic that, in addition to Home Assistant, also relates a bit to electronics. The idea is to modify a rain gauge so that it",
+  "datePublished": "2023-06-20",
+  "author": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Esa P",
+    "url": "https://eddyshomepages.fi"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/"
+  },
+  "url": "https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/",
+  "keywords": "433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt",
+  "inLanguage": "en-US"
+}
+    </script>
+    <style>
+        :root { color-scheme: light dark; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
+        a { color: #0066cc; }
+        nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
+        .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
+        .tags { margin: 1rem 0; }
+        .tag {
+            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
+            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
+        }
+        .spa-link {
+            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
+            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
+        }
+        .spa-link:hover { background: #34495e; }
+        article img { max-width: 100%; height: auto; }
+        article pre {
+            background: #f4f4f4; padding: 1rem; border-radius: 4px;
+            overflow-x: auto; font-size: 0.9rem;
+        }
+        article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+        article pre code { background: none; padding: 0; }
+        article blockquote {
+            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
+        }
+        article table { border-collapse: collapse; width: 100%; }
+        article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1a1a1a; color: #e0e0e0; }
+            .container { background: #242424; box-shadow: none; }
+            h1 { color: #e0e0e0; }
+            a { color: #6db3f2; }
+            article pre, article code { background: #333; }
+            .tag { background: #33424a; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="https://eddyshomepages.fi/">Home</a> ›
+            <a href="https://eddyshomepages.fi/#posts">Posts</a> ›
+            Modifying a rain gauge to work in a Zigbee network
+        </nav>
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">Modifying a rain gauge to work in a Zigbee network</h1>
+            <div class="meta">
+                <span><strong>Date:</strong> <time datetime="2023-06-20" itemprop="datePublished">2023-06-20</time></span><br>
+                <span><strong>Tags:</strong> <span itemprop="keywords">433-mhz, elektroniikka, homeassistant, kotiautomaatio, mqtt, raingauge, reed-rele, sademittari, tipping-bucket, utility_meter, zigbee, zigbee2mqtt</span></span>
+            </div>
+            <div class="tags"><span class="tag">433-mhz</span><span class="tag">elektroniikka</span><span class="tag">homeassistant</span><span class="tag">kotiautomaatio</span><span class="tag">mqtt</span><span class="tag">raingauge</span><span class="tag">reed-rele</span><span class="tag">sademittari</span><span class="tag">tipping-bucket</span><span class="tag">utility_meter</span><span class="tag">zigbee</span><span class="tag">zigbee2mqtt</span></div>
+            <hr>
+            <div itemprop="articleBody">
+<p>Next I thought I would write about a topic that, in addition to <a href="https://www.home-assistant.io/">Home Assistant</a>, also relates a bit to <a href="https://en.wikipedia.org/wiki/Electronics">electronics</a>. The idea is to modify a rain gauge so that it can be connected to a <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a> network. I got the inspiration for this when I read about a similar modification on the <a href="https://www.home-assistant.io/">Home Assistant</a> community forum, link here <a href="https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379">https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379</a>. As a small word of warning, a <a href="https://en.wikipedia.org/wiki/Soldering_iron">soldering iron</a> is needed for this modification.</p>
+<h4>What is needed?</h4>
+<p>As supplies, you need some rain gauge — mine is this <a href="https://www.motonet.fi/fi/tuote/8601352/MTX-Basic-langaton-sadevesimittari">MTX Basic wireless rain gauge</a> (NOTE! this is not a paid advertisement) — and a door and window sensor that can be connected to a <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a> network, such as <a href="https://www.aqara.com/eu/door_and_window_sensor.html">Aqara</a>, which I use. This MTX rain gauge works connected to a 433 MHz network, but I didn't have one in use at the cottage, which is why I modified this gauge to work in a <a href="https://en.wikipedia.org/wiki/Zigbee">Zigbee</a> network.</p>
+<p>This MTX rain gauge, like many other gauges on the market, works so that inside the gauge there is a kind of seesaw cup (<a href="https://en.wikipedia.org/wiki/Rain_gauge#Tipping_bucket_rain_gauge">tipping bucket</a>), which controls the <a href="https://en.wikipedia.org/wiki/Reed_switch">reed switch</a> in the rain gauge as the cup fills with water. In other words, the rainfall is calculated by counting the opening and closing of the <a href="https://en.wikipedia.org/wiki/Reed_switch">reed switch</a> as pulses, in the same way as happens in door and window sensors — when the door closes, the switch closes, and when the door opens, the switch opens. This modified rain gauge works the same way, i.e. we count the pulses it gives and let <a href="https://www.home-assistant.io/">Home Assistant</a> then handle the conversion to millimeters.</p>
+<h4>The implementation in a nutshell</h4>
+<p>First, open the rain gauge and remove the old circuit board so that the wires of the existing <a href="https://en.wikipedia.org/wiki/Reed_switch">reed switch</a> remain visible (in this picture the circuit board has already been removed and the wires connected to the door and window sensor)</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva1.webp" /></p>
+<p><em>Picture: Rain gauge with the original circuit board removed</em></p>
+<p>Next, open the door and window sensor and remove its <a href="https://en.wikipedia.org/wiki/Reed_switch">reed switch</a> by desoldering it from the circuit board, and solder the wires of the rain gauge's <a href="https://en.wikipedia.org/wiki/Reed_switch">reed switch</a> in its place</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva2.webp" /></p>
+<p><em>Picture: The rain gauge's reed switch wires soldered in place of the door sensor's reed switch</em></p>
+<p>Below is a picture of the finished implementation before the package is closed</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva3.webp" /></p>
+<p><em>Picture: Rainfall sensor ready</em></p>
+<h4>Changes to Home Assistant</h4>
+<p>Finally, connect the rain gauge to <a href="https://www.home-assistant.io/">Home Assistant</a> (if not already done) — I add the gauge to <a href="https://www.home-assistant.io/">Home Assistant</a> via <a href="https://www.zigbee2mqtt.io/">Zigbee2MQTT</a>, so it becomes visible through the <a href="https://mqtt.org/">MQTT</a> integration. I have named the device "raingauge", so for me the device shows up as <em>binary_sensor.raingauge_contact</em>.</p>
+<p>Next, create two new sensors in <a href="https://www.home-assistant.io/">Home Assistant</a>, i.e. add the lines below to the <em>configuration.yaml</em> file</p>
+<pre><code>sensor:
+  - platform: history_stats
+    name: Raingauge counter
+    entity_id: binary_sensor.raingauge_contact #door sensor
+    state: 'off'
+    type: count
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: template
+    sensors:
+      rainfall_today:
+        friendly_name: Rainfall today
+        unit_of_measurement: mm
+        icon_template: mdi:water
+        value_template: &gt;-
+          {% set count = states('sensor.raingauge_counter') | int %}
+          {% set mm_per_pulse = 0.330024 %}
+          {% set mm = count * mm_per_pulse %}
+          {{ mm|round(1, 'floor') }}
+</code></pre>
+<h4>Calibrating the rain gauge</h4>
+<p>Calibrating the rain gauge can be done as follows (also explained on the <a href="https://community.home-assistant.io/t/diy-zigbee-rain-gauge/255379">community forum</a>) — first measure the surface area of the rain gauge and how many pulses 10 ml of water causes. Calculations below</p>
+<ul>
+<li>
+<p>the size of the rain gauge is 17.2 cm x 9.6 cm</p>
+</li>
+<li>
+<p>1 mm of rain in the gauge is then 0.1 x 17.2 x 9.6 = 16.512 ml</p>
+</li>
+<li>
+<p>10 ml of water in the rain gauge causes 5 pulses, i.e. 2 ml / pulse</p>
+</li>
+<li>
+<p>this gives a rainfall per pulse of 16.512 / 10 / 5 = 0.33024 mm / pulse</p>
+</li>
+</ul>
+<p>So with the calculation above we get the total daily rainfall, but if we also want to calculate more precisely e.g. hourly, weekly etc. rainfall amounts, the calculation formulas for these must still be added to the <a href="https://www.home-assistant.io/">Home Assistant</a> <em>configuration.yaml</em> file — here we can use <a href="https://www.home-assistant.io/integrations/utility_meter/">Home Assistant's</a> <em>utility_meter</em> integration.</p>
+<pre><code>utility_meter:
+# rainfall per hour
+  rainfall_hour:
+    source: sensor.rainfall_today
+    cycle: hourly
+# rainfall per week
+  rainfall_week:
+    source: sensor.rainfall_today
+    cycle: weekly
+# rainfall per month
+  rainfall_month:
+    source: sensor.rainfall_today
+    cycle: monthly
+# rainfall per year
+  rainfall_year:
+    source: sensor.rainfall_today
+    cycle: yearly
+</code></pre>
+<p>Finally, information about the rainfall amounts can be added to the <a href="https://www.home-assistant.io/">Home Assistant</a> dashboard, i.e. add an <em>entities</em> card as shown below</p>
+<p><img alt="" src="/images/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/kuva4.webp" /></p>
+<p><em>Picture: Home Assistant entities card</em></p>
+            </div>
+        </article>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/tuning-raingauge-to-zigbee-network">Open article in interactive view →</a>
+    </div>
+</body>
+</html>
