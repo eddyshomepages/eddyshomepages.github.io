@@ -21,7 +21,7 @@ jobs:
       - name: Install markdown library
         run: pip install markdown
 
-      - name: Generate post HTML pages and sitemap
+      - name: Generate post pages, sitemap and post list
         run: |
           python3 << 'EOF'
           import os
@@ -222,6 +222,7 @@ jobs:
 
           # Main generation
           sitemap_entries = []
+          all_entries_meta = []
           posts_dir = 'posts'
           generated = 0
           SKIP_FILES = {'about.fi.md', 'about.en.md', 'frontpage.fi.md', 'frontpage.en.md'}
@@ -269,6 +270,12 @@ jobs:
                       'date': meta.get('date', '2022-01-01'),
                       'lang': lang
                   })
+                  all_entries_meta.append({
+                      'slug': slug,
+                      'title': meta.get('title', slug.replace('-', ' ').title()),
+                      'date': meta.get('date', '2022-01-01'),
+                      'lang': lang
+                  })
 
           print(f'\nGenerated: {generated} pages')
 
@@ -305,12 +312,66 @@ jobs:
 
           print(f'Generated sitemap.xml with {len(sitemap_entries)} post URLs')
 
+          # ---- Inject static post link list into index.html ----
+          START_MARKER = '<!-- STATIC-POST-LIST:START (auto-generated, do not edit) -->'
+          END_MARKER = '<!-- STATIC-POST-LIST:END -->'
+
+          def build_post_list_html(entries_with_meta):
+              fi_posts = sorted([e for e in entries_with_meta if e['lang'] == 'fi'],
+                                key=lambda x: x['date'], reverse=True)
+              en_posts = sorted([e for e in entries_with_meta if e['lang'] == 'en'],
+                                key=lambda x: x['date'], reverse=True)
+
+              parts = [START_MARKER]
+              parts.append('<nav class="static-post-list" aria-label="Kaikki artikkelit">')
+              if fi_posts:
+                  parts.append('<h2>Artikkelit</h2>')
+                  parts.append('<ul>')
+                  for p in fi_posts:
+                      parts.append(f'<li><a href="/posts/fi/{p["slug"]}/">{html.escape(p["title"])}</a> <small>({p["date"]})</small></li>')
+                  parts.append('</ul>')
+              if en_posts:
+                  parts.append('<h2>Posts in English</h2>')
+                  parts.append('<ul>')
+                  for p in en_posts:
+                      parts.append(f'<li><a href="/posts/en/{p["slug"]}/">{html.escape(p["title"])}</a> <small>({p["date"]})</small></li>')
+                  parts.append('</ul>')
+              parts.append('</nav>')
+              parts.append(END_MARKER)
+              return '\n'.join(parts)
+
+          if os.path.exists('index.html'):
+              with open('index.html', 'r', encoding='utf-8') as f:
+                  index_content = f.read()
+
+              post_list_html = build_post_list_html(all_entries_meta)
+
+              if START_MARKER in index_content and END_MARKER in index_content:
+                  # Replace existing block (idempotent re-runs)
+                  pattern = re.escape(START_MARKER) + r'.*?' + re.escape(END_MARKER)
+                  index_content = re.sub(pattern, post_list_html, index_content, flags=re.DOTALL)
+                  print('index.html: replaced existing static post list')
+              else:
+                  # First run: insert right after <div id="posts-display">
+                  anchor = '<div id="posts-display">'
+                  if anchor in index_content:
+                      index_content = index_content.replace(
+                          anchor, anchor + '\n' + post_list_html, 1)
+                      print('index.html: inserted static post list after posts-display div')
+                  else:
+                      print('WARNING: could not find posts-display div in index.html, list not injected')
+
+              with open('index.html', 'w', encoding='utf-8') as f:
+                  f.write(index_content)
+          else:
+              print('WARNING: index.html not found, skipping post list injection')
+
           EOF
 
       - name: Commit generated files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add posts sitemap.xml
-          git diff --staged --quiet || git commit -m "Auto-generate full-content post pages and sitemap [skip ci]"
+          git add posts sitemap.xml index.html
+          git diff --staged --quiet || git commit -m "Auto-generate post pages, sitemap and post list [skip ci]"
           git push
