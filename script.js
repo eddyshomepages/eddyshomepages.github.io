@@ -799,8 +799,28 @@ async function showAbout() {
 }
 
 // Show post with comprehensive SEO enhancements
-function showPost(postId) {
-	const post = allPosts.find(p => p.id === postId);
+async function showPost(postId) {
+	let post = allPosts.find(p => p.id === postId);
+
+	// If post not found, check the other language and switch
+	if (!post) {
+		const otherLang = currentLanguage === 'fi' ? 'en' : 'fi';
+		const existsInOther = (markdownPosts[otherLang] || []).includes(postId + '.md');
+
+		if (existsInOther) {
+			currentLanguage = otherLang;
+			localStorage.setItem('preferredLanguage', currentLanguage);
+			document.getElementById('language-selector').value = currentLanguage;
+			document.documentElement.lang = currentLanguage === 'fi' ? 'fi' : 'en';
+
+			await loadPostsForLanguage();
+			updatePageTexts();
+			updateNavigationText();
+
+			post = allPosts.find(p => p.id === postId);
+		}
+	}
+	
 	if (!post) {
         console.error(`Post not found: ${postId}`);
         return;
