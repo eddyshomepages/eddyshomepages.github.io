@@ -1735,3 +1735,15 @@ header .logo a {
 html:not([data-theme="dark"]) header .logo a {
     color: white;
 }
+
+.post-header {
+	background: none;
+	color: inherit;
+	padding: 0;
+	position: static;
+	box-shadow: none;
+}
+
+.post-header h1 {
+	color: var(--text-primary);
+}
