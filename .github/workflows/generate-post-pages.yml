@@ -21,16 +21,41 @@ jobs:
       - name: Install markdown library
         run: pip install markdown
 
-      - name: Generate post pages, sitemap and post list
+      - name: Generate post pages, archive pages, sitemap and footer links
         run: |
           python3 << 'EOF'
           import os
           import re
           import html
           import json
+          from collections import Counter
           from datetime import datetime
 
           import markdown
+
+          BASE = 'https://eddyshomepages.fi'
+          POSTS_DIR = 'posts'
+          LANGS = ['fi', 'en']
+          SKIP_FILES = {'about.fi.md', 'about.en.md', 'frontpage.fi.md', 'frontpage.en.md'}
+
+          LABELS = {
+              'fi': {
+                  'home': 'Etusivu', 'archive': 'Kaikki artikkelit', 'date': 'Päivämäärä', 'tags': 'Tagit',
+                  'spa': 'Avaa artikkeli interaktiivisessa näkymässä', 'older': 'Edellinen', 'newer': 'Seuraava',
+                  'related': 'Aiheeseen liittyviä artikkeleita', 'archive_intro': 'Kaikki Eddy\'s Homepages -sivuston artikkelit uusimmasta vanhimpaan.',
+                  'other_archive': 'All posts in English', 'footer_nav': 'Sivuston navigointi',
+                  'post_nav': 'Edellinen ja seuraava artikkeli', 'html_lang': 'fi', 'locale': 'fi-FI',
+              },
+              'en': {
+                  'home': 'Home', 'archive': 'All posts', 'date': 'Date', 'tags': 'Tags',
+                  'spa': 'Open article in interactive view', 'older': 'Previous', 'newer': 'Next',
+                  'related': 'Related articles', 'archive_intro': 'All posts on Eddy\'s Homepages, newest first.',
+                  'other_archive': 'Kaikki artikkelit suomeksi', 'footer_nav': 'Site navigation',
+                  'post_nav': 'Previous and next article', 'html_lang': 'en', 'locale': 'en-US',
+              },
+          }
+
+          # ---------------------------------------------------------------- parsing
 
           def parse_frontmatter(content):
               match = re.match(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
@@ -41,15 +66,15 @@ jobs:
               rest = content[match.end():]
               meta = {}
 
-              title_match = re.search(r'title:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
+              title_match = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
               if title_match:
-                  meta['title'] = title_match.group(1).strip().strip('"\'')
+                  meta['title'] = title_match.group(1).strip().strip('"\'').replace('\\"', '"')
 
               date_match = re.search(r'^date:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
               if date_match:
                   meta['date'] = date_match.group(1).strip().strip('"\'')
 
-              desc_match = re.search(r'description:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
+              desc_match = re.search(r'^description:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
               if desc_match:
                   meta['description'] = desc_match.group(1).strip().strip('"\'')
 
@@ -67,6 +92,7 @@ jobs:
 
               return meta, rest
 
+
           def get_excerpt(content, length=200):
               text = re.sub(r'```[\s\S]*?```', '', content)
               text = re.sub(r'#{1,6}\s+', '', text)
@@ -77,294 +103,403 @@ jobs:
               text = re.sub(r'\s+', ' ', text).strip()
               return text[:length] + '...' if len(text) > length else text
 
-          def generate_html(slug, lang, meta, excerpt, body_html):
-              title = meta.get('title', slug.replace('-', ' ').title())
-              date = meta.get('date', '')
-              description = meta.get('description', excerpt)[:160]
-              tags = meta.get('tags', [])
+
+          def load_posts():
+              """Read every markdown post once and return {lang: [post dicts]} sorted newest first."""
+              md_converter = markdown.Markdown(extensions=['fenced_code', 'tables', 'nl2br', 'sane_lists'])
+              result = {}
+              for lang in LANGS:
+                  lang_dir = os.path.join(POSTS_DIR, lang)
+                  items = []
+                  if os.path.isdir(lang_dir):
+                      for filename in sorted(os.listdir(lang_dir)):
+                          if not filename.endswith('.md'):
+                              continue
+                          if filename in SKIP_FILES:
+                              print(f'SKIP: {filename}')
+                              continue
+                          slug = filename[:-3]
+                          with open(os.path.join(lang_dir, filename), 'r', encoding='utf-8') as f:
+                              content = f.read()
+                          meta, body = parse_frontmatter(content)
+                          md_converter.reset()
+                          excerpt = get_excerpt(body)
+                          items.append({
+                              'slug': slug,
+                              'lang': lang,
+                              'title': meta.get('title', slug.replace('-', ' ').title()),
+                              'date': meta.get('date', '2022-01-01'),
+                              'description': meta.get('description', excerpt),
+                              'excerpt': excerpt,
+                              'tags': meta.get('tags', []),
+                              'body_html': md_converter.convert(body),
+                          })
+                  items.sort(key=lambda p: (p['date'], p['slug']), reverse=True)
+                  result[lang] = items
+              return result
+
+
+          # ---------------------------------------------------------------- linking logic
+
+          def related_posts(post, same_lang, limit=4):
+              """Posts sharing tags with `post`; rare shared tags count more than common ones."""
+              freq = Counter(t for p in same_lang for t in set(p['tags']))
+              scored = []
+              for other in same_lang:
+                  if other['slug'] == post['slug']:
+                      continue
+                  shared = set(post['tags']) & set(other['tags'])
+                  if not shared:
+                      continue
+                  score = sum(1.0 / freq[t] for t in shared)
+                  scored.append((score, other['date'], other['slug'], other))
+              scored.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
+              return [x[3] for x in scored[:limit]]
+
+
+          def post_url_path(p):
+              return f'/posts/{p["lang"]}/{p["slug"]}/'
+
+
+          # ---------------------------------------------------------------- page building
+
+          PAGE_CSS = '''
+                  :root { color-scheme: light dark; }
+                  body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; margin: 0; padding: 1rem; background: #f8f9fa; color: #212529; }
+                  .container { max-width: 760px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+                  h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
+                  h2 { font-size: 1.25rem; margin-top: 2rem; }
+                  a { color: #0066cc; }
+                  nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
+                  .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
+                  .tags { margin: 1rem 0; }
+                  .tag { background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px; margin: 0.15rem; display: inline-block; font-size: 0.85rem; }
+                  .spa-link { display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem; background: #2c3e50; color: white; border-radius: 4px; text-decoration: none; }
+                  .spa-link:hover { background: #34495e; }
+                  .post-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; flex-wrap: wrap; }
+                  .post-nav a { flex: 1 1 45%; padding: 0.7rem 1rem; border: 1px solid #ddd; border-radius: 6px; text-decoration: none; }
+                  .post-nav .next { text-align: right; }
+                  .post-nav small { display: block; color: #666; }
+                  .related ul, .archive ul { padding-left: 1.2rem; }
+                  .archive li { margin-bottom: 0.9rem; }
+                  .archive .excerpt { display: block; color: #555; font-size: 0.9rem; }
+                  .archive time, .related time { color: #666; font-size: 0.85rem; }
+                  footer.site-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; text-align: center; }
+                  article img { max-width: 100%; height: auto; }
+                  article pre { background: #f4f4f4; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.9rem; }
+                  article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+                  article pre code { background: none; padding: 0; }
+                  article blockquote { border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555; }
+                  article table { border-collapse: collapse; width: 100%; }
+                  article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+                  @media (prefers-color-scheme: dark) {
+                      body { background: #1a1a1a; color: #e0e0e0; }
+                      .container { background: #242424; box-shadow: none; }
+                      h1 { color: #e0e0e0; }
+                      a { color: #6db3f2; }
+                      article pre, article code { background: #333; }
+                      .tag { background: #33424a; }
+                      .post-nav a { border-color: #444; }
+                      .post-nav small, .meta, .archive .excerpt, .archive time, .related time, nav.breadcrumb { color: #aaa; }
+                      footer.site-footer { border-top-color: #444; }
+                  }
+          '''
+
+
+          def esc(s):
+              return html.escape(s, quote=True)
+
+
+          def footer_nav(lang):
+              L = LABELS[lang]
+              other = 'en' if lang == 'fi' else 'fi'
+              return (
+                  f'<footer class="site-footer"><nav aria-label="{esc(L["footer_nav"])}">'
+                  f'<a href="{BASE}/">{L["home"]}</a> &middot; '
+                  f'<a href="/posts/{lang}/">{L["archive"]}</a> &middot; '
+                  f'<a href="/posts/{other}/">{esc(LABELS[lang]["other_archive"])}</a>'
+                  f'</nav></footer>'
+              )
+
+
+          def build_post_page(post, same_lang_sorted):
+              lang = post['lang']
+              L = LABELS[lang]
+              title, date, tags = post['title'], post['date'], post['tags']
+              description = post['description'][:160]
               tags_str = ', '.join(tags)
+              post_url = f'{BASE}{post_url_path(post)}'
+              spa_url = f'{BASE}/#post/{post["slug"]}'
 
-              base_url = 'https://eddyshomepages.fi'
-              post_url = f'{base_url}/posts/{lang}/{slug}/'
-              spa_url = f'{base_url}/#post/{slug}'
-
-              # Escaped versions for HTML attributes
-              e_title = html.escape(title, quote=True)
-              e_desc = html.escape(description, quote=True)
-              e_tags = html.escape(tags_str, quote=True)
-
-              # JSON-LD built safely with json.dumps
               schema = json.dumps({
                   "@context": "https://schema.org",
                   "@type": "BlogPosting",
                   "headline": title,
                   "description": description,
                   "datePublished": date,
-                  "author": {"@type": "Person", "name": "Esa P", "url": base_url},
-                  "publisher": {"@type": "Person", "name": "Esa P", "url": base_url},
+                  "author": {"@type": "Person", "name": "Esa P", "url": BASE},
+                  "publisher": {"@type": "Person", "name": "Esa P", "url": BASE},
                   "mainEntityOfPage": {"@type": "WebPage", "@id": post_url},
                   "url": post_url,
                   "keywords": tags_str,
-                  "inLanguage": "fi-FI" if lang == 'fi' else "en-US"
+                  "inLanguage": L['locale'],
               }, ensure_ascii=False, indent=2)
 
-              lang_attr = 'fi' if lang == 'fi' else 'en'
-              home_label = 'Etusivu' if lang == 'fi' else 'Home'
-              posts_label = 'Artikkelit' if lang == 'fi' else 'Posts'
-              spa_link_text = 'Avaa artikkeli interaktiivisessa näkymässä' if lang == 'fi' else 'Open article in interactive view'
-              date_label = 'Päivämäärä' if lang == 'fi' else 'Date'
-              tags_label = 'Tagit' if lang == 'fi' else 'Tags'
+              article_tags_meta = ''.join(f'<meta property="article:tag" content="{esc(t)}">' for t in tags)
+              tag_spans = ''.join(f'<span class="tag">{html.escape(t)}</span>' for t in tags)
 
-              article_tags_meta = "".join(
-                  f'<meta property="article:tag" content="{html.escape(t, quote=True)}">' for t in tags
-              )
-              tag_spans = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in tags)
+              # previous (older) / next (newer) in chronological order
+              idx = next(i for i, p in enumerate(same_lang_sorted) if p['slug'] == post['slug'])
+              newer = same_lang_sorted[idx - 1] if idx > 0 else None
+              older = same_lang_sorted[idx + 1] if idx < len(same_lang_sorted) - 1 else None
+
+              nav_parts = []
+              if older:
+                  nav_parts.append(
+                      f'<a class="prev" rel="prev" href="{post_url_path(older)}"><small>&larr; {L["older"]}</small>{html.escape(older["title"])}</a>')
+              if newer:
+                  nav_parts.append(
+                      f'<a class="next" rel="next" href="{post_url_path(newer)}"><small>{L["newer"]} &rarr;</small>{html.escape(newer["title"])}</a>')
+              post_nav = (f'<nav class="post-nav" aria-label="{esc(L["post_nav"])}">{"".join(nav_parts)}</nav>'
+                          if nav_parts else '')
+
+              related = related_posts(post, same_lang_sorted)
+              related_html = ''
+              if related:
+                  items = ''.join(
+                      f'<li><a href="{post_url_path(r)}">{html.escape(r["title"])}</a> <time datetime="{esc(r["date"])}">({html.escape(r["date"])})</time></li>'
+                      for r in related)
+                  related_html = f'<section class="related"><h2>{L["related"]}</h2><ul>{items}</ul></section>'
 
               return f'''<!DOCTYPE html>
-          <html lang="{lang_attr}">
+          <html lang="{L['html_lang']}">
           <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>{e_title} — Eddy's Homepages</title>
-              <meta name="description" content="{e_desc}">
-              <meta name="keywords" content="{e_tags}">
+              <title>{esc(title)} — Eddy's Homepages</title>
+              <meta name="description" content="{esc(description)}">
+              <meta name="keywords" content="{esc(tags_str)}">
               <meta name="author" content="Esa P">
               <meta name="robots" content="index, follow">
               <link rel="canonical" href="{post_url}">
-              <meta property="og:title" content="{e_title}">
-              <meta property="og:description" content="{e_desc}">
+              <meta property="og:title" content="{esc(title)}">
+              <meta property="og:description" content="{esc(description)}">
               <meta property="og:url" content="{post_url}">
               <meta property="og:type" content="article">
               <meta property="og:site_name" content="Eddy's Homepages">
-              <meta property="article:published_time" content="{date}">
+              <meta property="article:published_time" content="{esc(date)}">
               <meta property="article:author" content="Esa P">
               {article_tags_meta}
               <script type="application/ld+json">
           {schema}
               </script>
-              <style>
-                  :root {{ color-scheme: light dark; }}
-                  body {{
-                      font-family: system-ui, -apple-system, sans-serif;
-                      line-height: 1.7;
-                      margin: 0;
-                      padding: 1rem;
-                      background: #f8f9fa;
-                      color: #212529;
-                  }}
-                  .container {{
-                      max-width: 760px;
-                      margin: 0 auto;
-                      background: white;
-                      padding: 2rem;
-                      border-radius: 8px;
-                      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-                  }}
-                  h1 {{ color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }}
-                  a {{ color: #0066cc; }}
-                  nav.breadcrumb {{ font-size: 0.85rem; margin-bottom: 1rem; color: #666; }}
-                  .meta {{ color: #666; font-size: 0.9rem; margin: 1rem 0; }}
-                  .tags {{ margin: 1rem 0; }}
-                  .tag {{
-                      background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
-                      margin: 0.15rem; display: inline-block; font-size: 0.85rem;
-                  }}
-                  .spa-link {{
-                      display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
-                      background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
-                  }}
-                  .spa-link:hover {{ background: #34495e; }}
-                  article img {{ max-width: 100%; height: auto; }}
-                  article pre {{
-                      background: #f4f4f4; padding: 1rem; border-radius: 4px;
-                      overflow-x: auto; font-size: 0.9rem;
-                  }}
-                  article code {{ background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }}
-                  article pre code {{ background: none; padding: 0; }}
-                  article blockquote {{
-                      border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
-                  }}
-                  article table {{ border-collapse: collapse; width: 100%; }}
-                  article th, article td {{ border: 1px solid #ddd; padding: 0.5rem; text-align: left; }}
-                  @media (prefers-color-scheme: dark) {{
-                      body {{ background: #1a1a1a; color: #e0e0e0; }}
-                      .container {{ background: #242424; box-shadow: none; }}
-                      h1 {{ color: #e0e0e0; }}
-                      a {{ color: #6db3f2; }}
-                      article pre, article code {{ background: #333; }}
-                      .tag {{ background: #33424a; }}
-                  }}
-              </style>
+              <style>{PAGE_CSS}</style>
           </head>
           <body>
               <div class="container">
                   <nav class="breadcrumb">
-                      <a href="{base_url}/">{home_label}</a> ›
-                      <a href="{base_url}/#posts">{posts_label}</a> ›
-                      {e_title}
+                      <a href="{BASE}/">{L['home']}</a> &rsaquo;
+                      <a href="/posts/{lang}/">{L['archive']}</a> &rsaquo;
+                      {esc(title)}
                   </nav>
                   <article itemscope itemtype="https://schema.org/BlogPosting">
-                      <h1 itemprop="headline">{e_title}</h1>
+                      <h1 itemprop="headline">{esc(title)}</h1>
                       <div class="meta">
-                          <span><strong>{date_label}:</strong> <time datetime="{date}" itemprop="datePublished">{date}</time></span><br>
-                          <span><strong>{tags_label}:</strong> <span itemprop="keywords">{e_tags}</span></span>
+                          <span><strong>{L['date']}:</strong> <time datetime="{esc(date)}" itemprop="datePublished">{esc(date)}</time></span><br>
+                          <span><strong>{L['tags']}:</strong> <span itemprop="keywords">{esc(tags_str)}</span></span>
                       </div>
                       <div class="tags">{tag_spans}</div>
                       <hr>
                       <div itemprop="articleBody">
-          {body_html}
+          {post['body_html']}
                       </div>
                   </article>
-                  <a class="spa-link" href="{spa_url}">{spa_link_text} →</a>
+                  <a class="spa-link" href="{spa_url}">{L['spa']} &rarr;</a>
+                  {post_nav}
+                  {related_html}
+                  {footer_nav(lang)}
               </div>
           </body>
           </html>'''
 
-          # Main generation
-          sitemap_entries = []
-          all_entries_meta = []
-          posts_dir = 'posts'
-          generated = 0
-          SKIP_FILES = {'about.fi.md', 'about.en.md', 'frontpage.fi.md', 'frontpage.en.md'}
 
-          md_converter = markdown.Markdown(extensions=['fenced_code', 'tables', 'nl2br', 'sane_lists'])
+          def build_archive_page(lang, posts):
+              L = LABELS[lang]
+              archive_url = f'{BASE}/posts/{lang}/'
+              title = L['archive']
+              page_title = f"{title} — Eddy's Homepages"
 
-          for lang in ['fi', 'en']:
-              lang_dir = os.path.join(posts_dir, lang)
-              if not os.path.isdir(lang_dir):
-                  continue
+              schema = json.dumps({
+                  "@context": "https://schema.org",
+                  "@type": "CollectionPage",
+                  "name": title,
+                  "url": archive_url,
+                  "inLanguage": L['locale'],
+                  "mainEntity": {
+                      "@type": "ItemList",
+                      "itemListElement": [
+                          {"@type": "ListItem", "position": i + 1, "url": f'{BASE}{post_url_path(p)}', "name": p['title']}
+                          for i, p in enumerate(posts)
+                      ],
+                  },
+              }, ensure_ascii=False, indent=2)
 
-              for filename in sorted(os.listdir(lang_dir)):
-                  if not filename.endswith('.md'):
-                      continue
-                  if filename in SKIP_FILES:
-                      print(f'SKIP: {filename}')
-                      continue
+              sections = []
+              current_year = None
+              open_list = False
+              for p in posts:
+                  year = p['date'][:4]
+                  if year != current_year:
+                      if open_list:
+                          sections.append('</ul>')
+                      sections.append(f'<h2>{html.escape(year)}</h2><ul>')
+                      open_list = True
+                      current_year = year
+                  sections.append(
+                      f'<li><a href="{post_url_path(p)}">{html.escape(p["title"])}</a> '
+                      f'<time datetime="{esc(p["date"])}">({html.escape(p["date"])})</time>'
+                      f'<span class="excerpt">{html.escape(p["excerpt"][:140])}</span></li>')
+              if open_list:
+                  sections.append('</ul>')
 
-                  slug = filename[:-3]
-                  filepath = os.path.join(lang_dir, filename)
+              return f'''<!DOCTYPE html>
+          <html lang="{L['html_lang']}">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>{esc(page_title)}</title>
+              <meta name="description" content="{esc(L['archive_intro'])}">
+              <meta name="robots" content="index, follow">
+              <link rel="canonical" href="{archive_url}">
+              <meta property="og:title" content="{esc(page_title)}">
+              <meta property="og:description" content="{esc(L['archive_intro'])}">
+              <meta property="og:url" content="{archive_url}">
+              <meta property="og:type" content="website">
+              <meta property="og:site_name" content="Eddy's Homepages">
+              <script type="application/ld+json">
+          {schema}
+              </script>
+              <style>{PAGE_CSS}</style>
+          </head>
+          <body>
+              <div class="container">
+                  <nav class="breadcrumb"><a href="{BASE}/">{L['home']}</a> &rsaquo; {esc(title)}</nav>
+                  <main class="archive">
+                      <h1>{esc(title)}</h1>
+                      <p>{esc(L['archive_intro'])}</p>
+                      {''.join(sections)}
+                  </main>
+                  {footer_nav(lang)}
+              </div>
+          </body>
+          </html>'''
 
-                  with open(filepath, 'r', encoding='utf-8') as f:
-                      content = f.read()
 
-                  meta, body = parse_frontmatter(content)
-                  excerpt = get_excerpt(body)
+          # ---------------------------------------------------------------- sitemap
 
-                  md_converter.reset()
-                  body_html = md_converter.convert(body)
+          def build_sitemap(all_posts):
+              today = datetime.now().strftime('%Y-%m-%d')
+              out = ['<?xml version="1.0" encoding="UTF-8"?>',
+                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+                     '',
+                     '    <url>',
+                     f'        <loc>{BASE}/</loc>',
+                     f'        <lastmod>{today}</lastmod>',
+                     '        <changefreq>weekly</changefreq>',
+                     '        <priority>1.0</priority>',
+                     f'        <xhtml:link rel="alternate" hreflang="fi" href="{BASE}/"/>',
+                     f'        <xhtml:link rel="alternate" hreflang="en" href="{BASE}/?lang=en"/>',
+                     '    </url>']
+              for lang in LANGS:
+                  if all_posts[lang]:
+                      out += ['', '    <url>',
+                              f'        <loc>{BASE}/posts/{lang}/</loc>',
+                              f'        <lastmod>{today}</lastmod>',
+                              '        <changefreq>weekly</changefreq>',
+                              '        <priority>0.8</priority>',
+                              '    </url>']
+              entries = [p for lang in LANGS for p in all_posts[lang]]
+              for p in sorted(entries, key=lambda x: (x['date'], x['slug']), reverse=True):
+                  url = f'{BASE}{post_url_path(p)}'
+                  out += ['', '    <url>',
+                          f'        <loc>{url}</loc>',
+                          f'        <lastmod>{p["date"]}</lastmod>',
+                          '        <changefreq>monthly</changefreq>',
+                          '        <priority>0.7</priority>',
+                          f'        <xhtml:link rel="alternate" hreflang="{p["lang"]}" href="{url}"/>',
+                          '    </url>']
+              out += ['', '</urlset>', '']
+              return '\n'.join(out)
 
-                  output_dir = os.path.join(posts_dir, lang, slug)
-                  os.makedirs(output_dir, exist_ok=True)
 
-                  page = generate_html(slug, lang, meta, excerpt, body_html)
-                  output_path = os.path.join(output_dir, 'index.html')
+          # ---------------------------------------------------------------- index.html maintenance
 
-                  with open(output_path, 'w', encoding='utf-8') as f:
-                      f.write(page)
+          OLD_LIST_RE = re.compile(
+              r'\n?<!-- STATIC-POST-LIST:START.*?<!-- STATIC-POST-LIST:END -->\n?', re.DOTALL)
+          ARCH_START = '<!-- ARCHIVE-LINKS:START (auto-generated, do not edit) -->'
+          ARCH_END = '<!-- ARCHIVE-LINKS:END -->'
 
-                  generated += 1
-                  print(f'OK: {output_path} ({len(page)} bytes)')
 
-                  sitemap_entries.append({
-                      'url': f'https://eddyshomepages.fi/posts/{lang}/{slug}/',
-                      'date': meta.get('date', '2022-01-01'),
-                      'lang': lang
-                  })
-                  all_entries_meta.append({
-                      'slug': slug,
-                      'title': meta.get('title', slug.replace('-', ' ').title()),
-                      'date': meta.get('date', '2022-01-01'),
-                      'lang': lang
-                  })
-
-          print(f'\nGenerated: {generated} pages')
-
-          # Generate sitemap.xml
-          today = datetime.now().strftime('%Y-%m-%d')
-          sitemap_xml = f'''<?xml version="1.0" encoding="UTF-8"?>
-          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-              <url>
-                  <loc>https://eddyshomepages.fi/</loc>
-                  <lastmod>{today}</lastmod>
-                  <changefreq>weekly</changefreq>
-                  <priority>1.0</priority>
-                  <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/"/>
-                  <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/?lang=en"/>
-              </url>
-          '''
-
-          for entry in sorted(sitemap_entries, key=lambda x: x['date'], reverse=True):
-              sitemap_xml += f'''
-              <url>
-                  <loc>{entry['url']}</loc>
-                  <lastmod>{entry['date']}</lastmod>
-                  <changefreq>monthly</changefreq>
-                  <priority>0.7</priority>
-                  <xhtml:link rel="alternate" hreflang="{entry['lang']}" href="{entry['url']}"/>
-              </url>
-          '''
-
-          sitemap_xml += '\n</urlset>\n'
-
-          with open('sitemap.xml', 'w', encoding='utf-8') as f:
-              f.write(sitemap_xml)
-
-          print(f'Generated sitemap.xml with {len(sitemap_entries)} post URLs')
-
-          # ---- Inject static post link list into index.html ----
-          START_MARKER = '<!-- STATIC-POST-LIST:START (auto-generated, do not edit) -->'
-          END_MARKER = '<!-- STATIC-POST-LIST:END -->'
-
-          def build_post_list_html(entries_with_meta):
-              fi_posts = sorted([e for e in entries_with_meta if e['lang'] == 'fi'],
-                                key=lambda x: x['date'], reverse=True)
-              en_posts = sorted([e for e in entries_with_meta if e['lang'] == 'en'],
-                                key=lambda x: x['date'], reverse=True)
-
-              parts = [START_MARKER]
-              parts.append('<nav class="static-post-list" aria-label="Kaikki artikkelit">')
-              if fi_posts:
-                  parts.append('<h2>Artikkelit</h2>')
-                  parts.append('<ul>')
-                  for p in fi_posts:
-                      parts.append(f'<li><a href="/posts/fi/{p["slug"]}/">{html.escape(p["title"])}</a> <small>({p["date"]})</small></li>')
-                  parts.append('</ul>')
-              if en_posts:
-                  parts.append('<h2>Posts in English</h2>')
-                  parts.append('<ul>')
-                  for p in en_posts:
-                      parts.append(f'<li><a href="/posts/en/{p["slug"]}/">{html.escape(p["title"])}</a> <small>({p["date"]})</small></li>')
-                  parts.append('</ul>')
-              parts.append('</nav>')
-              parts.append(END_MARKER)
-              return '\n'.join(parts)
-
-          if os.path.exists('index.html'):
+          def update_index_html():
+              if not os.path.exists('index.html'):
+                  print('WARNING: index.html not found, skipping')
+                  return
               with open('index.html', 'r', encoding='utf-8') as f:
-                  index_content = f.read()
+                  content = f.read()
 
-              post_list_html = build_post_list_html(all_entries_meta)
+              # 1) remove the old hidden post list from earlier versions of this workflow
+              content, removed = OLD_LIST_RE.subn('\n', content)
+              if removed:
+                  print('index.html: removed old hidden static post list')
 
-              if START_MARKER in index_content and END_MARKER in index_content:
-                  # Replace existing block (idempotent re-runs)
-                  pattern = re.escape(START_MARKER) + r'.*?' + re.escape(END_MARKER)
-                  index_content = re.sub(pattern, post_list_html, index_content, flags=re.DOTALL)
-                  print('index.html: replaced existing static post list')
+              # 2) visible archive links in the footer
+              block = (f'{ARCH_START}\n'
+                       f'<p class="archive-links"><a href="/posts/fi/">Kaikki artikkelit</a> &middot; '
+                       f'<a href="/posts/en/">All posts (English)</a></p>\n'
+                       f'{ARCH_END}')
+              if ARCH_START in content and ARCH_END in content:
+                  content = re.sub(re.escape(ARCH_START) + r'.*?' + re.escape(ARCH_END),
+                                   lambda m: block, content, flags=re.DOTALL)
+                  print('index.html: updated archive links')
+              elif '</footer>' in content:
+                  content = content.replace('</footer>', block + '\n    </footer>', 1)
+                  print('index.html: inserted archive links into footer')
               else:
-                  # First run: insert right after <div id="posts-display">
-                  anchor = '<div id="posts-display">'
-                  if anchor in index_content:
-                      index_content = index_content.replace(
-                          anchor, anchor + '\n' + post_list_html, 1)
-                      print('index.html: inserted static post list after posts-display div')
-                  else:
-                      print('WARNING: could not find posts-display div in index.html, list not injected')
+                  print('WARNING: no </footer> found in index.html, archive links not inserted')
 
               with open('index.html', 'w', encoding='utf-8') as f:
-                  f.write(index_content)
-          else:
-              print('WARNING: index.html not found, skipping post list injection')
+                  f.write(content)
+
+
+          # ---------------------------------------------------------------- main
+
+          all_posts = load_posts()
+          generated = 0
+
+          for lang in LANGS:
+              posts = all_posts[lang]
+              if not posts:
+                  continue
+              for post in posts:
+                  out_dir = os.path.join(POSTS_DIR, lang, post['slug'])
+                  os.makedirs(out_dir, exist_ok=True)
+                  page = build_post_page(post, posts)
+                  with open(os.path.join(out_dir, 'index.html'), 'w', encoding='utf-8') as f:
+                      f.write(page)
+                  generated += 1
+                  print(f'OK: posts/{lang}/{post["slug"]}/index.html')
+
+              with open(os.path.join(POSTS_DIR, lang, 'index.html'), 'w', encoding='utf-8') as f:
+                  f.write(build_archive_page(lang, posts))
+              print(f'OK: posts/{lang}/index.html (archive, {len(posts)} posts)')
+
+          print(f'\nGenerated: {generated} post pages')
+
+          with open('sitemap.xml', 'w', encoding='utf-8') as f:
+              f.write(build_sitemap(all_posts))
+          print('Generated sitemap.xml')
+
+          update_index_html()
 
           EOF
 
@@ -373,5 +508,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add posts sitemap.xml index.html
-          git diff --staged --quiet || git commit -m "Auto-generate post pages, sitemap and post list [skip ci]"
+          git diff --staged --quiet || git commit -m "Auto-generate post pages, archives and sitemap [skip ci]"
+          git pull --rebase origin main
           git push
