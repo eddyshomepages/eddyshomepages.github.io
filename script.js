@@ -380,11 +380,21 @@ async function loadPostsForLanguage() {
 	}
 }
 
+// Open a post inside the SPA, but let Ctrl/Cmd/Shift/middle-click open the real static page
+function openPost(event, postId) {
+	if (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1) return true;
+	event.preventDefault();
+	event.stopPropagation();
+	showPost(postId);
+	return false;
+}
+
 // Update recent posts in sidebar
 function updateRecentPosts() {
 	const recent = allPosts.slice(0, 5);
 	document.getElementById('recent-posts').innerHTML = recent
-	.map(post => `<li><a href="#post/${post.id}" onclick="showPost('${post.id}'); return false;" style="cursor: pointer; color: var(--accent);" title="${post.title}">${post.title}</a></li>`)
+	.map(post => `<li><a href="/posts/${currentLanguage}/${post.id}/" onclick="return openPost(event, '${post.id}')" style="cursor: pointer; color: var(--accent);" title="${post.title}">${post.title}</a></li>`)
+    //.map(post => `<li><a href="#post/${post.id}" onclick="showPost('${post.id}'); return false;" style="cursor: pointer; color: var(--accent);" title="${post.title}">${post.title}</a></li>`)
 	.join('');
 }
 
@@ -1159,7 +1169,7 @@ function displayPosts(posts) {
 	const container = document.getElementById('posts-display');
 	container.innerHTML = paginatedPosts.map(post => `
         <div class="post" onclick="showPost('${post.id}')" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPost('${post.id}')">
-            <h2 class="post-title">${post.title}</h2>
+            <h2 class="post-title"><a href="/posts/${currentLanguage}/${post.id}/" onclick="return openPost(event, '${post.id}')">${post.title}</a></h2>
             <div class="post-meta">
                 <span>📅 ${post.date}</span>
                 <span>🏷️ ${post.tags.length} ${currentLanguage === 'fi' ? 'tagia' : 'tags'}</span>
