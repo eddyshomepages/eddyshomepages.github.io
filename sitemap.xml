@@ -3,11 +3,25 @@
 
     <url>
         <loc>https://eddyshomepages.fi/</loc>
-        <lastmod>2026-07-15</lastmod>
+        <lastmod>2026-11-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/?lang=en"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/</loc>
+        <lastmod>2026-11-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/en/</loc>
+        <lastmod>2026-11-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
@@ -27,19 +41,19 @@
     </url>
 
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/</loc>
-        <lastmod>2025-09-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/"/>
-    </url>
-
-    <url>
         <loc>https://eddyshomepages.fi/posts/en/renewed-pages/</loc>
         <lastmod>2025-09-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/renewed-pages/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/</loc>
+        <lastmod>2025-09-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/paivitetyt-sivut/"/>
     </url>
 
     <url>
@@ -75,19 +89,19 @@
     </url>
 
     <url>
-        <loc>https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</loc>
-        <lastmod>2023-06-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/"/>
-    </url>
-
-    <url>
         <loc>https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/</loc>
         <lastmod>2023-06-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://eddyshomepages.fi/posts/en/tuning-raingauge-to-zigbee-network/"/>
+    </url>
+
+    <url>
+        <loc>https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/</loc>
+        <lastmod>2023-06-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fi" href="https://eddyshomepages.fi/posts/fi/sadevesimittarin-tuunaus-zigbee-verkkoon-sopivaksi/"/>
     </url>
 
     <url>

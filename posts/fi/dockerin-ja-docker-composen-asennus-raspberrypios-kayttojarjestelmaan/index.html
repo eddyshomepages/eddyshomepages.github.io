@@ -45,46 +45,31 @@
     </script>
     <style>
         :root { color-scheme: light dark; }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.7;
-            margin: 0;
-            padding: 1rem;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; margin: 0; padding: 1rem; background: #f8f9fa; color: #212529; }
+        .container { max-width: 760px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; font-size: 1.7rem; line-height: 1.3; }
+        h2 { font-size: 1.25rem; margin-top: 2rem; }
         a { color: #0066cc; }
         nav.breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; color: #666; }
         .meta { color: #666; font-size: 0.9rem; margin: 1rem 0; }
         .tags { margin: 1rem 0; }
-        .tag {
-            background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px;
-            margin: 0.15rem; display: inline-block; font-size: 0.85rem;
-        }
-        .spa-link {
-            display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem;
-            background: #2c3e50; color: white; border-radius: 4px; text-decoration: none;
-        }
+        .tag { background: #e8f4f8; padding: 0.2rem 0.6rem; border-radius: 3px; margin: 0.15rem; display: inline-block; font-size: 0.85rem; }
+        .spa-link { display: inline-block; margin: 1.5rem 0; padding: 0.6rem 1.2rem; background: #2c3e50; color: white; border-radius: 4px; text-decoration: none; }
         .spa-link:hover { background: #34495e; }
+        .post-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; flex-wrap: wrap; }
+        .post-nav a { flex: 1 1 45%; padding: 0.7rem 1rem; border: 1px solid #ddd; border-radius: 6px; text-decoration: none; }
+        .post-nav .next { text-align: right; }
+        .post-nav small { display: block; color: #666; }
+        .related ul, .archive ul { padding-left: 1.2rem; }
+        .archive li { margin-bottom: 0.9rem; }
+        .archive .excerpt { display: block; color: #555; font-size: 0.9rem; }
+        .archive time, .related time { color: #666; font-size: 0.85rem; }
+        footer.site-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; text-align: center; }
         article img { max-width: 100%; height: auto; }
-        article pre {
-            background: #f4f4f4; padding: 1rem; border-radius: 4px;
-            overflow-x: auto; font-size: 0.9rem;
-        }
+        article pre { background: #f4f4f4; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.9rem; }
         article code { background: #f4f4f4; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
         article pre code { background: none; padding: 0; }
-        article blockquote {
-            border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555;
-        }
+        article blockquote { border-left: 4px solid #2c3e50; margin-left: 0; padding-left: 1rem; color: #555; }
         article table { border-collapse: collapse; width: 100%; }
         article th, article td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
         @media (prefers-color-scheme: dark) {
@@ -94,14 +79,17 @@
             a { color: #6db3f2; }
             article pre, article code { background: #333; }
             .tag { background: #33424a; }
+            .post-nav a { border-color: #444; }
+            .post-nav small, .meta, .archive .excerpt, .archive time, .related time, nav.breadcrumb { color: #aaa; }
+            footer.site-footer { border-top-color: #444; }
         }
-    </style>
+</style>
 </head>
 <body>
     <div class="container">
         <nav class="breadcrumb">
-            <a href="https://eddyshomepages.fi/">Etusivu</a> ›
-            <a href="https://eddyshomepages.fi/#posts">Artikkelit</a> ›
+            <a href="https://eddyshomepages.fi/">Etusivu</a> &rsaquo;
+            <a href="/posts/fi/">Kaikki artikkelit</a> &rsaquo;
             Dockerin ja Docker-Composen asennus RaspberryPiOS -käyttöjärjestelmään
         </nav>
         <article itemscope itemtype="https://schema.org/BlogPosting">
@@ -153,7 +141,10 @@
 <p>Tämä varmistaa, että Docker käynnistyy automaattisesti myös sen jälkeen, kun kone käynnistetään uudelleen.</p>
             </div>
         </article>
-        <a class="spa-link" href="https://eddyshomepages.fi/#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan">Avaa artikkeli interaktiivisessa näkymässä →</a>
+        <a class="spa-link" href="https://eddyshomepages.fi/#post/dockerin-ja-docker-composen-asennus-raspberrypios-kayttojarjestelmaan">Avaa artikkeli interaktiivisessa näkymässä &rarr;</a>
+        <nav class="post-nav" aria-label="Edellinen ja seuraava artikkeli"><a class="prev" rel="prev" href="/posts/fi/uuden-upsin-kayttoonotto-ja-nutin-asennuksen-kertaus/"><small>&larr; Edellinen</small>Uuden UPS:in käyttöönotto ja NUT:in asennuksen kertaus</a><a class="next" rel="next" href="/posts/fi/caddy-web-serverin-asennus-raspberrypios-kayttojarjestelmaan/"><small>Seuraava &rarr;</small>Caddy web-serverin asennus RaspberryPiOS -käyttöjärjestelmään</a></nav>
+        <section class="related"><h2>Aiheeseen liittyviä artikkeleita</h2><ul><li><a href="/posts/fi/docker-composen-avulla-asennetun-home-assistantin-varmuuskopiointi-duplicatin-avulla/">Docker-Composen avulla asennetun Home Assistantin varmuuskopiointi Duplicatin avulla</a> <time datetime="2022-09-05">(2022-09-05)</time></li><li><a href="/posts/fi/nain-rakennat-oman-kotiautomaatiojarjestelman-raspberrypin-ja-home-assistantin-avulla/">Näin rakennat oman kotiautomaatiojärjestelmän RaspberryPi:n ja Home Assistantin avulla</a> <time datetime="2023-02-01">(2023-02-01)</time></li><li><a href="/posts/fi/ruuvitag-ble-integraation-kayttoonotto-docker-composen-avulla-asennetussa-home-assistantissa/">RuuviTag BLE -integraation käyttöönotto Docker-Composen avulla asennetussa Home Assistantissa</a> <time datetime="2023-07-30">(2023-07-30)</time></li><li><a href="/posts/fi/baikal-kalenteripalvelimen-asennus-docker-composen-avulla-ja-suojatun-yhteyden-muodostus-caddyn-reverse-proxy-asetuksilla/">Baïkal -kalenteripalvelimen asennus Docker-Composen avulla ja suojatun yhteyden muodostus Caddyn reverse proxy asetuksilla</a> <time datetime="2022-09-01">(2022-09-01)</time></li></ul></section>
+        <footer class="site-footer"><nav aria-label="Sivuston navigointi"><a href="https://eddyshomepages.fi/">Etusivu</a> &middot; <a href="/posts/fi/">Kaikki artikkelit</a> &middot; <a href="/posts/en/">All posts in English</a></nav></footer>
     </div>
 </body>
 </html>
